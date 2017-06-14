@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
+
     The contents of this file are subject to the license and copyright
     detailed in the LICENSE and NOTICE files at the root of the source
     tree and available online at
@@ -27,7 +28,7 @@
     <bean id="solrServiceMetadataBrowseIndexingPlugin" class="org.dspace.discovery.SolrServiceMetadataBrowseIndexingPlugin" scope="prototype"/>
 
     <alias name="solrServiceResourceIndexPlugin" alias="org.dspace.discovery.SolrServiceResourceRestrictionPlugin"/>
-    
+
     <!-- Additional indexing plugin make filtering by has content in original bundle (like pdf's, images) posible via SOLR -->
     <bean id="hasContentInOriginalBundle" class="org.dspace.discovery.SolrServiceContentInOriginalBundleFilterPlugin"/>
 
@@ -94,10 +95,18 @@
         <!--Which sidebar facets are to be displayed-->
         <property name="sidebarFacets">
             <list>
-                <ref bean="searchFilterAuthor" />
-                <ref bean="searchFilterSubject" />
+
+                <ref bean="searchFilterLevel" />
+                <!-- Do not add grade facets -->
+                <!--<ref bean="searchFilterGrade" />-->
+                <ref bean="searchFilterInteractivity" />
+                <ref bean="searchFilterType" />
+                <ref bean="searchFilterCategory" />
                 <ref bean="searchFilterIssued" />
-		        <ref bean="searchFilterContentInOriginalBundle"/>
+                <!--  Do not add Author facets -->
+                <!--<ref bean="searchFilterAuthor" />-->
+                <ref bean="searchFilterSubject" />
+
             </list>
         </property>
         <!-- Set TagCloud configuration per discovery configuration -->
@@ -105,11 +114,17 @@
         <!--The search filters which can be used on the discovery search page-->
         <property name="searchFilters">
             <list>
-                <ref bean="searchFilterTitle" />
+
+
+                <ref bean="searchFilterLevel" />
+                <ref bean="searchFilterGrade" />
+                <ref bean="searchFilterInteractivity" />
+                <ref bean="searchFilterType" />
+                <ref bean="searchFilterCategory" />
+                <ref bean="searchFilterIssued" />
                 <ref bean="searchFilterAuthor" />
                 <ref bean="searchFilterSubject" />
-                <ref bean="searchFilterIssued" />
-		        <ref bean="searchFilterContentInOriginalBundle"/>
+                <ref bean="searchFilterContentInOriginalBundle"/>
             </list>
         </property>
         <!--The sort filters for the discovery search-->
@@ -121,6 +136,9 @@
                 <property name="sortFields">
                     <list>
                         <ref bean="sortTitle" />
+                        <ref bean="sortLevel" />
+                        <ref bean="sortInteractivity" />
+                        <ref bean="sortType" />
                         <ref bean="sortDateIssued" />
                     </list>
                 </property>
@@ -195,16 +213,24 @@
         <property name="spellCheckEnabled" value="true"/>
     </bean>
 
-
+    <!-- HOME SPECIFIC CONFIGURATION FOR FACETS -->
     <!--The Homepage specific configuration settings for discovery-->
     <bean id="homepageConfiguration" class="org.dspace.discovery.configuration.DiscoveryConfiguration" scope="prototype">
         <!--Which sidebar facets are to be displayed (same as defaultConfiguration above)-->
         <property name="sidebarFacets">
             <list>
-                <ref bean="searchFilterAuthor" />
-                <ref bean="searchFilterSubject" />
+                <ref bean="searchFilterLevel" />
+                <!-- Remove Grade facets -->
+                <!--<ref bean="searchFilterGrade" />-->
+                <ref bean="searchFilterInteractivity" />
+                <ref bean="searchFilterType" />
+                <ref bean="searchFilterCategory" />
                 <ref bean="searchFilterIssued" />
-		        <ref bean="searchFilterContentInOriginalBundle"/>
+                <!-- Remove Author facets -->
+                <!--<ref bean="searchFilterAuthor" />-->
+                <ref bean="searchFilterSubject" />
+
+		        <!--<ref bean="searchFilterContentInOriginalBundle"/>-->
             </list>
         </property>
         <!-- Set TagCloud configuration per discovery configuration -->
@@ -212,11 +238,16 @@
         <!--The search filters which can be used on the discovery search page (same as defaultConfiguration above)-->
         <property name="searchFilters">
             <list>
-                <ref bean="searchFilterTitle" />
+
+                <ref bean="searchFilterLevel" />
+                <ref bean="searchFilterGrade" />
+                <ref bean="searchFilterInteractivity" />
+                <ref bean="searchFilterType" />
+                <ref bean="searchFilterCategory" />
+                <ref bean="searchFilterIssued" />
                 <ref bean="searchFilterAuthor" />
                 <ref bean="searchFilterSubject" />
-                <ref bean="searchFilterIssued" />
-		        <ref bean="searchFilterContentInOriginalBundle"/>
+                <ref bean="searchFilterContentInOriginalBundle"/>
             </list>
         </property>
         <!--The sort filters for the discovery search (same as defaultConfiguration above)-->
@@ -228,6 +259,9 @@
                 <property name="sortFields">
                     <list>
                         <ref bean="sortTitle" />
+                        <ref bean="sortLevel" />
+                        <ref bean="sortInteractivity" />
+                        <ref bean="sortType" />
                         <ref bean="sortDateIssued" />
                     </list>
                 </property>
@@ -283,7 +317,7 @@
             </list>
         </property>
     </bean>
-    
+
      <!--TagCloud configuration bean for default discovery configuration-->
     <bean id="defaultTagCloudFacetConfiguration" class="org.dspace.discovery.configuration.TagCloudFacetConfiguration">
         <!-- Actual configuration of the tagcloud (colors, sorting, etc.) -->
@@ -295,74 +329,74 @@
             </list>
         </property>
     </bean>
-    
+
     <bean id="tagCloudConfiguration" class="org.dspace.discovery.configuration.TagCloudConfiguration">
 		<!-- Should display the score of each tag next to it? Default: false -->
 		<!-- <property name="displayScore" value="true"/> -->
-		
+
 		<!-- Should display the tag as center aligned in the page or left aligned? Possible values: true | false. Default: true  -->
 		<!-- <property name="shouldCenter" value="true"/> -->
-		
+
 		<!-- How many tags will be shown. Value -1 means all of them. Default: -1 -->
 		<!--<property name="totalTags" value="-1"/> -->
-		
-		<!-- The letter case of the tags. 
+
+		<!-- The letter case of the tags.
 			 Possible values: Case.LOWER | Case.UPPER | Case.CAPITALIZATION | Case.PRESERVE_CASE | Case.CASE_SENSITIVE
 			 Default: Case.PRESERVE_CASE -->
 		<!--<property name="cloudCase" value="Case.PRESERVE_CASE"/> -->
-		
+
 		<!-- If the 3 colors of the tag cloud should be independent of score (random=yes) or based on the score. Possible values: true | false . Default: true-->
 		<!-- <property name="randomColors" value="true"/> -->
 
 		<!-- The font size (in em) for the tag with the lowest score. Possible values: any decimal. Default: 1.1 -->
 		<!-- <property name="fontFrom" value="1.1"/>-->
-		
+
 		<!-- The font size (in em) for the tag with the lowest score. Possible values: any decimal. Default: 3.2 -->
 		<!-- <property name="fontTo" value="3.2"/>-->
-		
+
 		<!-- The score that tags with lower than that will not appear in the rag cloud. Possible values: any integer from 1 to infinity. Default: 0 -->
 		<!-- <property name="cuttingLevel" value="0"/>-->
 
 		<!-- The ordering of the tags (based either on the name or the score of the tag)
 			 Possible values: Tag.NameComparatorAsc | Tag.NameComparatorDesc | Tag.ScoreComparatorAsc | Tag.ScoreComparatorDesc
 			 Default: Tag.NameComparatorAsc  -->
-		<!-- <property name="ordering" value="Tag.NameComparatorAsc"/>-->	
+		<!-- <property name="ordering" value="Tag.NameComparatorAsc"/>-->
     </bean>
-    
+
     <!-- The tag cloud parameters for the tag clouds that appear in the browse pages -->
     <bean id="browseTagCloudConfiguration" class="org.dspace.discovery.configuration.TagCloudConfiguration">
 		<!-- Should display the score of each tag next to it? Default: false -->
 		<!-- <property name="displayScore" value="true"/> -->
-		
+
 		<!-- Should display the tag as center aligned in the page or left aligned? Possible values: true | false. Default: true  -->
 		<!-- <property name="shouldCenter" value="true"/> -->
-		
+
 		<!-- How many tags will be shown. Value -1 means all of them. Default: -1 -->
 		<!--<property name="totalTags" value="-1"/> -->
-		
-		<!-- The letter case of the tags. 
+
+		<!-- The letter case of the tags.
 			 Possible values: Case.LOWER | Case.UPPER | Case.CAPITALIZATION | Case.PRESERVE_CASE | Case.CASE_SENSITIVE
 			 Default: Case.PRESERVE_CASE -->
 		<!--<property name="cloudCase" value="Case.PRESERVE_CASE"/> -->
-		
+
 		<!-- If the 3 colors of the tag cloud should be independent of score (random=yes) or based on the score. Possible values: true | false . Default: true-->
 		<!-- <property name="randomColors" value="true"/> -->
 
 		<!-- The font size (in em) for the tag with the lowest score. Possible values: any decimal. Default: 1.1 -->
 		<!-- <property name="fontFrom" value="1.1"/>-->
-		
+
 		<!-- The font size (in em) for the tag with the lowest score. Possible values: any decimal. Default: 3.2 -->
 		<!-- <property name="fontTo" value="3.2"/>-->
-		
+
 		<!-- The tags with score lower than this will not appear in the tag cloud. Possible values: any integer from 1 to infinity. Default: 0 -->
 		<!-- <property name="cuttingLevel" value="0"/>-->
-	
+
 		<!-- The ordering of the tags (based either on the name or the score of the tag)
 			 Possible values: Tag.NameComparatorAsc | Tag.NameComparatorDesc | Tag.ScoreComparatorAsc | Tag.ScoreComparatorDesc
 			 Default: Tag.NameComparatorAsc  -->
-		<!-- <property name="ordering" value="Tag.NameComparatorAsc"/>-->	
+		<!-- <property name="ordering" value="Tag.NameComparatorAsc"/>-->
     </bean>
-    
+
     <!--Search filter configuration beans-->
     <bean id="searchFilterTitle" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
         <property name="indexFieldName" value="title"/>
@@ -379,6 +413,83 @@
             <list>
                 <value>dc.contributor.author</value>
                 <value>dc.creator</value>
+            </list>
+        </property>
+        <property name="facetLimit" value="10"/>
+        <property name="sortOrderSidebar" value="COUNT"/>
+        <property name="sortOrderFilterPage" value="COUNT"/>
+    </bean>
+
+
+    <!-- level facets -->
+    <bean id="searchFilterLevel" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <!-- value is the value name defined in dspace.cfg -->
+        <property name="indexFieldName" value="level"/>
+        <property name="metadataFields">
+            <list>
+                <value>dcterms.educationLevel</value>
+            </list>
+        </property>
+        <property name="facetLimit" value="10"/>
+        <property name="sortOrderSidebar" value="COUNT"/>
+        <property name="sortOrderFilterPage" value="COUNT"/>
+    </bean>
+
+    <!-- interactivity facets -->
+    <!-- make sure to add on local.cfg -->
+    <!-- # Browse based on category webui.browse.index.8 = interactivity:metadata:local.interactivity:text -->
+    <bean id="searchFilterInteractivity" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <!-- value is the value name defined in dspace.cfg -->
+        <property name="indexFieldName" value="interactivity"/>
+        <property name="metadataFields">
+            <list>
+                <value>local.interactivity</value>
+            </list>
+        </property>
+        <property name="facetLimit" value="10"/>
+        <property name="sortOrderSidebar" value="COUNT"/>
+        <property name="sortOrderFilterPage" value="COUNT"/>
+    </bean>
+
+    <!-- Category facets -->
+    <!-- make sure to add on local.cfg -->
+    <!-- # Browse based on category webui.browse.index.8 = category:metadata:local.category:text -->
+    <bean id="searchFilterCategory" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <!-- value is the value name defined in dspace.cfg -->
+        <property name="indexFieldName" value="category"/>
+        <property name="metadataFields">
+            <list>
+                <value>local.category</value>
+            </list>
+        </property>
+        <property name="facetLimit" value="10"/>
+        <property name="sortOrderSidebar" value="COUNT"/>
+        <property name="sortOrderFilterPage" value="COUNT"/>
+    </bean>
+
+    <!-- grade facets -->
+    <!-- make sure to add on local.cfg -->
+    <!-- # Browse based on category webui.browse.index.6 = grade:metadata:local.grade:text -->
+    <bean id="searchFilterGrade" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <!-- value is the value name defined in dspace.cfg -->
+        <property name="indexFieldName" value="grade"/>
+        <property name="metadataFields">
+            <list>
+                <value>local.grade</value>
+            </list>
+        </property>
+        <property name="facetLimit" value="10"/>
+        <property name="sortOrderSidebar" value="COUNT"/>
+        <property name="sortOrderFilterPage" value="COUNT"/>
+    </bean>
+
+    <!-- type facets -->
+    <bean id="searchFilterType" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <!-- value is the value name defined in dspace.cfg -->
+        <property name="indexFieldName" value="type"/>
+        <property name="metadataFields">
+            <list>
+                <value>dc.type</value>
             </list>
         </property>
         <property name="facetLimit" value="10"/>
@@ -410,7 +521,7 @@
         <property name="sortOrderSidebar" value="COUNT"/>
         <property name="sortOrderFilterPage" value="COUNT"/>
     </bean>
-    
+
     <bean id="searchFilterContentInOriginalBundle" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
         <property name="indexFieldName" value="has_content_in_original_bundle"/>
         <property name="metadataFields">
@@ -431,5 +542,32 @@
         <property name="metadataField" value="dc.date.issued"/>
         <property name="type" value="date"/>
     </bean>
-    
+
+    <!-- sort by grade -->
+    <bean id="sortGrade" class="org.dspace.discovery.configuration.DiscoverySortFieldConfiguration">
+        <property name="metadataField" value="local.grade"/>
+    </bean>
+
+    <!-- sort by level -->
+    <bean id="sortLevel" class="org.dspace.discovery.configuration.DiscoverySortFieldConfiguration">
+        <property name="metadataField" value="local.level"/>
+    </bean>
+
+    <!-- sort by document type -->
+    <bean id="sortType" class="org.dspace.discovery.configuration.DiscoverySortFieldConfiguration">
+        <property name="metadataField" value="dc.type"/>
+    </bean>
+
+    <!-- sort by interactivity -->
+    <bean id="sortInteractivity" class="org.dspace.discovery.configuration.DiscoverySortFieldConfiguration">
+        <property name="metadataField" value="local.interactivity"/>
+    </bean>
+
+    <!-- sort based on category -->
+    <!-- sort by interactivity -->
+    <bean id="sortCategory" class="org.dspace.discovery.configuration.DiscoverySortFieldConfiguration">
+        <property name="metadataField" value="local.category"/>
+    </bean>
+
+
 </beans>
