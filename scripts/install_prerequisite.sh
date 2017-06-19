@@ -45,7 +45,7 @@ cd ImageMagick-7.0.6
 ./configure
 make
 sudo make install
-sudo ldconfig/usr/local/lib
+sudo ldconfig /usr/local/lib
 cd
 
 #TODO: install Ghostscript
