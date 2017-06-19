@@ -13,5 +13,4 @@ systemctl restart postgresql
 # Run postbuild script
 ./postbuild.sh
 
-# Run the filters media
-/dspace/bin/dspace filter-media
+

@@ -10,3 +10,6 @@
 
 echo "Building non-SOLR search and browse indexes... Please wait"
 
+# Run the filters media
+/dspace/bin/dspace filter-media
+
