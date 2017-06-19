@@ -38,6 +38,19 @@ apt-get install ant -y
 # Install maven v3.3.9 ubuntu 16.04 LTS has version v3.3.9 in its repo
 apt-get install maven
 
+#Install ImageMagick
+wget https://www.imagemagick.org/download/ImageMagick.tar.gz
+tar xvzf ImageMagick.tar.gz
+cd ImageMagick-7.0.6
+./configure
+make
+sudo make install
+sudo ldconfig/usr/local/lib
+cd
+
+#TODO: install Ghostscript
+sudo apt-get install ghostscript
+
 ##############################################################################
 #This section defines the installation and configuration of tomcat web server
 ###############################################################################
