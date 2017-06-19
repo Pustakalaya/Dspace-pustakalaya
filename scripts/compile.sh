@@ -9,3 +9,9 @@ cd ./dspace/target/dspace-installer/
 ant fresh_install 
 systemctl restart tomcat
 systemctl restart postgresql
+
+# Run postbuild script
+./postbuild.sh
+
+# Run the filters media
+/dspace/bin/dspace filter-media
