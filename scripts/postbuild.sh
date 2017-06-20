@@ -10,3 +10,8 @@
 
 echo "Building non-SOLR search and browse indexes... Please wait"
 
+
+# Run some media filters
+# 1000 objectes at a time
+/dspace/bin/dspace filter-media -v -f -m 1000 -p "ImageMagick Image Thumbnail"
+/dspace/bin/dspace filter-media -v -f -m 1000 -p "ImageMagick PDF Thumbnail"
