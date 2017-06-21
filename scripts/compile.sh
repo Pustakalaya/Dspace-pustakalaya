@@ -10,6 +10,7 @@ ant fresh_install
 systemctl restart tomcat
 systemctl restart postgresql
 
+cd -
 # Run postbuild script
 ./postbuild.sh
 
