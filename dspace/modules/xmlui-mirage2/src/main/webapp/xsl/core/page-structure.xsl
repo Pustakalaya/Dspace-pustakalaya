@@ -701,10 +701,18 @@
     <xsl:template name="buildFooter">
         <footer>
                 <div class="row">
-                    <hr/>
                     <div class="col-xs-7 col-sm-8">
+                        <!-- upper banner -->
+                        <div class="footer-banner">
+                            <p>Developed and Maintained by:<a href="http://www.pustakalaya.org" target="_blank"><img src="../../images/footer-logo.png"/></a></p>
+                            <a href="http://www.facebook.com/E-pustakalaya" target="_blank"><img src="../images/facebook.png"/></a>
+                            <a href="http://www.twitter.com/E-pustakalaya" target="_blank"><img src="../images/twiter.png"/></a>
+                            <a href="http://www.connect.com/E-pustakalaya" target="_blank"><img src="../images/connect.png"/></a>
+
+                        </div>
+
                         <div>
-                            <a href="http://www.dspace.org/" target="_blank">DSpace software</a> copyright&#160;&#169;&#160;2002-2016&#160; <a href="http://www.duraspace.org/" target="_blank">DuraSpace</a>
+                            <a href="http://www.pustakalaya.org/" target="_blank">Pustakalaya</a> copyright&#160;&#169;&#160;2002-2016&#160; <a href="http://www.pustakalaya.org/" target="_blank"><Pustakalaya></Pustakalaya></a>
                         </div>
                         <div class="hidden-print">
                             <a>
@@ -719,7 +727,6 @@
                             <a>
                                 <xsl:attribute name="href">
                                     <xsl:value-of
-                                            select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='contextPath'][not(@qualifier)]"/>
                                     <xsl:text>/feedback</xsl:text>
                                 </xsl:attribute>
                                 <i18n:text>xmlui.dri2xhtml.structural.feedback-link</i18n:text>
