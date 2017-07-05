@@ -2555,9 +2555,30 @@
     <message key="xmlui.ArtifactBrowser.SimpleSearch.filter.grade">Grade</message>
     <message key="xmlui.ArtifactBrowser.SimpleSearch.filter.interactivity">Interactivity</message>
 
+    <!-- Home page messages -->
+
+    <message key="xmlui.BrowseBooks">Browse Books</message>
+    <message key="xmlui.search">Search</message>
+    <message key="xmlui.advanceSearch">Advance Search</message>
+
+
+    <!-- Above footer message -->
+    <message key="xmlui.aboutHomePage">E-Pustakalaya is an education-focused digital library containing full-text documents,
+        books, images, videos, audio files, and interactive educational software that can be accessed through an
+        intranet or on the Internet. OLE Nepal started the development of E-Pustakalaya in 2008 with the aim to improve
+        children's reading skills and develop a reading culture in schools by giving them free and open access
+        to age-appropriate reading materials and to enable students to do research projects and promote habit of
+        independent inquiry. Since E-Pustakalaya went live in 2009, teachers as well as other adults have also
+        benefited widely from various teaching resources, and educational materials in agriculture, health, environment,
+        local technologies, and so on.
+    </message>
+
+    <message key="xmlui.you.can.bring.epustakalaya.to.your.school">You can bring epustakalaya to your school.</message>
+    <message key="xmlui.you.can.donate.books.to.epustakalaya">You can donate books to epustakalaya.</message>
 
 
 
+    <message key="xmlui.more">More</message>
 
 
 
