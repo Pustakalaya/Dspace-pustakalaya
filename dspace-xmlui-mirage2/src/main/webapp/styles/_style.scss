@@ -13,8 +13,12 @@
 
 //example mixin to set the text-selection style
 @mixin selection {
-  ::-moz-selection { @content; }
-  ::selection { @content; }
+  ::-moz-selection {
+    @content;
+  }
+  ::selection {
+    @content;
+  }
 }
 
 @include selection {
@@ -47,7 +51,7 @@
   }
 
   #aspect_submission_StepTransformer_field_lookup {
-    width:19%
+    width: 19%
   }
 
   .modal .modal-body {
@@ -55,13 +59,91 @@
     overflow-y: auto;
   }
 
-  #aspect_submission_StepTransformer_item_publication-title{
-    margin-bottom:5px;
+  #aspect_submission_StepTransformer_item_publication-title {
+    margin-bottom: 5px;
   }
 
+}
 
+/* search box section */
+#pustakalaya_searchBox{
+  margin-top:20%; /* Don't copy this */
+}
+.stylish-input-group .input-group-addon{
+  background: white !important;
+}
+.stylish-input-group .form-control{
+  border-right:0;
+  box-shadow:0 0 0;
+  border-color:#ccc;
+}
+.stylish-input-group button{
+  border:0;
+  background:transparent;
+}
+
+/* Book browsing section */
+#book-browsing > ul{
+  list-style: none;
+}
+
+#book-browsing > ul >li {
+  margin-top: 5px;
+}
+
+#book-browsing.col-md-4 > ul > li > a {
+  color: #333333;
+}
+
+#book-browsing.col-md-4 > ul > li > a:hover{
+  color: #16a085;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Header styling */
+#book-gallery > img {
+  filter: 808080; /* IE6-9 */
+  -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
+  -webkit-box-shadow: 0px 2px 6px 2px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 2px 6px 2px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 2px 6px 2px rgba(0, 0, 0, 0.75);
+  margin-bottom: 20px;
+}
+
+#book-gallery > img:hover {
+  filter: none; /* IE6-9 */
+  -webkit-filter: grayscale(0); /* Google Chrome, Safari 6+ & Opera 15+ */
 
 }
+
+
+/* Pustakalaya Section */
+.pustakalayaSection{
+  height: 250px;
+  background: #81C784;
+}
+
+
+pustakalayaSection > div > h4 {
+  padding-top: 10px;
+  color: #eeeeee;
+  text-transform: capitalize;
+  display:inline-block;
+  background-color:#16a085;
+  padding: 8px;
+
+}
+
+/* Interactive educational software style section */
+.carousel-control {
+  padding-top:10%;
+  width:5%;
+}
+
+
+
+
 /* footer styling*/
 
 .footer-banner-first {
@@ -72,33 +154,27 @@
   width: 100%;
 }
 
-
-
-.social-media-logo{
+.social-media-logo {
   width: 30px;
-  height:30px;
+  height: 30px;
 }
 
-
-.partner-logo{
+.partner-logo {
   margin: 10px;
   width: 30px;
   height: 30px;
 }
 
-
-
-
-
-.pustakalaya-logo{
+.pustakalaya-logo {
   margin: 10px;
   width: 122px;
-  height:44px;
+  height: 44px;
 }
 
-.pustakalaya-menu{
+.pustakalaya-menu {
   background-color: #34cc0c;
   border: none;
 
 }
+
 

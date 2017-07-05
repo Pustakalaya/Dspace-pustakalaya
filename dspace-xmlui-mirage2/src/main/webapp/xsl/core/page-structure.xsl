@@ -97,6 +97,308 @@
                                     </div>
                                 </div>
                             </div>
+                            <!-- custom banner for homepage goes here -->
+                            <div id="pustakalayaBanner">
+                                <!-- Banner -->
+                                <!-- End banner -->
+
+                                <!-- Browse books and search bar goes here -->
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-md-4" style="background:#16a085; height:40px;">
+                                            <p class="text-center" style="color:#eeeeee; padding-top:10px;"><i18n:text>xmlui.browseBooks</i18n:text></p>
+                                        </div>
+                                        <!-- search box -->
+                                        <div style="background-color:#e74c3c;height:40px;" class="col-md-4">
+                                            <form method="post" action="./discover">
+                                                <div class="col-sm-12">
+                                                    <div class="input-group" style="padding-top:7px; padding-bottom:5px;">
+                                                        <input type="text" name="query" class="form-control" placeholder="Search for books, audio, video, title..." style="height:25px;" autocomplete="off" />
+                                                        <span class="input-group-btn" style="25px;">
+                                                            <button style="height:26px; background:#c0392b; border-color:#c0392b;" class="btn btn-default" type="submit">
+                                                                <i style="color:#FFFFFF;vertical-align:top" class="glyphicon glyphicon-search text-center"></i>
+                                                            </button>
+                                                        </span>
+                                                    </div><!-- /input-group -->
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <!-- Advance search -->
+                                        <div class="col-md-4" style="background:#e74c3c; height:40px;">
+                                            <p class="pull-left" style="color:#eeeeee; padding-top:10px;"><i18n:text>xmlui.advanceSearch</i18n:text></p>
+                                        </div>
+                                    </div><!-- End container fluid -->
+                                </div><!-- End browse books and search bar -->
+
+                                <!-- Book browsing -->
+                                <div class="container-fluid" style="background:#FFF3E0;">
+                                    <div class="row">
+                                        <!-- Browse by section -->
+                                        <div class="col-md-4" id="book-browsing">
+                                            <ul>
+                                                <li><a href="/browse?type=type" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_type</i18n:text></a></li>
+                                                <li><a href="/browse?type=category" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_category</i18n:text></a></li>
+                                                <li><a href="/browse?type=interactivity" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_interactivity</i18n:text></a></li>
+                                                <li><a href="/browse?type=grade" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_grade</i18n:text></a></li>
+                                                <li><a href="/browse?type=type" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_level</i18n:text></a></li>
+                                            </ul>
+                                        </div>
+                                        <!-- Book gallery demo -->
+                                        <div class="col-md-8" id="book-gallery">
+                                            <!-- Book Banner -->
+                                        </div>
+                                    </div>
+                                </div><!-- container  end -->
+                                <br/>
+
+                                <!-- Interactive Educational software -->
+                                <div class="pustakalayaSection" style="background:#A5D6A7; margin-top:-20px;">
+                                    <div class="container">
+                                        <h4 class="text-center text-capitalize"  style="color:#eeeeee;">Interactive Education softwares</h4>
+                                        <div class="col-md-10 col-md-offset-1">
+                                            <div class="well" style="background:#A5D6A7; border=none;">
+                                                <div id="myCarousel" class="carousel slide">
+                                                    <!-- Carousel items -->
+                                                    <div class="carousel-inner">
+                                                        <div class="item active">
+                                                            <div class="row">
+                                                                <div class="col-sm-2"><a href="#x"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
+                                                                </div>
+                                                                <div class="col-sm-2"><a href="#x"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
+                                                                </div>
+                                                                <div class="col-sm-2"><a href="#x"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
+                                                                </div>
+                                                                <div class="col-sm-2"><a href="#x"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
+                                                                </div>
+                                                                <div class="col-sm-2"><a href="#x"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
+                                                                </div>
+                                                                <div class="col-sm-2"><a href="#x"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
+                                                                </div>
+                                                            </div>
+                                                            <!--/row-->
+                                                        </div>
+                                                        <!--/item-->
+                                                        <!--
+                                                        <div class="item">
+                                                            <div class="row">
+                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
+                                                                </div>
+                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
+                                                                </div>
+                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
+                                                                </div>
+                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                        -->
+
+                                                        <!--/item-->
+                                                        <!--
+                                                        <div class="item">
+                                                            <div class="row">
+                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/150x150" alt="Image" class="img-responsive"/></a>
+                                                                </div>
+                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/150x150" alt="Image" class="img-responsive"/></a>
+                                                                </div>
+                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/150x150" alt="Image" class="img-responsive"/></a>
+                                                                </div>
+                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/150x150" alt="Image" class="img-responsive"/></a>
+                                                                </div>
+                                                           </div>
+
+                                                        </div>
+                                                        -->
+                                                        <!--/item-->
+                                                    </div>
+                                                    <!--/carousel-inner-->
+                                                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+
+                                                    <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+                                                </div>
+                                                <!--/myCarousel-->
+                                            </div>
+                                            <!--/well-->
+                                        </div>
+                                        <!-- Static content -->
+                                    </div>
+                                </div>
+
+                                <!-- Interactive audio video materials -->
+                                <div class="pustakalayaSection" style="background:#81C784; margin-top:-20px;">
+                                    <div class="container">
+                                        <h4 class="text-center text-capitalize" style="color:#eeeeee;">Educational audio videos</h4>
+                                        <div class="col-md-10 col-md-offset-1">
+                                            <div class="well" style="background:#81C784; border=none;">
+                                                <div id="myCarousel" class="carousel slide">
+                                                    <!-- Carousel items -->
+                                                    <div class="carousel-inner">
+                                                        <div class="item active">
+                                                            <div class="row">
+                                                                <div class="col-sm-2"><a href="#x"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
+                                                                </div>
+                                                                <div class="col-sm-2"><a href="#x"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
+                                                                </div>
+                                                                <div class="col-sm-2"><a href="#x"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
+                                                                </div>
+                                                                <div class="col-sm-2"><a href="#x"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
+                                                                </div>
+                                                                <div class="col-sm-2"><a href="#x"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
+                                                                </div>
+                                                                <div class="col-sm-2"><a href="#x"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
+                                                                </div>
+                                                            </div>
+                                                            <!--/row-->
+                                                        </div>
+                                                        <!--/item-->
+                                                        <!--
+                                                        <div class="item">
+                                                            <div class="row">
+                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
+                                                                </div>
+                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
+                                                                </div>
+                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
+                                                                </div>
+                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                        -->
+
+                                                        <!--/item-->
+                                                        <!--
+                                                        <div class="item">
+                                                            <div class="row">
+                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/150x150" alt="Image" class="img-responsive"/></a>
+                                                                </div>
+                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/150x150" alt="Image" class="img-responsive"/></a>
+                                                                </div>
+                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/150x150" alt="Image" class="img-responsive"/></a>
+                                                                </div>
+                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/150x150" alt="Image" class="img-responsive"/></a>
+                                                                </div>
+                                                           </div>
+
+                                                        </div>
+                                                        -->
+                                                        <!--/item-->
+                                                    </div>
+                                                    <!--/carousel-inner-->
+                                                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+
+                                                    <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+                                                </div>
+                                                <!--/myCarousel-->
+                                            </div>
+                                            <!--/well-->
+                                        </div>
+                                        <!-- Static content -->
+                                    </div>
+                                </div>
+
+                                <!-- Reference materials -->
+                                <div class="pustakalayaSection" style="background:#A5D6A7; margin-top:-20px;">
+                                    <div class="container">
+                                        <h4 class="text-center text-capitalize" style="color:#eeeeee;">References Materials</h4>
+                                        <div class="col-md-6 col-md-offset-3">
+                                            <div class="well" style="background:#A5D6A7; border=none;">
+                                                <div id="myCarousel" class="carousel slide">
+                                                    <!-- Carousel items -->
+                                                    <div class="carousel-inner">
+                                                        <div class="item active">
+                                                            <div class="row">
+                                                                <div class="col-sm-3"><a href="#x"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
+                                                                </div>
+                                                                <div class="col-sm-3"><a href="#x"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
+                                                                </div>
+                                                                <div class="col-sm-3"><a href="#x"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
+                                                                </div>
+                                                                <div class="col-sm-3"><a href="#x"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
+                                                                </div>
+                                                            </div>
+                                                            <!--/row-->
+                                                        </div>
+                                                        <!--/item-->
+                                                        <!--
+                                                        <div class="item">
+                                                            <div class="row">
+                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
+                                                                </div>
+                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
+                                                                </div>
+                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
+                                                                </div>
+                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                        -->
+
+                                                        <!--/item-->
+                                                        <!--
+                                                        <div class="item">
+                                                            <div class="row">
+                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/150x150" alt="Image" class="img-responsive"/></a>
+                                                                </div>
+                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/150x150" alt="Image" class="img-responsive"/></a>
+                                                                </div>
+                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/150x150" alt="Image" class="img-responsive"/></a>
+                                                                </div>
+                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/150x150" alt="Image" class="img-responsive"/></a>
+                                                                </div>
+                                                           </div>
+
+                                                        </div>
+                                                        -->
+                                                        <!--/item-->
+                                                    </div>
+                                                    <!--/carousel-inner-->
+                                                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+
+                                                    <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+                                                </div>
+                                                <!--/myCarousel-->
+                                            </div>
+                                            <!--/well-->
+                                        </div>
+                                        <!-- Static content -->
+                                    </div>
+                                </div>
+
+                                <!-- some info -->
+                                <!-- Small Info-->
+                                <div class="pustakalayaSection" style="background:#ffffff; margin-top: 30px;">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-10 col-md-offset-1" style="color:#666666; font-size: 12px;">
+                                                <p class="text-justify">
+                                                    <i18n:text>xmlui.aboutHomePage</i18n:text> <a style="color:#e74c3c; cursor:pointer; text-decoration:none;"><i18n:text>xmlui.more</i18n:text> &gt;&gt;</a>
+                                                </p>
+                                            </div>
+                                            
+                                        </div> <!-- row -->
+                                        <div class="row">
+                                            <div class="col-md-6 col-md-offset-1" style="color:#666666; font-size: 12px;">
+                                                <p class="text-left"><i18n:text>xmlui.you.can.bring.epustakalaya.to.your.school</i18n:text>  <a href="/" style="color:#e74c3c; cursor:pointer; text-decoration:none;"><i18n:text>xmlui.more</i18n:text> &gt;&gt;</a>
+
+                                                </p>
+                                                <p class="text-left"><i18n:text>xmlui.you.can.donate.books.to.epustakalaya</i18n:text>  <a href="/" style="color:#e74c3c; cursor:pointer; text-decoration:none;"><i18n:text>xmlui.more</i18n:text> &gt;&gt;</a>
+                                                </p>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <br/>
+                                                <img src="http://placehold.it/200x50"/>
+                                            </div>
+                                        </div>
+                                        <!-- Static content -->
+                                    </div>
+                                </div>
+
+                            </div>
 
                             <div id="main-container" class="container">
 
@@ -350,6 +652,7 @@
 
         <header>
 
+            <!-- Top navigation -->
             <nav class="navbar" role="navigation">
                 <div class="container">
                     <div class="navbar-header">
@@ -372,6 +675,7 @@
                     </div><!-- collapse navbar-collapse -->
                 </div><!-- container -->
             </nav>
+            <!-- menu icon -->
             <div class="navbar navbar-static-top" role="navigation" style="margin-top:-50px;">
                 <div class="container">
                     <div class="navbar-header">
@@ -527,15 +831,14 @@
                         </button>
                     </div>
                 </div>
-            </div><!--end navbar header -->
+            </div><!--end menu icon header -->
 
-            <!--carousel for sliding images -->
+            <!--carousel for sliding images in header section -->
             <div id="pustakalaya-slider" class="carousel slide" data-ride="carousel">
                 <!-- Indicators -->
                 <ol class="carousel-indicators">
-                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#myCarousel" data-slide-to="1"></li>
-                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                    <li data-target="#interactiveEducation" data-slide-to="0" class="active"></li>
+                    <li data-target="#interactiveEducation" data-slide-to="1"></li>
                 </ol>
 
                 <!-- Wrapper for slides -->
@@ -564,50 +867,20 @@
                     </div>-->
                 </div>
 
+
+
                 <!-- Left and right controls -->
-                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                <a class="left carousel-control" href="#interactiveEducation" data-slide="prev">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                     <span class="sr-only">Previous</span>
                 </a>
-                <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                <a class="right carousel-control" href="#interactiveEducation" data-slide="next">
                     <span class="glyphicon glyphicon-chevron-right"></span>
                     <span class="sr-only">Next</span>
                 </a>
-            </div><!--end carousel image slider -->
+            </div>
+            <!--end carousel image slider -->
 
-            <!--navbar for searching books -->
-            <nav class="navbar">
-                <div class="container">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-
-                    </div>
-
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav browse-books">
-                        <li class="active"><a href="#">Browse Books <span class="sr-only">(current)</span></a></li>
-                        </ul>
-
-                        <form class="navbar-form navbar-left search-bar">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Search"/>
-                            </div>
-                            <button type="submit" class="btn btn-default">Search</button>
-                            <a href="#">Advanced Search</a>
-                        </form>
-
-                    </div><!-- /.navbar-collapse -->
-                </div><!-- /.container-fluid -->
-            </nav><!--end navbar for searching books -->
-
-            <!--headear of pustakalaya -->
 
 
         </header><!--end header -->
@@ -1048,6 +1321,36 @@
                 <xsl:text>&#160;</xsl:text>
             </a>
             <p>&#160;</p>
+            <!-- Pustakalaya custom scripts -->
+
+            <!-- Hide banner if this is not the homepage -->
+            <script type="text/javascript">
+                var pathname1 = "/";
+                var pathname2 = "/xmlui/";
+                var banner = document.getElementById("pustakalayaBanner");
+                var currentPath = window.location.pathname;
+                if(currentPath == pathname1 || currentPath == pathname2){
+                banner.hidden = false;
+                } else {
+                banner.hidden = true;
+                }
+
+            </script>
+            <!-- Hide sidebar if this is not the sidebar -->
+            <script type="text/javascript">
+                var pathname1 = "/";
+                var pathname2 = "/xmlui/";
+                var sideBar = document.getElementById("pustakalayaBanner");
+                var currentPath = window.location.pathname;
+                if(currentPath == pathname1 || currentPath == pathname2){
+                banner.hidden = false;
+                } else {
+                banner.hidden = true;
+                }
+            </script>
+            <!-- Interactive education carousel toggle script -->
+
+
         </footer>
     </xsl:template>
     <!-- our footer -->
@@ -1096,6 +1399,7 @@
     -->
 
     <xsl:template name="addJavascript">
+
 
         <script type="text/javascript"><xsl:text>
                          if(typeof window.publication === 'undefined'){
