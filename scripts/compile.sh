@@ -11,6 +11,7 @@ systemctl restart tomcat
 systemctl restart postgresql
 
 cd -
+cd scripts
 # Run postbuild script
 ./postbuild.sh
 
