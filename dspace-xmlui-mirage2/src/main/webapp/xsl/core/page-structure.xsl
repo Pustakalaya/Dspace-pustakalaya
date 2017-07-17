@@ -1348,7 +1348,33 @@
                 banner.hidden = true;
                 }
             </script>
-            <!-- Interactive education carousel toggle script -->
+
+            <!--hide the navigation menu if the homepage is detected-->
+            <script type="text/javascript">
+                var pathname1="/";
+                var pathname2="/xmlui/";
+                var navigationBar= document.getElementById("main-container");
+                var currentPath=window.location.pathname;
+                if(currentPath == pathname1 || currentPath == pathname2){
+                navigationBar.hidden = true;
+                }else {
+                navigationBar.hidden = false;
+                }
+            </script>
+
+            <!--hide carousel sliders except home page-->
+            <script type="text/javascript">
+                var pathname1="/";
+                var pathname2="/xmlui/";
+                var slider= document.getElementById("pustakalaya-slider");
+                var currentPath=window.location.pathname;
+                if(currentPath == pathname1 || currentPath == pathname2){
+                slider.hidden = false;
+                }else {
+                slider.hidden = true;
+                }
+            </script>
+
 
 
         </footer>
