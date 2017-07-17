@@ -65,6 +65,22 @@
 
 }
 
+/* Navigation menu */
+#pustakalaya-navbar > li > a {
+  background: #27ae60;
+  color: #FFF;
+  padding-top:5px !important; padding-bottom:5px !important;
+}
+
+ul#pustakalaya-navbar > li > a:hover {
+  background: #16a085;
+}
+
+ul#pustakalaya-navbar > li > a:active {
+  background: #16a085;
+}
+
+
 /* search box section */
 #pustakalaya_searchBox{
   margin-top:20%; /* Don't copy this */

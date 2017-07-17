@@ -87,8 +87,11 @@
                             <xsl:apply-templates select="dri:body/*"/>
                         </xsl:when>
                         <xsl:otherwise>
-                            <xsl:call-template name="buildHeader"/>
+                            <!--
                             <xsl:call-template name="buildTrail"/>
+                            -->
+                            <xsl:call-template name="buildHeader"/>
+
                             <!--javascript-disabled warning, will be invisible if javascript is enabled-->
                             <div id="no-js-warning-wrapper" class="hidden">
                                 <div id="no-js-warning">
@@ -692,44 +695,108 @@
 
 
         <header>
-
-            <!-- Top navigation -->
-            <nav class="navbar" role="navigation">
-                <div class="container">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                                data-target="#collapse">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="{$context-path}/">
-                            <img class="pustakalaya-logo" src="{$theme-path}/images/ep_logo.png"/>
-                        </a>
-                    </div><!-- navbar-header -->
-                    <div class="collapse navbar-collapse navbar-green"
-                         style="margin-left:300px;margin-right:300px; margin-bottom:-40px; " id="collapse">
-                        <ul class="nav navbar-nav nav-pills">
-                            <li class="active">
-                                <a href="#books">Books</a>
-                            </li>
-                            <li>
-                                <a href="#educational-software">Educational Software</a>
-                            </li>
-                            <li>
-                                <a href="#audio-videos">Audio-Videos</a>
-                            </li>
-                            <li>
-                                <a href="#references">References</a>
-                            </li>
-                        </ul>
-                    </div><!-- collapse navbar-collapse -->
-                </div><!-- container -->
-            </nav>
             <!-- menu icon -->
-            <div class="navbar navbar-static-top" role="navigation" style="margin-top:-50px;">
+            <div class="navbar navbar-static-top" role="navigation" style="margin-top:15px; margin-bottom:15px;">
                 <div class="container">
+
+                    <!-- Pustakalaya custom navbar -->
+                    <div class="row">
+                        <div class="col-md-2">
+                            <a class="navbar-brand" href="#pustakalaya">
+                                <img src="{$theme-path}/images/ep_logo.png" style="height:40px; padding-bottom:10px;"/>
+                            </a>
+                        </div><!-- Logo -->
+                        <div class="col-md-6 col-md-offset-1" id="pustakalaya-navbar"
+                             style="padding-top:10px; padding-bottom:10px;">
+                            <div style="border-radius: 10px; background:#27ae60;
+                            width:100%; padding-left:8%; padding-right:5%;">
+
+
+                                <div class="navbar-header">
+                                    <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle" id="collapse_button" style="background-color:#dddddd;" aria-controls="pustakalaya-navbar"><span style="background-color:black;" class="sr-only">Toggle navigation</span><span style="background-color:black;" class="icon-bar"></span><span style="background-color:black;" class="icon-bar"></span><span style="background-color:black;" class="icon-bar"></span></button>
+                                </div>
+                                <div class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+                                    <ul id="pustakalaya-navbar" class="nav navbar-nav" >
+                                        <li>
+                                            <a href="#educational-software" class="text-capitalized" style="color:#FFFF;"><i18n:text>xmlui.header.menu.books</i18n:text></a>
+                                        </li>
+                                        <li>
+                                            <a href="#educational-software" class="text-capitalized" style="color:#FFFF;"><i18n:text>xmlui.header.menu.educational.softwares</i18n:text></a>
+                                        </li>
+                                        <li>
+                                            <a href="#educational-software" class="text-capitalized" style="color:#FFFF;"><i18n:text>xmlui.header.menu.audio.video</i18n:text></a>
+                                        </li>
+                                        <li>
+                                            <a href="#educational-software" class="text-capitalized" style="color:#FFFF;"><i18n:text>xmlui.header.menu.references</i18n:text></a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="navbar-header pull-right hidden-xs">
+                                <ul class="nav navbar-nav pull-left">
+                                    <xsl:call-template name="languageSelection"/>
+                                </ul>
+                                <ul class="nav navbar-nav pull-left">
+                                    <xsl:choose>
+                                        <xsl:when test="/dri:document/dri:meta/dri:userMeta/@authenticated = 'yes'">
+                                            <li class="dropdown">
+                                                <a id="user-dropdown-toggle" href="#" role="button" class="dropdown-toggle"
+                                                   data-toggle="dropdown">
+                                                    <span class="hidden-xs">
+                                                        <xsl:value-of select="/dri:document/dri:meta/dri:userMeta/
+                            dri:metadata[@element='identifier' and @qualifier='firstName']"/>
+                                                        <xsl:text> </xsl:text>
+                                                        <xsl:value-of select="/dri:document/dri:meta/dri:userMeta/
+                            dri:metadata[@element='identifier' and @qualifier='lastName']"/>
+                                                        &#160;
+                                                        <b class="caret"/>
+                                                    </span>
+                                                </a>
+                                                <ul class="dropdown-menu pull-right" role="menu"
+                                                    aria-labelledby="user-dropdown-toggle" data-no-collapse="true">
+                                                    <li>
+                                                        <a href="{/dri:document/dri:meta/dri:userMeta/
+                            dri:metadata[@element='identifier' and @qualifier='url']}">
+                                                            <i18n:text>xmlui.EPerson.Navigation.profile</i18n:text>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{/dri:document/dri:meta/dri:userMeta/
+                            dri:metadata[@element='identifier' and @qualifier='logoutURL']}">
+                                                            <i18n:text>xmlui.dri2xhtml.structural.logout</i18n:text>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </xsl:when>
+                                        <xsl:otherwise>
+                                            <li>
+                                                <a href="{/dri:document/dri:meta/dri:userMeta/
+                            dri:metadata[@element='identifier' and @qualifier='loginURL']}">
+                                                    <span class="hidden-xs">
+                                                        <i18n:text>xmlui.dri2xhtml.structural.login</i18n:text>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                        </xsl:otherwise>
+                                    </xsl:choose>
+                                </ul>
+
+                                <button data-toggle="offcanvas" class="navbar-toggle visible-sm" type="button">
+                                    <span class="sr-only">
+                                        <i18n:text>xmlui.mirage2.page-structure.toggleNavigation</i18n:text>
+                                    </span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
+                        </div><!-- Language selection -->
+                    </div>
                     <div class="navbar-header">
 
                         <button type="button" class="navbar-toggle" data-toggle="offcanvas">
@@ -819,7 +886,7 @@
                             </ul>
                         </div>
                     </div>
-
+                    <!--
                     <div class="navbar-header pull-right hidden-xs">
                         <ul class="nav navbar-nav pull-left">
                             <xsl:call-template name="languageSelection"/>
@@ -879,10 +946,9 @@
                             <span class="icon-bar"></span>
                         </button>
                     </div>
+                    -->
                 </div>
             </div><!--end menu icon header -->
-
-
         </header><!--end header -->
 
     </xsl:template>

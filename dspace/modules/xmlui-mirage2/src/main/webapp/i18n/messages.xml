@@ -2595,6 +2595,20 @@
 
 
 
+    <!--Top navigation menu -->
+    <message key="xmlui.header.menu.books">Books</message>
+    <message key="xmlui.header.menu.educational.softwares">Educational Softwares</message>
+    <message key="xmlui.header.menu.audio.video">Audio Video</message>
+    <message key="xmlui.header.menu.references">References</message>
+
+
+
+
+
+
+
+
+
 
 
 
