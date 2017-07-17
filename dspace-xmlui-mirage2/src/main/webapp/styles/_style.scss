@@ -135,6 +135,21 @@ pustakalayaSection > div > h4 {
 
 }
 
+/*style for slider*/
+.carousel-inner > .item > img, .carousel-inner > .item > a > img {
+  display: block;
+  height: 200px;
+  min-width: 100%;
+  width: 100%;
+  max-width: 100%;
+  line-height: 1;
+}
+
+.carousel-inner>.item>img{
+  height: 250px;
+  max-width: 100%;
+}
+
 /* Interactive educational software style section */
 .carousel-control {
   padding-top:10%;
@@ -142,7 +157,17 @@ pustakalayaSection > div > h4 {
 }
 
 
-
+/*styling of pustakalayaSection*/
+div.well{
+  background:#A5D6A7;
+  border:0px;
+  border-radius:0px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -o-border-radius: 0px;
+  border-radius: 0px;
+  border: 0px;
+}
 
 /* footer styling*/
 
