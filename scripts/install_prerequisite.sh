@@ -50,6 +50,7 @@ cd
 
 #TODO: install Ghostscript
 sudo apt-get install ghostscript
+sudo apt-get install imagemagick
 
 ##############################################################################
 #This section defines the installation and configuration of tomcat web server

@@ -41,8 +41,10 @@
 
     <xsl:template name="itemSummaryView-DIM">
         <!-- V.T. Add HTML for the video in a videojs frame -->
+	<!-- Below is the original if statement that has the requirement for webm video -->
+    	<!-- <xsl:if test="(./mets:fileSec/mets:fileGrp[@USE='CONTENT']/mets:file[@MIMETYPE='video/mp4']) and (./mets:fileSec/mets:fileGrp[@USE='CONTENT']/mets:file[@MIMETYPE='video/webm'])"> -->
 
-    	<xsl:if test="(./mets:fileSec/mets:fileGrp[@USE='CONTENT']/mets:file[@MIMETYPE='video/mp4']) and (./mets:fileSec/mets:fileGrp[@USE='CONTENT']/mets:file[@MIMETYPE='video/webm'])">
+	<xsl:if test="(./mets:fileSec/mets:fileGrp[@USE='CONTENT']/mets:file[@MIMETYPE='video/mp4'])">
         	    <!--
 	
         	    There is some inline CSS style information here to control
@@ -61,12 +63,12 @@
         	                </xsl:attribute>
         	            </xsl:if>
 
-        	            <source type="video/webm" >
+        	            <!--<source type="video/webm" >
         	                <xsl:attribute name="src">
         	                    <xsl:value-of
         	                            select="./mets:fileSec/mets:fileGrp[@USE='CONTENT']/mets:file[@MIMETYPE='video/webm']/mets:FLocat[@LOCTYPE='URL']/@xlink:href" />
         	                </xsl:attribute>
-        	            </source>
+        	            </source> -->
 	
         	            <source type="video/mp4">
         	                <xsl:attribute name="src">
@@ -91,7 +93,12 @@
         	    <hr />
         	</xsl:if>
 
+	<xsl:if test="(./mets:fileSec/mets:fileGrp[@USE='CONTENT']/mets:file[@MIMETYPE='audio/mp3'])">
+	<audio controls="controls" preload="auto" style="width:100%;" class="vjs-tech" >
+		<xsl:attribute name="src"><xsl:value-of select="./mets:fileSec/mets:fileGrp[@USE='CONTENT']/mets:file[@MIMETYPE='audio/mp3']/mets:FLocat[@LOCTYPE='URL']/@xlink:href"/></xsl:attribute> 
+	</audio>
 
+	</xsl:if>
         <!-- Generate the info about the item from the metadata section
 		We could also expand this to more file formats  -->
         <xsl:apply-templates select="./mets:dmdSec/mets:mdWrap[@OTHERMDTYPE='DIM']/mets:xmlData/dim:dim"

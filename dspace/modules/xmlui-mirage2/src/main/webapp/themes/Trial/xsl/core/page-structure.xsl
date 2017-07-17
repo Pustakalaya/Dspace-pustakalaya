@@ -168,9 +168,10 @@
             </link>
 
             <!-- include css and javascript for video playback -->
-            <link type="text/css" rel="stylesheet">
+		<link type="text/css" rel="stylesheet">
                 <xsl:attribute name="href">/opt/tomcat/webapps/ROOT/video.js/video-js.css</xsl:attribute>
-            </link>
+            	</link>
+
             <script src="/opt/tomcat/webapps/ROOT/video.js/video.min.js">&#160;</script>
 
             <meta name="Generator">
