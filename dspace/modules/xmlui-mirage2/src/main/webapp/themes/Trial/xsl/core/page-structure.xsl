@@ -167,7 +167,7 @@
                 </xsl:attribute>
             </link>
 
-            <!-- include css and javascript for video playback -->
+            <!-- include css for video playback -->
 		<link type="text/css" rel="stylesheet">
                 <xsl:attribute name="href">/opt/tomcat/webapps/ROOT/video.js/video-js.css</xsl:attribute>
             	</link>
