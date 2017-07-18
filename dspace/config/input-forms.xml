@@ -788,8 +788,34 @@
             </pair>
 
             <pair>
-                <displayed-value>Literature</displayed-value>
-                <stored-value>Literature</stored-value>
+                <displayed-value>Literature and Arts</displayed-value>
+                <stored-value>Literature and Arts</stored-value>
+            </pair>
+
+            <pair>
+                <displayed-value>Teaching Materials</displayed-value>
+                <stored-value>Teaching Materials</stored-value>
+            </pair>
+
+            <pair>
+                <displayed-value>Course Materials</displayed-value>
+                <stored-value>Course Materials</stored-value>
+            </pair>
+
+            <pair>
+                <displayed-value>Magazines and Newspapers</displayed-value>
+                <stored-value>Magazines and Newspapers</stored-value>
+            </pair>
+
+            <pair>
+                <displayed-value>Agriculture and Diversity</displayed-value>
+                <stored-value>Agriculture and Diversity</stored-value>
+            </pair>
+
+
+            <pair>
+                <displayed-value>Science and Technology</displayed-value>
+                <stored-value>Science and Technology</stored-value>
             </pair>
 
             <pair>

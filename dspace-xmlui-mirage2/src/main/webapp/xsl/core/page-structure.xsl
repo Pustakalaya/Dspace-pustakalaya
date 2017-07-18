@@ -702,7 +702,7 @@
                     <!-- Pustakalaya custom navbar -->
                     <div class="row">
                         <div class="col-md-2">
-                            <a class="navbar-brand" href="#pustakalaya">
+                            <a class="navbar-brand" href="/">
                                 <img src="{$theme-path}/images/ep_logo.png" style="height:40px; padding-bottom:10px;"/>
                             </a>
                         </div><!-- Logo -->
