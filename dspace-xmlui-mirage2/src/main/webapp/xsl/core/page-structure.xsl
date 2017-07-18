@@ -17,6 +17,7 @@
     Author: lieven.droogmans at atmire.com
     Author: ben at atmire.com
     Author: Alexey Maslov
+
 -->
 
 <xsl:stylesheet xmlns:i18n="http://apache.org/cocoon/i18n/2.1"
@@ -86,8 +87,11 @@
                             <xsl:apply-templates select="dri:body/*"/>
                         </xsl:when>
                         <xsl:otherwise>
-                            <xsl:call-template name="buildHeader"/>
+                            <!--
                             <xsl:call-template name="buildTrail"/>
+                            -->
+                            <xsl:call-template name="buildHeader"/>
+
                             <!--javascript-disabled warning, will be invisible if javascript is enabled-->
                             <div id="no-js-warning-wrapper" class="hidden">
                                 <div id="no-js-warning">
@@ -99,39 +103,42 @@
 
                             <!--container fluid-->
                             <div class="container-fluid">
-                              <div class="row">
-                                <!--carousel for sliding images in header section -->
-                                <div id="pustakalaya-slider" class="carousel slide" data-ride="carousel">
+                                <div class="row">
+                                    <!--carousel for sliding images in header section -->
+                                    <div id="pustakalaya-slider" class="carousel slide" data-ride="carousel">
 
-                                    <!-- Wrapper for slides -->
-                                    <div class="carousel-inner" style="margin-top:10px;">
-                                        <div class="item active">
-                                            <img  src="{concat($theme-path, '/images/knowledge-in-your-pocket01.png')}"/>
-                                        </div>
+                                        <!-- Wrapper for slides -->
+                                        <div class="carousel-inner" style="margin-top:10px;">
+                                            <div class="item active">
+                                                <img src="{concat($theme-path, '/images/knowledge-in-your-pocket01.png')}" style="width:100%;"/>
+                                            </div>
 
-                                        <div class="item">
-                                            <img  src="{concat($theme-path, '/images/celebrating-diversity.png')}" alt="OLE Nepal's android application" />
-                                        </div>
+                                            <div class="item">
+                                                <img src="{concat($theme-path, '/images/celebrating-diversity.png')}"
+                                                     alt="OLE Nepal's android application" style="width:100%;"/>
+                                            </div>
 
-                                        <div class="item">
-                                            <img  src="{concat($theme-path, '/images/for-the-community.png')}" alt="slider 3"/>
-                                        </div>
-                                        <div class="item">
-                                            <img  src="{concat($theme-path, '/images/childrens-books-in-nepali-language.png')}" alt="slider 4"/>
-                                        </div>
-                                    </div><!--end wrapper slides-->
+                                            <div class="item">
+                                                <img src="{concat($theme-path, '/images/for-the-community.png')}"
+                                                     alt="slider 3" style="width:100%;"/>
+                                            </div>
+                                            <div class="item">
+                                                <img src="{concat($theme-path, '/images/childrens-books-in-nepali-language.png')}"
+                                                     alt="slider 4" style="width:100%;"/>
+                                            </div>
+                                        </div><!--end wrapper slides-->
 
-                                    <!-- Left and right controls -->
-                                    <a class="left carousel-control" href="#pustakalaya-slider" data-slide="prev">
-                                        <span class="glyphicon glyphicon-chevron-left"></span>
-                                        <span class="sr-only">Previous</span>
-                                    </a>
-                                    <a class="right carousel-control" href="#pustakalaya-slider" data-slide="next">
-                                        <span class="glyphicon glyphicon-chevron-right"></span>
-                                        <span class="sr-only">Next</span>
-                                    </a>
-                                </div><!--end carousel image slider -->
-                               </div><!--end row-->
+                                        <!-- Left and right controls -->
+                                        <a class="left carousel-control" href="#pustakalaya-slider" data-slide="prev">
+                                            <span class="glyphicon glyphicon-chevron-left"></span>
+                                            <span class="sr-only">Previous</span>
+                                        </a>
+                                        <a class="right carousel-control" href="#pustakalaya-slider" data-slide="next">
+                                            <span class="glyphicon glyphicon-chevron-right"></span>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+                                    </div><!--end carousel image slider -->
+                                </div><!--end row-->
                             </div><!--end container fluid-->
 
                             <!-- custom banner for homepage goes here -->
@@ -199,14 +206,14 @@
                                 </div><!-- container  end -->
                                 <br/>
 
-                                <!-- Interactive Educational software -->
+                                <!-- nteractive Educational software  -->
                                 <div class="pustakalayaSection" style="background:#A5D6A7; margin-top:-20px;">
                                     <div class="container">
                                         <h4 class="text-center text-capitalize"  style="color:#060605;">Interactive Education softwares</h4>
                                         <div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
                                             <div class="well">
                                                 <div id="myCarousel" class="carousel slide">
-                                                    <!-- Carousel items -->
+                                                    <!--Carousel items-->
                                                     <div class="carousel-inner">
                                                         <div class="item active">
                                                             <div class="row">
@@ -223,10 +230,9 @@
                                                                 <div class="col-sm-2"><a href="#x"><img src="{$theme-path}/images/audiobook.png" alt="Image" class="img-responsive"/></a>
                                                                 </div>
                                                             </div>
-                                                            <!--/row-->
+                                                            <!--row-->
                                                         </div>
-                                                        <!--/item-->
-                                                        <!--
+                                                        <!--item-->
                                                         <div class="item">
                                                             <div class="row">
                                                                 <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
@@ -240,10 +246,8 @@
                                                             </div>
 
                                                         </div>
-                                                        -->
 
-                                                        <!--/item-->
-                                                        <!--
+                                                        <!--item-->
                                                         <div class="item">
                                                             <div class="row">
                                                                 <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/150x150" alt="Image" class="img-responsive"/></a>
@@ -254,33 +258,32 @@
                                                                 </div>
                                                                 <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/150x150" alt="Image" class="img-responsive"/></a>
                                                                 </div>
-                                                           </div>
+                                                            </div>
 
                                                         </div>
-                                                        -->
-                                                        <!--/item-->
+                                                        <!--item-->
                                                     </div>
-                                                    <!--/carousel-inner-->
+                                                    <!--carousel-inner-->
                                                     <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
 
                                                     <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
                                                 </div>
-                                                <!--/myCarousel-->
+                                                <!--myCarousel-->
                                             </div>
-                                            <!--/well-->
+                                            <!--well-->
                                         </div>
-                                        <!-- Static content -->
+                                        <!--Static content-->
                                     </div>
                                 </div>
 
-                                <!-- Interactive audio video materials -->
+                                <!--  Interactive audio video materials -->
                                 <div class="pustakalayaSection" style="background:#81C784; margin-top:-20px;">
                                     <div class="container">
                                         <h4 class="text-center text-capitalize" style="color:#060605;">Educational audio videos</h4>
                                         <div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
                                             <div class="well">
                                                 <div id="myCarousel" class="carousel slide">
-                                                    <!-- Carousel items -->
+                                                    <!--Carousel items-->
                                                     <div class="carousel-inner">
                                                         <div class="item active">
                                                             <div class="row">
@@ -297,10 +300,9 @@
                                                                 <div class="col-sm-2"><a href="#x"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
                                                                 </div>
                                                             </div>
-                                                            <!--/row-->
+                                                            <!--row-->
                                                         </div>
-                                                        <!--/item-->
-                                                        <!--
+                                                        <!--item-->
                                                         <div class="item">
                                                             <div class="row">
                                                                 <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
@@ -314,10 +316,8 @@
                                                             </div>
 
                                                         </div>
-                                                        -->
 
-                                                        <!--/item-->
-                                                        <!--
+                                                        <!--item-->
                                                         <div class="item">
                                                             <div class="row">
                                                                 <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/150x150" alt="Image" class="img-responsive"/></a>
@@ -328,22 +328,21 @@
                                                                 </div>
                                                                 <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/150x150" alt="Image" class="img-responsive"/></a>
                                                                 </div>
-                                                           </div>
+                                                            </div>
 
                                                         </div>
-                                                        -->
-                                                        <!--/item-->
+                                                        <!--item-->
                                                     </div>
-                                                    <!--/carousel-inner-->
+                                                    <!--carousel-inner-->
                                                     <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
 
                                                     <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
                                                 </div>
-                                                <!--/myCarousel-->
+                                                <!--myCarousel-->
                                             </div>
-                                            <!--/well-->
+                                            <!--well-->
                                         </div>
-                                        <!-- Static content -->
+                                        <!--Static content-->
                                     </div>
                                 </div>
 
@@ -367,10 +366,10 @@
                                                                 <div class="col-sm-3"><a href="#x"><img src="{$theme-path}/images/Wikipedia_for_Schools_2013_logo.png" alt="Image" class="img-responsive"/></a>
                                                                 </div>
                                                             </div>
-                                                            <!--/row-->
+                                                            <!-- row -->
                                                         </div>
-                                                        <!--/item-->
-                                                        <!--
+
+                                                        <!--item-->
                                                         <div class="item">
                                                             <div class="row">
                                                                 <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
@@ -384,10 +383,8 @@
                                                             </div>
 
                                                         </div>
-                                                        -->
 
-                                                        <!--/item-->
-                                                        <!--
+                                                        <!--item-->
                                                         <div class="item">
                                                             <div class="row">
                                                                 <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/150x150" alt="Image" class="img-responsive"/></a>
@@ -398,27 +395,26 @@
                                                                 </div>
                                                                 <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/150x150" alt="Image" class="img-responsive"/></a>
                                                                 </div>
-                                                           </div>
+                                                            </div>
 
                                                         </div>
-                                                        -->
-                                                        <!--/item-->
+                                                        <!--item-->
                                                     </div>
-                                                    <!--/carousel-inner-->
+                                                    <!--carousel-inner-->
                                                     <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
 
                                                     <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
                                                 </div>
-                                                <!--/myCarousel-->
+                                                <!--myCarousel-->
                                             </div>
-                                            <!--/well-->
+                                            <!--well-->
                                         </div>
-                                        <!-- Static content -->
+                                        <!--Static content-->
                                     </div>
                                 </div>
 
-                                <!-- some info -->
-                                <!-- Small Info-->
+                                <!--some info-->
+                                <!--Small Info-->
                                 <div class="pustakalayaSection" style="background:#ffffff; margin-top: 30px;">
                                     <div class="container">
                                         <div class="row">
@@ -427,8 +423,8 @@
                                                     <i18n:text>xmlui.aboutHomePage</i18n:text> <a style="color:#e74c3c; cursor:pointer; text-decoration:none;"><i18n:text>xmlui.more</i18n:text> &gt;&gt;</a>
                                                 </p>
                                             </div>
-                                            
-                                        </div> <!-- row -->
+
+                                        </div><!-- end row-->
                                         <div class="row">
                                             <div class="col-md-6 col-md-offset-1 col-sm-12 col-xs-12" style="color:#666666; font-size: 12px;">
                                                 <p class="text-left"><i18n:text>xmlui.you.can.bring.epustakalaya.to.your.school</i18n:text>  <a href="/" style="color:#e74c3c; cursor:pointer; text-decoration:none;"><i18n:text>xmlui.more</i18n:text> &gt;&gt;</a>
@@ -442,7 +438,7 @@
                                                 <a href="https://play.google.com/store/apps/details?id=com.ole.epustakalaya" target="_blank"><img src="{$theme-path}/images/android-app-logo.png" style="width:200px; height:50px; margin-left:43%;"/></a>
                                             </div>
                                         </div>
-                                        <!-- Static content -->
+                                        <!--Static content-->
                                     </div>
                                 </div>
 
@@ -608,7 +604,8 @@
                 if (defaultedElements[i].value == '<i18n:text>xmlui.dri2xhtml.default.textarea.value</i18n:text>'){
                 defaultedElements[i].value='';}}
                 }
-//Disable pressing 'enter' key to submit a form (otherwise pressing 'enter' causes a submission to start over)
+                //Disable pressing 'enter' key to submit a form (otherwise pressing 'enter' causes a submission to start
+                over)
                 function disableEnterKey(e)
                 {
                 var key;
@@ -696,210 +693,262 @@
         placeholders for header images -->
     <xsl:template name="buildHeader">
 
-        <!--start header-->
+
         <header>
-            <!--container fluid start-->
-            <div class="container">
-                <div class="row">
+            <!-- menu icon -->
+            <div class="navbar navbar-static-top" role="navigation" style="margin-top:15px; margin-bottom:15px;">
+                <div class="container">
 
-                    <!--pustakalaya header logo-->
-                    <div class="col-md-3 col-sm-12 col-xs-12" style="padding-left:5%;">
-                        <a class="navbar-brand" href="#pustakalaya">
-                            <img src="{$theme-path}/images/ep_logo.png" style="height:40px; padding-bottom:10px;"/>
-                        </a>
-                    </div><!-- end pustakalaya header logo-->
+                    <!-- Pustakalaya custom navbar -->
+                    <div class="row">
+                        <div class="col-md-2">
+                            <a class="navbar-brand" href="/">
+                                <img src="{$theme-path}/images/ep_logo.png" style="height:40px; padding-bottom:10px;"/>
+                            </a>
+                        </div><!-- Logo -->
+                        <div class="col-md-6 col-md-offset-1" id="pustakalaya-navbar"
+                             style="padding-top:10px; padding-bottom:10px;">
+                            <div style="border-radius: 10px; background:#27ae60;
+                            width:100%; padding-left:8%; padding-right:5%;">
 
-                    <!--header menu-->
-                    <div class="col-md-6 col-sm-12 col-xs-12 secondHeaderSection"  role="navigation" id="pustakalaya-top-navbar" style="width:520px;">
-                        <!--navbar section-->
-                        <!--<nav class="bs-docs-nav navbar navbar-static-top" id="pustakalaya-top-navbar">-->
-                                    <div class="navbar-header">
-                                        <button aria-controls="pustakalaya-navbar" style="background-color:#dddddd;"  id="collapse_button" class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse" type="button">
-                                            <span class="sr-only" style="background-color:black;">Toggle navigation</span>
-                                            <span class="icon-bar" style="background-color:black;"></span>
-                                            <span class="icon-bar" style="background-color:black;"></span>
-                                            <span class="icon-bar" style="background-color:black;"></span>
-                                        </button>
-                                    </div>
-                                <div class="navbar-collapse collapse in" id="pustakalaya-navbar">
-                                    <ul class="nav navbar-nav" id="pustakalaya-navbar">
-                                        <li>
-                                            <a href="#books" class="text-capitalized"><i18n:text>xmlui.header.menu.books</i18n:text></a>
-                                        </li>
-                                        <li>
-                                            <a href="#educational-software" class="text-capitalized"><i18n:text>xmlui.header.menu.educational.softwares</i18n:text></a>
-                                        </li>
-                                        <li>
-                                            <a href="#audio-video" class="text-capitalized"><i18n:text>xmlui.header.menu.audiovideo</i18n:text></a>
-                                        </li>
-                                        <li>
-                                            <a href="#references" class="text-capitalized"><i18n:text>xmlui.header.menu.references</i18n:text></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                      <!--  </nav>--><!--end navbar-->
-                    </div><!--end header menu-->
 
-                    <!--last section starts-->
-                    <div class="col-md-3 col-sm-12 col-xs-12">
-                        <div class="navbar navbar-static-top" role="navigation" style="margin-top:10px;">
                                 <div class="navbar-header">
-
-                                    <button type="button" class="navbar-toggle" data-toggle="offcanvas">
-                                        <span class="sr-only">
-                                            <i18n:text>xmlui.mirage2.page-structure.toggleNavigation</i18n:text>
-                                        </span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                    </button>
-
-
-                                    <div class="navbar-header visible-xs hidden-sm hidden-md hidden-lg">
-                                        <ul class="nav nav-pills ">
-
-                                            <xsl:if test="count(/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='page'][@qualifier='supportedLocale']) &gt; 1">
-                                                <li id="ds-language-selection-xs" class="dropdown">
-                                                    <xsl:variable name="active-locale"
-                                                                  select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='page'][@qualifier='currentLocale']"/>
-                                                    <button id="language-dropdown-toggle-xs" href="#" role="button"
-                                                            class="dropdown-toggle navbar-toggle navbar-link"
-                                                            data-toggle="dropdown">
-                                                        <b class="visible-xs glyphicon glyphicon-globe" aria-hidden="true"/>
-                                                    </button>
-                                                    <ul class="dropdown-menu" role="menu"
-                                                        aria-labelledby="language-dropdown-toggle-xs" data-no-collapse="true">
-                                                        <xsl:for-each
-                                                                select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='page'][@qualifier='supportedLocale']">
-                                                            <xsl:variable name="locale" select="."/>
-
-                                                            <li role="presentation">
-                                                                <xsl:if test="$locale = $active-locale">
-                                                                    <xsl:attribute name="class">
-                                                                        <xsl:text>disabled</xsl:text>
-                                                                    </xsl:attribute>
-                                                                </xsl:if>
-                                                                <a>
-                                                                    <xsl:attribute name="href">
-                                                                        <xsl:value-of select="$current-uri"/>
-                                                                        <xsl:text>?locale-attribute=</xsl:text>
-                                                                        <xsl:value-of select="$locale"/>
-                                                                    </xsl:attribute>
-                                                                    <xsl:value-of
-                                                                            select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='supportedLocale'][@qualifier=$locale]"/>
-                                                                </a>
-                                                            </li>
-                                                        </xsl:for-each>
-                                                    </ul>
-                                                </li>
-                                            </xsl:if>
-
-                                            <xsl:choose>
-                                                <xsl:when test="/dri:document/dri:meta/dri:userMeta/@authenticated = 'yes'">
-                                                    <li class="dropdown">
-                                                        <button class="dropdown-toggle navbar-toggle navbar-link"
-                                                                id="user-dropdown-toggle-xs" href="#" role="button"
-                                                                data-toggle="dropdown">
-                                                            <b class="visible-xs glyphicon glyphicon-user" aria-hidden="true"/>
-                                                        </button>
-                                                        <ul class="dropdown-menu " role="menu"
-                                                            aria-labelledby="user-dropdown-toggle-xs" data-no-collapse="true">
-                                                            <li>
-                                                                <a href="{/dri:document/dri:meta/dri:userMeta/dri:metadata[@element='identifier' and @qualifier='url']}">
-                                                                    <i18n:text>xmlui.EPerson.Navigation.profile</i18n:text>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="{/dri:document/dri:meta/dri:userMeta/dri:metadata[@element='identifier' and @qualifier='logoutURL']}">
-                                                                    <i18n:text>xmlui.dri2xhtml.structural.logout</i18n:text>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                </xsl:when>
-                                                <xsl:otherwise>
-                                                    <li>
-                                                        <form style="display: inline" action="{/dri:document/dri:meta/dri:userMeta/dri:metadata[@element='identifier' and @qualifier='loginURL']}" method="get">
-                                                            <button class="navbar-toggle navbar-link">
-                                                                <b class="visible-xs glyphicon glyphicon-user" aria-hidden="true"/>
-                                                            </button>
-                                                        </form>
-                                                    </li>
-                                                </xsl:otherwise>
-                                            </xsl:choose>
-                                        </ul>
-                                    </div>
+                                    <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle" id="collapse_button" style="background-color:#dddddd;" aria-controls="pustakalaya-navbar"><span style="background-color:black;" class="sr-only">Toggle navigation</span><span style="background-color:black;" class="icon-bar"></span><span style="background-color:black;" class="icon-bar"></span><span style="background-color:black;" class="icon-bar"></span></button>
                                 </div>
-
-                                <div class="navbar-header hidden-xs">
-                                    <ul class="nav navbar-nav">
+                                <div class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+                                    <ul id="pustakalaya-navbar" class="nav navbar-nav" >
                                         <li>
-                                            <a href="#about">About</a>
+                                            <a href="#educational-software" class="text-capitalized" style="color:#FFFF;"><i18n:text>xmlui.header.menu.books</i18n:text></a>
                                         </li>
-                                    </ul>
-                                    <ul class="nav navbar-nav" style="margin-top:15px;">
-                                        <p>	&#124;	</p>
-                                    </ul>
-                                    <ul class="nav navbar-nav">
-                                        <xsl:choose>
-                                            <xsl:when test="/dri:document/dri:meta/dri:userMeta/@authenticated = 'yes'">
-                                                <li class="dropdown">
-                                                    <a id="user-dropdown-toggle" href="#" role="button" class="dropdown-toggle"
-                                                       data-toggle="dropdown">
-                                                        <span class="hidden-xs">
-                                                            <xsl:value-of select="/dri:document/dri:meta/dri:userMeta/dri:metadata[@element='identifier' and @qualifier='firstName']"/>
-                                                            <xsl:text> </xsl:text>
-                                                            <xsl:value-of select="/dri:document/dri:meta/dri:userMeta/dri:metadata[@element='identifier' and @qualifier='lastName']"/>
-                                                            &#160;
-                                                            <b class="caret"/>
-                                                        </span>
-                                                    </a>
-                                                    <ul class="dropdown-menu" role="menu"
-                                                        aria-labelledby="user-dropdown-toggle" data-no-collapse="true">
-                                                        <li>
-                                                            <a href="{/dri:document/dri:meta/dri:userMeta/dri:metadata[@element='identifier' and @qualifier='url']}">
-                                                                <i18n:text>xmlui.EPerson.Navigation.profile</i18n:text>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="{/dri:document/dri:meta/dri:userMeta/dri:metadata[@element='identifier' and @qualifier='logoutURL']}">
-                                                                <i18n:text>xmlui.dri2xhtml.structural.logout</i18n:text>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                            </xsl:when>
-                                            <xsl:otherwise>
-                                                <li>
-                                                    <a href="{/dri:document/dri:meta/dri:userMeta/dri:metadata[@element='identifier' and @qualifier='loginURL']}">
-                                                        <span class="hidden-xs">
-                                                            <i18n:text>xmlui.dri2xhtml.structural.login</i18n:text>
-                                                        </span>
-                                                    </a>
-                                                </li>
-                                            </xsl:otherwise>
-                                        </xsl:choose>
-                                    </ul>
-                                    <img src="/xmlui/themes/Mirage2//images/flag-nepal.png" style="margin-top:12px;margin-left:-95px;" />
-                                    <ul class="nav navbar-nav">
-                                        <xsl:call-template name="languageSelection"/>
+                                        <li>
+                                            <a href="#educational-software" class="text-capitalized" style="color:#FFFF;"><i18n:text>xmlui.header.menu.educational.softwares</i18n:text></a>
+                                        </li>
+                                        <li>
+                                            <a href="#educational-software" class="text-capitalized" style="color:#FFFF;"><i18n:text>xmlui.header.menu.audio.video</i18n:text></a>
+                                        </li>
+                                        <li>
+                                            <a href="#educational-software" class="text-capitalized" style="color:#FFFF;"><i18n:text>xmlui.header.menu.references</i18n:text></a>
+                                        </li>
 
                                     </ul>
-                                    <button data-toggle="offcanvas" class="navbar-toggle visible-sm" type="button">
-                                        <span class="sr-only">
-                                            <i18n:text>xmlui.mirage2.page-structure.toggleNavigation</i18n:text>
-                                        </span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                    </button>
                                 </div>
-                        </div><!--end navbar header -->
 
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="navbar-header pull-right hidden-xs">
+                                <ul class="nav navbar-nav pull-left">
+                                    <xsl:call-template name="languageSelection"/>
+                                </ul>
+                                <ul class="nav navbar-nav pull-left">
+                                    <xsl:choose>
+                                        <xsl:when test="/dri:document/dri:meta/dri:userMeta/@authenticated = 'yes'">
+                                            <li class="dropdown">
+                                                <a id="user-dropdown-toggle" href="#" role="button" class="dropdown-toggle"
+                                                   data-toggle="dropdown">
+                                                    <span class="hidden-xs">
+                                                        <xsl:value-of select="/dri:document/dri:meta/dri:userMeta/
+                            dri:metadata[@element='identifier' and @qualifier='firstName']"/>
+                                                        <xsl:text> </xsl:text>
+                                                        <xsl:value-of select="/dri:document/dri:meta/dri:userMeta/
+                            dri:metadata[@element='identifier' and @qualifier='lastName']"/>
+                                                        &#160;
+                                                        <b class="caret"/>
+                                                    </span>
+                                                </a>
+                                                <ul class="dropdown-menu pull-right" role="menu"
+                                                    aria-labelledby="user-dropdown-toggle" data-no-collapse="true">
+                                                    <li>
+                                                        <a href="{/dri:document/dri:meta/dri:userMeta/
+                            dri:metadata[@element='identifier' and @qualifier='url']}">
+                                                            <i18n:text>xmlui.EPerson.Navigation.profile</i18n:text>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{/dri:document/dri:meta/dri:userMeta/
+                            dri:metadata[@element='identifier' and @qualifier='logoutURL']}">
+                                                            <i18n:text>xmlui.dri2xhtml.structural.logout</i18n:text>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </xsl:when>
+                                        <xsl:otherwise>
+                                            <li>
+                                                <a href="{/dri:document/dri:meta/dri:userMeta/
+                            dri:metadata[@element='identifier' and @qualifier='loginURL']}">
+                                                    <span class="hidden-xs">
+                                                        <i18n:text>xmlui.dri2xhtml.structural.login</i18n:text>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                        </xsl:otherwise>
+                                    </xsl:choose>
+                                </ul>
+
+                                <button data-toggle="offcanvas" class="navbar-toggle visible-sm" type="button">
+                                    <span class="sr-only">
+                                        <i18n:text>xmlui.mirage2.page-structure.toggleNavigation</i18n:text>
+                                    </span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
+                        </div><!-- Language selection -->
                     </div>
-                </div><!--end container fluid-->
-            </div><!--end last section-->
+                    <div class="navbar-header">
 
+                        <button type="button" class="navbar-toggle" data-toggle="offcanvas">
+                            <span class="sr-only">
+                                <i18n:text>xmlui.mirage2.page-structure.toggleNavigation</i18n:text>
+                            </span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+
+
+                        <div class="navbar-header pull-right visible-xs hidden-sm hidden-md hidden-lg">
+                            <ul class="nav nav-pills pull-left ">
+
+                                <xsl:if test="count(/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='page'][@qualifier='supportedLocale']) &gt; 1">
+                                    <li id="ds-language-selection-xs" class="dropdown">
+                                        <xsl:variable name="active-locale"
+                                                      select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='page'][@qualifier='currentLocale']"/>
+                                        <button id="language-dropdown-toggle-xs" href="#" role="button"
+                                                class="dropdown-toggle navbar-toggle navbar-link"
+                                                data-toggle="dropdown">
+                                            <b class="visible-xs glyphicon glyphicon-globe" aria-hidden="true"/>
+                                        </button>
+                                        <ul class="dropdown-menu pull-right" role="menu"
+                                            aria-labelledby="language-dropdown-toggle-xs" data-no-collapse="true">
+                                            <xsl:for-each
+                                                    select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='page'][@qualifier='supportedLocale']">
+                                                <xsl:variable name="locale" select="."/>
+                                                <li role="presentation">
+                                                    <xsl:if test="$locale = $active-locale">
+                                                        <xsl:attribute name="class">
+                                                            <xsl:text>disabled</xsl:text>
+                                                        </xsl:attribute>
+                                                    </xsl:if>
+                                                    <a>
+                                                        <xsl:attribute name="href">
+                                                            <xsl:value-of select="$current-uri"/>
+                                                            <xsl:text>?locale-attribute=</xsl:text>
+                                                            <xsl:value-of select="$locale"/>
+                                                        </xsl:attribute>
+                                                        <xsl:value-of
+                                                                select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='supportedLocale'][@qualifier=$locale]"/>
+                                                    </a>
+                                                </li>
+                                            </xsl:for-each>
+                                        </ul>
+                                    </li>
+                                </xsl:if>
+
+                                <xsl:choose>
+                                    <xsl:when test="/dri:document/dri:meta/dri:userMeta/@authenticated = 'yes'">
+                                        <li class="dropdown">
+                                            <button class="dropdown-toggle navbar-toggle navbar-link"
+                                                    id="user-dropdown-toggle-xs" href="#" role="button"
+                                                    data-toggle="dropdown">
+                                                <b class="visible-xs glyphicon glyphicon-user" aria-hidden="true"/>
+                                            </button>
+                                            <ul class="dropdown-menu pull-right" role="menu"
+                                                aria-labelledby="user-dropdown-toggle-xs" data-no-collapse="true">
+                                                <li>
+                                                    <a href="{/dri:document/dri:meta/dri:userMeta/
+                            dri:metadata[@element='identifier' and @qualifier='url']}">
+                                                        <i18n:text>xmlui.EPerson.Navigation.profile</i18n:text>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{/dri:document/dri:meta/dri:userMeta/
+                            dri:metadata[@element='identifier' and @qualifier='logoutURL']}">
+                                                        <i18n:text>xmlui.dri2xhtml.structural.logout</i18n:text>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </xsl:when>
+                                    <xsl:otherwise>
+                                        <li>
+                                            <form style="display: inline" action="{/dri:document/dri:meta/dri:userMeta/
+                            dri:metadata[@element='identifier' and @qualifier='loginURL']}" method="get">
+                                                <button class="navbar-toggle navbar-link">
+                                                    <b class="visible-xs glyphicon glyphicon-user" aria-hidden="true"/>
+                                                </button>
+                                            </form>
+                                        </li>
+                                    </xsl:otherwise>
+                                </xsl:choose>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--
+                    <div class="navbar-header pull-right hidden-xs">
+                        <ul class="nav navbar-nav pull-left">
+                            <xsl:call-template name="languageSelection"/>
+                        </ul>
+                        <ul class="nav navbar-nav pull-left">
+                            <xsl:choose>
+                                <xsl:when test="/dri:document/dri:meta/dri:userMeta/@authenticated = 'yes'">
+                                    <li class="dropdown">
+                                        <a id="user-dropdown-toggle" href="#" role="button" class="dropdown-toggle"
+                                           data-toggle="dropdown">
+                                            <span class="hidden-xs">
+                                                <xsl:value-of select="/dri:document/dri:meta/dri:userMeta/
+                            dri:metadata[@element='identifier' and @qualifier='firstName']"/>
+                                                <xsl:text> </xsl:text>
+                                                <xsl:value-of select="/dri:document/dri:meta/dri:userMeta/
+                            dri:metadata[@element='identifier' and @qualifier='lastName']"/>
+                                                &#160;
+                                                <b class="caret"/>
+                                            </span>
+                                        </a>
+                                        <ul class="dropdown-menu pull-right" role="menu"
+                                            aria-labelledby="user-dropdown-toggle" data-no-collapse="true">
+                                            <li>
+                                                <a href="{/dri:document/dri:meta/dri:userMeta/
+                            dri:metadata[@element='identifier' and @qualifier='url']}">
+                                                    <i18n:text>xmlui.EPerson.Navigation.profile</i18n:text>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{/dri:document/dri:meta/dri:userMeta/
+                            dri:metadata[@element='identifier' and @qualifier='logoutURL']}">
+                                                    <i18n:text>xmlui.dri2xhtml.structural.logout</i18n:text>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <li>
+                                        <a href="{/dri:document/dri:meta/dri:userMeta/
+                            dri:metadata[@element='identifier' and @qualifier='loginURL']}">
+                                            <span class="hidden-xs">
+                                                <i18n:text>xmlui.dri2xhtml.structural.login</i18n:text>
+                                            </span>
+                                        </a>
+                                    </li>
+                                </xsl:otherwise>
+                            </xsl:choose>
+                        </ul>
+
+                        <button data-toggle="offcanvas" class="navbar-toggle visible-sm" type="button">
+                            <span class="sr-only">
+                                <i18n:text>xmlui.mirage2.page-structure.toggleNavigation</i18n:text>
+                            </span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    -->
+                </div>
+            </div><!--end menu icon header -->
         </header><!--end header -->
 
     </xsl:template>
@@ -908,48 +957,48 @@
     <!-- The header (distinct from the HTML head element) contains the title, subtitle, login box and various
         placeholders for header images -->
     <xsl:template name="buildTrail">
-        <!--<div class="trail-wrapper hidden-print">-->
-            <!--<div class="container">-->
-                <!--<div class="row">-->
-                    <!--&lt;!&ndash;TODO&ndash;&gt;-->
-                    <!--<div class="col-xs-12">-->
-                        <!--<xsl:choose>-->
-                            <!--<xsl:when test="count(/dri:document/dri:meta/dri:pageMeta/dri:trail) > 1">-->
-                                <!--<div class="breadcrumb dropdown visible-xs">-->
-                                    <!--<a id="trail-dropdown-toggle" href="#" role="button" class="dropdown-toggle"-->
-                                       <!--data-toggle="dropdown">-->
-                                        <!--<xsl:variable name="last-node"-->
-                                                      <!--select="/dri:document/dri:meta/dri:pageMeta/dri:trail[last()]"/>-->
-                                        <!--<xsl:choose>-->
-                                            <!--<xsl:when test="$last-node/i18n:*">-->
-                                                <!--<xsl:apply-templates select="$last-node/*"/>-->
-                                            <!--</xsl:when>-->
-                                            <!--<xsl:otherwise>-->
-                                                <!--<xsl:apply-templates select="$last-node/text()"/>-->
-                                            <!--</xsl:otherwise>-->
-                                        <!--</xsl:choose>-->
-                                        <!--<xsl:text>&#160;</xsl:text>-->
-                                        <!--<b class="caret"/>-->
-                                    <!--</a>-->
-                                    <!--<ul class="dropdown-menu" role="menu" aria-labelledby="trail-dropdown-toggle">-->
-                                        <!--<xsl:apply-templates select="/dri:document/dri:meta/dri:pageMeta/dri:trail"-->
-                                                             <!--mode="dropdown"/>-->
-                                    <!--</ul>-->
-                                <!--</div>-->
-                                <!--<ul class="breadcrumb hidden-xs">-->
-                                    <!--<xsl:apply-templates select="/dri:document/dri:meta/dri:pageMeta/dri:trail"/>-->
-                                <!--</ul>-->
-                            <!--</xsl:when>-->
-                            <!--<xsl:otherwise>-->
-                                <!--<ul class="breadcrumb">-->
-                                    <!--<xsl:apply-templates select="/dri:document/dri:meta/dri:pageMeta/dri:trail"/>-->
-                                <!--</ul>-->
-                            <!--</xsl:otherwise>-->
-                        <!--</xsl:choose>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
+        <div class="trail-wrapper hidden-print">
+            <div class="container">
+                <div class="row">
+                    <!--TODO-->
+                    <div class="col-xs-12">
+                        <xsl:choose>
+                            <xsl:when test="count(/dri:document/dri:meta/dri:pageMeta/dri:trail) > 1">
+                                <div class="breadcrumb dropdown visible-xs">
+                                    <a id="trail-dropdown-toggle" href="#" role="button" class="dropdown-toggle"
+                                       data-toggle="dropdown">
+                                        <xsl:variable name="last-node"
+                                                      select="/dri:document/dri:meta/dri:pageMeta/dri:trail[last()]"/>
+                                        <xsl:choose>
+                                            <xsl:when test="$last-node/i18n:*">
+                                                <xsl:apply-templates select="$last-node/*"/>
+                                            </xsl:when>
+                                            <xsl:otherwise>
+                                                <xsl:apply-templates select="$last-node/text()"/>
+                                            </xsl:otherwise>
+                                        </xsl:choose>
+                                        <xsl:text>&#160;</xsl:text>
+                                        <b class="caret"/>
+                                    </a>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="trail-dropdown-toggle">
+                                        <xsl:apply-templates select="/dri:document/dri:meta/dri:pageMeta/dri:trail"
+                                                             mode="dropdown"/>
+                                    </ul>
+                                </div>
+                                <ul class="breadcrumb hidden-xs">
+                                    <xsl:apply-templates select="/dri:document/dri:meta/dri:pageMeta/dri:trail"/>
+                                </ul>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <ul class="breadcrumb">
+                                    <xsl:apply-templates select="/dri:document/dri:meta/dri:pageMeta/dri:trail"/>
+                                </ul>
+                            </xsl:otherwise>
+                        </xsl:choose>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
     </xsl:template>
@@ -1120,34 +1169,68 @@
 
     <!-- Like the header, the footer contains various miscellaneous text, links, and image placeholders -->
     <xsl:template name="buildFooter">
-
-        <!--footer start-->
         <footer>
+
+            <div class="container ">
+                <!--<div class="row footer-banner-first">-->
+                <!--<div class="col-sm-6">-->
+                <!--<p style="color:#FFF">Developed and Maintained by</p>-->
+                <!--<a href="http://www.pustakalaya.org" target="_blank">-->
+                <!--<img class="pustakalaya-logo" src="{concat($theme-path, '/images/pustakalaya-logo.png')}"/>-->
+                <!--</a>-->
+                <!--</div>-->
+                <!--<div class="col-sm-6">-->
+                <!--<nav class="navbar" role="navigation">-->
+                <!--<ul class="nav navbar-nav navbar-right">-->
+                <!--<li><button type="button" class="btn btn-sm btn-default " style="maring-top:20px;" >-->
+                <!--connect-->
+                <!--</button></li>-->
+                <!--<li><a  href="https://www.facebook.com/Epustakalaya" target="_blank">-->
+                <!--<img class="social-media-logo" src="{concat($theme-path, '/images/facebook.png')}"/>-->
+                <!--</a></li>-->
+                <!--<li><a href="https://www.twitter.com/Epustakalaya" target="_blank">-->
+                <!--<img class="social-media-logo" src="{concat($theme-path, '/images/twiter.png')}"/>-->
+                <!--</a></li>-->
+                <!--<li><a class="pull-right" href="https://www.instagram.com/Epustakalaya" target="_blank">-->
+                <!--<img class="social-media-logo" src="{concat($theme-path, '/images/instagram.png')}"/>-->
+                <!--</a></li>-->
+
+                <!--</ul>-->
+                <!--</nav>-->
+                <!--</div>-->
+                <!--</div>-->
+            </div><!-- content container -->
+
             <!--upper banner-->
             <div class="footer-banner-first">
                 <div class="container">
                     <div class="row">
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <p style="color:#FFF" class="text-capitalized">
-                                        <i18n:text>xmlui.developed.and.maintained.by</i18n:text>
-                                    </p>
-                                    <img class="pustakalaya-logo" src="{$theme-path}/images/ole-logo.png"/>
-                            </div>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <a class="pull-right" href="https://www.instagram.com/Epustakalaya" target="_blank">
-                                        <img class="social-media-logo" src="{concat($theme-path, '/images/instagram.png')}" style="margin:20px;"/>
-                                    </a>
-                                    <a class="pull-right" href="https://www.twitter.com/Epustakalaya" target="_blank">
-                                        <img class="social-media-logo" src="{concat($theme-path, '/images/twiter.png')}" style="margin:20px;"/>
-                                    </a>
-                                    <a class="pull-right" href="https://www.facebook.com/Epustakalaya" target="_blank">
-                                        <img class="social-media-logo" src="{concat($theme-path, '/images/facebook.png')}" style="margin:20px;"/>
-                                    </a>
-
-                                    <button type="button" class="btn btn-sm btn-primary pull-right" style="margin:20px;">
-                                        contact
-                                    </button>
-                            </div>
+                        <div class="col-md-6">
+                            <p style="color:#FFF">Developed and Maintained by:</p>
+                            <img class="pustakalaya-logo" src="{$theme-path}/images/eplogo.png"
+                                 style="height=30px; width=30px;"/>
+                        </div>
+                        <div class="col-md-6">
+                            <a class="pull-right" href="https://www.instagram.com/Epustakalaya" target="_blank">
+                                <img class="social-media-logo" src="{concat($theme-path, '/images/instagram.png')}"
+                                     style="margin:20px; color:#444444;"/>
+                            </a>
+                            <a class="pull-right" href="https://www.twitter.com/Epustakalaya" target="_blank">
+                                <img class="social-media-logo" src="{concat($theme-path, '/images/twiter.png')}"
+                                     style="margin:20px;"/>
+                            </a>
+                            <a class="pull-right" href="https://www.facebook.com/Epustakalaya" target="_blank">
+                                <img class="social-media-logo" src="{concat($theme-path, '/images/facebook.png')}"
+                                     style="margin:20px;"/>
+                            </a>
+                            <a class="pull-right" href="">
+                                <img class="social-media-logo" src="{concat($theme-path, '/images/connect.png')}"
+                                     style="margin:20px;"/>
+                            </a>
+                            <!--<button type="button" class="btn btn-sm btn-default pull-right" style="margin:20px;">-->
+                            <!--connect-->
+                            <!--</button>-->
+                        </div>
                     </div><!-- end row -->
                 </div><!-- end container -->
             </div><!-- end first banner -->
@@ -1156,83 +1239,160 @@
             <div class="footer-banner-second">
                 <div class="container">
                     <div class="row ">
-                        <div class="col-md-6 col-xs-12 col-sm-6">
-                                <!--creative commons-->
+                        <!-- First Box-->
+                        <div class="col-md-6">
+                            <div class="row">
                                 <div class="col-md-6">
-                                        <img src="/xmlui/themes/Mirage2//images/creative-commons.png"/><br/>
-                                        <p style="color:#444444">Unless explicitly mentioned, all the contents on this website are licensed under Creative Commons.See </p>
-                                </div><!--end creative commons-->
-                                <!--our partners-->
-                                <div class="col-md-6" id="our-partners">
-                                    <h3 class="text-uppercase">Our partners</h3>
-                                    <a title="Go to Maitri Trust, UK website" target="_blank" href="http://www.maitritrust.org.uk/">
-                                        <img alt="Maitri Trust, UK" src="/xmlui/themes/Mirage2//images/maitri-trust.png" style="width:75px; height:30px; margin:10px;"/>
-                                    </a>
-                                    <a title="Go to Nepal Library Foundation website" target="_blank" href="http://www.nepallibrary.org/">
-                                        <img alt="Nepal Library Foundation" src="/xmlui/themes/Mirage2//images/Nepal-Library-Foundation-logo.png" style="width:75px; height:30px;margin:10px;"/>
-                                    </a>
-                                </div><!--end our partners-->
-                        </div>
-
-                        <!--our content contributors-->
-                        <div class="col-md-6 col-xs-12 col-sm-6">
-                                <div style="border-left: 3px solid #f2f2f2; position:absolute; " id="our-content-contributors">
-                                    <div class="content-header"><h3 style="margin-left:6%;" class="text-uppercase">Our content contributors</h3></div>
-
-                                    <div class="contributors">
-                                        <!--first row our content contributors-->
-                                        <div class="col-md-10 col-sm-10">
-                                            <a title="Save The Children" target="_blank" href="http://www.savethechildren.org/countries/asia/nepal.html">
-                                                <img alt="STC Logo" src="/xmlui/themes/Mirage2//images/STC_logo.png" class="partner-logo"/>
-                                            </a>
-
-
-                                            <a title="Rato Bangala Foundation" target="_blank" href="http://www.rbf.org.np/">
-                                                <img alt="RBF Logo" src="/xmlui/themes/Mirage2//images/rtf.png" class="partner-logo"/>
-                                            </a>
-
-
-                                            <a title="Gorakhapatra" target="_blank" href="http://www.gorkhapatra.org.np/">
-                                                <img height="31" width="28" alt="GP Logo" src="/xmlui/themes/Mirage2//images/gorkhapatra-logo.png" class="partner-logo"/>
-                                            </a>
-
-                                            <a title="Room To Read" target="_blank" href="http://www.roomtoread.org/countries/nepal.html">
-                                                <img alt="RTR Logo" src="/xmlui/themes/Mirage2//images/room-to-read-logo.png" class="partner-logo"/>
-                                            </a>
-                                            <a title="Madan Puraskar Pustakalaya" target="_blank" href="http://madanpuraskar.org/">
-                                                <img alt="MPP Logo" src="/xmlui/themes/Mirage2//images/mpplogo.png" class="partner-logo"/>
-                                            </a>
-                                            <a title="Nepal Academy" target="_blank" href="http://www.nepalacademy.org.np/">
-                                                <img alt="Nepal Academy Logo" src="/xmlui/themes/Mirage2//images/logo_nepal_academy.png" class="partner-logo"/>
-                                            </a>
-                                            <a title="NESCHIL" target="_blank" href="http://www.neschil.org/">
-                                                <img alt="NESCHIL Logo" src="/xmlui/themes/Mirage2//images/neschil.png" class="partner-logo"/>
-                                            </a>
-                                            <a title="World Education Nepal" target="_blank" href="http://www.worlded.org/WEIInternet/contact/index.cfm">
-                                                <img alt="World Education Nepal Logo" src="/xmlui/themes/Mirage2//images/partnerWEI.png" class="partner-logo"/>
-                                            </a>
-                                        </div><!--end first row our content contributors-->
-                                        <!--second row our content contributors-->
-                                        <div class="col-md-12 col-sm-12">
-                                            <a title="British Council" target="_blank" href="http://www.britishcouncil.org/nepal">
-                                                <img alt="British Council Logo" src="/xmlui/themes/Mirage2//images/logo-british-council-color.png" style="margin:9px; width:90px; height:33px;"/>
-                                            </a>
-                                            <a title="E-Learning for Kids" target="_blank" href="http://e-learningforkids.org/">
-                                                <img alt="EL Kids Logo" src="/xmlui/themes/Mirage2//images/e-learning-for-kids.png" style="margin:9px; width:90px; height:33px;"/>
-                                            </a>
-                                            <a title="Practical Action" target="_blank" href="http://practicalaction.org/nepal">
-                                                <img alt="PA Logo" src="/xmlui/themes/Mirage2//images/practical-action-logo-highres-300dpi.png" style="margin:9px; width:90px; height:33px;"/>
-                                            </a>
-                                            <a title="Digital Himalaya" target="_blank" href="http://www.digitalhimalaya.com/">
-                                                <img height="31" alt="DH Logo" src="/xmlui/themes/Mirage2//images/DH_logo_small.gif" style="margin:9px; width:90px; height:30px;"/>
-                                            </a>
-                                        </div><!--end second row our content contributors-->
+                                    <!-- Creative Commons logo -->
+                                    <div>
+                                        <img src="{concat($theme-path, '/images/creative-commons.png')}"/>
+                                        <br/>
+                                        <p style="color:#444444">Creative commons Description Goes here</p>
                                     </div>
                                 </div>
-                        </div><!--end our content contributors-->
-                    </div><!--end row-->
-                </div><!--end container-->
+                                <div class="col-md-6">
+                                    <!-- Our  Partners here -->
+                                    <div id="our-partners">
+                                        <h3 class="text-uppercase">OUR PARTNERS</h3>
+
+
+                                        <a href="http://www.maitritrust.org.uk/" target="_blank"
+                                           title="Go to Maitri Trust, UK website">
+                                            <img style="width:75px; height:30px; margin:10px;"
+                                                 src="{concat($theme-path, '/images/maitri-trust.png')}"
+                                                 alt="Maitri Trust, UK"/>
+                                        </a>
+
+                                        <a href="http://www.nepallibrary.org/" target="_blank"
+                                           title="Go to Nepal Library Foundation website">
+                                            <img style="width:75px; height:30px;margin:10px;"
+                                                 src="{concat($theme-path, '/images/Nepal-Library-Foundation-logo.png')}"
+                                                 alt="Nepal Library Foundation"/>
+                                        </a>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- First Box finished -->
+
+                        <!--Vertical divider -->
+                        <div class="col-md-6">
+                            <!--Content contributors -->
+                            <!--row1-->
+                            <div class="row">
+                                <div id="our-content-contributors"
+                                     style="border-left: 6px solid #f2f2f2; position:absolute; ">
+                                    <h3 class="text-uppercase" style="margin-left:20px;">OUR CONTENT CONTRIBUTORS</h3>
+                                    <div class="col-sm-2 col-xs-2">
+                                        <a href="http://www.savethechildren.org/countries/asia/nepal.html"
+                                           target="_blank"
+                                           title="Save The Children">
+                                            <img class="partner-logo"
+                                                 src="{concat($theme-path, '/images/STC_logo.png')}"
+                                                 alt="STC Logo"/>
+                                        </a>
+                                    </div>
+
+                                    <div class="col-sm-2 col-xs-2">
+                                        <a href="http://www.rbf.org.np/" target="_blank"
+                                           title="Rato Bangala Foundation">
+                                            <img class="partner-logo" src="{concat($theme-path, '/images/rtf.png')}"
+                                                 alt="RBF Logo"/>
+                                        </a>
+                                    </div>
+
+                                    <div class="col-sm-2 col-xs-2">
+                                        <a href="http://www.gorkhapatra.org.np/" target="_blank" title="Gorakhapatra">
+                                            <img class="partner-logo"
+                                                 src="{concat($theme-path, '/images/gorkhapatra-logo.png')}"
+                                                 alt="GP Logo"
+                                                 width="28" height="31"/>
+                                        </a>
+                                    </div>
+
+                                    <a href="http://www.roomtoread.org/countries/nepal.html" target="_blank"
+                                       title="Room To Read">
+                                        <img class="partner-logo"
+                                             src="{concat($theme-path, '/images/room-to-read-logo.png')}"
+                                             alt="RTR Logo"/>
+                                    </a>
+
+                                    <a href="http://madanpuraskar.org/" target="_blank"
+                                       title="Madan Puraskar Pustakalaya">
+                                        <img class="partner-logo" src="{concat($theme-path, '/images/mpplogo.png')}"
+                                             alt="MPP Logo"/>
+                                    </a>
+
+                                    <a href="http://www.nepalacademy.org.np/" target="_blank" title="Nepal Academy">
+                                        <img class="partner-logo"
+                                             src="{concat($theme-path, '/images/logo_nepal_academy.png')}"
+                                             alt="Nepal Academy Logo"/>
+                                    </a>
+
+                                    <a href="http://www.neschil.org/" target="_blank" title="NESCHIL">
+                                        <img class="partner-logo" src="{concat($theme-path, '/images/neschil.png')}"
+                                             alt="NESCHIL Logo"/>
+                                    </a>
+
+                                    <a href="http://www.worlded.org/WEIInternet/contact/index.cfm" target="_blank"
+                                       title="World Education Nepal">
+                                        <img class="partner-logo" src="{concat($theme-path, '/images/partnerWEI.png')}"
+                                             alt="World Education Nepal Logo"/>
+                                    </a>
+
+                                    <a href="http://www.britishcouncil.org/nepal" target="_blank"
+                                       title="British Council">
+                                        <img style="margin:20px; width:100px; height:33px;"
+                                             src="{concat($theme-path, '/images/logo-british-council-color.png')}"
+                                             alt="British Council Logo"/>
+                                    </a>
+
+                                    <a href="http://e-learningforkids.org/" target="_blank" title="E-Learning for Kids">
+                                        <img style="margin:20px; width:100px; height:33px;"
+                                             src="{concat($theme-path, '/images/e-learning-for-kids.png')}"
+                                             alt="EL Kids Logo"/>
+                                    </a>
+
+                                    <a href="http://practicalaction.org/nepal" target="_blank" title="Practical Action">
+                                        <img style="margin:20px; width:100px; height:33px;"
+                                             src="{concat($theme-path, '/images/practical-action-logo-highres-300dpi.png')}"
+                                             alt="PA Logo"/>
+                                    </a>
+
+                                    <a href="http://www.digitalhimalaya.com/" target="_blank" title="Digital Himalaya">
+                                        <img style="margin:20px; width:50px; height:30px;"
+                                             src="{concat($theme-path, '/images/digital-himalaya-logo.png')}"
+                                             alt="DH Logo"
+                                             height="31"/>
+                                    </a>
+                                </div>
+                            </div><!--end row1 -->
+                        </div>
+                    </div><!-- end row -->
+                </div><!-- end container -->
             </div><!-- end footer banner second -->
+
+            <!--div class="hidden-print">
+                <a>
+                    <xsl:attribute name="href">
+                        <xsl:value-of
+                                select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='contextPath'][not(@qualifier)]"/>
+                        <xsl:text>/contact</xsl:text>
+                    </xsl:attribute>
+                    <i18n:text>xmlui.dri2xhtml.structural.contact-link</i18n:text>
+                </a>
+                <xsl:text> | </xsl:text>
+                <a>
+                    <xsl:attribute name="href">
+                        <xsl:value-of
+                                select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='contextPath'][not(@qualifier)]"/>
+                        <xsl:text>/feedback</xsl:text>
+                    </xsl:attribute>
+                    <i18n:text>xmlui.dri2xhtml.structural.feedback-link</i18n:text>
+                </a>
+            </div-->
+
 
             <!--Invisible link to HTML sitemap (for search engines) -->
             <a class="hidden">
@@ -1271,7 +1431,6 @@
                 banner.hidden = true;
                 }
             </script>
-            <!-- Interactive education carousel toggle script -->
 
             <!--hide the navigation menu if the homepage is detected-->
             <script type="text/javascript">
@@ -1298,33 +1457,9 @@
                 slider.hidden = true;
                 }
             </script>
-            <script>
-                <![CDATA[
-                       $('#pustakalaya-slider').carousel({
-                    var winWidth = $(window).innerWidth();
-                    $(window).resize(function () {
 
-                        if ($(window).innerWidth() < winWidth) {
-                            $('.carousel-inner>.item>img').css({
-                                'min-width': winWidth, 'width': winWidth
-                            });
-                        }
-                        else {
-                            winWidth = $(window).innerWidth();
-                            $('.carousel-inner>.item>img').css({
-                                'min-width': '', 'width': ''
-                            });
-                        }
-                    });
 
-                    ]]>
-            </script>
-            <script>
-                $(document).ready(function(){
-                    $('#pustakalaya-slider').fade();
-                });
-            </script>
-        </footer><!--end footer-->
+        </footer>
     </xsl:template>
     <!-- our footer -->
     <!--
