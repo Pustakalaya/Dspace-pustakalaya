@@ -515,6 +515,17 @@
                 </xsl:attribute>
             </link>
 
+            <!-- include css for video and audio playback -->
+		<link type="text/css" rel="stylesheet">
+		<xsl:attribute name="src"><xsl:value-of select="./tomcat/webapps/ROOT/video.js/video.js.css"/>
+		</xsl:attribute>
+            	</link>
+
+            <script> 
+		<xsl:attribute name="src"><xsl:value-of select="./tomcat/webapps/ROOT/video.js/video.min.js"/>
+		</xsl:attribute>
+		</script>		
+
             <meta name="Generator">
                 <xsl:attribute name="content">
                     <xsl:text>DSpace</xsl:text>

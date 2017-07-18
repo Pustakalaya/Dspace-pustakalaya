@@ -41,8 +41,10 @@
 
     <xsl:template name="itemSummaryView-DIM">
         <!-- V.T. Add HTML for the video in a videojs frame -->
+	<!-- Below is the original if statement that has the requirement for webm video -->
+    	<!-- <xsl:if test="(./mets:fileSec/mets:fileGrp[@USE='CONTENT']/mets:file[@MIMETYPE='video/mp4']) and (./mets:fileSec/mets:fileGrp[@USE='CONTENT']/mets:file[@MIMETYPE='video/webm'])"> -->
 
-    	<xsl:if test="(./mets:fileSec/mets:fileGrp[@USE='CONTENT']/mets:file[@MIMETYPE='video/mp4'])">
+	<xsl:if test="(./mets:fileSec/mets:fileGrp[@USE='CONTENT']/mets:file[@MIMETYPE='video/mp4'])">
         	    <!--
 	
         	    There is some inline CSS style information here to control
@@ -61,7 +63,7 @@
         	                </xsl:attribute>
         	            </xsl:if>
 
-        	            <!-- <source type="video/webm" >
+        	            <!--<source type="video/webm" >
         	                <xsl:attribute name="src">
         	                    <xsl:value-of
         	                            select="./mets:fileSec/mets:fileGrp[@USE='CONTENT']/mets:file[@MIMETYPE='video/webm']/mets:FLocat[@LOCTYPE='URL']/@xlink:href" />
@@ -90,27 +92,15 @@
    
         	    <hr />
         	</xsl:if>
-	<!-- Generate Audio player -->
-		<xsl:if test="(./mets:fileSec/mets:fileGrp[@USE='CONTENT']/mets:file[@MIMETYPE='audio/mp3'])">
-			<audio controls="controls" preload="auto" style="width:100%;" class="vjs-tech" >
-			<xsl:attribute name="src"><xsl:value-of select="./mets:fileSec/mets:fileGrp[@USE='CONTENT']/mets:file[@MIMETYPE='audio/mp3']/mets:FLocat[@LOCTYPE='URL']/@xlink:href"/></xsl:attribute> 
-		</audio>
 
-		</xsl:if>
-	<!-- Generate the pdf viewer if it is a compatible file
-		Currently pdf.js only supports viewing pdfs we may be able to expand to other file formats given another addon -->
-	<xsl:if test="(./mets:fileSec/mets:fileGrp[@USE='CONTENT']/mets:file[@MIMETYPE='application/pdf'])">
+	<xsl:if test="(./mets:fileSec/mets:fileGrp[@USE='CONTENT']/mets:file[@MIMETYPE='audio/mp3'])">
+	<audio controls="controls" preload="auto" style="width:100%;" class="vjs-tech" >
+		<xsl:attribute name="src"><xsl:value-of select="./mets:fileSec/mets:fileGrp[@USE='CONTENT']/mets:file[@MIMETYPE='audio/mp3']/mets:FLocat[@LOCTYPE='URL']/@xlink:href"/></xsl:attribute> 
+	</audio>
 
-		<iframe> 
-			<xsl:attribute name="src">/web/viewer.html?file= <xsl:value-of select="./mets:fileSec/mets:fileGrp[@USE='CONTENT']/mets:file[@MIMETYPE='application/pdf']/mets:FLocat[@LOCTYPE='URL']/@xlink:href"/></xsl:attribute> 
-			<xsl:attribute name="width">800</xsl:attribute> 
-			<xsl:attribute name="height">600</xsl:attribute> frameborder="0">
-
-		</iframe>
-		
 	</xsl:if>
-
-        <!-- Generate the info about the item from the metadata section -->
+        <!-- Generate the info about the item from the metadata section
+		We could also expand this to more file formats  -->
         <xsl:apply-templates select="./mets:dmdSec/mets:mdWrap[@OTHERMDTYPE='DIM']/mets:xmlData/dim:dim"
         mode="itemSummaryView-DIM"/>
 
@@ -128,6 +118,18 @@
             </div>
         </xsl:if>
 
+	<!-- Generate the pdf viewer if it is a compatible file
+		Currently pdf.js only supports viewing pdfs we may be able to expand to other file formats given another addon -->
+	<xsl:if test="(./mets:fileSec/mets:fileGrp[@USE='CONTENT']/mets:file[@MIMETYPE='application/pdf'])">
+
+		<iframe> 
+			<xsl:attribute name="src">/web/viewer.html?file= <xsl:value-of select="./mets:fileSec/mets:fileGrp[@USE='CONTENT']/mets:file[@MIMETYPE='application/pdf']/mets:FLocat[@LOCTYPE='URL']/@xlink:href"/></xsl:attribute> 
+			<xsl:attribute name="width">800</xsl:attribute> 
+			<xsl:attribute name="height">600</xsl:attribute> frameborder="0">
+
+		</iframe>
+		
+	</xsl:if>
 
     </xsl:template>
 
@@ -169,7 +171,7 @@
                 </table>
             </xsl:otherwise>
         </xsl:choose>
-
+	
     </xsl:template>
 
 
@@ -199,6 +201,7 @@
                 </div>
             </div>
         </div>
+	
     </xsl:template>
 
     <xsl:template name="itemSummaryView-DIM-title">
@@ -221,6 +224,7 @@
                         </xsl:for-each>
                     </p>
                 </div>
+		
             </xsl:when>
             <xsl:when test="count(dim:field[@element='title'][not(@qualifier)]) = 1">
                 <h2 class="page-header first-page-header">
@@ -294,6 +298,7 @@
                 </div>
             </div>
         </xsl:if>
+	
     </xsl:template>
 
     <xsl:template name="itemSummaryView-DIM-authors">
@@ -322,6 +327,7 @@
                 </xsl:choose>
             </div>
         </xsl:if>
+	
     </xsl:template>
 
     <xsl:template name="itemSummaryView-DIM-authors-entry">
@@ -352,6 +358,7 @@
                 </span>
             </div>
         </xsl:if>
+	
     </xsl:template>
 
     <xsl:template name="itemSummaryView-DIM-date">
@@ -391,28 +398,6 @@
                 <xsl:apply-templates select="$document//dri:referenceSet[@id='aspect.artifactbrowser.ItemViewer.referenceSet.collection-viewer']/dri:reference"/>
             </div>
         </xsl:if>
-        <div id="disqus_thread"></div>
-        <script>
-            /**
-            *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-            *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-
-            var disqus_config = function () {
-            this.page.url = "http://pustakalaya.org";  // Replace PAGE_URL with your page's canonical URL variable
-            var url = window.location.href.split('/');
-            var identifier = url[url.length - 1] + url[url.length -2 ];
-            this.page.identifier = identifier; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-            console.log(identifier);
-            };
-
-            (function() { // DON'T EDIT BELOW THIS LINE
-            var d = document, s = d.createElement('script');
-            s.src = 'https://pustakalaya-org.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-            })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </xsl:template>
 
     <xsl:template name="itemSummaryView-DIM-file-section">
@@ -537,6 +522,7 @@
                 <xsl:text>)</xsl:text>
             </a>
         </div>
+
     </xsl:template>
 
     <xsl:template match="dim:dim" mode="itemDetailView-DIM">
@@ -748,6 +734,7 @@
             </xsl:attribute>
             <i18n:text>xmlui.dri2xhtml.METS-1.0.item-files-viewOpen</i18n:text>
         </a>
+	
     </xsl:template>
 
     <xsl:template name="display-rights">
