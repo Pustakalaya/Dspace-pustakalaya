@@ -2513,6 +2513,19 @@
     <message key="xmlui.ArtifactBrowser.AdvancedSearch.type_category">Subjects</message>
 
 
+    <!--browse books-->
+    <message key="xmlui.ArtifactBrowser.Navigation.browse_literature_and_arts">Literature &amp; Arts</message>
+    <message key="xmlui.ArtifactBrowser.Navigation.browse_course_materials">Course Materials</message>
+    <message key="xmlui.ArtifactBrowser.Navigation.browse_teaching_materials">Teaching Materials</message>
+    <message key="xmlui.ArtifactBrowser.Navigation.browse_magazines_and_newspapers">Magazines &amp; Newspapers</message>
+    <message key="xmlui.ArtifactBrowser.Navigation.browse_agriculture_and_diversity">Agriculture &amp; Diversity</message>
+    <message key="xmlui.ArtifactBrowser.Navigation.browse_environment">Environment</message>
+    <message key="xmlui.ArtifactBrowser.Navigation.browse_science_and_technology">Science &amp; Technology</message>
+    <message key="xmlui.ArtifactBrowser.Navigation.browse_all_categories">All Categories</message>
+    <message key="xmlui.ArtifactBrowser.Navigation.browse_titles">Titles</message>
+    <message key="xmlui.ArtifactBrowser.Navigation.browse_authors">Authors</message>b
+
+
     <!-- Navigation -->
     <message key="xmlui.ArtifactBrowser.Navigation.browse_type">Browse by Type</message>
     <message key="xmlui.ArtifactBrowser.Navigation.browse_category">Browse by Subjects</message>
@@ -2579,6 +2592,20 @@
 
 
     <message key="xmlui.more">More</message>
+
+
+
+    <!--Top navigation menu -->
+    <message key="xmlui.header.menu.books">Books</message>
+    <message key="xmlui.header.menu.educational.softwares">Educational Softwares</message>
+    <message key="xmlui.header.menu.audio.video">Audio Video</message>
+    <message key="xmlui.header.menu.references">References</message>
+
+
+
+
+
+
 
 
 

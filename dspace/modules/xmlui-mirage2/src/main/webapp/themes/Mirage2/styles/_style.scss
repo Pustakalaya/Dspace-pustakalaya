@@ -65,6 +65,23 @@
 
 }
 
+/* Navigation menu */
+#pustakalaya-navbar > li > a {
+  background: #27ae60;
+  color: #FFF;
+  padding-top:5px !important; padding-bottom:5px !important;
+}
+
+ul#pustakalaya-navbar > li > a:hover {
+  background: #16a085;
+  cursor:pointer;
+}
+
+ul#pustakalaya-navbar > li > a:active {
+  background: #16a085;
+}
+
+
 /* search box section */
 #pustakalaya_searchBox{
   margin-top:20%; /* Don't copy this */
@@ -125,10 +142,29 @@
 }
 
 
-pustakalayaSection > div > h3 {
+pustakalayaSection > div > h4 {
   padding-top: 10px;
   color: #eeeeee;
   text-transform: capitalize;
+  display:inline-block;
+  background-color:#16a085;
+  padding: 8px;
+
+}
+
+/*style for slider*/
+.carousel-inner > .item > img, .carousel-inner > .item > a > img {
+  display: block;
+  height: 200px;
+  min-width: 100%;
+  width: 100%;
+  max-width: 100%;
+  line-height: 1;
+}
+
+.carousel-inner>.item>img{
+  height: 250px;
+  max-width: 100%;
 }
 
 /* Interactive educational software style section */
@@ -138,7 +174,17 @@ pustakalayaSection > div > h3 {
 }
 
 
-
+/*styling of pustakalayaSection*/
+div.well{
+  background:#A5D6A7;
+  border:0px;
+  border-radius:0px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -o-border-radius: 0px;
+  border-radius: 0px;
+  border: 0px;
+}
 
 /* footer styling*/
 
