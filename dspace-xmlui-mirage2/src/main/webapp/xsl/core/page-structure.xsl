@@ -728,9 +728,18 @@
                                 </div>
                                 <div class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
                                     <ul id="pustakalaya-navbar" class="nav navbar-nav" >
-                                        <li>
-                                            <a href="#educational-software" class="text-capitalized" style="color:#FFFF;"><i18n:text>xmlui.header.menu.books</i18n:text></a>
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i18n:text>xmlui.header.menu.browsePustakalaya</i18n:text><span class="caret"></span></a>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="text-capitalize" href="/browse?type=grade">Browse by title</a></li>
+                                                <li><a class="text-capitalize" href="/browse?type=level">Browse by Education level</a></li>
+                                                <li><a class="text-capitalize" href="/browse?type=type">Browse by Data type</a></li>
+                                                <li><a class="text-capitalize" href="/browse?type=category">Browse by Subjects</a></li>
+                                                <li><a class="text-capitalize" href="/browse?type=author">Browse by Authors</a></li>
+                                                <li><a class="text-capitalize" href="/browse?type=dateissued">Browse by Issue Date</a></li>
+                                            </ul>
                                         </li>
+
                                         <li>
                                             <a href="#educational-software" class="text-capitalized" style="color:#FFFF;"><i18n:text>xmlui.header.menu.educational.softwares</i18n:text></a>
                                         </li>
@@ -738,7 +747,7 @@
                                             <a href="#educational-software" class="text-capitalized" style="color:#FFFF;"><i18n:text>xmlui.header.menu.audio.video</i18n:text></a>
                                         </li>
                                         <li>
-                                            <a href="#educational-software" class="text-capitalized" style="color:#FFFF;"><i18n:text>xmlui.header.menu.references</i18n:text></a>
+                                            <a href="#educational-software" class="text-capitalized" style="color:#FFFF;"><i18n:text>xmlui.header.menu.referencegis</i18n:text></a>
                                         </li>
 
                                     </ul>
