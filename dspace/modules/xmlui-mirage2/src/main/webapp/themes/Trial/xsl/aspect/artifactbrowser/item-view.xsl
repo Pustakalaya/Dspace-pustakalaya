@@ -40,11 +40,9 @@
     <xsl:output indent="yes"/>
 
     <xsl:template name="itemSummaryView-DIM">
-        <!-- V.T. Add HTML for the video in a videojs frame -->
-	<!-- Below is the original if statement that has the requirement for webm video -->
-    	<!-- <xsl:if test="(./mets:fileSec/mets:fileGrp[@USE='CONTENT']/mets:file[@MIMETYPE='video/mp4']) and (./mets:fileSec/mets:fileGrp[@USE='CONTENT']/mets:file[@MIMETYPE='video/webm'])"> -->
+        <!-- Video Player -->
 
-	<xsl:if test="(./mets:fileSec/mets:fileGrp[@USE='CONTENT']/mets:file[@MIMETYPE='video/mp4'])">
+    	<xsl:if test="(./mets:fileSec/mets:fileGrp[@USE='CONTENT']/mets:file[@MIMETYPE='video/mp4'])">
         	    <!--
 	
         	    There is some inline CSS style information here to control
@@ -54,53 +52,129 @@
         	    to find width/height information here.
 
         	     -->
-        	        <video controls="controls" preload="none" style="width:100%;" class="vjs-tech" >
+			<div>
+		            <xsl:variable name="label-1">
+		                    <xsl:choose>
+		                        <xsl:when test="confman:getProperty('mirage2.item-view.bitstream.href.label.1')">
+		                            <xsl:value-of select="confman:getProperty('mirage2.item-view.bitstream.href.label.1')"/>
+		                        </xsl:when>
+		                        <xsl:otherwise>
+		                            <xsl:text>label</xsl:text>
+		                        </xsl:otherwise>
+		                    </xsl:choose>
+		            </xsl:variable>
 
-        	            <xsl:if test="./mets:fileSec/mets:fileGrp[@USE='MOVIEPOSTER']">
-        	                <xsl:attribute name="poster">
-        	                    <xsl:value-of
-        	                            select="./mets:fileSec/mets:fileGrp[@USE='MOVIEPOSTER']/mets:file/mets:FLocat[@LOCTYPE='URL']/@xlink:href" />
-        	                </xsl:attribute>
-        	            </xsl:if>
+		            <xsl:variable name="label-2">
+		                    <xsl:choose>
+		                        <xsl:when test="confman:getProperty('mirage2.item-view.bitstream.href.label.2')">
+		                            <xsl:value-of select="confman:getProperty('mirage2.item-view.bitstream.href.label.2')"/>
+		                        </xsl:when>
+		                        <xsl:otherwise>
+		                            <xsl:text>title</xsl:text>
+		                        </xsl:otherwise>
+		                    </xsl:choose>
+		            </xsl:variable>
 
-        	            <!--<source type="video/webm" >
-        	                <xsl:attribute name="src">
-        	                    <xsl:value-of
-        	                            select="./mets:fileSec/mets:fileGrp[@USE='CONTENT']/mets:file[@MIMETYPE='video/webm']/mets:FLocat[@LOCTYPE='URL']/@xlink:href" />
-        	                </xsl:attribute>
-        	            </source> -->
+		            <xsl:for-each select="//mets:fileSec/mets:fileGrp[@USE='CONTENT' or @USE='ORIGINAL' or @USE='LICENSE']/mets:file">
+		                <xsl:call-template name="itemSummaryView-DIM-file-section-entry">
+		                    <xsl:with-param name="href" select="mets:FLocat[@LOCTYPE='URL']/@xlink:href" />
+		                    <xsl:with-param name="mimetype" select="@MIMETYPE" />
+		                    <xsl:with-param name="label-1" select="$label-1" />
+		                    <xsl:with-param name="label-2" select="$label-2" />
+		                    <xsl:with-param name="title" select="mets:FLocat[@LOCTYPE='URL']/@xlink:title" />
+		                    <xsl:with-param name="label" select="mets:FLocat[@LOCTYPE='URL']/@xlink:label" />
+		                    <xsl:with-param name="size" select="@SIZE" />
+		                </xsl:call-template>
+				<video controls="controls" preload="none" style="width:100%;" class="vjs-tech" >
+
+        	        	    <xsl:if test="./mets:fileSec/mets:fileGrp[@USE='MOVIEPOSTER']">
+			                <xsl:attribute name="poster">
+			                    <xsl:value-of
+			                            select="./mets:fileSec/mets:fileGrp[@USE='MOVIEPOSTER']/mets:file/mets:FLocat[@LOCTYPE='URL']/@xlink:href" />
+			                </xsl:attribute>
+			            </xsl:if>
+
+				
+			            <source type="video/mp4">
+			                <xsl:attribute name="src">
+			                    <xsl:value-of
+			                            select="mets:FLocat[@LOCTYPE='URL']/@xlink:href" />
+			                </xsl:attribute>
+			            </source>
 	
-        	            <source type="video/mp4">
-        	                <xsl:attribute name="src">
-        	                    <xsl:value-of
-        	                            select="./mets:fileSec/mets:fileGrp[@USE='CONTENT']/mets:file[@MIMETYPE='video/mp4']/mets:FLocat[@LOCTYPE='URL']/@xlink:href" />
-        	                </xsl:attribute>
-        	            </source>
+			            <!-- V.T. display captions -->
+			            <xsl:if test="./mets:fileSec/mets:fileGrp[@USE='CONTENT']/mets:file[@MIMETYPE='text/vtt']">
 	
-        	            <!-- V.T. display captions -->
-        	            <xsl:if test="./mets:fileSec/mets:fileGrp[@USE='CONTENT']/mets:file[@MIMETYPE='text/vtt']">
+			                <track kind="captions" srclang="en" label="English" default="default">
+			                    <xsl:attribute name="src">
+			                        <xsl:value-of
+			                                select="./mets:fileSec/mets:fileGrp[@USE='CONTENT']/mets:file[@MIMETYPE='text/vtt']/mets:FLocat[@LOCTYPE='URL']/@xlink:href" />
+			                    </xsl:attribute>
+			                </track>
+			            </xsl:if>
 	
-        	                <track kind="captions" srclang="en" label="English" default="default">
-        	                    <xsl:attribute name="src">
-        	                        <xsl:value-of
-        	                                select="./mets:fileSec/mets:fileGrp[@USE='CONTENT']/mets:file[@MIMETYPE='text/vtt']/mets:FLocat[@LOCTYPE='URL']/@xlink:href" />
-        	                    </xsl:attribute>
-        	                </track>
-        	            </xsl:if>
-	
-        	        </video>
+			        </video>
+		            </xsl:for-each>
+		        </div>
+
    
         	    <hr />
         	</xsl:if>
+	<!-- Generate Audio player -->
+		<xsl:if test="(./mets:fileSec/mets:fileGrp[@USE='CONTENT']/mets:file[@MIMETYPE='audio/mp3'])">
+			<div>
+		            <xsl:variable name="label-1">
+		                    <xsl:choose>
+		                        <xsl:when test="confman:getProperty('mirage2.item-view.bitstream.href.label.1')">
+		                            <xsl:value-of select="confman:getProperty('mirage2.item-view.bitstream.href.label.1')"/>
+		                        </xsl:when>
+		                        <xsl:otherwise>
+		                            <xsl:text>label</xsl:text>
+		                        </xsl:otherwise>
+		                    </xsl:choose>
+		            </xsl:variable>
 
-	<xsl:if test="(./mets:fileSec/mets:fileGrp[@USE='CONTENT']/mets:file[@MIMETYPE='audio/mp3'])">
-	<audio controls="controls" preload="auto" style="width:100%;" class="vjs-tech" >
-		<xsl:attribute name="src"><xsl:value-of select="./mets:fileSec/mets:fileGrp[@USE='CONTENT']/mets:file[@MIMETYPE='audio/mp3']/mets:FLocat[@LOCTYPE='URL']/@xlink:href"/></xsl:attribute> 
-	</audio>
+		            <xsl:variable name="label-2">
+		                    <xsl:choose>
+		                        <xsl:when test="confman:getProperty('mirage2.item-view.bitstream.href.label.2')">
+		                            <xsl:value-of select="confman:getProperty('mirage2.item-view.bitstream.href.label.2')"/>
+		                        </xsl:when>
+		                        <xsl:otherwise>
+		                            <xsl:text>title</xsl:text>
+		                        </xsl:otherwise>
+		                    </xsl:choose>
+		            </xsl:variable>
 
+		            <xsl:for-each select="//mets:fileSec/mets:fileGrp[@USE='CONTENT' or @USE='ORIGINAL' or @USE='LICENSE']/mets:file">
+		                <xsl:call-template name="itemSummaryView-DIM-file-section-entry">
+		                    <xsl:with-param name="href" select="mets:FLocat[@LOCTYPE='URL']/@xlink:href" />
+		                    <xsl:with-param name="mimetype" select="@MIMETYPE" />
+		                    <xsl:with-param name="label-1" select="$label-1" />
+		                    <xsl:with-param name="label-2" select="$label-2" />
+		                    <xsl:with-param name="title" select="mets:FLocat[@LOCTYPE='URL']/@xlink:title" />
+		                    <xsl:with-param name="label" select="mets:FLocat[@LOCTYPE='URL']/@xlink:label" />
+		                    <xsl:with-param name="size" select="@SIZE" />
+		                </xsl:call-template>
+				<audio controls="controls" preload="auto" style="width:100%;" class="vjs-tech" >
+				<xsl:attribute name="src"><xsl:value-of select="mets:FLocat[@LOCTYPE='URL']/@xlink:href"/></xsl:attribute> 
+				</audio>
+		            </xsl:for-each>
+		        </div>
+
+		</xsl:if>
+	<!-- Generate the pdf viewer if it is a compatible file. Currently pdf.js only supports viewing pdfs we may be able to expand to other file formats given another addon -->
+	<xsl:if test="(./mets:fileSec/mets:fileGrp[@USE='CONTENT']/mets:file[@MIMETYPE='application/pdf'])">
+
+		<iframe> 
+			<xsl:attribute name="src">/web/viewer.html?file= <xsl:value-of select="./mets:fileSec/mets:fileGrp[@USE='CONTENT']/mets:file[@MIMETYPE='application/pdf']/mets:FLocat[@LOCTYPE='URL']/@xlink:href"/></xsl:attribute> 
+			<xsl:attribute name="width">800</xsl:attribute> 
+			<xsl:attribute name="height">600</xsl:attribute> frameborder="0">
+
+		</iframe>
+		
 	</xsl:if>
-        <!-- Generate the info about the item from the metadata section
-		We could also expand this to more file formats  -->
+
+        <!-- Generate the info about the item from the metadata section -->
         <xsl:apply-templates select="./mets:dmdSec/mets:mdWrap[@OTHERMDTYPE='DIM']/mets:xmlData/dim:dim"
         mode="itemSummaryView-DIM"/>
 
@@ -118,18 +192,6 @@
             </div>
         </xsl:if>
 
-	<!-- Generate the pdf viewer if it is a compatible file
-		Currently pdf.js only supports viewing pdfs we may be able to expand to other file formats given another addon -->
-	<xsl:if test="(./mets:fileSec/mets:fileGrp[@USE='CONTENT']/mets:file[@MIMETYPE='application/pdf'])">
-
-		<iframe> 
-			<xsl:attribute name="src">/web/viewer.html?file= <xsl:value-of select="./mets:fileSec/mets:fileGrp[@USE='CONTENT']/mets:file[@MIMETYPE='application/pdf']/mets:FLocat[@LOCTYPE='URL']/@xlink:href"/></xsl:attribute> 
-			<xsl:attribute name="width">800</xsl:attribute> 
-			<xsl:attribute name="height">600</xsl:attribute> frameborder="0">
-
-		</iframe>
-		
-	</xsl:if>
 
     </xsl:template>
 
@@ -171,7 +233,7 @@
                 </table>
             </xsl:otherwise>
         </xsl:choose>
-	
+
     </xsl:template>
 
 
@@ -201,7 +263,6 @@
                 </div>
             </div>
         </div>
-	
     </xsl:template>
 
     <xsl:template name="itemSummaryView-DIM-title">
@@ -224,7 +285,6 @@
                         </xsl:for-each>
                     </p>
                 </div>
-		
             </xsl:when>
             <xsl:when test="count(dim:field[@element='title'][not(@qualifier)]) = 1">
                 <h2 class="page-header first-page-header">
@@ -298,7 +358,6 @@
                 </div>
             </div>
         </xsl:if>
-	
     </xsl:template>
 
     <xsl:template name="itemSummaryView-DIM-authors">
@@ -327,7 +386,6 @@
                 </xsl:choose>
             </div>
         </xsl:if>
-	
     </xsl:template>
 
     <xsl:template name="itemSummaryView-DIM-authors-entry">
@@ -358,7 +416,6 @@
                 </span>
             </div>
         </xsl:if>
-	
     </xsl:template>
 
     <xsl:template name="itemSummaryView-DIM-date">
@@ -398,6 +455,28 @@
                 <xsl:apply-templates select="$document//dri:referenceSet[@id='aspect.artifactbrowser.ItemViewer.referenceSet.collection-viewer']/dri:reference"/>
             </div>
         </xsl:if>
+        <div id="disqus_thread"></div>
+        <script>
+            /**
+            *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+            *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+            var disqus_config = function () {
+            this.page.url = "http://pustakalaya.org";  // Replace PAGE_URL with your page's canonical URL variable
+            var url = window.location.href.split('/');
+            var identifier = url[url.length - 1] + url[url.length -2 ];
+            this.page.identifier = identifier; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            console.log(identifier);
+            };
+
+            (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://pustakalaya-org.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </xsl:template>
 
     <xsl:template name="itemSummaryView-DIM-file-section">
@@ -522,7 +601,6 @@
                 <xsl:text>)</xsl:text>
             </a>
         </div>
-
     </xsl:template>
 
     <xsl:template match="dim:dim" mode="itemDetailView-DIM">
@@ -734,7 +812,6 @@
             </xsl:attribute>
             <i18n:text>xmlui.dri2xhtml.METS-1.0.item-files-viewOpen</i18n:text>
         </a>
-	
     </xsl:template>
 
     <xsl:template name="display-rights">
