@@ -180,22 +180,15 @@
                                         <!-- Browse by section -->
                                         <div class="col-md-4" id="book-browsing" style="margin-left:5.5%;">
                                             <ul>
-                                                <li><a href="/browse?type=literature_and_arts" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_literature_and_arts</i18n:text></a></li>
-                                                <li><a href="/browse?type=course_materials" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_course_materials</i18n:text></a><i18n:text></i18n:text></li>
-                                                <li><a href="/browse?type=teaching_materials" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_teaching_materials</i18n:text></a></li>
-                                                <li><a href="/browse?type=magazines_and_newspapers" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_magazines_and_newspapers</i18n:text></a></li>
-                                                <li><a href="/browse?type=agriculture_and_diversity" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_agriculture_and_diversity</i18n:text></a></li>
-                                                <li><a href="/browse?type=environment" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_environment</i18n:text></a></li>
-                                                <li><a href="/browse?type=science_and_technology" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_science_and_technology</i18n:text></a></li>
-                                                <li><a href="/browse?type=all_categories" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_all_categories</i18n:text></a></li>
-                                                <li><a href="/browse?type=titles_or_authors" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_titles</i18n:text><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_authors</i18n:text></a></li>
-                                            </ul>
-                                            <ul>
-                                                <li><a href="/browse?type=type" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_type</i18n:text></a></li>
-                                                <li><a href="/browse?type=category" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_category</i18n:text></a></li>
-                                                <li><a href="/browse?type=interactivity" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_interactivity</i18n:text></a></li>
-                                                <li><a href="/browse?type=grade" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_grade</i18n:text></a></li>
-                                                <li><a href="/browse?type=type" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_level</i18n:text></a></li>
+                                                <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Literature+and+Arts" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_literature_and_arts</i18n:text></a></li>
+                                                <li><a href="{$context-path}/browse?type=course_materials" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_course_materials</i18n:text></a><i18n:text></i18n:text></li>
+                                                <li><a href="{$context-path}/browse?type=teaching_materials" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_teaching_materials</i18n:text></a></li>
+                                                <li><a href="{$context-path}/browse?type=magazines_and_newspapers" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_magazines_and_newspapers</i18n:text></a></li>
+                                                <li><a href="{$context-path}/browse?type=agriculture_and_diversity" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_agriculture_and_diversity</i18n:text></a></li>
+                                                <li><a href="{$context-path}/browse?type=environment" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_environment</i18n:text></a></li>
+                                                <li><a href="{$context-path}/browse?type=science_and_technology" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_science_and_technology</i18n:text></a></li>
+                                                <li><a href="{$context-path}/browse?type=all_categories" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_all_categories</i18n:text></a></li>
+                                                <li><a href="{$context-path}/browse?type=titles_or_authors" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_titles</i18n:text><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_authors</i18n:text></a></li>
                                             </ul>
                                         </div>
                                         <!-- Book gallery demo -->
@@ -731,25 +724,20 @@
                                         <li class="dropdown">
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i18n:text>xmlui.header.menu.browsePustakalaya</i18n:text><span class="caret"></span></a>
                                             <ul class="dropdown-menu">
-                                                <li><a class="text-capitalize" href="/browse?type=grade">Browse by title</a></li>
-                                                <li><a class="text-capitalize" href="/browse?type=level">Browse by Education level</a></li>
-                                                <li><a class="text-capitalize" href="/browse?type=type">Browse by Data type</a></li>
-                                                <li><a class="text-capitalize" href="/browse?type=category">Browse by Subjects</a></li>
-                                                <li><a class="text-capitalize" href="/browse?type=author">Browse by Authors</a></li>
-                                                <li><a class="text-capitalize" href="/browse?type=dateissued">Browse by Issue Date</a></li>
+                                                <li><a class="text-capitalize" href="{$context-path}/browse?type=grade">Browse by title</a></li>
+                                                <li><a class="text-capitalize" href="{$context-path}/browse?type=level">Browse by Education level</a></li>
+                                                <li><a class="text-capitalize" href="{$context-path}/browse?type=type">Browse by Data type</a></li>
+                                                <li><a class="text-capitalize" href="{$context-path}/browse?type=category">Browse by Subjects</a></li>
+                                                <li><a class="text-capitalize" href="{$context-path}/browse?type=author">Browse by Authors</a></li>
+                                                <li><a class="text-capitalize" href="{$context-path}/browse?type=dateissued">Browse by Issue Date</a></li>
                                             </ul>
                                         </li>
-
                                         <li>
                                             <a href="#educational-software" class="text-capitalized" style="color:#FFFF;"><i18n:text>xmlui.header.menu.educational.softwares</i18n:text></a>
                                         </li>
                                         <li>
                                             <a href="#educational-software" class="text-capitalized" style="color:#FFFF;"><i18n:text>xmlui.header.menu.audio.video</i18n:text></a>
                                         </li>
-                                        <li>
-                                            <a href="#educational-software" class="text-capitalized" style="color:#FFFF;"><i18n:text>xmlui.header.menu.referencegis</i18n:text></a>
-                                        </li>
-
                                     </ul>
                                 </div>
 

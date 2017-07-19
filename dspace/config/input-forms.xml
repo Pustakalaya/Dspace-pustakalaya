@@ -783,6 +783,11 @@
         <!-- Grade category -->
         <value-pairs value-pairs-name="common_subjects" dc-term="type">
             <pair>
+                <displayed-value>My School</displayed-value>
+                <stored-value>My School</stored-value>
+            </pair>
+
+            <pair>
                 <displayed-value>Nepali</displayed-value>
                 <stored-value>Nepali</stored-value>
             </pair>
