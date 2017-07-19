@@ -45,11 +45,12 @@ cd ImageMagick-7.0.6
 ./configure
 make
 sudo make install
-sudo ldconfig/usr/local/lib
+sudo ldconfig /usr/local/lib
 cd
 
 #TODO: install Ghostscript
 sudo apt-get install ghostscript
+sudo apt-get install imagemagick
 
 ##############################################################################
 #This section defines the installation and configuration of tomcat web server

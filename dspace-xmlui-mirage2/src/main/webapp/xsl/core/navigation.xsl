@@ -44,7 +44,7 @@
     <!-- TODO: figure out why i18n tags break the go button -->
     <xsl:template match="dri:options">
         <div id="ds-options" class="word-break hidden-print">
-            <xsl:if test="not(contains(/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='request'][@qualifier='URI'], 'discover'))">
+            <xsl:if test="not(contains(/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='request'][@qualifier='URI'], 'aspect.discovery.Navigation.list.discovery']'))">
                 <div id="ds-search-option" class="ds-option-set">
                     <!-- The form, complete with a text box and a button, all built from attributes referenced
                  from under pageMeta. -->
@@ -122,7 +122,13 @@
                     </form>
                 </div>
             </xsl:if>
-            <xsl:apply-templates/>
+            <!-- <xsl:apply-templates/> -->
+            <xsl:apply-templates select="dri:list[@n='discovery']"/>
+            <xsl:apply-templates select="dri:list[@n='context']"/>
+            <xsl:apply-templates select="dri:list[@n='account']"/>
+            <xsl:apply-templates select="dri:list[@n='administrative']"/>
+            <xsl:apply-templates select="dri:list[@n='statistics']"/>
+            <xsl:apply-templates select="dri:list[@n='browse']"/>
             <!-- DS-984 Add RSS Links to Options Box -->
             <xsl:if test="count(/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='feed']) != 0">
                 <div>
