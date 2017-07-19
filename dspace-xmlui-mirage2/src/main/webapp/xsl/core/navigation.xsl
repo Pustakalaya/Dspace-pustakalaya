@@ -44,7 +44,9 @@
     <!-- TODO: figure out why i18n tags break the go button -->
     <xsl:template match="dri:options">
         <div id="ds-options" class="word-break hidden-print">
-            <xsl:if test="not(contains(/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='request'][@qualifier='URI'], 'aspect.discovery.Navigation.list.discovery']'))">
+            <xsl:if test="not(contains(/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='request'][@qualifier='URI'], 'discover'))">
+
+
                 <div id="ds-search-option" class="ds-option-set">
                     <!-- The form, complete with a text box and a button, all built from attributes referenced
                  from under pageMeta. -->
