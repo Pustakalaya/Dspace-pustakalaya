@@ -2524,6 +2524,19 @@
     <message key="xmlui.ArtifactBrowser.Navigation.browse_titles">Titles</message>
     <message key="xmlui.ArtifactBrowser.Navigation.browse_authors">Authors</message>
 
+    <!--browse books-->
+    <message key="xmlui.ArtifactBrowser.Navigation.browse_literature_and_arts">Literature &amp; Arts</message>
+    <message key="xmlui.ArtifactBrowser.Navigation.browse_course_materials">Course Materials</message>
+    <message key="xmlui.ArtifactBrowser.Navigation.browse_teaching_materials">Teaching Materials</message>
+    <message key="xmlui.ArtifactBrowser.Navigation.browse_magazines_and_newspapers">Magazines &amp; Newspapers</message>
+    <message key="xmlui.ArtifactBrowser.Navigation.browse_agriculture_and_diversity">Agriculture &amp; Diversity</message>
+    <message key="xmlui.ArtifactBrowser.Navigation.browse_environment">Environment</message>
+    <message key="xmlui.ArtifactBrowser.Navigation.browse_science_and_technology">Science &amp; Technology</message>
+    <message key="xmlui.ArtifactBrowser.Navigation.browse_all_categories">All Categories</message>
+    <message key="xmlui.ArtifactBrowser.Navigation.browse_titles">Titles</message>
+    <message key="xmlui.ArtifactBrowser.Navigation.browse_authors">Authors</message>b
+
+
     <!-- Navigation -->
     <message key="xmlui.ArtifactBrowser.Navigation.browse_type">Browse by Type</message>
     <message key="xmlui.ArtifactBrowser.Navigation.browse_category">Browse by Subjects</message>
@@ -2566,8 +2579,37 @@
     <message key="xmlui.ArtifactBrowser.SimpleSearch.filter.grade">Grade</message>
     <message key="xmlui.ArtifactBrowser.SimpleSearch.filter.interactivity">Interactivity</message>
 
-    <!-- Home page messages -->
 
+
+
+    <!-- Above footer message -->
+    <message key="xmlui.aboutHomePage">E-Pustakalaya is an education-focused digital library containing full-text documents,
+        books, images, videos, audio files, and interactive educational software that can be accessed through an
+        intranet or on the Internet. OLE Nepal started the development of E-Pustakalaya in 2008 with the aim to improve
+        children's reading skills and develop a reading culture in schools by giving them free and open access
+        to age-appropriate reading materials and to enable students to do research projects and promote habit of
+        independent inquiry. Since E-Pustakalaya went live in 2009, teachers as well as other adults have also
+        benefited widely from various teaching resources, and educational materials in agriculture, health, environment,
+        local technologies, and so on.
+    </message>
+
+    <message key="xmlui.you.can.bring.epustakalaya.to.your.school">You can bring epustakalaya to your school.</message>
+    <message key="xmlui.you.can.donate.books.to.epustakalaya">You can donate books to epustakalaya.</message>
+
+
+
+    <message key="xmlui.more">More</message>
+
+
+
+    <!--Top navigation menu -->
+    <message key="xmlui.header.menu.books">Books</message>
+    <message key="xmlui.header.menu.educational.softwares">Educational Softwares</message>
+    <message key="xmlui.header.menu.audio.video">Audio and Video</message>
+    <message key="xmlui.header.menu.references">References</message>
+    <message key="xmlui.header.menu.browsePustakalaya">Browse Pustakalaya</message>
+
+    <!-- Home page messages -->
     <message key="xmlui.BrowseBooks">Browse Books</message>
     <message key="xmlui.search">Search</message>
     <message key="xmlui.advanceSearch">Advance Search</message>

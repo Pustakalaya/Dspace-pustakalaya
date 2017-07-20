@@ -52,6 +52,7 @@ cd
 sudo apt-get install ghostscript
 sudo apt-get install imagemagick
 
+
 ##############################################################################
 #This section defines the installation and configuration of tomcat web server
 ###############################################################################
@@ -334,6 +335,16 @@ sudo gem install sass -v 3.3.14
 
 # Install compass
 sudo gem install compass -v 1.0.1
+
+#TODO: install pdf.js
+wget https://github.com/mozilla/pdf.js/archive/gh-pages.zip
+unzip pdfjs-1.7.225-dist.zip -d /opt/tomcat/webapps/
+
+#TODO install video.js 
+wget https://github.com/videojs/video.js/releases/download/v6.2.1/video-js-6.2.1.zip
+mkdir /opt/tomcat/webapps/ROOT/video.js
+chown -R dspace /opt/tomcat/webapps/ROOT/video.js
+unzip video-js-6.2.1.zip -d /opt/tomcat/webapps/ROOT/video.js/
 
 #####################################
 # Installing some postbuilds scripts
