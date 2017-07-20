@@ -162,17 +162,26 @@
 		        </div>
 
 		</xsl:if>
+
 	<!-- Generate the pdf viewer if it is a compatible file. Currently pdf.js only supports viewing pdfs we may be able to expand to other file formats given another addon -->
 	<xsl:if test="(./mets:fileSec/mets:fileGrp[@USE='CONTENT']/mets:file[@MIMETYPE='application/pdf'])">
 
-		<iframe> 
-			<xsl:attribute name="src">/web/viewer.html?file= <xsl:value-of select="./mets:fileSec/mets:fileGrp[@USE='CONTENT']/mets:file[@MIMETYPE='application/pdf']/mets:FLocat[@LOCTYPE='URL']/@xlink:href"/></xsl:attribute> 
-			<xsl:attribute name="width">800</xsl:attribute> 
-			<xsl:attribute name="height">600</xsl:attribute> frameborder="0">
+	<!-- Generate the pdf viewer if it is a compatible file. Currently pdf.js only supports viewing pdfs we may be able to expand to other file formats given another addon -->
 
-		</iframe>
+		<xsl:if test="(./mets:fileSec/mets:fileGrp[@USE='CONTENT']/mets:file[@MIMETYPE='application/pdf'])">
+			<div>
+		            <xsl:for-each select="//mets:fileSec/mets:fileGrp[@USE='CONTENT' or @USE='ORIGINAL' or @USE='LICENSE']/mets:file">
+				<iframe> 
+				<xsl:attribute name="src">/web/viewer.html?file= <xsl:value-of select="mets:FLocat[@LOCTYPE='URL']/@xlink:href"/></xsl:attribute> 
+				<xsl:attribute name="width">800</xsl:attribute> 
+				<xsl:attribute name="height">600</xsl:attribute> frameborder="0">
+
+				</iframe>
+				
+		            </xsl:for-each>
+		        </div>
 		
-	</xsl:if>
+		</xsl:if>
 
         <!-- Generate the info about the item from the metadata section -->
         <xsl:apply-templates select="./mets:dmdSec/mets:mdWrap[@OTHERMDTYPE='DIM']/mets:xmlData/dim:dim"
