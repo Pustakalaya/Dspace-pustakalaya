@@ -880,9 +880,7 @@
                                             </xsl:otherwise>
                                         </xsl:choose>
                                     </ul>
-                                    <p>&nbsp;</p>
                                     <img src="/xmlui/themes/Mirage2//images/flag-nepal.png" style="margin-top:12px;margin-left:-95px;" />
-                                    <p>&nbsp;</p>
                                     <ul class="nav navbar-nav">
                                         <xsl:call-template name="languageSelection"/>
 
