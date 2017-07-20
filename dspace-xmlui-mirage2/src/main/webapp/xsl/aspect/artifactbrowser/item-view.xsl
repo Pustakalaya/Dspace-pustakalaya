@@ -164,9 +164,6 @@
 		</xsl:if>
 
 	<!-- Generate the pdf viewer if it is a compatible file. Currently pdf.js only supports viewing pdfs we may be able to expand to other file formats given another addon -->
-	<xsl:if test="(./mets:fileSec/mets:fileGrp[@USE='CONTENT']/mets:file[@MIMETYPE='application/pdf'])">
-
-	<!-- Generate the pdf viewer if it is a compatible file. Currently pdf.js only supports viewing pdfs we may be able to expand to other file formats given another addon -->
 
 		<xsl:if test="(./mets:fileSec/mets:fileGrp[@USE='CONTENT']/mets:file[@MIMETYPE='application/pdf'])">
 			<div>
