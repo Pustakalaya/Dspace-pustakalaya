@@ -1179,42 +1179,12 @@
     <xsl:template name="buildFooter">
         <footer>
 
-            <div class="container ">
-                <!--<div class="row footer-banner-first">-->
-                <!--<div class="col-sm-6">-->
-                <!--<p style="color:#FFF">Developed and Maintained by</p>-->
-                <!--<a href="http://www.pustakalaya.org" target="_blank">-->
-                <!--<img class="pustakalaya-logo" src="{concat($theme-path, '/images/pustakalaya-logo.png')}"/>-->
-                <!--</a>-->
-                <!--</div>-->
-                <!--<div class="col-sm-6">-->
-                <!--<nav class="navbar" role="navigation">-->
-                <!--<ul class="nav navbar-nav navbar-right">-->
-                <!--<li><button type="button" class="btn btn-sm btn-default " style="maring-top:20px;" >-->
-                <!--connect-->
-                <!--</button></li>-->
-                <!--<li><a  href="https://www.facebook.com/Epustakalaya" target="_blank">-->
-                <!--<img class="social-media-logo" src="{concat($theme-path, '/images/facebook.png')}"/>-->
-                <!--</a></li>-->
-                <!--<li><a href="https://www.twitter.com/Epustakalaya" target="_blank">-->
-                <!--<img class="social-media-logo" src="{concat($theme-path, '/images/twiter.png')}"/>-->
-                <!--</a></li>-->
-                <!--<li><a class="pull-right" href="https://www.instagram.com/Epustakalaya" target="_blank">-->
-                <!--<img class="social-media-logo" src="{concat($theme-path, '/images/instagram.png')}"/>-->
-                <!--</a></li>-->
-
-                <!--</ul>-->
-                <!--</nav>-->
-                <!--</div>-->
-                <!--</div>-->
-            </div><!-- content container -->
-
             <!--upper banner-->
             <div class="footer-banner-first">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6">
-                            <p style="color:#FFF">Developed and Maintained by:</p>
+                            <p style="color:#FFF" class="text-capitalized"><i18n:text>xmlui.footer.developed.and.maintained.by</i18n:text></p>
                             <img class="pustakalaya-logo" src="{$theme-path}/images/eplogo.png"
                                  style="height=30px; width=30px;"/>
                         </div>
@@ -1255,13 +1225,13 @@
                                     <div>
                                         <img src="{concat($theme-path, '/images/creative-commons.png')}"/>
                                         <br/>
-                                        <p style="color:#444444">Creative commons Description Goes here</p>
+                                        <p style="color:#444444" class="text-capitalized"><i18n:text>xmlui.footer.creative.commons</i18n:text><a href="https://creativecommons.org/licenses/by-nc-nd/3.0/" target="_blank">Licensing Details.</a></p>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <!-- Our  Partners here -->
                                     <div id="our-partners">
-                                        <h3 class="text-uppercase">OUR PARTNERS</h3>
+                                        <h3 class="text-uppercase"><i18n:text>xmlui.footer.our.partners</i18n:text></h3>
 
 
                                         <a href="http://www.maitritrust.org.uk/" target="_blank"
@@ -1291,8 +1261,7 @@
                             <div class="row">
                                 <div id="our-content-contributors"
                                      style="border-left: 6px solid #f2f2f2; position:absolute; ">
-                                    <h3 class="text-uppercase" style="margin-left:20px;">OUR CONTENT CONTRIBUTORS</h3>
-                                    <div class="col-sm-2 col-xs-2">
+                                    <h3 class="text-uppercase" style="margin-left:20px;"><i18n:text>xmlui.footer.our.content.contributors</i18n:text></h3>
                                         <a href="http://www.savethechildren.org/countries/asia/nepal.html"
                                            target="_blank"
                                            title="Save The Children">
@@ -1300,25 +1269,17 @@
                                                  src="{concat($theme-path, '/images/STC_logo.png')}"
                                                  alt="STC Logo"/>
                                         </a>
-                                    </div>
-
-                                    <div class="col-sm-2 col-xs-2">
                                         <a href="http://www.rbf.org.np/" target="_blank"
                                            title="Rato Bangala Foundation">
                                             <img class="partner-logo" src="{concat($theme-path, '/images/rtf.png')}"
                                                  alt="RBF Logo"/>
                                         </a>
-                                    </div>
-
-                                    <div class="col-sm-2 col-xs-2">
                                         <a href="http://www.gorkhapatra.org.np/" target="_blank" title="Gorakhapatra">
                                             <img class="partner-logo"
                                                  src="{concat($theme-path, '/images/gorkhapatra-logo.png')}"
                                                  alt="GP Logo"
                                                  width="28" height="31"/>
                                         </a>
-                                    </div>
-
                                     <a href="http://www.roomtoread.org/countries/nepal.html" target="_blank"
                                        title="Room To Read">
                                         <img class="partner-logo"
@@ -1370,7 +1331,7 @@
 
                                     <a href="http://www.digitalhimalaya.com/" target="_blank" title="Digital Himalaya">
                                         <img style="margin:20px; width:50px; height:30px;"
-                                             src="{concat($theme-path, '/images/digital-himalaya-logo.png')}"
+                                             src="{concat($theme-path, '/images/DH_logo_small.gif')}"
                                              alt="DH Logo"
                                              height="31"/>
                                     </a>

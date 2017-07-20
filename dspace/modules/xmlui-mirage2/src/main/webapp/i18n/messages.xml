@@ -2603,6 +2603,12 @@
     <message key="xmlui.header.menu.browsePustakalaya">Browse Pustakalaya</message>
 
 
+    <!--footer-->
+    <message key="xmlui.footer.creative.commons">Unless explicitly mentioned, all the contents on this website are licensed under Creative Commons.
+        See</message>
+    <message key="xmlui.footer.developed.and.maintained.by">Developed and maintained by:</message>
+    <message key="xmlui.footer.our.partners">Our partners</message>
+    <message key="xmlui.footer.our.content.contributors">Our content contributors</message>
 
 
 
