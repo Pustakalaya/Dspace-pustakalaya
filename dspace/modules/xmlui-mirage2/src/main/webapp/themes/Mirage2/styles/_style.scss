@@ -13,17 +13,13 @@
 
 //example mixin to set the text-selection style
 @mixin selection {
-  ::-moz-selection {
-    @content;
-  }
-  ::selection {
-    @content;
-  }
+    ::-moz-selection { @content; }
+    ::selection { @content; }
 }
 
 @include selection {
-  color: white;
-  background: hotpink;
+    color: white;
+    background: hotpink;
 }
 
 .publication-records-modal, .publication-records-modal ul {
@@ -59,168 +55,66 @@
     overflow-y: auto;
   }
 
-  #aspect_submission_StepTransformer_item_publication-title {
-    margin-bottom: 5px;
+  #aspect_submission_StepTransformer_item_publication-title{
+    margin-bottom:5px;
   }
 
-}
-
-/* Navigation menu */
-#pustakalaya-navbar > li > a {
-  background: #27ae60;
-  color: #FFF;
-  padding-top:5px !important; padding-bottom:5px !important;
-}
-
-ul#pustakalaya-navbar > li > a:hover {
-  background: #16a085;
-  cursor:pointer;
-}
-
-ul#pustakalaya-navbar > li > a:active {
-  background: #16a085;
-}
 
 
-/* search box section */
-#pustakalaya_searchBox{
-  margin-top:20%; /* Don't copy this */
 }
-.stylish-input-group .input-group-addon{
-  background: white !important;
-}
-.stylish-input-group .form-control{
-  border-right:0;
-  box-shadow:0 0 0;
-  border-color:#ccc;
-}
-.stylish-input-group button{
-  border:0;
-  background:transparent;
-}
+/*header style*/
+.navbar-green{
+  border-radius: 12px;
+  background: #006400;
+  height: 20px;
+  width: auto;
+  margin: 5px 0px 15px 0px;
 
-/* Book browsing section */
-#book-browsing > ul{
-  list-style: none;
-}
-
-#book-browsing > ul >li {
-  margin-top: 5px;
-  text-align: center;
-  background: rgba(189, 195, 199,1.0);
-  width: 60%;
-  border-radius: 5px;
-  padding: 5px;
-  margin-bottom: 5px;
-}
-
-#book-browsing.col-md-4 > ul > li > a {
-  color: #333333;
-}
-
-#book-browsing.col-md-4 > ul > li > a:hover{
-  color: #16a085;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-/* Header styling */
-#book-gallery > img {
-  filter: 808080; /* IE6-9 */
-  -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
-  -webkit-box-shadow: 0px 2px 6px 2px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 2px 6px 2px rgba(0, 0, 0, 0.75);
-  box-shadow: 0px 2px 6px 2px rgba(0, 0, 0, 0.75);
-  margin-bottom: 20px;
-}
-
-#book-gallery > img:hover {
-  filter: none; /* IE6-9 */
-  -webkit-filter: grayscale(0); /* Google Chrome, Safari 6+ & Opera 15+ */
 
 }
 
 
-/* Pustakalaya Section */
-.pustakalayaSection{
-  height: 250px;
-  background: #81C784;
-}
 
-
-pustakalayaSection > div > h4 {
-  padding-top: 10px;
-  color: #eeeeee;
-  text-transform: capitalize;
-  display:inline-block;
-  background-color:#16a085;
-  padding: 8px;
-
-}
-
-/*style for slider*/
-.carousel-inner > .item > img, .carousel-inner > .item > a > img {
-  display: block;
-  height: 200px;
-  min-width: 100%;
-  width: 100%;
-  max-width: 100%;
-  line-height: 1;
-}
-
-.carousel-inner>.item>img{
-  height: 250px;
-  max-width: 100%;
-}
-
-/* Interactive educational software style section */
-.carousel-control {
-  padding-top:10%;
-  width:5%;
-}
-
-
-/*styling of pustakalayaSection*/
-div.well{
-  background:#A5D6A7;
-  border:0px;
-  border-radius:0px;
-  -webkit-border-radius: 0px;
-  -moz-border-radius: 0px;
-  -o-border-radius: 0px;
-  border-radius: 0px;
-  border: 0px;
-}
 
 /* footer styling*/
 
 .footer-banner-first {
   background-color: #444444;
-  width: auto;
   width: 100%;
 }
 
-.social-media-logo {
+.social-media-logo{
   width: 30px;
-  height: 30px;
+  height:30px;
 }
 
-.partner-logo {
+.partner-logo{
   margin: 10px;
-  width: 35px;
-  height: 33px;
+  width: 32px;
+  height: 35px;
 }
 
-.pustakalaya-logo {
+.pustakalaya-logo{
+  width: 122px;
+  height:44px;
+}
+
+
+.pustakalaya-logo{
   margin: 10px;
   width: 122px;
-  height: 44px;
+  height:44px;
 }
 
-.pustakalaya-menu {
+.pustakalaya-menu{
   background-color: #34cc0c;
-  border: none;
+  float: _center_position();
 
 }
+.navbar-green{
+  background: #34cc0c;
+  border: none;
+}
+
 
 
