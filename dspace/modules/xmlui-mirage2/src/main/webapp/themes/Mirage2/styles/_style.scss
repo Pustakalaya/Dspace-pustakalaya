@@ -214,13 +214,18 @@ div.well{
   background: #FFFFFF;
   margin: 10px;
   width: 122px;
-  height: 44px;
+  height: 38px;
 }
 
 .pustakalaya-menu {
   background-color: #34cc0c;
   border: none;
 
+}
+
+/*hover dropdown menu */
+.dropdown:hover .dropdown-menu {
+  display: block;
 }
 
 

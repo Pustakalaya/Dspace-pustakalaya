@@ -354,9 +354,9 @@
                                                                 </div>
                                                                 <div class="col-sm-3"><a href="http://pustakalaya.org/maps.php" target="_blank"><img src="{$theme-path}/images/openstreetmap_withtext.png" alt="Image" class="img-responsive"/></a>
                                                                 </div>
-                                                                <div class="col-sm-3"><a href="#x"><img src="{$theme-path}/images/nepali-dictionary.png" alt="Image" class="img-responsive"/></a>
+                                                                <div class="col-sm-3"><a href="http://pustakalaya.org/sabdakosh.php" target="_blank"><img src="{$theme-path}/images/nepali-dictionary.png" alt="Image" class="img-responsive"/></a>
                                                                 </div>
-                                                                <div class="col-sm-3"><a href="#x"><img src="{$theme-path}/images/Wikipedia_for_Schools_2013_logo.png" alt="Image" class="img-responsive"/></a>
+                                                                <div class="col-sm-3"><a href="http://pustakalaya.org/list.php?collection_pid=Pustakalaya:65" target="_blank"><img src="{$theme-path}/images/Wikipedia_for_Schools_2013_logo.png" alt="Image" class="img-responsive"/></a>
                                                                 </div>
                                                             </div>
                                                             <!-- row -->
@@ -436,6 +436,56 @@
                                 </div>
 
                             </div>
+
+
+                            <!--dashboard menu-->
+                            <div class="container" id="dashboard">
+                                <div class="row">
+                                        <nav class="navbar navbar-default" role="navigation">
+
+                                            <!-- Brand and toggle get grouped for better mobile display -->
+                                            <div class="navbar-header">
+                                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                                    <span class="sr-only">Toggle navigation</span>
+                                                    <span class="icon-bar"></span>
+                                                    <span class="icon-bar"></span>
+                                                    <span class="icon-bar"></span>
+                                                </button>
+                                            </div>
+
+                                            <!-- Collect the nav links, forms, and other content for toggling -->
+                                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                                <ul class="nav navbar-nav">
+                                                    <li class="active">
+                                                        <a href="{/dri:document/dri:meta/dri:userMeta/dri:metadata[@element='identifier' and @qualifier='url']}">
+                                                            <i18n:text>xmlui.EPerson.Navigation.profile</i18n:text>
+                                                        </a>
+                                                    </li>
+                                                    <li><a href="#"><i18n:text>xmlui.administrative.Navigation.context_create_community</i18n:text></a></li>
+                                                    <li><a href="#"><i18n:text>xmlui.Submission.Navigation.submissions</i18n:text></a></li>
+                                                    <li class="dropdown">
+                                                        <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><i18n:text>xmlui.administrative.Navigation.administrative_control_panel</i18n:text> <b class="caret"></b></a>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a href="#"><i18n:text>xmlui.administrative.Navigation.administrative_metadata</i18n:text></a></li>
+                                                            <li><a href="#"><i18n:text>xmlui.administrative.ControlPanel.harvest_label_status</i18n:text></a></li>
+                                                            <li><a href="#"><i18n:text>xmlui.administrative.Navigation.administrative_people</i18n:text></a></li>
+                                                            <li class="divider"></li>
+                                                            <li><a href="#"><i18n:text>xmlui.administrative.Navigation.administrative_groups</i18n:text></a></li>
+                                                            <li class="divider"></li>
+                                                            <li><a href="#"><i18n:text>xmlui.administrative.Navigation.administrative_curation</i18n:text></a></li>
+                                                            <li><a href="#"><i18n:text>xmlui.administrative.Navigation.administrative_authorizations</i18n:text></a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{/dri:document/dri:meta/dri:userMeta/dri:metadata[@element='identifier' and @qualifier='logoutURL']}">
+                                                            <i18n:text>xmlui.EPerson.Navigation.logout</i18n:text>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div><!-- /.navbar-collapse -->
+                                        </nav><!--end nav-->
+                                    </div><!--end row-->
+                                 </div><!--end container-->
 
                             <div id="main-container" class="container">
 
@@ -722,7 +772,7 @@
                                 <div class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
                                     <ul id="pustakalaya-navbar" class="nav navbar-nav" >
                                         <li class="dropdown" id="pustakalaya-dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" id="pustakalaya-menu-toggle" aria-haspopup="true" aria-expanded="false"><i18n:text>xmlui.header.menu.browsePustakalaya</i18n:text><span class="caret"></span></a>
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" role="button" id="pustakalaya-menu-toggle"><i18n:text>xmlui.header.menu.browsePustakalaya</i18n:text><span class="caret"></span></a>
                                             <ul class="dropdown-menu" id="pustakalaya-dropdown-menu">
                                                 <li><a class="text-capitalize" href="{$context-path}/browse?type=grade">Browse by title</a></li>
                                                 <li><a class="text-capitalize" href="{$context-path}/browse?type=level">Browse by Education level</a></li>
@@ -743,7 +793,7 @@
 
                             </div>
                         </div>
-                        <div class="col-sm-1">
+                        <div class="col-sm-1  hidden-xs">
                             <img src="{$theme-path}/images/flag-nepal.png" style="padding-left:10px; padding-right:10px; margin-top:15px; margin-left:70px;"/>
                         </div>
                         <div class="col-md-2">
@@ -1327,7 +1377,7 @@
 
                                     <a href="http://www.digitalhimalaya.com/" target="_blank" title="Digital Himalaya">
                                         <img style="margin:20px; width:50px; height:30px;"
-                                             src="{concat($theme-path, '/images/DH-logo_small.gif')}"
+                                             src="{concat($theme-path, '/images/DH_logo_small.gif')}"
                                              alt="DH Logo"
                                              height="31"/>
                                     </a>
@@ -1409,6 +1459,20 @@
                 }
             </script>
 
+            <!--hide dashboard in homepage-->
+            <script type="text/javascript">
+                var pathname1="/";
+                var pathname2="/xmlui/";
+                var navigationBar= document.getElementById("dashboard");
+                var currentPath=window.location.pathname;
+                if(currentPath == pathname1 || currentPath == pathname2){
+                navigationBar.hidden = true;
+                }else {
+                navigationBar.hidden = false;
+                }
+            </script>
+
+
             <!--hide carousel sliders except home page-->
             <script type="text/javascript">
                 var pathname1="/";
@@ -1421,25 +1485,7 @@
                 slider.hidden = true;
                 }
             </script>
-            <script type="text/javascript">
-                <!--$("#pustakalaya-dropdown-menu").hide();
-                $("#pustakalaya-menu-toggle").mouseover(function(){
-                    $("#pustakalaya-dropdown-menu").slideDown('slow');
-                });
-                $("#pustakalaya-dropdown").mouseleave(function(){
-                    $("#pustakalaya-dropdown-menu").slideUp('slow');
-                });-->
 
-                $(document).ready(function () {
-                    $("#pustakalaya-dropdown").hover(function () {
-                    $('ul#pustakalaya-dropdown-menu').slideDown('medium');
-                    },
-                    function () {
-                    $('ul#pustakalaya-dropdown-menu').slideUp('medium');
-                });
-
-                });
-            </script>
 
 
         </footer>
@@ -1500,7 +1546,20 @@
                 select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='contextPath'][not(@qualifier)]"/><xsl:text>';</xsl:text>
             <xsl:text>window.publication.themePath= '</xsl:text><xsl:value-of select="$theme-path"/><xsl:text>';</xsl:text>
         </script>
+
+        <!--dropdown menu-->
+        <script type="text/javascript">
+            $('ul.nav li.dropdown').hover(function() {
+            $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
+            }, function() {
+            $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
+            });
+
+            });
+        </script>
+
         <!--TODO concat & minify!-->
+
 
         <script>
             <xsl:text>if(!window.DSpace){window.DSpace={};}window.DSpace.context_path='</xsl:text><xsl:value-of
