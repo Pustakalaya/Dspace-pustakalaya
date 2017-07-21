@@ -210,17 +210,17 @@
                                                     <div class="carousel-inner">
                                                         <div class="item active">
                                                             <div class="row">
-                                                                <div class="col-sm-2"><a href="#x"><img src="{$theme-path}/images/e-paath.png" alt="Image" class="img-responsive"/></a>
+                                                                <div class="col-sm-2"><a href="http://pustakalaya.org/epaath/" target="_blank"><img src="{$theme-path}/images/e-paath.png" alt="Image" class="img-responsive"/></a>
                                                                 </div>
-                                                                <div class="col-sm-2"><a href="#x"><img src="{$theme-path}/images/learn-english-for-kids.png" alt="Image" class="img-responsive"/></a>
+                                                                <div class="col-sm-2"><a href="http://pustakalaya.org/lekids.php" target="_blank"><img src="{$theme-path}/images/learn-english-for-kids.png" alt="Image" class="img-responsive"/></a>
                                                                 </div>
-                                                                <div class="col-sm-2"><a href="#x"><img src="{$theme-path}/images/e-learning-forkids.png" alt="Image" class="img-responsive"/></a>
+                                                                <div class="col-sm-2"><a href="http://pustakalaya.org/elkids.php" target="_blank"><img src="{$theme-path}/images/e-learning-forkids.png" alt="Image" class="img-responsive"/></a>
                                                                 </div>
-                                                                <div class="col-sm-2"><a href="#x"><img src="{$theme-path}/images/npp-logo.png" alt="Image" class="img-responsive"/></a>
+                                                                <div class="col-sm-2"><a href="http://pustakalaya.org/sabdakosh.php" target="_blank"><img src="{$theme-path}/images/npp-logo.png" alt="Image" class="img-responsive"/></a>
                                                                 </div>
                                                                 <div class="col-sm-2"><a href="#x"><img src="{$theme-path}/images/simulations.png" alt="Image" class="img-responsive"/></a>
                                                                 </div>
-                                                                <div class="col-sm-2"><a href="#x"><img src="{$theme-path}/images/audiobook.png" alt="Image" class="img-responsive"/></a>
+                                                                <div class="col-sm-2"><a href="http://pustakalaya.org/audio.php" target="_blank"><img src="{$theme-path}/images/audiobook.png" alt="Image" class="img-responsive"/></a>
                                                                 </div>
                                                             </div>
                                                             <!--row-->
@@ -350,9 +350,9 @@
                                                     <div class="carousel-inner">
                                                         <div class="item active">
                                                             <div class="row">
-                                                                <div class="col-sm-3"><a href="#x"><img src="{$theme-path}/images/nepal-dictionary.png" alt="Image" class="img-responsive"/></a>
+                                                                <div class="col-sm-3"><a href="http://pustakalaya.org/sabdakosh.php" target="_blank"><img src="{$theme-path}/images/nepal-dictionary.png" alt="Image" class="img-responsive"/></a>
                                                                 </div>
-                                                                <div class="col-sm-3"><a href="#x"><img src="{$theme-path}/images/openstreetmap_withtext.png" alt="Image" class="img-responsive"/></a>
+                                                                <div class="col-sm-3"><a href="http://pustakalaya.org/maps.php" target="_blank"><img src="{$theme-path}/images/openstreetmap_withtext.png" alt="Image" class="img-responsive"/></a>
                                                                 </div>
                                                                 <div class="col-sm-3"><a href="#x"><img src="{$theme-path}/images/nepali-dictionary.png" alt="Image" class="img-responsive"/></a>
                                                                 </div>
@@ -742,6 +742,9 @@
                                 </div>
 
                             </div>
+                        </div>
+                        <div class="col-sm-1">
+                            <img src="{$theme-path}/images/flag-nepal.png" style="padding-left:10px; padding-right:10px; margin-top:15px; margin-left:70px;"/>
                         </div>
                         <div class="col-md-2">
                             <div class="navbar-header pull-right hidden-xs">
@@ -1184,7 +1187,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6">
-                            <p style="color:#FFF">Developed and Maintained by:</p>
+                            <p style="color:#FFF" class="text-capitalized"><i18n:text>xmlui.developed.and.maintained.by</i18n:text></p>
                             <img class="pustakalaya-logo" src="{$theme-path}/images/eplogo.png"
                                  style="height=30px; width=30px;"/>
                         </div>
@@ -1202,12 +1205,8 @@
                                      style="margin:20px;"/>
                             </a>
                             <a class="pull-right" href="">
-                                <img class="social-media-logo" src="{concat($theme-path, '/images/connect.png')}"
-                                     style="margin:20px;"/>
+                                <button class="btn btn-primary" style="margin:20px;">Contact</button>
                             </a>
-                            <!--<button type="button" class="btn btn-sm btn-default pull-right" style="margin:20px;">-->
-                            <!--connect-->
-                            <!--</button>-->
                         </div>
                     </div><!-- end row -->
                 </div><!-- end container -->
@@ -1224,13 +1223,16 @@
                                     <div>
                                         <img src="{concat($theme-path, '/images/creative-commons.png')}"/>
                                         <br/>
-                                        <p style="color:#444444">Creative commons Description Goes here</p>
+                                        <p style="color:#444444" class="text-capitalized">
+                                            <i18n:text>xmlui.creative.commons</i18n:text>
+                                            <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/" target="_blank">Licensing details</a>
+                                        </p>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <!-- Our  Partners here -->
                                     <div id="our-partners">
-                                        <h3 class="text-uppercase">OUR PARTNERS</h3>
+                                        <h3 class="text-uppercase"><i18n:text>xmlui.our.partners</i18n:text></h3>
 
 
                                         <a href="http://www.maitritrust.org.uk/" target="_blank"
@@ -1255,7 +1257,7 @@
                             <!--Content contributors -->
                                 <div id="our-content-contributors"
                                      style="border-left: 3px solid #f2f2f2; position:absolute; ">
-                                    <h3 class="text-uppercase" style="margin-left:20px;">OUR CONTENT CONTRIBUTORS</h3>
+                                    <h3 class="text-uppercase" style="margin-left:20px;"><i18n:text>xmlui.our.content.contributors</i18n:text></h3>
                                         <a href="http://www.savethechildren.org/countries/asia/nepal.html"
                                            target="_blank"
                                            title="Save The Children">

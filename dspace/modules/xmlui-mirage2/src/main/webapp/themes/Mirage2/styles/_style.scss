@@ -105,6 +105,12 @@ ul#pustakalaya-navbar > li > a:active {
 
 #book-browsing > ul >li {
   margin-top: 5px;
+  text-align: center;
+  background: rgba(189, 195, 199,1.0);
+  width: 60%;
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 5px;
 }
 
 #book-browsing.col-md-4 > ul > li > a {
@@ -205,6 +211,7 @@ div.well{
 }
 
 .pustakalaya-logo {
+  background: #FFFFFF;
   margin: 10px;
   width: 122px;
   height: 44px;
