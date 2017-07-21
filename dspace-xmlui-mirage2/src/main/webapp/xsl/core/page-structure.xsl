@@ -180,22 +180,15 @@
                                         <!-- Browse by section -->
                                         <div class="col-md-4" id="book-browsing" style="margin-left:5.5%;">
                                             <ul>
-                                                <li><a href="/browse?type=literature_and_arts" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_literature_and_arts</i18n:text></a></li>
-                                                <li><a href="/browse?type=course_materials" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_course_materials</i18n:text></a><i18n:text></i18n:text></li>
-                                                <li><a href="/browse?type=teaching_materials" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_teaching_materials</i18n:text></a></li>
-                                                <li><a href="/browse?type=magazines_and_newspapers" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_magazines_and_newspapers</i18n:text></a></li>
-                                                <li><a href="/browse?type=agriculture_and_diversity" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_agriculture_and_diversity</i18n:text></a></li>
-                                                <li><a href="/browse?type=environment" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_environment</i18n:text></a></li>
-                                                <li><a href="/browse?type=science_and_technology" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_science_and_technology</i18n:text></a></li>
-                                                <li><a href="/browse?type=all_categories" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_all_categories</i18n:text></a></li>
-                                                <li><a href="/browse?type=titles_or_authors" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_titles</i18n:text><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_authors</i18n:text></a></li>
-                                            </ul>
-                                            <ul>
-                                                <li><a href="/browse?type=type" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_type</i18n:text></a></li>
-                                                <li><a href="/browse?type=category" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_category</i18n:text></a></li>
-                                                <li><a href="/browse?type=interactivity" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_interactivity</i18n:text></a></li>
-                                                <li><a href="/browse?type=grade" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_grade</i18n:text></a></li>
-                                                <li><a href="/browse?type=type" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_level</i18n:text></a></li>
+                                                <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Literature+and+Arts" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_literature_and_arts</i18n:text></a></li>
+                                                <li><a href="{$context-path}/browse?type=course_materials" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_course_materials</i18n:text></a><i18n:text></i18n:text></li>
+                                                <li><a href="{$context-path}/browse?type=teaching_materials" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_teaching_materials</i18n:text></a></li>
+                                                <li><a href="{$context-path}/browse?type=magazines_and_newspapers" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_magazines_and_newspapers</i18n:text></a></li>
+                                                <li><a href="{$context-path}/browse?type=agriculture_and_diversity" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_agriculture_and_diversity</i18n:text></a></li>
+                                                <li><a href="{$context-path}/browse?type=environment" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_environment</i18n:text></a></li>
+                                                <li><a href="{$context-path}/browse?type=science_and_technology" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_science_and_technology</i18n:text></a></li>
+                                                <li><a href="{$context-path}/browse?type=all_categories" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_all_categories</i18n:text></a></li>
+                                                <li><a href="{$context-path}/browse?type=titles_or_authors" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_titles</i18n:text><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_authors</i18n:text></a></li>
                                             </ul>
                                         </div>
                                         <!-- Book gallery demo -->
@@ -515,6 +508,17 @@
                 </xsl:attribute>
             </link>
 
+            <!-- include css for video and audio playback -->
+            <link type="text/css" rel="stylesheet">
+                <xsl:attribute name="src"><xsl:value-of select="./tomcat/webapps/ROOT/video.js/video.js.css"/>
+                </xsl:attribute>
+            </link>
+
+            <script>
+                <xsl:attribute name="src"><xsl:value-of select="./tomcat/webapps/ROOT/video.js/video.min.js"/>
+                </xsl:attribute>
+            </script>
+
             <meta name="Generator">
                 <xsl:attribute name="content">
                     <xsl:text>DSpace</xsl:text>
@@ -717,8 +721,16 @@
                                 </div>
                                 <div class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
                                     <ul id="pustakalaya-navbar" class="nav navbar-nav" >
-                                        <li>
-                                            <a href="#educational-software" class="text-capitalized" style="color:#FFFF;"><i18n:text>xmlui.header.menu.books</i18n:text></a>
+                                        <li class="dropdown" id="pustakalaya-dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" id="pustakalaya-menu-toggle" aria-haspopup="true" aria-expanded="false"><i18n:text>xmlui.header.menu.browsePustakalaya</i18n:text><span class="caret"></span></a>
+                                            <ul class="dropdown-menu" id="pustakalaya-dropdown-menu">
+                                                <li><a class="text-capitalize" href="{$context-path}/browse?type=grade">Browse by title</a></li>
+                                                <li><a class="text-capitalize" href="{$context-path}/browse?type=level">Browse by Education level</a></li>
+                                                <li><a class="text-capitalize" href="{$context-path}/browse?type=type">Browse by Data type</a></li>
+                                                <li><a class="text-capitalize" href="{$context-path}/browse?type=category">Browse by Subjects</a></li>
+                                                <li><a class="text-capitalize" href="{$context-path}/browse?type=author">Browse by Authors</a></li>
+                                                <li><a class="text-capitalize" href="{$context-path}/browse?type=dateissued">Browse by Issue Date</a></li>
+                                            </ul>
                                         </li>
                                         <li>
                                             <a href="#educational-software" class="text-capitalized" style="color:#FFFF;"><i18n:text>xmlui.header.menu.educational.softwares</i18n:text></a>
@@ -726,10 +738,6 @@
                                         <li>
                                             <a href="#educational-software" class="text-capitalized" style="color:#FFFF;"><i18n:text>xmlui.header.menu.audio.video</i18n:text></a>
                                         </li>
-                                        <li>
-                                            <a href="#educational-software" class="text-capitalized" style="color:#FFFF;"><i18n:text>xmlui.header.menu.references</i18n:text></a>
-                                        </li>
-
                                     </ul>
                                 </div>
 
@@ -1171,36 +1179,6 @@
     <xsl:template name="buildFooter">
         <footer>
 
-            <div class="container ">
-                <!--<div class="row footer-banner-first">-->
-                <!--<div class="col-sm-6">-->
-                <!--<p style="color:#FFF">Developed and Maintained by</p>-->
-                <!--<a href="http://www.pustakalaya.org" target="_blank">-->
-                <!--<img class="pustakalaya-logo" src="{concat($theme-path, '/images/pustakalaya-logo.png')}"/>-->
-                <!--</a>-->
-                <!--</div>-->
-                <!--<div class="col-sm-6">-->
-                <!--<nav class="navbar" role="navigation">-->
-                <!--<ul class="nav navbar-nav navbar-right">-->
-                <!--<li><button type="button" class="btn btn-sm btn-default " style="maring-top:20px;" >-->
-                <!--connect-->
-                <!--</button></li>-->
-                <!--<li><a  href="https://www.facebook.com/Epustakalaya" target="_blank">-->
-                <!--<img class="social-media-logo" src="{concat($theme-path, '/images/facebook.png')}"/>-->
-                <!--</a></li>-->
-                <!--<li><a href="https://www.twitter.com/Epustakalaya" target="_blank">-->
-                <!--<img class="social-media-logo" src="{concat($theme-path, '/images/twiter.png')}"/>-->
-                <!--</a></li>-->
-                <!--<li><a class="pull-right" href="https://www.instagram.com/Epustakalaya" target="_blank">-->
-                <!--<img class="social-media-logo" src="{concat($theme-path, '/images/instagram.png')}"/>-->
-                <!--</a></li>-->
-
-                <!--</ul>-->
-                <!--</nav>-->
-                <!--</div>-->
-                <!--</div>-->
-            </div><!-- content container -->
-
             <!--upper banner-->
             <div class="footer-banner-first">
                 <div class="container">
@@ -1241,7 +1219,6 @@
                     <div class="row ">
                         <!-- First Box-->
                         <div class="col-md-6">
-                            <div class="row">
                                 <div class="col-md-6">
                                     <!-- Creative Commons logo -->
                                     <div>
@@ -1269,9 +1246,6 @@
                                                  src="{concat($theme-path, '/images/Nepal-Library-Foundation-logo.png')}"
                                                  alt="Nepal Library Foundation"/>
                                         </a>
-
-
-                                    </div>
                                 </div>
                             </div>
                         </div><!-- First Box finished -->
@@ -1279,12 +1253,9 @@
                         <!--Vertical divider -->
                         <div class="col-md-6">
                             <!--Content contributors -->
-                            <!--row1-->
-                            <div class="row">
                                 <div id="our-content-contributors"
-                                     style="border-left: 6px solid #f2f2f2; position:absolute; ">
+                                     style="border-left: 3px solid #f2f2f2; position:absolute; ">
                                     <h3 class="text-uppercase" style="margin-left:20px;">OUR CONTENT CONTRIBUTORS</h3>
-                                    <div class="col-sm-2 col-xs-2">
                                         <a href="http://www.savethechildren.org/countries/asia/nepal.html"
                                            target="_blank"
                                            title="Save The Children">
@@ -1292,25 +1263,17 @@
                                                  src="{concat($theme-path, '/images/STC_logo.png')}"
                                                  alt="STC Logo"/>
                                         </a>
-                                    </div>
-
-                                    <div class="col-sm-2 col-xs-2">
                                         <a href="http://www.rbf.org.np/" target="_blank"
                                            title="Rato Bangala Foundation">
                                             <img class="partner-logo" src="{concat($theme-path, '/images/rtf.png')}"
                                                  alt="RBF Logo"/>
                                         </a>
-                                    </div>
-
-                                    <div class="col-sm-2 col-xs-2">
                                         <a href="http://www.gorkhapatra.org.np/" target="_blank" title="Gorakhapatra">
                                             <img class="partner-logo"
                                                  src="{concat($theme-path, '/images/gorkhapatra-logo.png')}"
                                                  alt="GP Logo"
                                                  width="28" height="31"/>
                                         </a>
-                                    </div>
-
                                     <a href="http://www.roomtoread.org/countries/nepal.html" target="_blank"
                                        title="Room To Read">
                                         <img class="partner-logo"
@@ -1362,13 +1325,12 @@
 
                                     <a href="http://www.digitalhimalaya.com/" target="_blank" title="Digital Himalaya">
                                         <img style="margin:20px; width:50px; height:30px;"
-                                             src="{concat($theme-path, '/images/digital-himalaya-logo.png')}"
+                                             src="{concat($theme-path, '/images/DH-logo_small.gif')}"
                                              alt="DH Logo"
                                              height="31"/>
                                     </a>
                                 </div>
-                            </div><!--end row1 -->
-                        </div>
+                         </div>
                     </div><!-- end row -->
                 </div><!-- end container -->
             </div><!-- end footer banner second -->
@@ -1456,6 +1418,25 @@
                 }else {
                 slider.hidden = true;
                 }
+            </script>
+            <script type="text/javascript">
+                <!--$("#pustakalaya-dropdown-menu").hide();
+                $("#pustakalaya-menu-toggle").mouseover(function(){
+                    $("#pustakalaya-dropdown-menu").slideDown('slow');
+                });
+                $("#pustakalaya-dropdown").mouseleave(function(){
+                    $("#pustakalaya-dropdown-menu").slideUp('slow');
+                });-->
+
+                $(document).ready(function () {
+                    $("#pustakalaya-dropdown").hover(function () {
+                    $('ul#pustakalaya-dropdown-menu').slideDown('medium');
+                    },
+                    function () {
+                    $('ul#pustakalaya-dropdown-menu').slideUp('medium');
+                });
+
+                });
             </script>
 
 
