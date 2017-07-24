@@ -271,6 +271,7 @@
 
                                 <!--  Interactive audio video materials -->
                                 <div class="pustakalayaSection" style="background:#81C784; margin-top:-20px;">
+
                                     <div class="container">
                                         <h4 class="text-center text-capitalize" style="color:#060605;">Educational audio videos</h4>
                                         <div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
@@ -293,7 +294,6 @@
                                                                 <div class="col-sm-2"><a href="#x"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
                                                                 </div>
                                                             </div>
-                                                            <!--row-->
                                                         </div>
                                                         <!--item-->
                                                         <div class="item">
@@ -480,7 +480,6 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-
     <!-- The HTML head element contains references to CSS as well as embedded JavaScript code. Most of this
     information is either user-provided bits of post-processing (as in the case of the JavaScript), or
     references to stylesheets pulled directly from the pageMeta element. -->
@@ -958,6 +957,7 @@
                 </div>
             </div><!--end menu icon header -->
         </header><!--end header -->
+	
 
     </xsl:template>
 
@@ -1178,7 +1178,6 @@
     <!-- Like the header, the footer contains various miscellaneous text, links, and image placeholders -->
     <xsl:template name="buildFooter">
         <footer>
-
             <div class="container ">
                 <!--<div class="row footer-banner-first">-->
                 <!--<div class="col-sm-6">-->
