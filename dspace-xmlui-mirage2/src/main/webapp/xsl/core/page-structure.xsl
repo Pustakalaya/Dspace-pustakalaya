@@ -181,14 +181,14 @@
                                         <div class="col-md-4" id="book-browsing" style="margin-left:5.5%;">
                                             <ul>
                                                 <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Literature+and+Arts" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_literature_and_arts</i18n:text></a></li>
-                                                <li><a href="{$context-path}/browse?type=course_materials" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_course_materials</i18n:text></a><i18n:text></i18n:text></li>
-                                                <li><a href="{$context-path}/browse?type=teaching_materials" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_teaching_materials</i18n:text></a></li>
-                                                <li><a href="{$context-path}/browse?type=magazines_and_newspapers" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_magazines_and_newspapers</i18n:text></a></li>
-                                                <li><a href="{$context-path}/browse?type=agriculture_and_diversity" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_agriculture_and_diversity</i18n:text></a></li>
-                                                <li><a href="{$context-path}/browse?type=environment" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_environment</i18n:text></a></li>
-                                                <li><a href="{$context-path}/browse?type=science_and_technology" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_science_and_technology</i18n:text></a></li>
-                                                <li><a href="{$context-path}/browse?type=all_categories" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_all_categories</i18n:text></a></li>
-                                                <li><a href="{$context-path}/browse?type=titles_or_authors" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_titles</i18n:text><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_authors</i18n:text></a></li>
+                                                <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Course+Materials" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_course_materials</i18n:text></a><i18n:text></i18n:text></li>
+                                                <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Teaching+Materials" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_teaching_materials</i18n:text></a></li>
+                                                <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Magazines+and+Newspapers" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_magazines_and_newspapers</i18n:text></a></li>
+                                                <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Agriculture+and+Diversity" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_agriculture_and_diversity</i18n:text></a></li>
+                                                <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Environment" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_environment</i18n:text></a></li>
+                                                <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Science+and+Technology" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_science_and_technology</i18n:text></a></li>
+                                                <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=All+Categories" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_all_categories</i18n:text></a></li>
+                                                <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Title+or+Authors" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_titles</i18n:text><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_authors</i18n:text></a></li>
                                             </ul>
                                         </div>
                                         <!-- Book gallery demo -->
@@ -437,55 +437,6 @@
 
                             </div>
 
-
-                            <!--dashboard menu-->
-                            <div class="container" id="dashboard">
-                                <div class="row">
-                                        <nav class="navbar navbar-default" role="navigation">
-
-                                            <!-- Brand and toggle get grouped for better mobile display -->
-                                            <div class="navbar-header">
-                                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                                                    <span class="sr-only">Toggle navigation</span>
-                                                    <span class="icon-bar"></span>
-                                                    <span class="icon-bar"></span>
-                                                    <span class="icon-bar"></span>
-                                                </button>
-                                            </div>
-
-                                            <!-- Collect the nav links, forms, and other content for toggling -->
-                                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                                                <ul class="nav navbar-nav">
-                                                    <li class="active">
-                                                        <a href="{/dri:document/dri:meta/dri:userMeta/dri:metadata[@element='identifier' and @qualifier='url']}">
-                                                            <i18n:text>xmlui.EPerson.Navigation.profile</i18n:text>
-                                                        </a>
-                                                    </li>
-                                                    <li><a href="#"><i18n:text>xmlui.administrative.Navigation.context_create_community</i18n:text></a></li>
-                                                    <li><a href="#"><i18n:text>xmlui.Submission.Navigation.submissions</i18n:text></a></li>
-                                                    <li class="dropdown">
-                                                        <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><i18n:text>xmlui.administrative.Navigation.administrative_control_panel</i18n:text> <b class="caret"></b></a>
-                                                        <ul class="dropdown-menu">
-                                                            <li><a href="#"><i18n:text>xmlui.administrative.Navigation.administrative_metadata</i18n:text></a></li>
-                                                            <li><a href="#"><i18n:text>xmlui.administrative.ControlPanel.harvest_label_status</i18n:text></a></li>
-                                                            <li><a href="#"><i18n:text>xmlui.administrative.Navigation.administrative_people</i18n:text></a></li>
-                                                            <li class="divider"></li>
-                                                            <li><a href="#"><i18n:text>xmlui.administrative.Navigation.administrative_groups</i18n:text></a></li>
-                                                            <li class="divider"></li>
-                                                            <li><a href="#"><i18n:text>xmlui.administrative.Navigation.administrative_curation</i18n:text></a></li>
-                                                            <li><a href="#"><i18n:text>xmlui.administrative.Navigation.administrative_authorizations</i18n:text></a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li>
-                                                        <a href="{/dri:document/dri:meta/dri:userMeta/dri:metadata[@element='identifier' and @qualifier='logoutURL']}">
-                                                            <i18n:text>xmlui.EPerson.Navigation.logout</i18n:text>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div><!-- /.navbar-collapse -->
-                                        </nav><!--end nav-->
-                                    </div><!--end row-->
-                                 </div><!--end container-->
 
                             <div id="main-container" class="container">
 
@@ -802,6 +753,11 @@
                                     <xsl:call-template name="languageSelection"/>
                                 </ul>
                                 <ul class="nav navbar-nav pull-left">
+                                    <li class="active">
+                                        <a href="http://localhost:8080/xmlui/admin/panel">
+                                            <i18n:text>xmlui.administrative.Navigation.administrative_control_panel</i18n:text>
+                                        </a>
+                                    </li>
                                     <xsl:choose>
                                         <xsl:when test="/dri:document/dri:meta/dri:userMeta/@authenticated = 'yes'">
                                             <li class="dropdown">
@@ -1451,19 +1407,6 @@
                 var pathname1="/";
                 var pathname2="/xmlui/";
                 var navigationBar= document.getElementById("main-container");
-                var currentPath=window.location.pathname;
-                if(currentPath == pathname1 || currentPath == pathname2){
-                navigationBar.hidden = true;
-                }else {
-                navigationBar.hidden = false;
-                }
-            </script>
-
-            <!--hide dashboard in homepage-->
-            <script type="text/javascript">
-                var pathname1="/";
-                var pathname2="/xmlui/";
-                var navigationBar= document.getElementById("dashboard");
                 var currentPath=window.location.pathname;
                 if(currentPath == pathname1 || currentPath == pathname2){
                 navigationBar.hidden = true;
