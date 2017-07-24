@@ -1511,7 +1511,11 @@
 
             <!-- Check for the custom pages -->
             <xsl:choose>
-                <xsl:when test="starts-with($request-uri, 'page/about')">i</xsl:when>
+                <xsl:when test="starts-with($request-uri, 'page/about')">
+                    <!-- About page -->
+                    <i18n:text>xmlui.static.page.about</i18n:text>
+
+                </xsl:when>
                 <!-- Otherwise use default handling of body -->
                 <xsl:otherwise>
                     <xsl:apply-templates/>
