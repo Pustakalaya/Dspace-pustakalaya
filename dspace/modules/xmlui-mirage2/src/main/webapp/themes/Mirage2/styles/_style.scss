@@ -74,7 +74,6 @@
 
 ul#pustakalaya-navbar > li > a:hover {
   background: #16a085;
-  cursor:pointer;
 }
 
 ul#pustakalaya-navbar > li > a:active {
@@ -196,8 +195,6 @@ div.well{
 
 .footer-banner-first {
   background-color: #444444;
-  background: #006400;
-  height: 20px;
   width: auto;
   width: 100%;
 }
@@ -209,20 +206,26 @@ div.well{
 
 .partner-logo {
   margin: 10px;
-  width: 30px;
-  height: 30px;
+  width: 37px;
+  height: 32px;
 }
 
 .pustakalaya-logo {
+  background: #FFFFFF;
   margin: 10px;
   width: 122px;
-  height: 44px;
+  height: 38px;
 }
 
 .pustakalaya-menu {
   background-color: #34cc0c;
   border: none;
 
+}
+
+/*hover dropdown menu */
+.dropdown:hover .dropdown-menu {
+  display: block;
 }
 
 
