@@ -609,8 +609,7 @@
                 if (defaultedElements[i].value == '<i18n:text>xmlui.dri2xhtml.default.textarea.value</i18n:text>'){
                 defaultedElements[i].value='';}}
                 }
-                //Disable pressing 'enter' key to submit a form (otherwise pressing 'enter' causes a submission to start
-                over)
+                //Disable pressing 'enter' key to submit a form (otherwise pressing 'enter' causes a submission to start over)
                 function disableEnterKey(e)
                 {
                 var key;
@@ -724,7 +723,7 @@
                                     <ul id="pustakalaya-navbar" class="nav navbar-nav" >
                                         <li class="dropdown" id="pustakalaya-dropdown">
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" role="button" id="pustakalaya-menu-toggle"><i18n:text>xmlui.header.menu.browsePustakalaya</i18n:text><span class="caret"></span></a>
-                                            <ul class="dropdown-menu" id="pustakalaya-dropdown-menu">
+                                            <ul class="dropdown-menu" id="pustakalaya-dropdown-menu" style="padding-top:0px !important; padding-bottom:0px !important">
                                                 <li><a class="text-capitalize" href="{$context-path}/browse?type=grade">Browse by title</a></li>
                                                 <li><a class="text-capitalize" href="{$context-path}/browse?type=level">Browse by Education level</a></li>
                                                 <li><a class="text-capitalize" href="{$context-path}/browse?type=type">Browse by Data type</a></li>
@@ -754,7 +753,7 @@
                                 </ul>
                                 <ul class="nav navbar-nav pull-left">
                                     <li class="active">
-                                        <a href="http://localhost:8080/xmlui/admin/panel">
+                                        <a href="{$context-path}/admin/panel">
                                             <i18n:text>xmlui.administrative.Navigation.administrative_control_panel</i18n:text>
                                         </a>
                                     </li>
@@ -1494,23 +1493,13 @@
             <xsl:text>window.publication.themePath= '</xsl:text><xsl:value-of select="$theme-path"/><xsl:text>';</xsl:text>
         </script>
 
-        <!--dropdown menu-->
-        <script type="text/javascript">
-            $('ul.nav li.dropdown').hover(function() {
-            $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
-            }, function() {
-            $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
-            });
-
-            });
-        </script>
-
         <!--TODO concat & minify!-->
 
 
         <script>
             <xsl:text>if(!window.DSpace){window.DSpace={};}window.DSpace.context_path='</xsl:text><xsl:value-of
-                select="$context-path"/><xsl:text>';window.DSpace.theme_path='</xsl:text><xsl:value-of
+                select="$context-path"/><xsl:text>';
+                window.DSpace.theme_path='</xsl:text><xsl:value-of
                 select="$theme-path"/><xsl:text>';</xsl:text>
         </script>
 

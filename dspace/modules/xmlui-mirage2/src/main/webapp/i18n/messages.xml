@@ -2697,6 +2697,9 @@
     <message key="xmlui.header.menu.audiovideo">Audio Videos</message>
     <message key="xmlui.header.menu.references">References</message>
 
+    <!--static page-->
+    <message key="xmlui.static.page.about">About</message>
+
 
 
 
