@@ -1231,7 +1231,6 @@
     <!-- Like the header, the footer contains various miscellaneous text, links, and image placeholders -->
     <xsl:template name="buildFooter">
         <footer>
-<<<<<<< HEAD
             <div class="container ">
                 <!--<div class="row footer-banner-first">-->
                 <!--<div class="col-sm-6">-->
@@ -1261,9 +1260,6 @@
                 <!--</div>-->
                 <!--</div>-->
             </div><!-- content container -->
-=======
->>>>>>> 22d112af3a20a06e4f913716ef0086abcd368ec2
-
             <!--upper banner-->
             <div class="footer-banner-first">
                 <div class="container">
