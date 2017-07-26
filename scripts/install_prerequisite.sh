@@ -336,6 +336,9 @@ sudo gem install sass -v 3.3.14
 # Install compass
 sudo gem install compass -v 1.0.1
 
+
+#Quick Note: So these features needs DSpace to register mp4 and mp3 files as bitstream formats
+#If the format is not available one needs to manually add it after compiling DSpace
 #TODO: install pdf.js
 wget https://github.com/mozilla/pdf.js/archive/gh-pages.zip
 unzip pdfjs-1.7.225-dist.zip -d /opt/tomcat/webapps/
