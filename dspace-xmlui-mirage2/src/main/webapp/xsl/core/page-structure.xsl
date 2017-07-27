@@ -272,7 +272,7 @@
                                         <h4 class="text-center text-capitalize" style="color:#060605;">Educational audio videos</h4>
                                         <div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
                                             <div class="well">
-                                                <div id="myCarousel" class="carousel slide">
+                                                <div id="myCarousel2" class="carousel slide">
                                                     <!--Carousel items-->
                                                     <div class="carousel-inner">
                                                         <div class="item active">
@@ -323,11 +323,11 @@
                                                         <!--item-->
                                                     </div>
                                                     <!--carousel-inner-->
-                                                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+                                                    <a class="left carousel-control" href="#myCarousel2" data-slide="prev">‹</a>
 
-                                                    <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+                                                    <a class="right carousel-control" href="#myCarousel2" data-slide="next">›</a>
                                                 </div>
-                                                <!--myCarousel-->
+                                                <!--myCarousel2-->
                                             </div>
                                             <!--well-->
                                         </div>
@@ -341,7 +341,7 @@
                                         <h4 class="text-center text-capitalize" style="color:#060605;">References Materials</h4>
                                         <div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
                                             <div class="well">
-                                                <div id="myCarousel" class="carousel slide">
+                                                <div id="myCarousel3" class="carousel slide">
                                                     <!-- Carousel items -->
                                                     <div class="carousel-inner">
                                                         <div class="item active">
@@ -390,11 +390,11 @@
                                                         <!--item-->
                                                     </div>
                                                     <!--carousel-inner-->
-                                                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+                                                    <a class="left carousel-control" href="#myCarousel3" data-slide="prev">‹</a>
 
-                                                    <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+                                                    <a class="right carousel-control" href="#myCarousel3" data-slide="next">›</a>
                                                 </div>
-                                                <!--myCarousel-->
+                                                <!--myCarousel3-->
                                             </div>
                                             <!--well-->
                                         </div>
@@ -703,7 +703,7 @@
                                 <li class="dropdown" id="pustakalaya-dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" role="button" id="pustakalaya-menu-toggle"><i18n:text>xmlui.header.menu.browsePustakalaya</i18n:text><span class="caret"></span></a>
                                     <ul class="dropdown-menu" id="pustakalaya-dropdown-menu" style="padding-top:0px !important; padding-bottom:0px !important">
-                                        <li><a class="text-capitalize" href="{$context-path}/browse?type=grade">Browse by title</a></li>
+                                        <li><a class="text-capitalize" href="{$context-path}/browse?type=title">Browse by title</a></li>
                                         <li><a class="text-capitalize" href="{$context-path}/browse?type=level">Browse by Education level</a></li>
                                         <li><a class="text-capitalize" href="{$context-path}/browse?type=type">Browse by Data type</a></li>
                                         <li><a class="text-capitalize" href="{$context-path}/browse?type=category">Browse by Subjects</a></li>
