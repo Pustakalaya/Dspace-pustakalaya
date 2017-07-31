@@ -38,7 +38,8 @@
         Requested Page URI. Some functions may alter behavior of processing depending if URI matches a pattern.
         Specifically, adding a static page will need to override the DRI, to directly add content.
     -->
-    <xsl:variable name="request-uri" select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='request'][@qualifier='URI']"/>
+    <xsl:variable name="request-uri"
+                  select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='request'][@qualifier='URI']"/>
 
     <!--
         The starting point of any XSL processing is matching the root element. In DRI the root element is document,
@@ -63,15 +64,16 @@
             <xsl:when test="not($isModal)">
 
 
-            <xsl:text disable-output-escaping='yes'>&lt;!DOCTYPE html&gt;
-            </xsl:text>
+	<xsl:text disable-output-escaping='yes'>&lt;!DOCTYPE html&gt;
+	</xsl:text>
                 <xsl:text disable-output-escaping="yes">&lt;!--[if lt IE 7]&gt; &lt;html class=&quot;no-js lt-ie9 lt-ie8 lt-ie7&quot; lang=&quot;en&quot;&gt; &lt;![endif]--&gt;
-            &lt;!--[if IE 7]&gt;    &lt;html class=&quot;no-js lt-ie9 lt-ie8&quot; lang=&quot;en&quot;&gt; &lt;![endif]--&gt;
-            &lt;!--[if IE 8]&gt;    &lt;html class=&quot;no-js lt-ie9&quot; lang=&quot;en&quot;&gt; &lt;![endif]--&gt;
-            &lt;!--[if gt IE 8]&gt;&lt;!--&gt; &lt;html class=&quot;no-js&quot; lang=&quot;en&quot;&gt; &lt;!--&lt;![endif]--&gt;
-            </xsl:text>
+	&lt;!--[if IE 7]&gt;    &lt;html class=&quot;no-js lt-ie9 lt-ie8&quot; lang=&quot;en&quot;&gt; &lt;![endif]--&gt;
+	&lt;!--[if IE 8]&gt;    &lt;html class=&quot;no-js lt-ie9&quot; lang=&quot;en&quot;&gt; &lt;![endif]--&gt;
+	&lt;!--[if gt IE 8]&gt;&lt;!--&gt; &lt;html class=&quot;no-js&quot; lang=&quot;en&quot;&gt; &lt;!--&lt;![endif]--&gt;
+	</xsl:text>
 
                 <!-- First of all, build the HTML head element -->
+
 
                 <xsl:call-template name="buildHead"/>
 
@@ -86,6 +88,9 @@
                             <xsl:apply-templates select="dri:body/*"/>
                         </xsl:when>
                         <xsl:otherwise>
+                            <!--
+                            <xsl:call-template name="buildTrail"/>
+                            -->
                             <xsl:call-template name="buildHeader"/>
 
                             <!--javascript-disabled warning, will be invisible if javascript is enabled-->
@@ -177,14 +182,14 @@
                                         <div class="col-md-4" id="book-browsing" style="margin-left:5.5%;">
                                             <ul>
                                                 <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Literature+and+Arts" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_literature_and_arts</i18n:text></a></li>
-                                                <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Course+Materials" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_course_materials</i18n:text></a><i18n:text></i18n:text></li>
-                                                <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Teaching+Materials" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_teaching_materials</i18n:text></a></li>
-                                                <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Magazines+and+Newspapers" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_magazines_and_newspapers</i18n:text></a></li>
-                                                <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Agriculture+and+Diversity" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_agriculture_and_diversity</i18n:text></a></li>
-                                                <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Environment" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_environment</i18n:text></a></li>
-                                                <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Science+and+Technology" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_science_and_technology</i18n:text></a></li>
-                                                <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=All+Categories" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_all_categories</i18n:text></a></li>
-                                                <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Title+or+Authors" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_titles</i18n:text><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_authors</i18n:text></a></li>
+                                                <li><a href="{$context-path}/browse?type=course_materials" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_course_materials</i18n:text></a><i18n:text></i18n:text></li>
+                                                <li><a href="{$context-path}/browse?type=teaching_materials" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_teaching_materials</i18n:text></a></li>
+                                                <li><a href="{$context-path}/browse?type=magazines_and_newspapers" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_magazines_and_newspapers</i18n:text></a></li>
+                                                <li><a href="{$context-path}/browse?type=agriculture_and_diversity" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_agriculture_and_diversity</i18n:text></a></li>
+                                                <li><a href="{$context-path}/browse?type=environment" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_environment</i18n:text></a></li>
+                                                <li><a href="{$context-path}/browse?type=science_and_technology" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_science_and_technology</i18n:text></a></li>
+                                                <li><a href="{$context-path}/browse?type=all_categories" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_all_categories</i18n:text></a></li>
+                                                <li><a href="{$context-path}/browse?type=titles_or_authors" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_titles</i18n:text><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_authors</i18n:text></a></li>
                                             </ul>
                                         </div>
                                         <!-- Book gallery demo -->
@@ -221,22 +226,8 @@
                                                             </div>
                                                             <!--row-->
                                                         </div>
-                                                        <!--item-->
-                                                        <div class="item">
-                                                            <div class="row">
-                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
-                                                                </div>
-                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
-                                                                </div>
-                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
-                                                                </div>
-                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
-                                                                </div>
-                                                            </div>
 
-                                                        </div>
-
-                                                        <!--item-->
+                                                        <!--item
                                                         <div class="item">
                                                             <div class="row">
                                                                 <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/150x150" alt="Image" class="img-responsive"/></a>
@@ -250,7 +241,7 @@
                                                             </div>
 
                                                         </div>
-                                                        <!--item-->
+                                                        item-->
                                                     </div>
                                                     <!--carousel-inner-->
                                                     <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
@@ -266,68 +257,18 @@
                                 </div>
 
                                 <!--  Interactive audio video materials -->
-                                <div class="pustakalayaSection" style="background:#81C784; margin-top:-20px;">
-
+                                <div class="pustakalayaSection" style="background:#81C784; height:350px; margin-top:-20px;">
                                     <div class="container">
                                         <h4 class="text-center text-capitalize" style="color:#060605;">Educational audio videos</h4>
                                         <div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
                                             <div class="well">
-                                                <div id="myCarousel2" class="carousel slide">
-                                                    <!--Carousel items-->
-                                                    <div class="carousel-inner">
-                                                        <div class="item active">
-                                                            <div class="row">
-                                                                <div class="col-sm-2"><a href="#x"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
-                                                                </div>
-                                                                <div class="col-sm-2"><a href="#x"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
-                                                                </div>
-                                                                <div class="col-sm-2"><a href="#x"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
-                                                                </div>
-                                                                <div class="col-sm-2"><a href="#x"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
-                                                                </div>
-                                                                <div class="col-sm-2"><a href="#x"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
-                                                                </div>
-                                                                <div class="col-sm-2"><a href="#x"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!--item-->
-                                                        <div class="item">
-                                                            <div class="row">
-                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
-                                                                </div>
-                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
-                                                                </div>
-                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
-                                                                </div>
-                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
-                                                                </div>
-                                                            </div>
+                                                <!--Carousel items-->
 
-                                                        </div>
+                                                <ul id="audioVideoSection">
 
-                                                        <!--item-->
-                                                        <div class="item">
-                                                            <div class="row">
-                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/150x150" alt="Image" class="img-responsive"/></a>
-                                                                </div>
-                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/150x150" alt="Image" class="img-responsive"/></a>
-                                                                </div>
-                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/150x150" alt="Image" class="img-responsive"/></a>
-                                                                </div>
-                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/150x150" alt="Image" class="img-responsive"/></a>
-                                                                </div>
-                                                            </div>
+                                                </ul>
 
-                                                        </div>
-                                                        <!--item-->
-                                                    </div>
-                                                    <!--carousel-inner-->
-                                                    <a class="left carousel-control" href="#myCarousel2" data-slide="prev">‹</a>
 
-                                                    <a class="right carousel-control" href="#myCarousel2" data-slide="next">›</a>
-                                                </div>
-                                                <!--myCarousel2-->
                                             </div>
                                             <!--well-->
                                         </div>
@@ -341,7 +282,7 @@
                                         <h4 class="text-center text-capitalize" style="color:#060605;">References Materials</h4>
                                         <div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
                                             <div class="well">
-                                                <div id="myCarousel3" class="carousel slide">
+                                                <div id="myCarousel" class="carousel slide">
                                                     <!-- Carousel items -->
                                                     <div class="carousel-inner">
                                                         <div class="item active">
@@ -390,11 +331,11 @@
                                                         <!--item-->
                                                     </div>
                                                     <!--carousel-inner-->
-                                                    <a class="left carousel-control" href="#myCarousel3" data-slide="prev">‹</a>
+                                                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
 
-                                                    <a class="right carousel-control" href="#myCarousel3" data-slide="next">›</a>
+                                                    <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
                                                 </div>
-                                                <!--myCarousel3-->
+                                                <!--myCarousel-->
                                             </div>
                                             <!--well-->
                                         </div>
@@ -434,6 +375,55 @@
                             </div>
 
 
+                            <!--dashboard menu-->
+                            <div class="container" id="dashboard">
+                                <div class="row">
+                                    <nav class="navbar navbar-default" role="navigation">
+
+                                        <!-- Brand and toggle get grouped for better mobile display -->
+                                        <div class="navbar-header">
+                                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                                <span class="sr-only">Toggle navigation</span>
+                                                <span class="icon-bar"></span>
+                                                <span class="icon-bar"></span>
+                                                <span class="icon-bar"></span>
+                                            </button>
+                                        </div>
+
+                                        <!-- Collect the nav links, forms, and other content for toggling -->
+                                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                            <ul class="nav navbar-nav">
+                                                <li class="active">
+                                                    <a href="{/dri:document/dri:meta/dri:userMeta/dri:metadata[@element='identifier' and @qualifier='url']}">
+                                                        <i18n:text>xmlui.EPerson.Navigation.profile</i18n:text>
+                                                    </a>
+                                                </li>
+                                                <li><a href="#"><i18n:text>xmlui.administrative.Navigation.context_create_community</i18n:text></a></li>
+                                                <li><a href="#"><i18n:text>xmlui.Submission.Navigation.submissions</i18n:text></a></li>
+                                                <li class="dropdown">
+                                                    <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><i18n:text>xmlui.administrative.Navigation.administrative_control_panel</i18n:text> <b class="caret"></b></a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="#"><i18n:text>xmlui.administrative.Navigation.administrative_metadata</i18n:text></a></li>
+                                                        <li><a href="#"><i18n:text>xmlui.administrative.ControlPanel.harvest_label_status</i18n:text></a></li>
+                                                        <li><a href="#"><i18n:text>xmlui.administrative.Navigation.administrative_people</i18n:text></a></li>
+                                                        <li class="divider"></li>
+                                                        <li><a href="#"><i18n:text>xmlui.administrative.Navigation.administrative_groups</i18n:text></a></li>
+                                                        <li class="divider"></li>
+                                                        <li><a href="#"><i18n:text>xmlui.administrative.Navigation.administrative_curation</i18n:text></a></li>
+                                                        <li><a href="#"><i18n:text>xmlui.administrative.Navigation.administrative_authorizations</i18n:text></a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="{/dri:document/dri:meta/dri:userMeta/dri:metadata[@element='identifier' and @qualifier='logoutURL']}">
+                                                        <i18n:text>xmlui.EPerson.Navigation.logout</i18n:text>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div><!-- /.navbar-collapse -->
+                                    </nav><!--end nav-->
+                                </div><!--end row-->
+                            </div><!--end container-->
+
                             <div id="main-container" class="container">
 
                                 <div class="row row-offcanvas row-offcanvas-right">
@@ -441,9 +431,9 @@
                                         <div class="col-xs-12 col-sm-12 col-md-9 main-content">
                                             <xsl:apply-templates select="*[not(self::dri:options)]"/>
 
-                                            <div class="visible-xs visible-sm">
+                                            <!--div class="visible-xs visible-sm">
                                                 <xsl:call-template name="buildFooter"/>
-                                            </div>
+                                            </div-->
                                         </div>
                                         <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
                                             <xsl:apply-templates select="dri:options"/>
@@ -455,12 +445,12 @@
                                 <!--
                             The footer div, dropping whatever extra information is needed on the page. It will
                             most likely be something similar in structure to the currently given example. -->
-                                <!--<div class="hidden-xs hidden-sm">
+                                <!--
+                                <div class="hidden-xs hidden-sm">
                                     <xsl:call-template name="buildFooter"/>
-                                </div>-->
+                                </div>
+                                -->
                             </div>
-
-
                         </xsl:otherwise>
                     </xsl:choose>
                     <!-- Javascript at the bottom for fast page loading -->
@@ -477,6 +467,7 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
+
     <!-- The HTML head element contains references to CSS as well as embedded JavaScript code. Most of this
     information is either user-provided bits of post-processing (as in the case of the JavaScript), or
     references to stylesheets pulled directly from the pageMeta element. -->
@@ -520,7 +511,8 @@
                     <xsl:text>DSpace</xsl:text>
                     <xsl:if test="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='dspace'][@qualifier='version']">
                         <xsl:text> </xsl:text>
-                        <xsl:value-of select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='dspace'][@qualifier='version']"/>
+                        <xsl:value-of
+                                select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='dspace'][@qualifier='version']"/>
                     </xsl:if>
                 </xsl:attribute>
             </meta>
@@ -532,6 +524,7 @@
                     </xsl:attribute>
                 </meta>
             </xsl:if>
+
             <!-- Add stylesheets -->
 
             <!--TODO figure out a way to include these in the concat & minify-->
@@ -566,18 +559,22 @@
             <xsl:if test="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='opensearch'][@qualifier='shortName']">
                 <link rel="search" type="application/opensearchdescription+xml">
                     <xsl:attribute name="href">
-                        <xsl:value-of select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='request'][@qualifier='scheme']"/>
+                        <xsl:value-of
+                                select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='request'][@qualifier='scheme']"/>
                         <xsl:text>://</xsl:text>
-                        <xsl:value-of select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='request'][@qualifier='serverName']"/>
+                        <xsl:value-of
+                                select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='request'][@qualifier='serverName']"/>
                         <xsl:text>:</xsl:text>
-                        <xsl:value-of select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='request'][@qualifier='serverPort']"/>
+                        <xsl:value-of
+                                select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='request'][@qualifier='serverPort']"/>
                         <xsl:value-of select="$context-path"/>
                         <xsl:text>/</xsl:text>
-                        <xsl:value-of select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='opensearch'][@qualifier='context']"/>
-                        <xsl:text>description.xml</xsl:text>
+                        <xsl:value-of
+                                select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='opensearch'][@qualifier='autolink']"/>
                     </xsl:attribute>
-                    <xsl:attribute name="title" >
-                        <xsl:value-of select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='opensearch'][@qualifier='shortName']"/>
+                    <xsl:attribute name="title">
+                        <xsl:value-of
+                                select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='opensearch'][@qualifier='shortName']"/>
                     </xsl:attribute>
                 </link>
             </xsl:if>
@@ -585,12 +582,12 @@
             <!-- The following javascript removes the default text of empty text areas when they are focused on or submitted -->
             <!-- There is also javascript to disable submitting a form when the 'enter' key is pressed. -->
             <script>
-                //Clear default text of emty text areas on focus
+                //Clear default text of empty text areas on focus
                 function tFocus(element)
                 {
                 if (element.value == '<i18n:text>xmlui.dri2xhtml.default.textarea.value</i18n:text>'){element.value='';}
                 }
-                //Clear default text of emty text areas on submit
+                //Clear default text of empty text areas on submit
                 function tSubmit(form)
                 {
                 var defaultedElements = document.getElementsByTagName("textarea");
@@ -604,11 +601,11 @@
                 var key;
 
                 if(window.event)
-                key = window.event.keyCode;     //Internet Explorer
+                key = window.event.keyCode; //Internet Explorer
                 else
-                key = e.which;     //Firefox and Netscape
+                key = e.which; //Firefox and Netscape
 
-                if(key == 13)  //if "Enter" pressed, then disable!
+                if(key == 13) //if "Enter" pressed, then disable!
                 return false;
                 else
                 return true;
@@ -616,15 +613,20 @@
             </script>
 
             <xsl:text disable-output-escaping="yes">&lt;!--[if lt IE 9]&gt;
-                &lt;script src="</xsl:text><xsl:value-of select="concat($theme-path, 'vendor/html5shiv/dist/html5shiv.js')"/><xsl:text disable-output-escaping="yes">"&gt;&#160;&lt;/script&gt;
-                &lt;script src="</xsl:text><xsl:value-of select="concat($theme-path, 'vendor/respond/respond.min.js')"/><xsl:text disable-output-escaping="yes">"&gt;&#160;&lt;/script&gt;
+                &lt;script src="</xsl:text><xsl:value-of
+                select="concat($theme-path, 'vendor/html5shiv/dist/html5shiv.js')"/><xsl:text
+                disable-output-escaping="yes">"&gt;&#160;&lt;/script&gt;
+                &lt;script src="</xsl:text><xsl:value-of
+                select="concat($theme-path, 'vendor/respond/dest/respond.min.js')"/><xsl:text
+                disable-output-escaping="yes">"&gt;&#160;&lt;/script&gt;
                 &lt;![endif]--&gt;</xsl:text>
 
             <!-- Modernizr enables HTML5 elements & feature detects -->
             <script src="{concat($theme-path, 'vendor/modernizr/modernizr.js')}">&#160;</script>
 
             <!-- Add the title in -->
-            <xsl:variable name="page_title" select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='title'][last()]" />
+            <xsl:variable name="page_title"
+                          select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='title'][last()]"/>
             <title>
                 <xsl:choose>
                     <xsl:when test="starts-with($request-uri, 'page/about')">
@@ -634,7 +636,7 @@
                         <xsl:text>  </xsl:text>
                     </xsl:when>
                     <xsl:otherwise>
-                        <xsl:copy-of select="$page_title/node()" />
+                        <xsl:copy-of select="$page_title/node()"/>
                     </xsl:otherwise>
                 </xsl:choose>
             </title>
@@ -646,7 +648,8 @@
             </xsl:if>
 
             <!-- Add all Google Scholar Metadata values -->
-            <xsl:for-each select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[substring(@element, 1, 9) = 'citation_']">
+            <xsl:for-each
+                    select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[substring(@element, 1, 9) = 'citation_']">
                 <meta name="{@element}" content="{.}"></meta>
             </xsl:for-each>
 
@@ -665,8 +668,12 @@
                     }
                     });
                 </script>
-                <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">&#160;</script>
+                <script type="text/javascript"
+                        src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">&#160;
+                </script>
             </xsl:if>
+            <script type="text/javascript"
+                    src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.0/handlebars.js"></script>
 
         </head>
     </xsl:template>
@@ -680,120 +687,113 @@
         <header>
             <!-- menu icon -->
             <div class="navbar navbar-static-top" role="navigation" style="margin-top:15px; margin-bottom:15px;">
-             <div class="container">
+                <div class="container">
 
-            <!-- Pustakalaya custom navbar -->
-            <div class="row">
-                <div class="col-md-2">
-                    <a class="navbar-brand" href="/">
-                        <img src="{$theme-path}/images/ep_logo.png" style="height:40px; padding-bottom:10px;"/>
-                    </a>
-                </div><!-- Logo -->
-                <div class="col-md-6 col-md-offset-1" id="pustakalaya-navbar"
-                     style="padding-top:10px; padding-bottom:10px;">
-                    <div style="border-radius: 10px; background:#27ae60;
+                    <!-- Pustakalaya custom navbar -->
+                    <div class="row">
+                        <div class="col-md-2">
+                            <a class="navbar-brand" href="/">
+                                <img src="{$theme-path}/images/ep_logo.png" style="height:40px; padding-bottom:10px;"/>
+                            </a>
+                        </div><!-- Logo -->
+                        <div class="col-md-6 col-md-offset-1" id="pustakalaya-navbar"
+                             style="padding-top:10px; padding-bottom:10px;">
+                            <div style="border-radius: 10px; background:#27ae60;
                             width:100%; padding-left:8%; padding-right:5%;">
 
 
-                        <div class="navbar-header">
-                            <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle" id="collapse_button" style="background-color:#dddddd;" aria-controls="pustakalaya-navbar"><span style="background-color:black;" class="sr-only">Toggle navigation</span><span style="background-color:black;" class="icon-bar"></span><span style="background-color:black;" class="icon-bar"></span><span style="background-color:black;" class="icon-bar"></span></button>
-                        </div>
-                        <div class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
-                            <ul id="pustakalaya-navbar" class="nav navbar-nav" >
-                                <li class="dropdown" id="pustakalaya-dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" role="button" id="pustakalaya-menu-toggle"><i18n:text>xmlui.header.menu.browsePustakalaya</i18n:text><span class="caret"></span></a>
-                                    <ul class="dropdown-menu" id="pustakalaya-dropdown-menu" style="padding-top:0px !important; padding-bottom:0px !important">
-                                        <li><a class="text-capitalize" href="{$context-path}/browse?type=title">Browse by title</a></li>
-                                        <li><a class="text-capitalize" href="{$context-path}/browse?type=level">Browse by Education level</a></li>
-                                        <li><a class="text-capitalize" href="{$context-path}/browse?type=type">Browse by Data type</a></li>
-                                        <li><a class="text-capitalize" href="{$context-path}/browse?type=category">Browse by Subjects</a></li>
-                                        <li><a class="text-capitalize" href="{$context-path}/browse?type=author">Browse by Authors</a></li>
-                                        <li><a class="text-capitalize" href="{$context-path}/browse?type=dateissued">Browse by Issue Date</a></li>
+                                <div class="navbar-header">
+                                    <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle" id="collapse_button" style="background-color:#dddddd;" aria-controls="pustakalaya-navbar"><span style="background-color:black;" class="sr-only">Toggle navigation</span><span style="background-color:black;" class="icon-bar"></span><span style="background-color:black;" class="icon-bar"></span><span style="background-color:black;" class="icon-bar"></span></button>
+                                </div>
+                                <div class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+                                    <ul id="pustakalaya-navbar" class="nav navbar-nav" >
+                                        <li class="dropdown" id="pustakalaya-dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" role="button" id="pustakalaya-menu-toggle"><i18n:text>xmlui.header.menu.browsePustakalaya</i18n:text><span class="caret"></span></a>
+                                            <ul class="dropdown-menu" id="pustakalaya-dropdown-menu">
+                                                <li><a class="text-capitalize" href="{$context-path}/browse?type=grade">Browse by title</a></li>
+                                                <li><a class="text-capitalize" href="{$context-path}/browse?type=level">Browse by Education level</a></li>
+                                                <li><a class="text-capitalize" href="{$context-path}/browse?type=type">Browse by Data type</a></li>
+                                                <li><a class="text-capitalize" href="{$context-path}/browse?type=category">Browse by Subjects</a></li>
+                                                <li><a class="text-capitalize" href="{$context-path}/browse?type=author">Browse by Authors</a></li>
+                                                <li><a class="text-capitalize" href="{$context-path}/browse?type=dateissued">Browse by Issue Date</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="#educational-software" class="text-capitalized" style="color:#FFFF;"><i18n:text>xmlui.header.menu.educational.softwares</i18n:text></a>
+                                        </li>
+                                        <li>
+                                            <a href="#educational-software" class="text-capitalized" style="color:#FFFF;"><i18n:text>xmlui.header.menu.audio.video</i18n:text></a>
+                                        </li>
                                     </ul>
-                                </li>
-                                <li>
-                                    <a href="#educational-software" class="text-capitalized" style="color:#FFFF;"><i18n:text>xmlui.header.menu.educational.softwares</i18n:text></a>
-                                </li>
-                                <li>
-                                    <a href="#educational-software" class="text-capitalized" style="color:#FFFF;"><i18n:text>xmlui.header.menu.audio.video</i18n:text></a>
-                                </li>
-                            </ul>
+                                </div>
+
+                            </div>
                         </div>
-
-                    </div>
-                </div>
-                <div class="col-sm-1  hidden-xs">
-                    <img src="{$theme-path}/images/flag-nepal.png" style="padding-left:10px; padding-right:10px; margin-top:15px; margin-left:70px;"/>
-                </div>
-                <div class="col-md-2">
-                    <div class="navbar-header pull-right hidden-xs">
-                        <ul class="nav navbar-nav pull-left">
-                            <xsl:call-template name="languageSelection"/>
-                        </ul>
-                        <ul class="nav navbar-nav pull-left">
-                            <li class="active">
-                                <a href="{$context-path}/admin/panel">
-                                    <i18n:text>xmlui.administrative.Navigation.administrative_control_panel</i18n:text>
-                                </a>
-                            </li>
-                            <xsl:choose>
-                                <xsl:when test="/dri:document/dri:meta/dri:userMeta/@authenticated = 'yes'">
-                                    <li class="dropdown">
-                                        <a id="user-dropdown-toggle" href="#" role="button" class="dropdown-toggle"
-                                           data-toggle="dropdown">
-                                            <span class="hidden-xs">
-                                                <xsl:value-of select="/dri:document/dri:meta/dri:userMeta/
+                        <div class="col-sm-1  hidden-xs">
+                            <img src="{$theme-path}/images/flag-nepal.png" style="padding-left:10px; padding-right:10px; margin-top:15px; margin-left:70px;"/>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="navbar-header pull-right hidden-xs">
+                                <ul class="nav navbar-nav pull-left">
+                                    <xsl:call-template name="languageSelection"/>
+                                </ul>
+                                <ul class="nav navbar-nav pull-left">
+                                    <xsl:choose>
+                                        <xsl:when test="/dri:document/dri:meta/dri:userMeta/@authenticated = 'yes'">
+                                            <li class="dropdown">
+                                                <a id="user-dropdown-toggle" href="#" role="button" class="dropdown-toggle"
+                                                   data-toggle="dropdown">
+                                                    <span class="hidden-xs">
+                                                        <xsl:value-of select="/dri:document/dri:meta/dri:userMeta/
                             dri:metadata[@element='identifier' and @qualifier='firstName']"/>
-                                                <xsl:text> </xsl:text>
-                                                <xsl:value-of select="/dri:document/dri:meta/dri:userMeta/
+                                                        <xsl:text> </xsl:text>
+                                                        <xsl:value-of select="/dri:document/dri:meta/dri:userMeta/
                             dri:metadata[@element='identifier' and @qualifier='lastName']"/>
-                                                &#160;
-                                                <b class="caret"/>
-                                            </span>
-                                        </a>
-                                        <ul class="dropdown-menu pull-right" role="menu"
-                                            aria-labelledby="user-dropdown-toggle" data-no-collapse="true">
-                                            <li>
-                                                <a href="{/dri:document/dri:meta/dri:userMeta/
+                                                        &#160;
+                                                        <b class="caret"/>
+                                                    </span>
+                                                </a>
+                                                <ul class="dropdown-menu pull-right" role="menu"
+                                                    aria-labelledby="user-dropdown-toggle" data-no-collapse="true">
+                                                    <li>
+                                                        <a href="{/dri:document/dri:meta/dri:userMeta/
                             dri:metadata[@element='identifier' and @qualifier='url']}">
-                                                    <i18n:text>xmlui.EPerson.Navigation.profile</i18n:text>
-                                                </a>
+                                                            <i18n:text>xmlui.EPerson.Navigation.profile</i18n:text>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{/dri:document/dri:meta/dri:userMeta/
+                            dri:metadata[@element='identifier' and @qualifier='logoutURL']}">
+                                                            <i18n:text>xmlui.dri2xhtml.structural.logout</i18n:text>
+                                                        </a>
+                                                    </li>
+                                                </ul>
                                             </li>
+                                        </xsl:when>
+                                        <xsl:otherwise>
                                             <li>
                                                 <a href="{/dri:document/dri:meta/dri:userMeta/
-                            dri:metadata[@element='identifier' and @qualifier='logoutURL']}">
-                                                    <i18n:text>xmlui.dri2xhtml.structural.logout</i18n:text>
+                            dri:metadata[@element='identifier' and @qualifier='loginURL']}">
+                                                    <span class="hidden-xs">
+                                                        <i18n:text>xmlui.dri2xhtml.structural.login</i18n:text>
+                                                    </span>
                                                 </a>
                                             </li>
-                                        </ul>
-                                    </li>
-                                </xsl:when>
-                                <xsl:otherwise>
-                                    <li>
-                                        <a href="{/dri:document/dri:meta/dri:userMeta/
-                            dri:metadata[@element='identifier' and @qualifier='loginURL']}">
-                                            <span class="hidden-xs">
-                                                <i18n:text>xmlui.dri2xhtml.structural.login</i18n:text>
-                                            </span>
-                                        </a>
-                                    </li>
-                                </xsl:otherwise>
-                            </xsl:choose>
-                        </ul>
+                                        </xsl:otherwise>
+                                    </xsl:choose>
+                                </ul>
 
-                        <button data-toggle="offcanvas" class="navbar-toggle visible-sm" type="button">
-                            <span class="sr-only">
-                                <i18n:text>xmlui.mirage2.page-structure.toggleNavigation</i18n:text>
-                            </span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
+                                <button data-toggle="offcanvas" class="navbar-toggle visible-sm" type="button">
+                                    <span class="sr-only">
+                                        <i18n:text>xmlui.mirage2.page-structure.toggleNavigation</i18n:text>
+                                    </span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
+                        </div><!-- Language selection -->
                     </div>
-                </div><!-- Language selection -->
-            </div>
-        <!--    <div class="navbar navbar-default navbar-static-top" role="navigation">
-                <div class="container">
                     <div class="navbar-header">
 
                         <button type="button" class="navbar-toggle" data-toggle="offcanvas">
@@ -805,21 +805,21 @@
                             <span class="icon-bar"></span>
                         </button>
 
-                        <a href="{$context-path}/" class="navbar-brand">
-                            <img src="{$theme-path}/images/DSpace-logo-line.svg" />
-                        </a>
-
 
                         <div class="navbar-header pull-right visible-xs hidden-sm hidden-md hidden-lg">
                             <ul class="nav nav-pills pull-left ">
 
                                 <xsl:if test="count(/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='page'][@qualifier='supportedLocale']) &gt; 1">
                                     <li id="ds-language-selection-xs" class="dropdown">
-                                        <xsl:variable name="active-locale" select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='page'][@qualifier='currentLocale']"/>
-                                        <button id="language-dropdown-toggle-xs" href="#" role="button" class="dropdown-toggle navbar-toggle navbar-link" data-toggle="dropdown">
+                                        <xsl:variable name="active-locale"
+                                                      select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='page'][@qualifier='currentLocale']"/>
+                                        <button id="language-dropdown-toggle-xs" href="#" role="button"
+                                                class="dropdown-toggle navbar-toggle navbar-link"
+                                                data-toggle="dropdown">
                                             <b class="visible-xs glyphicon glyphicon-globe" aria-hidden="true"/>
                                         </button>
-                                        <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="language-dropdown-toggle-xs" data-no-collapse="true">
+                                        <ul class="dropdown-menu pull-right" role="menu"
+                                            aria-labelledby="language-dropdown-toggle-xs" data-no-collapse="true">
                                             <xsl:for-each
                                                     select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='page'][@qualifier='supportedLocale']">
                                                 <xsl:variable name="locale" select="."/>
@@ -847,7 +847,9 @@
                                 <xsl:choose>
                                     <xsl:when test="/dri:document/dri:meta/dri:userMeta/@authenticated = 'yes'">
                                         <li class="dropdown">
-                                            <button class="dropdown-toggle navbar-toggle navbar-link" id="user-dropdown-toggle-xs" href="#" role="button"  data-toggle="dropdown">
+                                            <button class="dropdown-toggle navbar-toggle navbar-link"
+                                                    id="user-dropdown-toggle-xs" href="#" role="button"
+                                                    data-toggle="dropdown">
                                                 <b class="visible-xs glyphicon glyphicon-user" aria-hidden="true"/>
                                             </button>
                                             <ul class="dropdown-menu pull-right" role="menu"
@@ -881,7 +883,7 @@
                             </ul>
                         </div>
                     </div>
-
+                    <!--
                     <div class="navbar-header pull-right hidden-xs">
                         <ul class="nav navbar-nav pull-left">
                             <xsl:call-template name="languageSelection"/>
@@ -933,19 +935,18 @@
                         </ul>
 
                         <button data-toggle="offcanvas" class="navbar-toggle visible-sm" type="button">
-                            <span class="sr-only"><i18n:text>xmlui.mirage2.page-structure.toggleNavigation</i18n:text></span>
+                            <span class="sr-only">
+                                <i18n:text>xmlui.mirage2.page-structure.toggleNavigation</i18n:text>
+                            </span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
                     </div>
+                    -->
                 </div>
-
-            </div>-->
-            </div>
-            </div>
-
-        </header>
+            </div><!--end menu icon header -->
+        </header><!--end header -->
 
     </xsl:template>
 
@@ -1013,12 +1014,12 @@
                         <xsl:attribute name="href">
                             <xsl:value-of select="./@target"/>
                         </xsl:attribute>
-                        <xsl:apply-templates />
+                        <xsl:apply-templates/>
                     </a>
                 </xsl:when>
                 <xsl:otherwise>
                     <xsl:attribute name="class">active</xsl:attribute>
-                    <xsl:apply-templates />
+                    <xsl:apply-templates/>
                 </xsl:otherwise>
             </xsl:choose>
         </li>
@@ -1037,13 +1038,13 @@
                         <xsl:if test="position()=1">
                             <i class="glyphicon glyphicon-home" aria-hidden="true"/>&#160;
                         </xsl:if>
-                        <xsl:apply-templates />
+                        <xsl:apply-templates/>
                     </a>
                 </xsl:when>
                 <xsl:when test="position() > 1 and position() = last()">
                     <xsl:attribute name="class">disabled</xsl:attribute>
                     <a role="menuitem" href="#">
-                        <xsl:apply-templates />
+                        <xsl:apply-templates/>
                     </a>
                 </xsl:when>
                 <xsl:otherwise>
@@ -1051,7 +1052,7 @@
                     <xsl:if test="position()=1">
                         <i class="glyphicon glyphicon-home" aria-hidden="true"/>&#160;
                     </xsl:if>
-                    <xsl:apply-templates />
+                    <xsl:apply-templates/>
                 </xsl:otherwise>
             </xsl:choose>
         </li>
@@ -1073,7 +1074,8 @@
                       select="document($externalMetadataURL)//dim:field[@element='rights'][@qualifier='uri']"
         />
         <xsl:variable name="handleUri">
-            <xsl:for-each select="document($externalMetadataURL)//dim:field[@element='identifier' and @qualifier='uri']">
+            <xsl:for-each
+                    select="document($externalMetadataURL)//dim:field[@element='identifier' and @qualifier='uri']">
                 <a>
                     <xsl:attribute name="href">
                         <xsl:copy-of select="./node()"/>
@@ -1099,12 +1101,13 @@
                             <xsl:with-param name="ccLicenseUri" select="$ccLicenseUri"/>
                         </xsl:call-template>
                     </a>
-                </div> <div class="col-sm-8">
-                <span>
-                    <i18n:text>xmlui.dri2xhtml.METS-1.0.cc-license-text</i18n:text>
-                    <xsl:value-of select="$ccLicenseName"/>
-                </span>
-            </div>
+                </div>
+                <div class="col-sm-8">
+                    <span>
+                        <i18n:text>xmlui.dri2xhtml.METS-1.0.cc-license-text</i18n:text>
+                        <xsl:value-of select="$ccLicenseName"/>
+                    </span>
+                </div>
             </div>
         </xsl:if>
     </xsl:template>
@@ -1116,38 +1119,38 @@
             <xsl:choose>
                 <xsl:when test="starts-with($ccLicenseUri,
                                            'http://creativecommons.org/licenses/by/')">
-                    <xsl:value-of select="'cc-by.png'" />
+                    <xsl:value-of select="'cc-by.png'"/>
                 </xsl:when>
                 <xsl:when test="starts-with($ccLicenseUri,
                                            'http://creativecommons.org/licenses/by-sa/')">
-                    <xsl:value-of select="'cc-by-sa.png'" />
+                    <xsl:value-of select="'cc-by-sa.png'"/>
                 </xsl:when>
                 <xsl:when test="starts-with($ccLicenseUri,
                                            'http://creativecommons.org/licenses/by-nd/')">
-                    <xsl:value-of select="'cc-by-nd.png'" />
+                    <xsl:value-of select="'cc-by-nd.png'"/>
                 </xsl:when>
                 <xsl:when test="starts-with($ccLicenseUri,
                                            'http://creativecommons.org/licenses/by-nc/')">
-                    <xsl:value-of select="'cc-by-nc.png'" />
+                    <xsl:value-of select="'cc-by-nc.png'"/>
                 </xsl:when>
                 <xsl:when test="starts-with($ccLicenseUri,
                                            'http://creativecommons.org/licenses/by-nc-sa/')">
-                    <xsl:value-of select="'cc-by-nc-sa.png'" />
+                    <xsl:value-of select="'cc-by-nc-sa.png'"/>
                 </xsl:when>
                 <xsl:when test="starts-with($ccLicenseUri,
                                            'http://creativecommons.org/licenses/by-nc-nd/')">
-                    <xsl:value-of select="'cc-by-nc-nd.png'" />
+                    <xsl:value-of select="'cc-by-nc-nd.png'"/>
                 </xsl:when>
                 <xsl:when test="starts-with($ccLicenseUri,
                                            'http://creativecommons.org/publicdomain/zero/')">
-                    <xsl:value-of select="'cc-zero.png'" />
+                    <xsl:value-of select="'cc-zero.png'"/>
                 </xsl:when>
                 <xsl:when test="starts-with($ccLicenseUri,
                                            'http://creativecommons.org/publicdomain/mark/')">
-                    <xsl:value-of select="'cc-mark.png'" />
+                    <xsl:value-of select="'cc-mark.png'"/>
                 </xsl:when>
                 <xsl:otherwise>
-                    <xsl:value-of select="'cc-generic.png'" />
+                    <xsl:value-of select="'cc-generic.png'"/>
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:variable>
@@ -1165,35 +1168,6 @@
     <xsl:template name="buildFooter">
         <footer>
 
-            <div class="container ">
-                <!--<div class="row footer-banner-first">-->
-                <!--<div class="col-sm-6">-->
-                <!--<p style="color:#FFF">Developed and Maintained by</p>-->
-                <!--<a href="http://www.pustakalaya.org" target="_blank">-->
-                <!--<img class="pustakalaya-logo" src="{concat($theme-path, '/images/pustakalaya-logo.png')}"/>-->
-                <!--</a>-->
-                <!--</div>-->
-                <!--<div class="col-sm-6">-->
-                <!--<nav class="navbar" role="navigation">-->
-                <!--<ul class="nav navbar-nav navbar-right">-->
-                <!--<li><button type="button" class="btn btn-sm btn-default " style="maring-top:20px;" >-->
-                <!--connect-->
-                <!--</button></li>-->
-                <!--<li><a  href="https://www.facebook.com/Epustakalaya" target="_blank">-->
-                <!--<img class="social-media-logo" src="{concat($theme-path, '/images/facebook.png')}"/>-->
-                <!--</a></li>-->
-                <!--<li><a href="https://www.twitter.com/Epustakalaya" target="_blank">-->
-                <!--<img class="social-media-logo" src="{concat($theme-path, '/images/twiter.png')}"/>-->
-                <!--</a></li>-->
-                <!--<li><a class="pull-right" href="https://www.instagram.com/Epustakalaya" target="_blank">-->
-                <!--<img class="social-media-logo" src="{concat($theme-path, '/images/instagram.png')}"/>-->
-                <!--</a></li>-->
-
-                <!--</ul>-->
-                <!--</nav>-->
-                <!--</div>-->
-                <!--</div>-->
-            </div><!-- content container -->
             <!--upper banner-->
             <div class="footer-banner-first">
                 <div class="container">
@@ -1368,43 +1342,8 @@
                     <i18n:text>xmlui.dri2xhtml.structural.feedback-link</i18n:text>
                 </a>
             </div-->
-           <!-- <div class="row">
-                <hr/>
-                <div class="col-xs-7 col-sm-8">
-                    <div>
-                        <a href="http://www.dspace.org/" target="_blank">DSpace software</a> copyright&#160;&#169;&#160;2002-2015&#160; <a href="http://www.duraspace.org/" target="_blank">DuraSpace</a>
-                    </div>
-                    <div class="hidden-print">
-                        <a>
-                            <xsl:attribute name="href">
-                                <xsl:value-of
-                                        select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='contextPath'][not(@qualifier)]"/>
-                                <xsl:text>/contact</xsl:text>
-                            </xsl:attribute>
-                            <i18n:text>xmlui.dri2xhtml.structural.contact-link</i18n:text>
-                        </a>
-                        <xsl:text> | </xsl:text>
-                        <a>
-                            <xsl:attribute name="href">
-                                <xsl:value-of
-                                        select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='contextPath'][not(@qualifier)]"/>
-                                <xsl:text>/feedback</xsl:text>
-                            </xsl:attribute>
-                            <i18n:text>xmlui.dri2xhtml.structural.feedback-link</i18n:text>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-xs-5 col-sm-4 hidden-print">
-                    <div class="pull-right">
-                        <span class="theme-by">Theme by&#160;</span>
-                        <br/>
-                        <a title="@mire NV" target="_blank" href="http://atmire.com">
-                            <img alt="@mire NV" src="{concat($theme-path, '/images/@mirelogo-small.png')}"/>
-                        </a>
-                    </div>
 
-                </div>
-            </div>-->
+
             <!--Invisible link to HTML sitemap (for search engines) -->
             <a class="hidden">
                 <xsl:attribute name="href">
@@ -1415,18 +1354,244 @@
                 <xsl:text>&#160;</xsl:text>
             </a>
             <p>&#160;</p>
+
+
+
+
+            <script src="https://code.jquery.com/jquery-1.10.2.min.js" integrity="sha256-C6CB9UYIS9UJeqinPHWTHVqh/E1uhG5Twh+Y5qFQmYg=" crossorigin="anonymous"></script>
+            <!-- Pustakalaya custom scripts -->
+
+            <!-- Hide banner if this is not the homepage -->
+            <script type="text/javascript">
+                var pathname1 = "/";
+                var pathname2 = "/xmlui/";
+                var banner = document.getElementById("pustakalayaBanner");
+                var currentPath = window.location.pathname;
+                if(currentPath == pathname1 || currentPath == pathname2){
+                banner.hidden = false;
+                } else {
+                banner.hidden = true;
+                }
+
+            </script>
+            <!-- Hide sidebar if this is not the sidebar -->
+            <script type="text/javascript">
+                var pathname1 = "/";
+                var pathname2 = "/xmlui/";
+                var sideBar = document.getElementById("pustakalayaBanner");
+                var currentPath = window.location.pathname;
+                if(currentPath == pathname1 || currentPath == pathname2){
+                banner.hidden = false;
+                } else {
+                banner.hidden = true;
+                }
+            </script>
+
+            <!--hide the navigation menu if the homepage is detected-->
+            <script type="text/javascript">
+                var pathname1="/";
+                var pathname2="/xmlui/";
+                var navigationBar= document.getElementById("main-container");
+                var currentPath=window.location.pathname;
+                if(currentPath == pathname1 || currentPath == pathname2){
+                navigationBar.hidden = true;
+                }else {
+                navigationBar.hidden = false;
+                }
+            </script>
+
+            <!--hide dashboard in homepage-->
+            <script type="text/javascript">
+                var pathname1="/";
+                var pathname2="/xmlui/";
+                var navigationBar= document.getElementById("dashboard");
+                var currentPath=window.location.pathname;
+                if(currentPath == pathname1 || currentPath == pathname2){
+                navigationBar.hidden = true;
+                }else {
+                navigationBar.hidden = false;
+                }
+            </script>
+
+
+            <!--hide carousel sliders except home page-->
+            <script type="text/javascript">
+                var pathname1="/";
+                var pathname2="/xmlui/";
+                var slider= document.getElementById("pustakalaya-slider");
+                var currentPath=window.location.pathname;
+                if(currentPath == pathname1 || currentPath == pathname2){
+                slider.hidden = false;
+                }else {
+                slider.hidden = true;
+                }
+            </script>
+
+
+            <!-- script to get audio and videos -->
+            <!-- Grab all audio and video -->
+            <script>
+                // Grabbing video items and Audio items
+                var videoAudio = new Array();
+                // Randomize the offset value to get the audio and video materials
+                // Higher the value random will be the data.
+                var offsetValue = Math.floor(Math.random() * 500);
+
+                // video URL
+                function getVideoURL(offsetValue){
+                var videoURL =  window.location.origin +
+                "/rest/filtered-items/?query_field[]=*&amp;query_op[]=matches&amp;query_val[]=Video&amp;collSel[]=&amp;limit=15&amp;offset=" +
+                offsetValue + "&amp;expand=parentCollection%2Cmetadata&amp;filters=none&amp;show_fields[]=dc.type";
+                return videoURL;
+                }
+
+                // Audio URL
+                function getAudioURL(offsetValue){
+                var audioURL = window.location.origin +
+                "/rest/filtered-items/?query_field[]=*&amp;query_op[]=matches&amp;query_val[]=Book&amp;collSel[]=&amp;limit=15&amp;offset="+
+                offsetValue + "&amp;expand=parentCollection%2Cmetadata&amp;filters=none&amp;show_fields[]=dc.type";
+                return audioURL;
+
+                }
+
+                // Function to shuffle videoAudio Array
+                function shuffle(o){
+                for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+                return o;
+                };
+
+                // function to grab the obj that contain url properties.
+                function itemURL(obj){
+                if(obj.key == "dc.identifier.uri" &amp;&amp; obj.val != ""){
+                return true;
+                }
+                }
+
+                // function to filter the THUMBNAIL bitstream
+                function filterThumbnail(bitstream){
+                if(bitstream.bundleName == "THUMBNAIL"){
+                return true;
+                }
+                }
+
+                // Function to getThumbnail url
+                function getThumbnail(uuid, thumbnail){
+                var bitStreamURL = window.location.origin + "/rest/items/" + uuid + "/bitstreams";
+                var thumbnailURL = null;
+                // get bitstream attributes of object having the id of uuid.
+                $.ajax({
+                url: bitStreamURL,
+                type: "GET",
+                async: true,
+                contentType: "application/json",
+                success: function(success){
+                // Get the url link
+                var filterObject = success.filter(filterThumbnail);
+                if(filterObject.length != 0){
+                thumbnail(window.location.origin + success.filter(filterThumbnail)[0].retrieveLink);
+                } else {
+                thumbnail("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTg0IiBoZWlnaHQ9IjE1OCIgdmlld0JveD0iMCAwIDE4NCAxNTgiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTg0IiBoZWlnaHQ9IjE1OCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjQ2LjE3MTg3NSIgeT0iNzkiIHN0eWxlPSJmaWxsOiNBQUFBQUE7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6MTBwdDtkb21pbmFudC1iYXNlbGluZTpjZW50cmFsIj5ObyBUaHVtYm5haWw8L3RleHQ+PC9nPjwvc3ZnPg==");
+                }
+                }});
+                }
+
+                // Query 15 video items
+                $.ajax({
+                url: getVideoURL(0),
+                type: "GET",
+                async: true,
+                contentType: "application/json",
+                success: function(success){
+                // success object has a list of items
+                for(var i=0; i&lt;success.items.length; i++){
+                videoAudio.push(success.items[i])
+                }
+                }});
+                // Query 15 audio items
+                $.ajax({
+                url: getAudioURL(0),
+                type: "GET",
+                async: true,
+                contentType: "application/json",
+                success: function(success){
+                // success object has a list of items
+                for(var i=0; i&lt;success.items.length; i++){
+                videoAudio.push(success.items[i])
+                }
+                if(videoAudio.length != 0){
+                // suffle audio video items
+                videoAudio = shuffle(videoAudio)
+
+                // grab all the title, URL. thumbnail
+
+                videoAudio.forEach(function(item){
+                // Title of an tiem
+                var itemTitle = item.name;
+                // URL of an item
+                var itemURL = window.location.href + item.handle;
+
+
+
+                // Function that get thumbnail url
+                getThumbnail(item.uuid, function(itemThumbnail){
+
+
+                // create thumbnail tag
+
+                var li = $("<li></li>");
+
+                var h3 = $("<h3></h3>");
+
+                var p = $("<p></p>", {
+                text: itemTitle
+                });
+
+                var a = $("<a></a>",{
+                href: itemURL,
+                });
+
+
+                var img = $('<img />', {
+                src: itemThumbnail,
+                alt: itemTitle,
+                width: 200,
+                height: 120,
+                class: "img-responsive"
+                });
+
+                li.append(h3.append(a.append(img)));
+                li.append(p);
+
+                // create html template
+
+
+                $("#audioVideoSection").append(li);
+
+
+                }); // End getThumbnail Function
+
+                }); // End forEach
+                // show parent dom after completing for loop.
+
+                // enable audioVideoSection slider
+                $("#audioVideoSection").lightSlider({
+                item:4,
+                prevHtml: '',
+                nextHtml: '',
+                });
+
+                } // End If condition
+
+                }  // End success
+                }); // End ajax method
+            </script>
         </footer>
     </xsl:template>
 
-
+    <!-- our footer -->
     <!--
             The meta, body, options elements; the three top-level elements in the schema
     -->
-
-
-
-
-
 
     <!--
         The template to handle the dri:body element. It simply creates the ds-body div and applies
@@ -1435,23 +1600,23 @@
     <xsl:template match="dri:body">
         <div>
             <xsl:if test="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='alert'][@qualifier='message']">
-                <div class="alert">
+                <div class="alert alert-warning">
                     <button type="button" class="close" data-dismiss="alert">&#215;</button>
-                    <xsl:copy-of select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='alert'][@qualifier='message']/node()"/>
+                    <xsl:copy-of
+                            select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='alert'][@qualifier='message']/node()"/>
                 </div>
             </xsl:if>
 
             <!-- Check for the custom pages -->
             <xsl:choose>
                 <xsl:when test="starts-with($request-uri, 'page/about')">
-                    <div class="hero-unit">
-                        <h1><i18n:text>xmlui.mirage2.page-structure.heroUnit.title</i18n:text></h1>
-                        <p><i18n:text>xmlui.mirage2.page-structure.heroUnit.content</i18n:text></p>
-                    </div>
+                    <!-- About page -->
+                    <i18n:text>xmlui.static.page.about</i18n:text>
+
                 </xsl:when>
                 <!-- Otherwise use default handling of body -->
                 <xsl:otherwise>
-                    <xsl:apply-templates />
+                    <xsl:apply-templates/>
                 </xsl:otherwise>
             </xsl:choose>
 
@@ -1473,60 +1638,6 @@
     -->
 
     <xsl:template name="addJavascript">
-        <!-- Pustakalaya custom scripts -->
-
-        <!-- Hide banner if this is not the homepage -->
-        <script type="text/javascript">
-            var pathname1 = "/";
-            var pathname2 = "/xmlui/";
-            var banner = document.getElementById("pustakalayaBanner");
-            var currentPath = window.location.pathname;
-            if(currentPath == pathname1 || currentPath == pathname2){
-            banner.hidden = false;
-            } else {
-            banner.hidden = true;
-            }
-
-        </script>
-        <!-- Hide sidebar if this is not the sidebar -->
-        <script type="text/javascript">
-            var pathname1 = "/";
-            var pathname2 = "/xmlui/";
-            var sideBar = document.getElementById("pustakalayaBanner");
-            var currentPath = window.location.pathname;
-            if(currentPath == pathname1 || currentPath == pathname2){
-            banner.hidden = false;
-            } else {
-            banner.hidden = true;
-            }
-        </script>
-
-        <!--hide the navigation menu if the homepage is detected-->
-        <script type="text/javascript">
-            var pathname1="/";
-            var pathname2="/xmlui/";
-            var navigationBar= document.getElementById("main-container");
-            var currentPath=window.location.pathname;
-            if(currentPath == pathname1 || currentPath == pathname2){
-            navigationBar.hidden = true;
-            }else {
-            navigationBar.hidden = false;
-            }
-        </script>
-
-
-        <!--hide carousel sliders except home page-->
-        <script type="text/javascript">
-            var pathname1="/";
-            var pathname2="/xmlui/";
-            var slider= document.getElementById("pustakalaya-slider");
-            var currentPath=window.location.pathname;
-            if(currentPath == pathname1 || currentPath == pathname2){
-            slider.hidden = false;
-            }else {
-            slider.hidden = true;
-            }
-        </script>
 
 
         <script type="text/javascript"><xsl:text>
@@ -1538,11 +1649,27 @@
             <xsl:text>window.publication.themePath= '</xsl:text><xsl:value-of select="$theme-path"/><xsl:text>';</xsl:text>
         </script>
 
+        <!--dropdown menu-->
+        <script type="text/javascript">
+            $('ul.nav li.dropdown').hover(function() {
+            $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
+            }, function() {
+            $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
+            });
+
+        </script>
+
         <!--TODO concat & minify!-->
+        <!-- Dspace theme.js file injection -->
 
         <script>
-            <xsl:text>if(!window.DSpace){window.DSpace={};}window.DSpace.context_path='</xsl:text><xsl:value-of select="$context-path"/><xsl:text>';window.DSpace.theme_path='</xsl:text><xsl:value-of select="$theme-path"/><xsl:text>';</xsl:text>
+            <xsl:text>if(!window.DSpace){window.DSpace={};}window.DSpace.context_path='</xsl:text><xsl:value-of
+                select="$context-path"/><xsl:text>';window.DSpace.theme_path='</xsl:text><xsl:value-of
+                select="$theme-path"/><xsl:text>';</xsl:text>
         </script>
+
+
+
 
         <!--inject scripts.html containing all the theme specific javascript references
         that can be minified and concatinated in to a single file or separate and untouched
@@ -1558,17 +1685,21 @@
             <script src="{$theme-path}{@src}">&#160;</script>
         </xsl:for-each>
 
-        <!-- Add javascipt specified in DRI -->
+        <!-- Add javascript specified in DRI -->
         <xsl:for-each select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='javascript'][not(@qualifier)]">
             <script>
                 <xsl:attribute name="src">
                     <xsl:value-of select="$theme-path"/>
                     <xsl:value-of select="."/>
-                </xsl:attribute>&#160;</script>
+                </xsl:attribute>&#160;
+            </script>
+
+
         </xsl:for-each>
 
         <!-- add "shared" javascript from static, path is relative to webapp root-->
-        <xsl:for-each select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='javascript'][@qualifier='static']">
+        <xsl:for-each
+                select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='javascript'][@qualifier='static']">
             <!--This is a dirty way of keeping the scriptaculous stuff from choice-support
             out of our theme without modifying the administrative and submission sitemaps.
             This is obviously not ideal, but adding those scripts in those sitemaps is far
@@ -1579,7 +1710,8 @@
                         <xsl:attribute name="src">
                             <xsl:value-of select="$theme-path"/>
                             <xsl:text>js/choice-support.js</xsl:text>
-                        </xsl:attribute>&#160;</script>
+                        </xsl:attribute>&#160;
+                    </script>
                 </xsl:when>
                 <xsl:when test="not(starts-with(text(), 'static/js/scriptaculous'))">
                     <script>
@@ -1588,7 +1720,8 @@
                                     select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='contextPath'][not(@qualifier)]"/>
                             <xsl:text>/</xsl:text>
                             <xsl:value-of select="."/>
-                        </xsl:attribute>&#160;</script>
+                        </xsl:attribute>&#160;
+                    </script>
                 </xsl:when>
             </xsl:choose>
         </xsl:for-each>
@@ -1598,17 +1731,24 @@
             <xsl:call-template name="choiceLookupPopUpSetup"/>
         </xsl:if>
 
+        <xsl:call-template name="addJavascript-google-analytics"/>
+    </xsl:template>
+
+    <xsl:template name="addJavascript-google-analytics">
         <!-- Add a google analytics script if the key is present -->
         <xsl:if test="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='google'][@qualifier='analytics']">
             <script><xsl:text>
-                  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-                  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-                  ga('create', '</xsl:text><xsl:value-of select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='google'][@qualifier='analytics']"/><xsl:text>', '</xsl:text><xsl:value-of select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='request'][@qualifier='serverName']"/><xsl:text>');
-                  ga('send', 'pageview');
-           </xsl:text></script>
+                ga('create', '</xsl:text><xsl:value-of
+                    select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='google'][@qualifier='analytics']"/><xsl:text>', '</xsl:text><xsl:value-of
+                    select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='request'][@qualifier='serverName']"/><xsl:text>');
+                ga('send', 'pageview');
+            </xsl:text>
+            </script>
         </xsl:if>
     </xsl:template>
 
@@ -1616,7 +1756,8 @@
     <xsl:template name="languageSelection">
         <xsl:if test="count(/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='page'][@qualifier='supportedLocale']) &gt; 1">
             <li id="ds-language-selection" class="dropdown">
-                <xsl:variable name="active-locale" select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='page'][@qualifier='currentLocale']"/>
+                <xsl:variable name="active-locale"
+                              select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='page'][@qualifier='currentLocale']"/>
                 <a id="language-dropdown-toggle" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
                     <span class="hidden-xs">
                         <xsl:value-of
@@ -1625,7 +1766,8 @@
                         <b class="caret"/>
                     </span>
                 </a>
-                <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="language-dropdown-toggle" data-no-collapse="true">
+                <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="language-dropdown-toggle"
+                    data-no-collapse="true">
                     <xsl:for-each
                             select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='page'][@qualifier='supportedLocale']">
                         <xsl:variable name="locale" select="."/>

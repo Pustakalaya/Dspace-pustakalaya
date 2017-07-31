@@ -18,7 +18,6 @@ echo "Building non-SOLR search and browse indexes... Please wait"
 
 # Importing existing authors and keeping the index up to date
 /dspace/bin/dspace index-authority
-# Cleanup deleted items
-/dspace/bin/dspace cleanup
+
 # Update the items
 /dspace/bin/dspace itemupdate
