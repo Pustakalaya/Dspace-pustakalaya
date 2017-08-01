@@ -1634,6 +1634,8 @@
             <!-- script to get audio and videos -->
             <!-- Grab all audio and video -->
             <script>
+                $("document").ready(function(){
+                (function(){
                 // Grabbing video items and Audio items
                 var videoAudio = new Array();
                 // Randomize the offset value to get the audio and video materials
@@ -1685,7 +1687,7 @@
                 $.ajax({
                 url: bitStreamURL,
                 type: "GET",
-                async: true,
+                async: false,
                 contentType: "application/json",
                 success: function(success){
                 // Get the url link
@@ -1702,7 +1704,7 @@
                 $.ajax({
                 url: getVideoURL(0),
                 type: "GET",
-                async: true,
+                async: false,
                 contentType: "application/json",
                 success: function(success){
                 // success object has a list of items
@@ -1714,7 +1716,7 @@
                 $.ajax({
                 url: getAudioURL(0),
                 type: "GET",
-                async: true,
+                async: false,
                 contentType: "application/json",
                 success: function(success){
                 // success object has a list of items
@@ -1787,6 +1789,8 @@
 
                 }  // End success
                 }); // End ajax method
+                })(); // END IIFE
+                });  // END Onload
             </script>
 
         </footer>
@@ -2036,5 +2040,4 @@
             </li>
         </xsl:if>
     </xsl:template>
-
 </xsl:stylesheet>
