@@ -9,25 +9,25 @@
 -->
 
 <xsl:stylesheet
-    xmlns:i18n="http://apache.org/cocoon/i18n/2.1"
-    xmlns:dri="http://di.tamu.edu/DRI/1.0/"
-    xmlns:mets="http://www.loc.gov/METS/"
-    xmlns:dim="http://www.dspace.org/xmlns/dspace/dim"
-    xmlns:xlink="http://www.w3.org/TR/xlink/"
-    xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
-    xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:xalan="http://xml.apache.org/xalan"
-    xmlns:encoder="xalan://java.net.URLEncoder"
-    xmlns:stringescapeutils="org.apache.commons.lang3.StringEscapeUtils"
-    xmlns:util="org.dspace.app.xmlui.utils.XSLUtils"
-    exclude-result-prefixes="xalan encoder i18n dri mets dim  xlink xsl util stringescapeutils">
+        xmlns:i18n="http://apache.org/cocoon/i18n/2.1"
+        xmlns:dri="http://di.tamu.edu/DRI/1.0/"
+        xmlns:mets="http://www.loc.gov/METS/"
+        xmlns:dim="http://www.dspace.org/xmlns/dspace/dim"
+        xmlns:xlink="http://www.w3.org/TR/xlink/"
+        xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xalan="http://xml.apache.org/xalan"
+        xmlns:encoder="xalan://java.net.URLEncoder"
+        xmlns:stringescapeutils="org.apache.commons.lang3.StringEscapeUtils"
+        xmlns:util="org.dspace.app.xmlui.utils.XSLUtils"
+        exclude-result-prefixes="xalan encoder i18n dri mets dim  xlink xsl util stringescapeutils">
 
     <xsl:output indent="yes"/>
 
-<!--
-    These templates are devoted to rendering the search results for discovery.
-    Since discovery uses hit highlighting, separate templates are required !
--->
+    <!--
+        These templates are devoted to rendering the search results for discovery.
+        Since discovery uses hit highlighting, separate templates are required !
+    -->
 
 
     <xsl:template match="dri:list[@type='dsolist']" priority="2">
@@ -41,27 +41,27 @@
     </xsl:template>
 
     <xsl:template match="dri:list/dri:list/dri:list" mode="dsoList" priority="8">
-            <!--
-                Retrieve the type from our name, the name contains the following format:
-                    {handle}:{metadata}
-            -->
-            <xsl:variable name="handle">
-                <xsl:value-of select="substring-before(@n, ':')"/>
-            </xsl:variable>
-            <xsl:variable name="type">
-                <xsl:value-of select="substring-after(@n, ':')"/>
-            </xsl:variable>
-            <xsl:variable name="externalMetadataURL">
-                <xsl:text>cocoon://metadata/handle/</xsl:text>
-                <xsl:value-of select="$handle"/>
-                <xsl:text>/mets.xml</xsl:text>
-                <!-- Since this is a summary only grab the descriptive metadata, and the thumbnails -->
-                <xsl:text>?sections=dmdSec,fileSec&amp;fileGrpTypes=THUMBNAIL</xsl:text>
-                <!-- An example of requesting a specific metadata standard (MODS and QDC crosswalks only work for items)->
-                <xsl:if test="@type='DSpace Item'">
-                    <xsl:text>&amp;dmdTypes=DC</xsl:text>
-                </xsl:if>-->
-            </xsl:variable>
+        <!--
+            Retrieve the type from our name, the name contains the following format:
+                {handle}:{metadata}
+        -->
+        <xsl:variable name="handle">
+            <xsl:value-of select="substring-before(@n, ':')"/>
+        </xsl:variable>
+        <xsl:variable name="type">
+            <xsl:value-of select="substring-after(@n, ':')"/>
+        </xsl:variable>
+        <xsl:variable name="externalMetadataURL">
+            <xsl:text>cocoon://metadata/handle/</xsl:text>
+            <xsl:value-of select="$handle"/>
+            <xsl:text>/mets.xml</xsl:text>
+            <!-- Since this is a summary only grab the descriptive metadata, and the thumbnails -->
+            <xsl:text>?sections=dmdSec,fileSec&amp;fileGrpTypes=THUMBNAIL</xsl:text>
+            <!-- An example of requesting a specific metadata standard (MODS and QDC crosswalks only work for items)->
+            <xsl:if test="@type='DSpace Item'">
+                <xsl:text>&amp;dmdTypes=DC</xsl:text>
+            </xsl:if>-->
+        </xsl:variable>
 
 
         <xsl:choose>
@@ -123,12 +123,13 @@
                 </xsl:if>
             </a>
             <div class="artifact-info">
-            <xsl:if test="dri:list[@n=(concat($handle, ':dc.description.abstract'))]/dri:item">
-                <p>
-                    <xsl:apply-templates select="dri:list[@n=(concat($handle, ':dc.description.abstract'))]/dri:item[1]"/>
-                </p>
-            </xsl:if>
-        </div>
+                <xsl:if test="dri:list[@n=(concat($handle, ':dc.description.abstract'))]/dri:item">
+                    <p>
+                        <xsl:apply-templates
+                                select="dri:list[@n=(concat($handle, ':dc.description.abstract'))]/dri:item[1]"/>
+                    </p>
+                </xsl:if>
+            </div>
 
         </div>
     </xsl:template>
@@ -198,70 +199,77 @@
                     </h4>
                 </xsl:element>
                 <div class="artifact-info">
-                    <span class="author h4">    <small>
-                        <xsl:choose>
-                            <xsl:when test="dri:list[@n=(concat($handle, ':dc.contributor.author'))]">
-                                <xsl:for-each select="dri:list[@n=(concat($handle, ':dc.contributor.author'))]/dri:item">
-                                    <xsl:variable name="author">
-                                        <xsl:apply-templates select="."/>
-                                    </xsl:variable>
-                                    <span>
-                                        <!--Check authority in the mets document-->
-                                        <xsl:if test="$metsDoc/mets:METS/mets:dmdSec/mets:mdWrap/mets:xmlData/dim:dim/dim:field[@element='contributor' and @qualifier='author' and . = $author]/@authority">
-                                            <xsl:attribute name="class">
-                                                <xsl:text>ds-dc_contributor_author-authority</xsl:text>
-                                            </xsl:attribute>
-                                        </xsl:if>
-                                        <xsl:apply-templates select="."/>
-                                    </span>
+                    <span class="author h4">
+                        <small>
+                            <xsl:choose>
+                                <xsl:when test="dri:list[@n=(concat($handle, ':dc.contributor.author'))]">
+                                    <xsl:for-each
+                                            select="dri:list[@n=(concat($handle, ':dc.contributor.author'))]/dri:item">
+                                        <xsl:variable name="author">
+                                            <xsl:apply-templates select="."/>
+                                        </xsl:variable>
+                                        <span>
+                                            <!--Check authority in the mets document-->
+                                            <xsl:if test="$metsDoc/mets:METS/mets:dmdSec/mets:mdWrap/mets:xmlData/dim:dim/dim:field[@element='contributor' and @qualifier='author' and . = $author]/@authority">
+                                                <xsl:attribute name="class">
+                                                    <xsl:text>ds-dc_contributor_author-authority</xsl:text>
+                                                </xsl:attribute>
+                                            </xsl:if>
+                                            <xsl:apply-templates select="."/>
+                                        </span>
 
-                                    <xsl:if test="count(following-sibling::dri:item) != 0">
-                                        <xsl:text>; </xsl:text>
-                                    </xsl:if>
-                                </xsl:for-each>
-                            </xsl:when>
-                            <xsl:when test="dri:list[@n=(concat($handle, ':dc.creator'))]">
-                                <xsl:for-each select="dri:list[@n=(concat($handle, ':dc.creator'))]/dri:item">
-                                    <xsl:apply-templates select="."/>
-                                    <xsl:if test="count(following-sibling::dri:item) != 0">
-                                        <xsl:text>; </xsl:text>
-                                    </xsl:if>
-                                </xsl:for-each>
-                            </xsl:when>
-                            <xsl:when test="dri:list[@n=(concat($handle, ':dc.contributor'))]">
-                                <xsl:for-each select="dri:list[@n=(concat($handle, ':dc.contributor'))]/dri:item">
-                                    <xsl:apply-templates select="."/>
-                                    <xsl:if test="count(following-sibling::dri:item) != 0">
-                                        <xsl:text>; </xsl:text>
-                                    </xsl:if>
-                                </xsl:for-each>
-                            </xsl:when>
-                            <xsl:otherwise>
-                                <i18n:text>xmlui.dri2xhtml.METS-1.0.no-author</i18n:text>
-                            </xsl:otherwise>
-                        </xsl:choose>
-                        </small></span>
+                                        <xsl:if test="count(following-sibling::dri:item) != 0">
+                                            <xsl:text>; </xsl:text>
+                                        </xsl:if>
+                                    </xsl:for-each>
+                                </xsl:when>
+                                <xsl:when test="dri:list[@n=(concat($handle, ':dc.creator'))]">
+                                    <xsl:for-each select="dri:list[@n=(concat($handle, ':dc.creator'))]/dri:item">
+                                        <xsl:apply-templates select="."/>
+                                        <xsl:if test="count(following-sibling::dri:item) != 0">
+                                            <xsl:text>; </xsl:text>
+                                        </xsl:if>
+                                    </xsl:for-each>
+                                </xsl:when>
+                                <xsl:when test="dri:list[@n=(concat($handle, ':dc.contributor'))]">
+                                    <xsl:for-each select="dri:list[@n=(concat($handle, ':dc.contributor'))]/dri:item">
+                                        <xsl:apply-templates select="."/>
+                                        <xsl:if test="count(following-sibling::dri:item) != 0">
+                                            <xsl:text>; </xsl:text>
+                                        </xsl:if>
+                                    </xsl:for-each>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <i18n:text>xmlui.dri2xhtml.METS-1.0.no-author</i18n:text>
+                                </xsl:otherwise>
+                            </xsl:choose>
+                        </small>
+                    </span>
                     <xsl:text> </xsl:text>
                     <xsl:if test="dri:list[@n=(concat($handle, ':dc.date.issued'))]">
-                        <span class="publisher-date h4">   <small>
-                            <xsl:text>(</xsl:text>
-                            <xsl:if test="dri:list[@n=(concat($handle, ':dc.publisher'))]">
-                                <span class="publisher">
-                                    <xsl:apply-templates select="dri:list[@n=(concat($handle, ':dc.publisher'))]/dri:item"/>
+                        <span class="publisher-date h4">
+                            <small>
+                                <xsl:text>(</xsl:text>
+                                <xsl:if test="dri:list[@n=(concat($handle, ':dc.publisher'))]">
+                                    <span class="publisher">
+                                        <xsl:apply-templates
+                                                select="dri:list[@n=(concat($handle, ':dc.publisher'))]/dri:item"/>
+                                    </span>
+                                    <xsl:text>, </xsl:text>
+                                </xsl:if>
+                                <span class="date">
+                                    <xsl:value-of
+                                            select="substring(dri:list[@n=(concat($handle, ':dc.date.issued'))]/dri:item,1,10)"/>
                                 </span>
-                                <xsl:text>, </xsl:text>
-                            </xsl:if>
-                            <span class="date">
-                                <xsl:value-of
-                                        select="substring(dri:list[@n=(concat($handle, ':dc.date.issued'))]/dri:item,1,10)"/>
-                            </span>
-                            <xsl:text>)</xsl:text>
-                            </small></span>
+                                <xsl:text>)</xsl:text>
+                            </small>
+                        </span>
                     </xsl:if>
                     <xsl:choose>
                         <xsl:when test="dri:list[@n=(concat($handle, ':dc.description.abstract'))]/dri:item/dri:hi">
                             <div class="abstract">
-                                <xsl:for-each select="dri:list[@n=(concat($handle, ':dc.description.abstract'))]/dri:item">
+                                <xsl:for-each
+                                        select="dri:list[@n=(concat($handle, ':dc.description.abstract'))]/dri:item">
                                     <xsl:apply-templates select="."/>
                                     <xsl:text>...</xsl:text>
                                     <br/>
@@ -279,10 +287,11 @@
                             </div>
                         </xsl:when>
                         <xsl:when test="dri:list[@n=(concat($handle, ':dc.description.abstract'))]/dri:item">
-                        <div class="abstract">
-                                <xsl:value-of select="util:shortenString(dri:list[@n=(concat($handle, ':dc.description.abstract'))]/dri:item[1], 220, 10)"/>
-                        </div>
-                    </xsl:when>
+                            <div class="abstract">
+                                <xsl:value-of
+                                        select="util:shortenString(dri:list[@n=(concat($handle, ':dc.description.abstract'))]/dri:item[1], 220, 10)"/>
+                            </div>
+                        </xsl:when>
                     </xsl:choose>
                 </div>
             </div>
@@ -308,11 +317,13 @@
                     </xsl:if>
                 </xsl:with-param>
             </xsl:call-template>
-            <xsl:apply-templates select="*[not(name()='label' or name()='head')]" />
+            <xsl:apply-templates select="*[not(name()='label' or name()='head')]"/>
         </fieldset>
     </xsl:template>
 
-    <xsl:template match="dri:list[@id='aspect.discovery.SimpleSearch.list.primary-search']//dri:item[dri:field[@id='aspect.discovery.SimpleSearch.field.query']]" priority="3">
+    <xsl:template
+            match="dri:list[@id='aspect.discovery.SimpleSearch.list.primary-search']//dri:item[dri:field[@id='aspect.discovery.SimpleSearch.field.query']]"
+            priority="3">
         <div>
             <xsl:call-template name="standardAttributes">
                 <xsl:with-param name="class">
@@ -349,7 +360,9 @@
         </div>
     </xsl:template>
 
-    <xsl:template match="dri:list[@id='aspect.discovery.SimpleSearch.list.primary-search']//dri:item[dri:field[@id='aspect.discovery.SimpleSearch.field.query'] and not(dri:field[@id='aspect.discovery.SimpleSearch.field.scope'])]" priority="3">
+    <xsl:template
+            match="dri:list[@id='aspect.discovery.SimpleSearch.list.primary-search']//dri:item[dri:field[@id='aspect.discovery.SimpleSearch.field.query'] and not(dri:field[@id='aspect.discovery.SimpleSearch.field.scope'])]"
+            priority="3">
         <div>
             <xsl:call-template name="standardAttributes">
                 <xsl:with-param name="class">
@@ -377,7 +390,7 @@
             <xsl:call-template name="standardAttributes">
                 <xsl:with-param name="class" select="@rend"/>
             </xsl:call-template>
-            <xsl:apply-templates />
+            <xsl:apply-templates/>
         </h4>
     </xsl:template>
 
@@ -398,9 +411,12 @@
                     window.DSpace.discovery.filters = [];
                 }
                 window.DSpace.discovery.filters.push({
-                    type: '</xsl:text><xsl:value-of select="stringescapeutils:escapeEcmaScript(dri:cell/dri:field[starts-with(@n, 'filtertype')]/dri:value/@option)"/><xsl:text>',
-                    relational_operator: '</xsl:text><xsl:value-of select="stringescapeutils:escapeEcmaScript(dri:cell/dri:field[starts-with(@n, 'filter_relational_operator')]/dri:value/@option)"/><xsl:text>',
-                    query: '</xsl:text><xsl:value-of select="stringescapeutils:escapeEcmaScript(dri:cell/dri:field[@rend = 'discovery-filter-input']/dri:value)"/><xsl:text>',
+                    type: '</xsl:text><xsl:value-of
+                select="stringescapeutils:escapeEcmaScript(dri:cell/dri:field[starts-with(@n, 'filtertype')]/dri:value/@option)"/><xsl:text>',
+                    relational_operator: '</xsl:text><xsl:value-of
+                select="stringescapeutils:escapeEcmaScript(dri:cell/dri:field[starts-with(@n, 'filter_relational_operator')]/dri:value/@option)"/><xsl:text>',
+                    query: '</xsl:text><xsl:value-of
+                select="stringescapeutils:escapeEcmaScript(dri:cell/dri:field[@rend = 'discovery-filter-input']/dri:value)"/><xsl:text>',
                 });
             </xsl:text>
         </script>
@@ -444,7 +460,9 @@
                 </xsl:text>
                 <xsl:for-each select="dri:option">
                     <xsl:text>window.DSpace.i18n.discovery.</xsl:text><xsl:value-of select="$filter_name"/>
-                    <xsl:text>['</xsl:text><xsl:value-of select="@returnValue"/><xsl:text>']='</xsl:text><xsl:copy-of select="./*"/><xsl:text>';</xsl:text>
+                    <xsl:text>['</xsl:text><xsl:value-of select="@returnValue"/><xsl:text>']='</xsl:text>
+                    <xsl:copy-of select="./*"/>
+                    <xsl:text>';</xsl:text>
                 </xsl:for-each>
             </xsl:for-each>
         </script>
@@ -459,7 +477,7 @@
             </xsl:call-template>
 
             <div>
-                    <xsl:apply-templates/>
+                <xsl:apply-templates/>
             </div>
         </div>
     </xsl:template>
