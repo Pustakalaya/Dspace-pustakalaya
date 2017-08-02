@@ -151,7 +151,7 @@
                                 <div class="container-fluid">
                                     <div class="row">
                                         <div class="col-md-4" style="background:#16a085; height:40px;">
-                                            <p class="text-center" style="color:#eeeeee; padding-top:10px;"><i18n:text>xmlui.BrowseBooks</i18n:text></p>
+                                            <p class="text-center" style="color:#eeeeee; margin-left:-78px; padding-top:10px;"><i18n:text>xmlui.BrowseBooks</i18n:text></p>
                                         </div>
                                         <!-- search box -->
                                         <div style="background-color:#e74c3c;height:40px;" class="col-md-4">
@@ -176,26 +176,30 @@
                                 </div><!-- End browse books and search bar -->
 
                                 <!-- Book browsing -->
-                                <div class="container-fluid" style="background:#FFF3E0;">
-                                    <div class="row">
-                                        <!-- Browse by section -->
-                                        <div class="col-md-4" id="book-browsing" style="margin-left:5.5%;">
-                                            <ul>
-                                                <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Literature+and+Arts" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_literature_and_arts</i18n:text></a></li>
-                                                <li><a href="{$context-path}/browse?type=course_materials" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_course_materials</i18n:text></a><i18n:text></i18n:text></li>
-                                                <li><a href="{$context-path}/browse?type=teaching_materials" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_teaching_materials</i18n:text></a></li>
-                                                <li><a href="{$context-path}/browse?type=magazines_and_newspapers" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_magazines_and_newspapers</i18n:text></a></li>
-                                                <li><a href="{$context-path}/browse?type=agriculture_and_diversity" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_agriculture_and_diversity</i18n:text></a></li>
-                                                <li><a href="{$context-path}/browse?type=environment" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_environment</i18n:text></a></li>
-                                                <li><a href="{$context-path}/browse?type=science_and_technology" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_science_and_technology</i18n:text></a></li>
-                                                <li><a href="{$context-path}/browse?type=all_categories" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_all_categories</i18n:text></a></li>
-                                                <li><a href="{$context-path}/browse?type=titles_or_authors" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_titles</i18n:text><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_authors</i18n:text></a></li>
-                                            </ul>
-                                        </div>
-                                        <!-- Book gallery demo -->
-                                        <div class="col-md-8" id="book-gallery">
-                                            <!-- Book Banner -->
-                                        </div>
+                                <div style="background:#FFF3E0; padding-top:10px;">
+                                    <div class="container">
+                                        <div class="row">
+                                            <!-- Browse by section -->
+                                            <div class="col-md-4" id="book-browsing">
+                                                <ul>
+                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Literature+and+Arts" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_literature_and_arts</i18n:text></a></li>
+                                                    <li><a href="{$context-path}/browse?type=course_materials" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_course_materials</i18n:text></a><i18n:text></i18n:text></li>
+                                                    <li><a href="{$context-path}/browse?type=teaching_materials" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_teaching_materials</i18n:text></a></li>
+                                                    <li><a href="{$context-path}/browse?type=magazines_and_newspapers" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_magazines_and_newspapers</i18n:text></a></li>
+                                                    <li><a href="{$context-path}/browse?type=agriculture_and_diversity" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_agriculture_and_diversity</i18n:text></a></li>
+                                                    <li><a href="{$context-path}/browse?type=environment" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_environment</i18n:text></a></li>
+                                                    <li><a href="{$context-path}/browse?type=science_and_technology" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_science_and_technology</i18n:text></a></li>
+                                                    <li><a href="{$context-path}/browse?type=all_categories" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_all_categories</i18n:text></a></li>
+                                                    <li><a href="{$context-path}/browse?type=titles_or_authors" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_titles</i18n:text><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_authors</i18n:text></a></li>
+                                                </ul>
+                                            </div>
+                                            <!-- Book gallery demo -->
+                                            <div class="col-md-8" >
+                                                <ul id="featured-book-gallery">
+
+                                                </ul>
+                                            </div>
+                                        </div> <!-- end row -->
                                     </div>
                                 </div><!-- container  end -->
                                 <br/>
@@ -1427,6 +1431,105 @@
                 }
             </script>
 
+            <!-- script to grab the featured items and append in dom-->
+            <script>
+                $("document").ready(function(){
+                // Featured items URL
+                var featuredItemURL =   "/rest/filtered-items?query_field[]=local.featured&amp;query_op[]=matches&amp;query_val[]=yes&amp;collSel[]=&amp;limit=20&amp;offset=0&amp;expand=parentCollection%2Cmetadata&amp;filters=none";
+                // Ajax call
+                $.ajax({
+                url: featuredItemURL,
+                type: "GET",
+                async: true,
+                contentType: "application/json",
+                success: function(success){
+                console.log(success.items);
+                success.items.forEach(function(item){
+                var featuredItemTitle = item.name;
+                var featuredItemURL = window.location.href + item.handle;
+                getThumbnail(item.uuid, function(featuredItemThumbnail){
+
+                console.log(featuredItemTitle);
+                console.log(featuredItemURL);
+                console.log(featuredItemThumbnail);
+                // create thumbnail tag
+
+                var li = $("<li></li>");
+
+                var h3 = $("<h3></h3>");
+
+                var p = $("<p></p>", {
+                text: featuredItemTitle
+                });
+
+                var a = $("<a></a>",{
+                href: featuredItemURL,
+                });
+
+                var img = $('<img />', {
+                src: featuredItemThumbnail,
+                alt: featuredItemTitle,
+                width: 200,
+                height: 120,
+                class: "img-responsive"
+                });
+
+                li.append(h3.append(a.append(img)));
+                li.append(p);
+
+                // Create a html template
+                $("#featured-book-gallery").append(li);
+
+                }); // END getThumbnail
+                }); // End ForEach
+                // featured-book-gallery configuration
+                $("#featured-book-gallery").lightSlider({
+                item:4,
+                prevHtml: '',
+                nextHtml: '',
+                });
+                } // End success function
+                })// END ajax call
+                });
+            </script>
+
+            <script>
+                // Function to get thumbnail of an item
+                /**
+                Parameters:
+                uuid: uuid of an item
+                thumbnail: function hold thumbnail link.
+                */
+                function getThumbnail(uuid, thumbnail){
+                var bitStreamURL = window.location.origin + "/rest/items/" + uuid + "/bitstreams";
+                var thumbnailURL = null;
+                // get bitstream attributes of object having the id of uuid.
+                $.ajax({
+                url: bitStreamURL,
+                type: "GET",
+                async: false,
+                contentType: "application/json",
+                success: function(success){
+                // Get the url link
+                var filterObject = success.filter(filterThumbnail);
+                if(filterObject.length != 0){
+                thumbnail(window.location.origin + success.filter(filterThumbnail)[0].retrieveLink);
+                } else {
+                thumbnail("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTg0IiBoZWlnaHQ9IjE1OCIgdmlld0JveD0iMCAwIDE4NCAxNTgiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTg0IiBoZWlnaHQ9IjE1OCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjQ2LjE3MTg3NSIgeT0iNzkiIHN0eWxlPSJmaWxsOiNBQUFBQUE7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6MTBwdDtkb21pbmFudC1iYXNlbGluZTpjZW50cmFsIj5ObyBUaHVtYm5haWw8L3RleHQ+PC9nPjwvc3ZnPg==");
+                }
+                }
+                }); // END ajax
+
+                // function to filter the THUMBNAIL bitstream
+                function filterThumbnail(bitstream){
+                if(bitstream.bundleName == "THUMBNAIL"){
+                return true;
+                }
+                } // End filterThumbnail Stream
+                } // End getThumbnail Function
+
+            </script>
+
 
             <!-- script to get audio and videos -->
             <!-- Grab all audio and video -->
@@ -1469,39 +1572,11 @@
                 }
                 }
 
-                // function to filter the THUMBNAIL bitstream
-                function filterThumbnail(bitstream){
-                if(bitstream.bundleName == "THUMBNAIL"){
-                return true;
-                }
-                }
-
-                // Function to getThumbnail url
-                function getThumbnail(uuid, thumbnail){
-                var bitStreamURL = window.location.origin + "/rest/items/" + uuid + "/bitstreams";
-                var thumbnailURL = null;
-                // get bitstream attributes of object having the id of uuid.
-                $.ajax({
-                url: bitStreamURL,
-                type: "GET",
-                async: false,
-                contentType: "application/json",
-                success: function(success){
-                // Get the url link
-                var filterObject = success.filter(filterThumbnail);
-                if(filterObject.length != 0){
-                thumbnail(window.location.origin + success.filter(filterThumbnail)[0].retrieveLink);
-                } else {
-                thumbnail("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTg0IiBoZWlnaHQ9IjE1OCIgdmlld0JveD0iMCAwIDE4NCAxNTgiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTg0IiBoZWlnaHQ9IjE1OCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjQ2LjE3MTg3NSIgeT0iNzkiIHN0eWxlPSJmaWxsOiNBQUFBQUE7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6MTBwdDtkb21pbmFudC1iYXNlbGluZTpjZW50cmFsIj5ObyBUaHVtYm5haWw8L3RleHQ+PC9nPjwvc3ZnPg==");
-                }
-                }});
-                }
-
                 // Query 15 video items
                 $.ajax({
                 url: getVideoURL(0),
                 type: "GET",
-                async: false,
+                async: true,
                 contentType: "application/json",
                 success: function(success){
                 // success object has a list of items
@@ -1513,7 +1588,7 @@
                 $.ajax({
                 url: getAudioURL(0),
                 type: "GET",
-                async: false,
+                async: true,
                 contentType: "application/json",
                 success: function(success){
                 // success object has a list of items
@@ -1573,8 +1648,6 @@
                 }); // End getThumbnail Function
 
                 }); // End forEach
-                // show parent dom after completing for loop.
-
                 // enable audioVideoSection slider
                 $("#audioVideoSection").lightSlider({
                 item:4,

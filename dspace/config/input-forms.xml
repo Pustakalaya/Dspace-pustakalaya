@@ -154,6 +154,17 @@
                     <required></required>
                 </field>
 
+
+                <!-- Featured or not -->
+                <field>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>featured</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Featured this data</label>
+                    <input-type value-pairs-name="featured_items">dropdown</input-type>
+                </field>
+
                 <!-- Identification and citation -->
 
                 <field>
@@ -638,8 +649,12 @@
         <!-- Different category for digital objects such as audio video and other -->
         <value-pairs value-pairs-name="common_types" dc-term="type">
             <pair>
-                <displayed-value>Animation</displayed-value>
-                <stored-value>Animation</stored-value>
+                <displayed-value>Video</displayed-value>
+                <stored-value>Video</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Audio</displayed-value>
+                <stored-value>Audio</stored-value>
             </pair>
             <pair>
                 <displayed-value>Article</displayed-value>
@@ -649,6 +664,19 @@
                 <displayed-value>Book</displayed-value>
                 <stored-value>Book</stored-value>
             </pair>
+            <pair>
+                <displayed-value>Thesis</displayed-value>
+                <stored-value>Thesis</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Working Paper</displayed-value>
+                <stored-value>Working Paper</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Animation</displayed-value>
+                <stored-value>Animation</stored-value>
+            </pair>
+
             <pair>
                 <displayed-value>Book chapter</displayed-value>
                 <stored-value>Book chapter</stored-value>
@@ -690,36 +718,12 @@
                 <stored-value>Presentation</stored-value>
             </pair>
             <pair>
-                <displayed-value>Recording, acoustical</displayed-value>
-                <stored-value>Recording, acoustical</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Recording, musical</displayed-value>
-                <stored-value>Recording, musical</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Recording, oral</displayed-value>
-                <stored-value>Recording, oral</stored-value>
-            </pair>
-            <pair>
                 <displayed-value>Software</displayed-value>
                 <stored-value>Software</stored-value>
             </pair>
             <pair>
                 <displayed-value>Technical Report</displayed-value>
                 <stored-value>Technical Report</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Thesis</displayed-value>
-                <stored-value>Thesis</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Video</displayed-value>
-                <stored-value>Video</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Working Paper</displayed-value>
-                <stored-value>Working Paper</stored-value>
             </pair>
             <pair>
                 <displayed-value>Other</displayed-value>
@@ -1035,6 +1039,22 @@
                 <displayed-value>MIT license</displayed-value>
                 <stored-value>MIT license</stored-value>
             </pair>
+
+        </value-pairs>
+
+        <!-- Featured -->
+        <value-pairs value-pairs-name="featured_items" dc-term="type">
+
+            <pair>
+                <displayed-value>no</displayed-value>
+                <stored-value>no</stored-value>
+            </pair>
+
+            <pair>
+                <displayed-value>yes</displayed-value>
+                <stored-value>yes</stored-value>
+            </pair>
+
 
         </value-pairs>
 
