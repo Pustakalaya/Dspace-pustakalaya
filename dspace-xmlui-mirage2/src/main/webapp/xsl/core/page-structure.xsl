@@ -195,10 +195,17 @@
                                             </div>
                                             <!-- Book gallery demo -->
                                             <div class="col-md-8" >
-                                                <ul id="featured-book-gallery">
-
-                                                </ul>
-                                            </div>
+                                                <!-- Featured books -->
+                                                <div>
+                                                    <h6>Featured items</h6>
+                                                    <ul id="featured-book-gallery"></ul>
+                                                </div>
+                                                <!-- Recently added items -->
+                                                <div>
+                                                    <h6>Recently added items</h6>
+                                                    <ul id="featured-book-gallery1"></ul>
+                                                </div>
+                                            </div><!-- end col-md-8-->
                                         </div> <!-- end row -->
                                     </div>
                                 </div><!-- container  end -->
@@ -1469,8 +1476,8 @@
                 var img = $('<img />', {
                 src: featuredItemThumbnail,
                 alt: featuredItemTitle,
-                width: 200,
-                height: 120,
+                width: 120,
+                height: 145,
                 class: "img-responsive"
                 });
 
@@ -1527,6 +1534,57 @@
                 }
                 } // End filterThumbnail Stream
                 } // End getThumbnail Function
+
+            </script>
+
+            <!-- script to grab all the recently added items -->
+            <script>
+                $("document").ready(function(){
+
+                (function(){
+                //Function to return date in Javascript
+                function getDate(numberOfDaysToAdd){
+                date = new Date();
+                // add days to date
+                date.setDate(date.getDate() + numberOfDaysToAdd);
+                year = date.getFullYear();
+                month = date.getMonth()+1;
+                // Return only year and month format.
+                return year+ '-' + month
+                }
+
+                // recently added item URL
+                //TODO: Replace Date item with server side date value
+                var recentItemURL = window.location.origin +
+                "/rest/filtered-items?query_field[]=dc.date.accessioned&amp;query_op[]=contains&amp;" +
+                "query_val[]=2017-08&amp;collSel[]=&amp;limit=10&amp;offset=0&amp;"
+                "expand=parentCollection%2Cmetadata&amp;filters=none"
+
+
+
+                // Ajax call to get the recent items.
+                $.ajax({
+                url: recentItemURL,
+                type: "GET",
+                async: true,
+                contentType: "application/json",
+                success: function(success){
+                success.items.forEach(function(item){
+                var recentlyAddedItemTitle = item.name;
+                var recentlyAddedItemURL = window.location.href + item.handle;
+                getThumbnail(item.uuid, function(recentlyAddeditemThumbnail){
+                //Your recently item logic here
+                console.log("Recently added item");
+                console.log(recentlyAddedItemTitle);
+                console.log(recentlyAddedItemURL);
+                console.log(recentlyAddeditemThumbnail);
+                });
+                });
+                }});
+
+                })(); // END IIEF
+                })
+
 
             </script>
 
@@ -1631,8 +1689,8 @@
                 var img = $('<img />', {
                 src: itemThumbnail,
                 alt: itemTitle,
-                width: 200,
-                height: 120,
+                width: 120,
+                height: 140,
                 class: "img-responsive"
                 });
 
