@@ -38,8 +38,7 @@
         Requested Page URI. Some functions may alter behavior of processing depending if URI matches a pattern.
         Specifically, adding a static page will need to override the DRI, to directly add content.
     -->
-    <xsl:variable name="request-uri"
-                  select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='request'][@qualifier='URI']"/>
+    <xsl:variable name="request-uri" select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='request'][@qualifier='URI']"/>
 
     <!--
         The starting point of any XSL processing is matching the root element. In DRI the root element is document,
@@ -73,6 +72,7 @@
             </xsl:text>
 
                 <!-- First of all, build the HTML head element -->
+
                 <xsl:call-template name="buildHead"/>
 
                 <!-- Then proceed to the body -->
@@ -106,8 +106,7 @@
                                         <!-- Wrapper for slides -->
                                         <div class="carousel-inner" style="margin-top:10px;">
                                             <div class="item active">
-                                                <img src="{concat($theme-path, '/images/knowledge-in-your-pocket01.png')}"
-                                                     style="width:100%;"/>
+                                                <img src="{concat($theme-path, '/images/knowledge-in-your-pocket01.png')}" style="width:100%;"/>
                                             </div>
 
                                             <div class="item">
@@ -147,24 +146,17 @@
                                 <div class="container-fluid">
                                     <div class="row">
                                         <div class="col-md-4" style="background:#16a085; height:40px;">
-                                            <p class="text-center" style="color:#eeeeee; padding-top:10px;">
-                                                <i18n:text>xmlui.BrowseBooks</i18n:text>
-                                            </p>
+                                            <p class="text-center" style="color:#eeeeee; padding-top:10px;"><i18n:text>xmlui.BrowseBooks</i18n:text></p>
                                         </div>
                                         <!-- search box -->
                                         <div style="background-color:#e74c3c;height:40px;" class="col-md-4">
                                             <form method="post" action="./discover">
                                                 <div class="col-sm-12">
-                                                    <div class="input-group"
-                                                         style="padding-top:7px; padding-bottom:5px;">
-                                                        <input type="text" name="query" class="form-control"
-                                                               placeholder="Search for books, audio, video, title..."
-                                                               style="height:25px;" autocomplete="off"/>
+                                                    <div class="input-group" style="padding-top:7px; padding-bottom:5px;">
+                                                        <input type="text" name="query" class="form-control" placeholder="Search for books, audio, video, title..." style="height:25px;" autocomplete="off" />
                                                         <span class="input-group-btn" style="25px;">
-                                                            <button style="height:26px; background:#c0392b; border-color:#c0392b;"
-                                                                    class="btn btn-default" type="submit">
-                                                                <i style="color:#FFFFFF;vertical-align:top"
-                                                                   class="glyphicon glyphicon-search text-center"></i>
+                                                            <button style="height:26px; background:#c0392b; border-color:#c0392b;" class="btn btn-default" type="submit">
+                                                                <i style="color:#FFFFFF;vertical-align:top" class="glyphicon glyphicon-search text-center"></i>
                                                             </button>
                                                         </span>
                                                     </div><!-- /input-group -->
@@ -173,98 +165,43 @@
                                         </div>
                                         <!-- Advance search -->
                                         <div class="col-md-4" style="background:#e74c3c; height:40px;">
-                                            <p class="pull-left" style="color:#eeeeee; padding-top:10px;">
-                                                <i18n:text>xmlui.advanceSearch</i18n:text>
-                                            </p>
+                                            <p class="pull-left" style="color:#eeeeee; padding-top:10px;"><i18n:text>xmlui.advanceSearch</i18n:text></p>
                                         </div>
-                                    </div><!-- End container fluid -->
+                                    </div><!-- end row -->
                                 </div><!-- End browse books and search bar -->
 
                                 <!-- Book browsing -->
-                                <div class="container-fluid" style="background:#FFF3E0;">
-                                    <div class="row">
-                                        <!-- Browse by section -->
-                                        <div class="col-md-4" id="book-browsing" style="margin-left:5.5%;">
-                                            <ul>
-                                                <li>
-                                                    <a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Literature+and+Arts"
-                                                       class="text-capitalize">
-                                                        <i18n:text>
-                                                            xmlui.ArtifactBrowser.Navigation.browse_literature_and_arts
-                                                        </i18n:text>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Course+Materials"
-                                                       class="text-capitalize">
-                                                        <i18n:text>
-                                                            xmlui.ArtifactBrowser.Navigation.browse_course_materials
-                                                        </i18n:text>
-                                                    </a>
-                                                    <i18n:text></i18n:text>
-                                                </li>
-                                                <li>
-                                                    <a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Teaching+Materials"
-                                                       class="text-capitalize">
-                                                        <i18n:text>
-                                                            xmlui.ArtifactBrowser.Navigation.browse_teaching_materials
-                                                        </i18n:text>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Magazines+and+Newspapers"
-                                                       class="text-capitalize">
-                                                        <i18n:text>
-                                                            xmlui.ArtifactBrowser.Navigation.browse_magazines_and_newspapers
-                                                        </i18n:text>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Agriculture+and+Diversity"
-                                                       class="text-capitalize">
-                                                        <i18n:text>
-                                                            xmlui.ArtifactBrowser.Navigation.browse_agriculture_and_diversity
-                                                        </i18n:text>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Environment"
-                                                       class="text-capitalize">
-                                                        <i18n:text>xmlui.ArtifactBrowser.Navigation.browse_environment
-                                                        </i18n:text>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Science+and+Technology"
-                                                       class="text-capitalize">
-                                                        <i18n:text>
-                                                            xmlui.ArtifactBrowser.Navigation.browse_science_and_technology
-                                                        </i18n:text>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=All+Categories"
-                                                       class="text-capitalize">
-                                                        <i18n:text>
-                                                            xmlui.ArtifactBrowser.Navigation.browse_all_categories
-                                                        </i18n:text>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Title+or+Authors"
-                                                       class="text-capitalize">
-                                                        <i18n:text>xmlui.ArtifactBrowser.Navigation.browse_titles
-                                                        </i18n:text>
-                                                        <i18n:text>xmlui.ArtifactBrowser.Navigation.browse_authors
-                                                        </i18n:text>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <!-- Book gallery demo -->
-                                        <div class="col-md-8" id="book-gallery">
-                                            <!-- Book Banner -->
-                                        </div>
+                                <div style="background:#FFF3E0; padding-top:10px;">
+                                    <div class="container">
+                                        <div class="row">
+                                            <!-- Browse by section -->
+                                            <div class="col-md-4" id="book-browsing" style="margin-left:5.5%;">
+                                                <ul>
+                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Literature+and+Arts" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_literature_and_arts</i18n:text></a></li>
+                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Course+Materials" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_course_materials</i18n:text></a><i18n:text></i18n:text></li>
+                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Teaching+Materials" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_teaching_materials</i18n:text></a></li>
+                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Magazines+and+Newspapers" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_magazines_and_newspapers</i18n:text></a></li>
+                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Agriculture+and+Diversity" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_agriculture_and_diversity</i18n:text></a></li>
+                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Environment" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_environment</i18n:text></a></li>
+                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Science+and+Technology" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_science_and_technology</i18n:text></a></li>
+                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=All+Categories" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_all_categories</i18n:text></a></li>
+                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Title+or+Authors" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_titles</i18n:text><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_authors</i18n:text></a></li>
+                                                </ul>
+                                            </div>
+                                            <!-- Book gallery demo -->
+                                            <div class="col-md-8" id="book-gallery">
+                                                <!-- Book Banner -->
+                                                <div>
+                                                    <h6>Featured items</h6>
+                                                    <ul id="featured-book-gallery"></ul>
+                                                </div>
+                                                <!-- Recently added items -->
+                                                <div>
+                                                    <h6>Recently added items</h6>
+                                                    <ul id="featured-book-gallery1"></ul>
+                                                </div>
+                                            </div><!--end col-md-8-->
+                                        </div><!--end row-->
                                     </div>
                                 </div><!-- container  end -->
                                 <br/>
@@ -272,9 +209,7 @@
                                 <!-- nteractive Educational software  -->
                                 <div class="pustakalayaSection" style="background:#A5D6A7; margin-top:-20px;">
                                     <div class="container">
-                                        <h4 class="text-center text-capitalize" style="color:#060605;">Interactive
-                                            Education softwares
-                                        </h4>
+                                        <h4 class="text-center text-capitalize"  style="color:#060605;">Interactive Education softwares</h4>
                                         <div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
                                             <div class="well">
                                                 <div id="myCarousel" class="carousel slide">
@@ -282,121 +217,29 @@
                                                     <div class="carousel-inner">
                                                         <div class="item active">
                                                             <div class="row">
-                                                                <div class="col-sm-2">
-                                                                    <a href="http://pustakalaya.org/epaath/"
-                                                                       target="_blank">
-                                                                        <img src="{$theme-path}/images/e-paath.png"
-                                                                             alt="Image" class="img-responsive"/>
-                                                                    </a>
+                                                                <div class="col-sm-2"><a href="http://pustakalaya.org/epaath/" target="_blank"><img src="{$theme-path}/images/e-paath.png" alt="Image" class="img-responsive"/></a>
                                                                 </div>
-                                                                <div class="col-sm-2">
-                                                                    <a href="http://pustakalaya.org/lekids.php"
-                                                                       target="_blank">
-                                                                        <img src="{$theme-path}/images/learn-english-for-kids.png"
-                                                                             alt="Image" class="img-responsive"/>
-                                                                    </a>
+                                                                <div class="col-sm-2"><a href="http://pustakalaya.org/lekids.php" target="_blank"><img src="{$theme-path}/images/learn-english-for-kids.png" alt="Image" class="img-responsive"/></a>
                                                                 </div>
-                                                                <div class="col-sm-2">
-                                                                    <a href="http://pustakalaya.org/elkids.php"
-                                                                       target="_blank">
-                                                                        <img src="{$theme-path}/images/e-learning-forkids.png"
-                                                                             alt="Image" class="img-responsive"/>
-                                                                    </a>
+                                                                <div class="col-sm-2"><a href="http://pustakalaya.org/elkids.php" target="_blank"><img src="{$theme-path}/images/e-learning-forkids.png" alt="Image" class="img-responsive"/></a>
                                                                 </div>
-                                                                <div class="col-sm-2">
-                                                                    <a href="http://pustakalaya.org/sabdakosh.php"
-                                                                       target="_blank">
-                                                                        <img src="{$theme-path}/images/npp-logo.png"
-                                                                             alt="Image" class="img-responsive"/>
-                                                                    </a>
+                                                                <div class="col-sm-2"><a href="http://pustakalaya.org/sabdakosh.php" target="_blank"><img src="{$theme-path}/images/npp-logo.png" alt="Image" class="img-responsive"/></a>
                                                                 </div>
-                                                                <div class="col-sm-2">
-                                                                    <a href="#x">
-                                                                        <img src="{$theme-path}/images/simulations.png"
-                                                                             alt="Image" class="img-responsive"/>
-                                                                    </a>
+                                                                <div class="col-sm-2"><a href="#x"><img src="{$theme-path}/images/simulations.png" alt="Image" class="img-responsive"/></a>
                                                                 </div>
-                                                                <div class="col-sm-2">
-                                                                    <a href="http://pustakalaya.org/audio.php"
-                                                                       target="_blank">
-                                                                        <img src="{$theme-path}/images/audiobook.png"
-                                                                             alt="Image" class="img-responsive"/>
-                                                                    </a>
+                                                                <div class="col-sm-2"><a href="http://pustakalaya.org/audio.php" target="_blank"><img src="{$theme-path}/images/audiobook.png" alt="Image" class="img-responsive"/></a>
                                                                 </div>
                                                             </div>
                                                             <!--row-->
                                                         </div>
-                                                        <!--item
-                                                        <div class="item">
-                                                            <div class="row">
-                                                                <div class="col-sm-3">
-                                                                    <a href="#x" class="thumbnail">
-                                                                        <img src="http://placehold.it/250x250"
-                                                                             alt="Image" class="img-responsive"/>
-                                                                    </a>
-                                                                </div>
-                                                                <div class="col-sm-3">
-                                                                    <a href="#x" class="thumbnail">
-                                                                        <img src="http://placehold.it/250x250"
-                                                                             alt="Image" class="img-responsive"/>
-                                                                    </a>
-                                                                </div>
-                                                                <div class="col-sm-3">
-                                                                    <a href="#x" class="thumbnail">
-                                                                        <img src="http://placehold.it/250x250"
-                                                                             alt="Image" class="img-responsive"/>
-                                                                    </a>
-                                                                </div>
-                                                                <div class="col-sm-3">
-                                                                    <a href="#x" class="thumbnail">
-                                                                        <img src="http://placehold.it/250x250"
-                                                                             alt="Image" class="img-responsive"/>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
 
                                                         </div>
 
-                                                        item
-                                                        <div class="item">
-                                                            <div class="row">
-                                                                <div class="col-sm-3">
-                                                                    <a href="#x" class="thumbnail">
-                                                                        <img src="http://placehold.it/150x150"
-                                                                             alt="Image" class="img-responsive"/>
-                                                                    </a>
-                                                                </div>
-                                                                <div class="col-sm-3">
-                                                                    <a href="#x" class="thumbnail">
-                                                                        <img src="http://placehold.it/150x150"
-                                                                             alt="Image" class="img-responsive"/>
-                                                                    </a>
-                                                                </div>
-                                                                <div class="col-sm-3">
-                                                                    <a href="#x" class="thumbnail">
-                                                                        <img src="http://placehold.it/150x150"
-                                                                             alt="Image" class="img-responsive"/>
-                                                                    </a>
-                                                                </div>
-                                                                <div class="col-sm-3">
-                                                                    <a href="#x" class="thumbnail">
-                                                                        <img src="http://placehold.it/150x150"
-                                                                             alt="Image" class="img-responsive"/>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                        item-->
                                                     </div>
                                                     <!--carousel-inner-->
-                                                    <a class="left carousel-control" href="#myCarousel"
-                                                       data-slide="prev">‹
-                                                    </a>
+                                                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
 
-                                                    <a class="right carousel-control" href="#myCarousel"
-                                                       data-slide="next">›
-                                                    </a>
+                                                    <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
                                                 </div>
                                                 <!--myCarousel-->
                                             </div>
@@ -404,22 +247,19 @@
                                         </div>
                                         <!--Static content-->
                                     </div>
-                                </div>
+
 
                                 <!--  Interactive audio video materials -->
-                                <div class="pustakalayaSection" style="background:#81C784; margin-top:-20px;">
+                                <div class="pustakalayaSection" style="background:#81C784; height:350px; margin-top:-20px;">
                                     <div class="container">
-                                        <h4 class="text-center text-capitalize" style="color:#060605;">Educational audio
-                                            videos
-                                        </h4>
+                                        <h4 class="text-center text-capitalize" style="color:#060605;">Educational audio videos</h4>
                                         <div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
                                             <div class="well">
-
-                                                <!--Carousel items-->
-
+                                                    <!--Carousel items-->
                                                 <ul id="audioVideoSection">
 
                                                 </ul>
+
 
                                             </div>
                                             <!--well-->
@@ -431,9 +271,7 @@
                                 <!-- Reference materials -->
                                 <div class="pustakalayaSection" style="background:#A5D6A7; margin-top:-20px;">
                                     <div class="container">
-                                        <h4 class="text-center text-capitalize" style="color:#060605;">References
-                                            Materials
-                                        </h4>
+                                        <h4 class="text-center text-capitalize" style="color:#060605;">References Materials</h4>
                                         <div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
                                             <div class="well">
                                                 <div id="myCarousel" class="carousel slide">
@@ -441,33 +279,13 @@
                                                     <div class="carousel-inner">
                                                         <div class="item active">
                                                             <div class="row">
-                                                                <div class="col-sm-3">
-                                                                    <a href="http://pustakalaya.org/sabdakosh.php"
-                                                                       target="_blank">
-                                                                        <img src="{$theme-path}/images/nepal-dictionary.png"
-                                                                             alt="Image" class="img-responsive"/>
-                                                                    </a>
+                                                                <div class="col-sm-3"><a href="http://pustakalaya.org/sabdakosh.php" target="_blank"><img src="{$theme-path}/images/nepal-dictionary.png" alt="Image" class="img-responsive"/></a>
                                                                 </div>
-                                                                <div class="col-sm-3">
-                                                                    <a href="http://pustakalaya.org/maps.php"
-                                                                       target="_blank">
-                                                                        <img src="{$theme-path}/images/openstreetmap_withtext.png"
-                                                                             alt="Image" class="img-responsive"/>
-                                                                    </a>
+                                                                <div class="col-sm-3"><a href="http://pustakalaya.org/maps.php" target="_blank"><img src="{$theme-path}/images/openstreetmap_withtext.png" alt="Image" class="img-responsive"/></a>
                                                                 </div>
-                                                                <div class="col-sm-3">
-                                                                    <a href="http://pustakalaya.org/sabdakosh.php"
-                                                                       target="_blank">
-                                                                        <img src="{$theme-path}/images/nepali-dictionary.png"
-                                                                             alt="Image" class="img-responsive"/>
-                                                                    </a>
+                                                                <div class="col-sm-3"><a href="http://pustakalaya.org/sabdakosh.php" target="_blank"><img src="{$theme-path}/images/nepali-dictionary.png" alt="Image" class="img-responsive"/></a>
                                                                 </div>
-                                                                <div class="col-sm-3">
-                                                                    <a href="http://pustakalaya.org/list.php?collection_pid=Pustakalaya:65"
-                                                                       target="_blank">
-                                                                        <img src="{$theme-path}/images/Wikipedia_for_Schools_2013_logo.png"
-                                                                             alt="Image" class="img-responsive"/>
-                                                                    </a>
+                                                                <div class="col-sm-3"><a href="http://pustakalaya.org/list.php?collection_pid=Pustakalaya:65" target="_blank"><img src="{$theme-path}/images/Wikipedia_for_Schools_2013_logo.png" alt="Image" class="img-responsive"/></a>
                                                                 </div>
                                                             </div>
                                                             <!-- row -->
@@ -476,29 +294,13 @@
                                                         <!--item-->
                                                         <div class="item">
                                                             <div class="row">
-                                                                <div class="col-sm-3">
-                                                                    <a href="#x" class="thumbnail">
-                                                                        <img src="http://placehold.it/250x250"
-                                                                             alt="Image" class="img-responsive"/>
-                                                                    </a>
+                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
                                                                 </div>
-                                                                <div class="col-sm-3">
-                                                                    <a href="#x" class="thumbnail">
-                                                                        <img src="http://placehold.it/250x250"
-                                                                             alt="Image" class="img-responsive"/>
-                                                                    </a>
+                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
                                                                 </div>
-                                                                <div class="col-sm-3">
-                                                                    <a href="#x" class="thumbnail">
-                                                                        <img src="http://placehold.it/250x250"
-                                                                             alt="Image" class="img-responsive"/>
-                                                                    </a>
+                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
                                                                 </div>
-                                                                <div class="col-sm-3">
-                                                                    <a href="#x" class="thumbnail">
-                                                                        <img src="http://placehold.it/250x250"
-                                                                             alt="Image" class="img-responsive"/>
-                                                                    </a>
+                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
                                                                 </div>
                                                             </div>
 
@@ -507,29 +309,13 @@
                                                         <!--item-->
                                                         <div class="item">
                                                             <div class="row">
-                                                                <div class="col-sm-3">
-                                                                    <a href="#x" class="thumbnail">
-                                                                        <img src="http://placehold.it/150x150"
-                                                                             alt="Image" class="img-responsive"/>
-                                                                    </a>
+                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/150x150" alt="Image" class="img-responsive"/></a>
                                                                 </div>
-                                                                <div class="col-sm-3">
-                                                                    <a href="#x" class="thumbnail">
-                                                                        <img src="http://placehold.it/150x150"
-                                                                             alt="Image" class="img-responsive"/>
-                                                                    </a>
+                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/150x150" alt="Image" class="img-responsive"/></a>
                                                                 </div>
-                                                                <div class="col-sm-3">
-                                                                    <a href="#x" class="thumbnail">
-                                                                        <img src="http://placehold.it/150x150"
-                                                                             alt="Image" class="img-responsive"/>
-                                                                    </a>
+                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/150x150" alt="Image" class="img-responsive"/></a>
                                                                 </div>
-                                                                <div class="col-sm-3">
-                                                                    <a href="#x" class="thumbnail">
-                                                                        <img src="http://placehold.it/150x150"
-                                                                             alt="Image" class="img-responsive"/>
-                                                                    </a>
+                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/150x150" alt="Image" class="img-responsive"/></a>
                                                                 </div>
                                                             </div>
 
@@ -537,13 +323,9 @@
                                                         <!--item-->
                                                     </div>
                                                     <!--carousel-inner-->
-                                                    <a class="left carousel-control" href="#myCarousel"
-                                                       data-slide="prev">‹
-                                                    </a>
+                                                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
 
-                                                    <a class="right carousel-control" href="#myCarousel"
-                                                       data-slide="next">›
-                                                    </a>
+                                                    <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
                                                 </div>
                                                 <!--myCarousel-->
                                             </div>
@@ -558,53 +340,30 @@
                                 <div class="pustakalayaSection" style="background:#ffffff; margin-top: 30px;">
                                     <div class="container">
                                         <div class="row">
-                                            <div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12"
-                                                 style="color:#666666; font-size: 12px;">
+                                            <div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12" style="color:#666666; font-size: 12px;">
                                                 <p class="text-justify">
-                                                    <i18n:text>xmlui.aboutHomePage</i18n:text>
-                                                    <a style="color:#e74c3c; cursor:pointer; text-decoration:none;">
-                                                        <i18n:text>xmlui.more</i18n:text> &gt;&gt;
-                                                    </a>
+                                                    <i18n:text>xmlui.aboutHomePage</i18n:text> <a style="color:#e74c3c; cursor:pointer; text-decoration:none;"><i18n:text>xmlui.more</i18n:text> &gt;&gt;</a>
                                                 </p>
                                             </div>
 
                                         </div><!-- end row-->
                                         <div class="row">
-                                            <div class="col-md-6 col-md-offset-1 col-sm-12 col-xs-12"
-                                                 style="color:#666666; font-size: 12px;">
-                                                <p class="text-left">
-                                                    <i18n:text>xmlui.you.can.bring.epustakalaya.to.your.school
-                                                    </i18n:text>
-                                                    <a href="/"
-                                                       style="color:#e74c3c; cursor:pointer; text-decoration:none;">
-                                                        <i18n:text>xmlui.more</i18n:text> &gt;&gt;
-                                                    </a>
+                                            <div class="col-md-6 col-md-offset-1 col-sm-12 col-xs-12" style="color:#666666; font-size: 12px;">
+                                                <p class="text-left"><i18n:text>xmlui.you.can.bring.epustakalaya.to.your.school</i18n:text>  <a href="/" style="color:#e74c3c; cursor:pointer; text-decoration:none;"><i18n:text>xmlui.more</i18n:text> &gt;&gt;</a>
 
                                                 </p>
-                                                <p class="text-left">
-                                                    <i18n:text>xmlui.you.can.donate.books.to.epustakalaya</i18n:text>
-                                                    <a href="/"
-                                                       style="color:#e74c3c; cursor:pointer; text-decoration:none;">
-                                                        <i18n:text>xmlui.more</i18n:text> &gt;&gt;
-                                                    </a>
+                                                <p class="text-left"><i18n:text>xmlui.you.can.donate.books.to.epustakalaya</i18n:text>  <a href="/" style="color:#e74c3c; cursor:pointer; text-decoration:none;"><i18n:text>xmlui.more</i18n:text> &gt;&gt;</a>
                                                 </p>
                                             </div>
                                             <div class="col-md-4 col-sm-12 col-xs-12">
                                                 <br/>
-                                                <a href="https://play.google.com/store/apps/details?id=com.ole.epustakalaya"
-                                                   target="_blank">
-                                                    <img src="{$theme-path}/images/android-app-logo.png"
-                                                         style="width:200px; height:50px; margin-left:43%;"/>
-                                                </a>
+                                                <a href="https://play.google.com/store/apps/details?id=com.ole.epustakalaya" target="_blank"><img src="{$theme-path}/images/android-app-logo.png" style="width:200px; height:50px; margin-left:43%;"/></a>
                                             </div>
                                         </div>
                                         <!--Static content-->
                                     </div>
                                 </div>
-
                             </div>
-
-
                             <div id="main-container" class="container">
 
                                 <div class="row row-offcanvas row-offcanvas-right">
@@ -630,8 +389,6 @@
                                     <xsl:call-template name="buildFooter"/>
                                 </div>-->
                             </div>
-
-
                         </xsl:otherwise>
                     </xsl:choose>
                     <!-- Javascript at the bottom for fast page loading -->
@@ -678,24 +435,21 @@
 
             <!-- include css for video and audio playback -->
             <link type="text/css" rel="stylesheet">
-                <xsl:attribute name="src">
-                    <xsl:value-of select="./tomcat/webapps/ROOT/video.js/video.js.css"/>
+                <xsl:attribute name="src"><xsl:value-of select="./tomcat/webapps/ROOT/video.js/video.js.css"/>
                 </xsl:attribute>
             </link>
 
             <script>
-                <xsl:attribute name="src">
-                    <xsl:value-of select="./tomcat/webapps/ROOT/video.js/video.min.js"/>
+                <xsl:attribute name="src"><xsl:value-of select="./tomcat/webapps/ROOT/video.js/video.min.js"/>
                 </xsl:attribute>
             </script>
 
             <meta name="Generator">
                 <xsl:attribute name="content">
-                    <xsl:text>DSpace</xsl:text>
+                    <xsl:text>Pustakalaya</xsl:text>
                     <xsl:if test="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='dspace'][@qualifier='version']">
                         <xsl:text> </xsl:text>
-                        <xsl:value-of
-                                select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='dspace'][@qualifier='version']"/>
+                        <xsl:value-of select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='dspace'][@qualifier='version']"/>
                     </xsl:if>
                 </xsl:attribute>
             </meta>
@@ -741,23 +495,18 @@
             <xsl:if test="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='opensearch'][@qualifier='shortName']">
                 <link rel="search" type="application/opensearchdescription+xml">
                     <xsl:attribute name="href">
-                        <xsl:value-of
-                                select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='request'][@qualifier='scheme']"/>
+                        <xsl:value-of select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='request'][@qualifier='scheme']"/>
                         <xsl:text>://</xsl:text>
-                        <xsl:value-of
-                                select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='request'][@qualifier='serverName']"/>
+                        <xsl:value-of select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='request'][@qualifier='serverName']"/>
                         <xsl:text>:</xsl:text>
-                        <xsl:value-of
-                                select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='request'][@qualifier='serverPort']"/>
+                        <xsl:value-of select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='request'][@qualifier='serverPort']"/>
                         <xsl:value-of select="$context-path"/>
                         <xsl:text>/</xsl:text>
-                        <xsl:value-of
-                                select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='opensearch'][@qualifier='context']"/>
+                        <xsl:value-of select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='opensearch'][@qualifier='context']"/>
                         <xsl:text>description.xml</xsl:text>
                     </xsl:attribute>
-                    <xsl:attribute name="title">
-                        <xsl:value-of
-                                select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='opensearch'][@qualifier='shortName']"/>
+                    <xsl:attribute name="title" >
+                        <xsl:value-of select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='opensearch'][@qualifier='shortName']"/>
                     </xsl:attribute>
                 </link>
             </xsl:if>
@@ -784,11 +533,12 @@
                 var key;
 
                 if(window.event)
-                key = window.event.keyCode; //Internet Explorer
+                key = window.event.keyCode;     //Internet Explorer
                 else
-                key = e.which; //Firefox and Netscape
+                key = e.which;     //Firefox and Netscape
 
-                if(key == 13) //if "Enter" pressed, then disable!
+
+                if(key == 13)  //if "Enter" pressed, then disable!
                 return false;
                 else
                 return true;
@@ -796,19 +546,15 @@
             </script>
 
             <xsl:text disable-output-escaping="yes">&lt;!--[if lt IE 9]&gt;
-                &lt;script src="</xsl:text><xsl:value-of
-                select="concat($theme-path, 'vendor/html5shiv/dist/html5shiv.js')"/><xsl:text
-                disable-output-escaping="yes">"&gt;&#160;&lt;/script&gt;
-                &lt;script src="</xsl:text><xsl:value-of select="concat($theme-path, 'vendor/respond/respond.min.js')"/><xsl:text
-                disable-output-escaping="yes">"&gt;&#160;&lt;/script&gt;
+                &lt;script src="</xsl:text><xsl:value-of select="concat($theme-path, 'vendor/html5shiv/dist/html5shiv.js')"/><xsl:text disable-output-escaping="yes">"&gt;&#160;&lt;/script&gt;
+                &lt;script src="</xsl:text><xsl:value-of select="concat($theme-path, 'vendor/respond/respond.min.js')"/><xsl:text disable-output-escaping="yes">"&gt;&#160;&lt;/script&gt;
                 &lt;![endif]--&gt;</xsl:text>
 
             <!-- Modernizr enables HTML5 elements & feature detects -->
             <script src="{concat($theme-path, 'vendor/modernizr/modernizr.js')}">&#160;</script>
 
             <!-- Add the title in -->
-            <xsl:variable name="page_title"
-                          select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='title'][last()]"/>
+            <xsl:variable name="page_title" select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='title'][last()]" />
             <title>
                 <xsl:choose>
                     <xsl:when test="starts-with($request-uri, 'page/about')">
@@ -818,7 +564,7 @@
                         <xsl:text>  </xsl:text>
                     </xsl:when>
                     <xsl:otherwise>
-                        <xsl:copy-of select="$page_title/node()"/>
+                        <xsl:copy-of select="$page_title/node()" />
                     </xsl:otherwise>
                 </xsl:choose>
             </title>
@@ -830,8 +576,7 @@
             </xsl:if>
 
             <!-- Add all Google Scholar Metadata values -->
-            <xsl:for-each
-                    select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[substring(@element, 1, 9) = 'citation_']">
+            <xsl:for-each select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[substring(@element, 1, 9) = 'citation_']">
                 <meta name="{@element}" content="{.}"></meta>
             </xsl:for-each>
 
@@ -850,9 +595,7 @@
                     }
                     });
                 </script>
-                <script type="text/javascript"
-                        src="{concat($theme-path, 'static/js/MathJax.js')}">&#160;
-                </script>
+                <script type="text/javascript" src="{concat($theme-path,'static/js/MathJax.js')}">&#160;</script>
             </xsl:if>
 
         </head>
@@ -883,97 +626,41 @@
 
 
                                 <div class="navbar-header">
-                                    <button type="button" data-toggle="collapse" data-target=".navbar-collapse"
-                                            class="navbar-toggle" id="collapse_button" style="background-color:#dddddd;"
-                                            aria-controls="pustakalaya-navbar">
-                                        <span style="background-color:black;" class="sr-only">Toggle navigation</span>
-                                        <span style="background-color:black;" class="icon-bar"></span>
-                                        <span style="background-color:black;" class="icon-bar"></span>
-                                        <span style="background-color:black;" class="icon-bar"></span>
-                                    </button>
+                                    <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle" id="collapse_button" style="background-color:#dddddd;" aria-controls="pustakalaya-navbar"><span style="background-color:black;" class="sr-only">Toggle navigation</span><span style="background-color:black;" class="icon-bar"></span><span style="background-color:black;" class="icon-bar"></span><span style="background-color:black;" class="icon-bar"></span></button>
                                 </div>
                                 <div class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
-                                    <ul id="pustakalaya-navbar" class="nav navbar-nav">
+                                    <ul id="pustakalaya-navbar" class="nav navbar-nav" >
                                         <li class="dropdown" id="pustakalaya-dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"
-                                               data-hover="dropdown" role="button" id="pustakalaya-menu-toggle">
-                                                <i18n:text>xmlui.header.menu.browsePustakalaya</i18n:text>
-                                                <span class="caret"></span>
-                                            </a>
-                                            <ul class="dropdown-menu" id="pustakalaya-dropdown-menu"
-                                                style="padding-top:0px !important; padding-bottom:0px !important">
-                                                <li>
-                                                    <a class="text-capitalize" href="{$context-path}/browse?type=grade">
-                                                        Browse by title
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="text-capitalize" href="{$context-path}/browse?type=level">
-                                                        Browse by Education level
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="text-capitalize" href="{$context-path}/browse?type=type">
-                                                        Browse by Data type
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="text-capitalize"
-                                                       href="{$context-path}/browse?type=category">Browse by Subjects
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="text-capitalize"
-                                                       href="{$context-path}/browse?type=author">Browse by Authors
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="text-capitalize"
-                                                       href="{$context-path}/browse?type=dateissued">Browse by Issue
-                                                        Date
-                                                    </a>
-                                                </li>
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" role="button" id="pustakalaya-menu-toggle"><i18n:text>xmlui.header.menu.browsePustakalaya</i18n:text><span class="caret"></span></a>
+                                            <ul class="dropdown-menu" id="pustakalaya-dropdown-menu" style="padding-top:0px !important; padding-bottom:0px !important">
+                                                <li><a class="text-capitalize" href="{$context-path}/browse?type=grade">Browse by title</a></li>
+                                                <li><a class="text-capitalize" href="{$context-path}/browse?type=level">Browse by Education level</a></li>
+                                                <li><a class="text-capitalize" href="{$context-path}/browse?type=type">Browse by Data type</a></li>
+                                                <li><a class="text-capitalize" href="{$context-path}/browse?type=category">Browse by Subjects</a></li>
+                                                <li><a class="text-capitalize" href="{$context-path}/browse?type=author">Browse by Authors</a></li>
+                                                <li><a class="text-capitalize" href="{$context-path}/browse?type=dateissued">Browse by Issue Date</a></li>
                                             </ul>
                                         </li>
                                         <li>
-                                            <a href="#educational-software" class="text-capitalized"
-                                               style="color:#FFFF;">
-                                                <i18n:text>xmlui.header.menu.educational.softwares</i18n:text>
-                                            </a>
+                                            <a href="#educational-software" class="text-capitalized" style="color:#FFFF;"><i18n:text>xmlui.header.menu.educational.softwares</i18n:text></a>
                                         </li>
                                         <li>
-                                            <a href="#educational-software" class="text-capitalized"
-                                               style="color:#FFFF;">
-                                                <i18n:text>xmlui.header.menu.audio.video</i18n:text>
-                                            </a>
+                                            <a href="#educational-software" class="text-capitalized" style="color:#FFFF;"><i18n:text>xmlui.header.menu.audio.video</i18n:text></a>
                                         </li>
                                     </ul>
                                 </div>
 
                             </div>
                         </div>
-                        <div class="col-md-2">
-                            <div class="navbar-header pull-right hidden-xs">
-                                <ul><a href="{$context-path}/page/about"><i18n:text>xmlui.static.page.about</i18n:text></a></ul>
-                                <ul>
-                                    <img src="{$theme-path}/images/flag-nepal.png"
-                                         style="padding-left:10px; padding-right:10px; margin-top:15px; margin-left:70px;"/>
-                                </ul>
-                                <ul class="nav navbar-nav pull-left">
-                                    <xsl:call-template name="languageSelection"/>
-                                </ul>
-                                <ul class="nav navbar-nav pull-left">
-                                    <li class="active">
-                                        <a href="{$context-path}/admin/panel">
-                                            <i18n:text>xmlui.administrative.Navigation.administrative_control_panel
-                                            </i18n:text>
-                                        </a>
-                                    </li>
+                        <div class="col-md-3">
+                            <div class="navbar-header  hidden-xs">
+                                <ul class="nav navbar-nav">
+                                    <li><a href="{$context-path}/page/about"><i18n:text>xmlui.static.page.about</i18n:text></a></li>
+                                    <li><p style="margin-top:15px;"> | </p></li>
                                     <xsl:choose>
                                         <xsl:when test="/dri:document/dri:meta/dri:userMeta/@authenticated = 'yes'">
                                             <li class="dropdown">
-                                                <a id="user-dropdown-toggle" href="#" role="button"
-                                                   class="dropdown-toggle"
+                                                <a id="user-dropdown-toggle" href="#" role="button" class="dropdown-toggle"
                                                    data-toggle="dropdown">
                                                     <span class="hidden-xs">
                                                         <xsl:value-of select="/dri:document/dri:meta/dri:userMeta/
@@ -1013,7 +700,16 @@
                                             </li>
                                         </xsl:otherwise>
                                     </xsl:choose>
+                                    <li><img src="{$theme-path}/images/flag-nepal.png" style="margin-top:15px;"/></li>
+                                    <xsl:call-template name="languageSelection"/>
                                 </ul>
+
+
+                                <!--<li class="active">
+                                    <a href="{$context-path}/admin/panel" class="btn glyphicon glyphicon-plus">
+                                        &lt;!&ndash;<i18n:text>xmlui.administrative.Navigation.administrative_control_panel</i18n:text>&ndash;&gt;
+                                    </a>
+                                </li>-->
 
                                 <button data-toggle="offcanvas" class="navbar-toggle visible-sm" type="button">
                                     <span class="sr-only">
@@ -1246,12 +942,12 @@
                         <xsl:attribute name="href">
                             <xsl:value-of select="./@target"/>
                         </xsl:attribute>
-                        <xsl:apply-templates/>
+                        <xsl:apply-templates />
                     </a>
                 </xsl:when>
                 <xsl:otherwise>
                     <xsl:attribute name="class">active</xsl:attribute>
-                    <xsl:apply-templates/>
+                    <xsl:apply-templates />
                 </xsl:otherwise>
             </xsl:choose>
         </li>
@@ -1270,13 +966,13 @@
                         <xsl:if test="position()=1">
                             <i class="glyphicon glyphicon-home" aria-hidden="true"/>&#160;
                         </xsl:if>
-                        <xsl:apply-templates/>
+                        <xsl:apply-templates />
                     </a>
                 </xsl:when>
                 <xsl:when test="position() > 1 and position() = last()">
                     <xsl:attribute name="class">disabled</xsl:attribute>
                     <a role="menuitem" href="#">
-                        <xsl:apply-templates/>
+                        <xsl:apply-templates />
                     </a>
                 </xsl:when>
                 <xsl:otherwise>
@@ -1284,7 +980,7 @@
                     <xsl:if test="position()=1">
                         <i class="glyphicon glyphicon-home" aria-hidden="true"/>&#160;
                     </xsl:if>
-                    <xsl:apply-templates/>
+                    <xsl:apply-templates />
                 </xsl:otherwise>
             </xsl:choose>
         </li>
@@ -1306,8 +1002,7 @@
                       select="document($externalMetadataURL)//dim:field[@element='rights'][@qualifier='uri']"
         />
         <xsl:variable name="handleUri">
-            <xsl:for-each
-                    select="document($externalMetadataURL)//dim:field[@element='identifier' and @qualifier='uri']">
+            <xsl:for-each select="document($externalMetadataURL)//dim:field[@element='identifier' and @qualifier='uri']">
                 <a>
                     <xsl:attribute name="href">
                         <xsl:copy-of select="./node()"/>
@@ -1333,13 +1028,12 @@
                             <xsl:with-param name="ccLicenseUri" select="$ccLicenseUri"/>
                         </xsl:call-template>
                     </a>
-                </div>
-                <div class="col-sm-8">
-                    <span>
-                        <i18n:text>xmlui.dri2xhtml.METS-1.0.cc-license-text</i18n:text>
-                        <xsl:value-of select="$ccLicenseName"/>
-                    </span>
-                </div>
+                </div> <div class="col-sm-8">
+                <span>
+                    <i18n:text>xmlui.dri2xhtml.METS-1.0.cc-license-text</i18n:text>
+                    <xsl:value-of select="$ccLicenseName"/>
+                </span>
+            </div>
             </div>
         </xsl:if>
     </xsl:template>
@@ -1351,38 +1045,38 @@
             <xsl:choose>
                 <xsl:when test="starts-with($ccLicenseUri,
                                            'http://creativecommons.org/licenses/by/')">
-                    <xsl:value-of select="'cc-by.png'"/>
+                    <xsl:value-of select="'cc-by.png'" />
                 </xsl:when>
                 <xsl:when test="starts-with($ccLicenseUri,
                                            'http://creativecommons.org/licenses/by-sa/')">
-                    <xsl:value-of select="'cc-by-sa.png'"/>
+                    <xsl:value-of select="'cc-by-sa.png'" />
                 </xsl:when>
                 <xsl:when test="starts-with($ccLicenseUri,
                                            'http://creativecommons.org/licenses/by-nd/')">
-                    <xsl:value-of select="'cc-by-nd.png'"/>
+                    <xsl:value-of select="'cc-by-nd.png'" />
                 </xsl:when>
                 <xsl:when test="starts-with($ccLicenseUri,
                                            'http://creativecommons.org/licenses/by-nc/')">
-                    <xsl:value-of select="'cc-by-nc.png'"/>
+                    <xsl:value-of select="'cc-by-nc.png'" />
                 </xsl:when>
                 <xsl:when test="starts-with($ccLicenseUri,
                                            'http://creativecommons.org/licenses/by-nc-sa/')">
-                    <xsl:value-of select="'cc-by-nc-sa.png'"/>
+                    <xsl:value-of select="'cc-by-nc-sa.png'" />
                 </xsl:when>
                 <xsl:when test="starts-with($ccLicenseUri,
                                            'http://creativecommons.org/licenses/by-nc-nd/')">
-                    <xsl:value-of select="'cc-by-nc-nd.png'"/>
+                    <xsl:value-of select="'cc-by-nc-nd.png'" />
                 </xsl:when>
                 <xsl:when test="starts-with($ccLicenseUri,
                                            'http://creativecommons.org/publicdomain/zero/')">
-                    <xsl:value-of select="'cc-zero.png'"/>
+                    <xsl:value-of select="'cc-zero.png'" />
                 </xsl:when>
                 <xsl:when test="starts-with($ccLicenseUri,
                                            'http://creativecommons.org/publicdomain/mark/')">
-                    <xsl:value-of select="'cc-mark.png'"/>
+                    <xsl:value-of select="'cc-mark.png'" />
                 </xsl:when>
                 <xsl:otherwise>
-                    <xsl:value-of select="'cc-generic.png'"/>
+                    <xsl:value-of select="'cc-generic.png'" />
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:variable>
@@ -1404,9 +1098,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6">
-                            <p style="color:#FFF" class="text-capitalized">
-                                <i18n:text>xmlui.developed.and.maintained.by</i18n:text>
-                            </p>
+                            <p style="color:#FFF" class="text-capitalized"><i18n:text>xmlui.developed.and.maintained.by</i18n:text></p>
                             <img class="pustakalaya-logo" src="{$theme-path}/images/eplogo.png"
                                  style="height=30px; width=30px;"/>
                         </div>
@@ -1444,18 +1136,14 @@
                                     <br/>
                                     <p style="color:#444444" class="text-capitalized">
                                         <i18n:text>xmlui.creative.commons</i18n:text>
-                                        <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/" target="_blank">
-                                            Licensing details
-                                        </a>
+                                        <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/" target="_blank">Licensing details</a>
                                     </p>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <!-- Our  Partners here -->
                                 <div id="our-partners">
-                                    <h3 class="text-uppercase">
-                                        <i18n:text>xmlui.our.partners</i18n:text>
-                                    </h3>
+                                    <h3 class="text-uppercase"><i18n:text>xmlui.our.partners</i18n:text></h3>
 
 
                                     <a href="http://www.maitritrust.org.uk/" target="_blank"
@@ -1480,9 +1168,7 @@
                             <!--Content contributors -->
                             <div id="our-content-contributors"
                                  style="border-left: 3px solid #f2f2f2; position:absolute; ">
-                                <h3 class="text-uppercase" style="margin-left:20px;">
-                                    <i18n:text>xmlui.our.content.contributors</i18n:text>
-                                </h3>
+                                <h3 class="text-uppercase" style="margin-left:20px;"><i18n:text>xmlui.our.content.contributors</i18n:text></h3>
                                 <a href="http://www.savethechildren.org/countries/asia/nepal.html"
                                    target="_blank"
                                    title="Save The Children">
@@ -1629,7 +1315,169 @@
             </a>
             <p>&#160;</p>
 
-            <script src="{concat($theme-path, 'vendor/jquery/jquery.min.js')}"></script>
+            <!--<script src="https://code.jquery.com/jquery-1.10.2.min.js" integrity="sha256-C6CB9UYIS9UJeqinPHWTHVqh/E1uhG5Twh+Y5qFQmYg=" crossorigin="anonymous"></script>
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
+            <!--<script>
+                <xsl:attribute name="src"><xsl:value-of select="../../scripts/lightslider.js"/></xsl:attribute>
+            </script>
+            <script>
+                <xsl:attribute name="src"><xsl:value-of select="../../scripts/jquery-1.10.2.min.js"/></xsl:attribute>
+            </script>-->
+            <script src="{concat($theme-path,'scripts/lightslider.js')}">&#160;</script>
+            <script src="{concat($theme-path,'scripts/jquery-1.10.2.min.js')}">&#160;</script>
+
+            <!-- Pustakalaya custom scripts -->
+
+            <!-- script to grab the featured items and append in dom-->
+            <script>
+                $("document").ready(function(){
+                // Featured items URL
+                var featuredItemURL =   "/rest/filtered-items?query_field[]=local.featured&amp;query_op[]=matches&amp;query_val[]=yes&amp;collSel[]=&amp;limit=20&amp;offset=0&amp;expand=parentCollection%2Cmetadata&amp;filters=none";
+                // Ajax call
+                $.ajax({
+                url: featuredItemURL,
+                type: "GET",
+                async: true,
+                contentType: "application/json",
+                success: function(success){
+                console.log(success.items);
+                success.items.forEach(function(item){
+                var featuredItemTitle = item.name;
+                var featuredItemURL = window.location.href + item.handle;
+                getThumbnail(item.uuid, function(featuredItemThumbnail){
+
+                console.log(featuredItemTitle);
+                console.log(featuredItemURL);
+                console.log(featuredItemThumbnail);
+                // create thumbnail tag
+
+                var li = $("<li></li>");
+
+                var h3 = $("<h3></h3>");
+
+                var p = $("<p></p>", {
+                text: featuredItemTitle
+                });
+
+                var a = $("<a></a>",{
+                href: featuredItemURL,
+                });
+
+                var img = $('<img />', {
+                src: featuredItemThumbnail,
+                alt: featuredItemTitle,
+                width: 120,
+                height: 145,
+                class: "img-responsive"
+                });
+
+                li.append(h3.append(a.append(img)));
+                li.append(p);
+
+                // Create a html template
+                $("#featured-book-gallery").append(li);
+
+                }); // END getThumbnail
+                }); // End ForEach
+                // featured-book-gallery configuration
+                $("#featured-book-gallery").lightSlider({
+                item:4,
+                prevHtml: '',
+                nextHtml: '',
+                });
+                } // End success function
+                })// END ajax call
+                });
+            </script>
+
+            <script>
+                // Function to get thumbnail of an item
+                /**
+                Parameters:
+                uuid: uuid of an item
+                thumbnail: function hold thumbnail link.
+                */
+                function getThumbnail(uuid, thumbnail){
+                var bitStreamURL = window.location.origin + "/rest/items/" + uuid + "/bitstreams";
+                var thumbnailURL = null;
+                // get bitstream attributes of object having the id of uuid.
+                $.ajax({
+                url: bitStreamURL,
+                type: "GET",
+                async: false,
+                contentType: "application/json",
+                success: function(success){
+                // Get the url link
+                var filterObject = success.filter(filterThumbnail);
+                if(filterObject.length != 0){
+                thumbnail(window.location.origin + success.filter(filterThumbnail)[0].retrieveLink);
+                } else {
+                thumbnail("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTg0IiBoZWlnaHQ9IjE1OCIgdmlld0JveD0iMCAwIDE4NCAxNTgiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTg0IiBoZWlnaHQ9IjE1OCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjQ2LjE3MTg3NSIgeT0iNzkiIHN0eWxlPSJmaWxsOiNBQUFBQUE7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6MTBwdDtkb21pbmFudC1iYXNlbGluZTpjZW50cmFsIj5ObyBUaHVtYm5haWw8L3RleHQ+PC9nPjwvc3ZnPg==");
+                }
+                }
+                }); // END ajax
+
+                // function to filter the THUMBNAIL bitstream
+                function filterThumbnail(bitstream){
+                if(bitstream.bundleName == "THUMBNAIL"){
+                return true;
+                }
+                } // End filterThumbnail Stream
+                } // End getThumbnail Function
+
+            </script>
+
+            <!-- script to grab all the recently added items -->
+            <script>
+                $("document").ready(function(){
+
+                (function(){
+                //Function to return date in Javascript
+                function getDate(numberOfDaysToAdd){
+                date = new Date();
+                // add days to date
+                date.setDate(date.getDate() + numberOfDaysToAdd);
+                year = date.getFullYear();
+                month = date.getMonth()+1;
+                // Return only year and month format.
+                return year+ '-' + month
+                }
+
+                // recently added item URL
+                //TODO: Replace Date item with server side date value
+                var recentItemURL = window.location.origin +
+                "/rest/filtered-items?query_field[]=dc.date.accessioned&amp;query_op[]=contains&amp;" +
+                "query_val[]=2017-08&amp;collSel[]=&amp;limit=10&amp;offset=0&amp;"
+                "expand=parentCollection%2Cmetadata&amp;filters=none"
+
+
+
+                // Ajax call to get the recent items.
+                $.ajax({
+                url: recentItemURL,
+                type: "GET",
+                async: true,
+                contentType: "application/json",
+                success: function(success){
+                success.items.forEach(function(item){
+                var recentlyAddedItemTitle = item.name;
+                var recentlyAddedItemURL = window.location.href + item.handle;
+                getThumbnail(item.uuid, function(recentlyAddeditemThumbnail){
+                //Your recently item logic here
+                console.log("Recently added item");
+                console.log(recentlyAddedItemTitle);
+                console.log(recentlyAddedItemURL);
+                console.log(recentlyAddeditemThumbnail);
+                });
+                });
+                }});
+
+                })(); // END IIEF
+                })
+
+
+            </script>
+
 
             <!-- script to get audio and videos -->
             <!-- Grab all audio and video -->
@@ -1672,39 +1520,11 @@
                 }
                 }
 
-                // function to filter the THUMBNAIL bitstream
-                function filterThumbnail(bitstream){
-                if(bitstream.bundleName == "THUMBNAIL"){
-                return true;
-                }
-                }
-
-                // Function to getThumbnail url
-                function getThumbnail(uuid, thumbnail){
-                var bitStreamURL = window.location.origin + "/rest/items/" + uuid + "/bitstreams";
-                var thumbnailURL = null;
-                // get bitstream attributes of object having the id of uuid.
-                $.ajax({
-                url: bitStreamURL,
-                type: "GET",
-                async: false,
-                contentType: "application/json",
-                success: function(success){
-                // Get the url link
-                var filterObject = success.filter(filterThumbnail);
-                if(filterObject.length != 0){
-                thumbnail(window.location.origin + success.filter(filterThumbnail)[0].retrieveLink);
-                } else {
-                thumbnail("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTg0IiBoZWlnaHQ9IjE1OCIgdmlld0JveD0iMCAwIDE4NCAxNTgiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTg0IiBoZWlnaHQ9IjE1OCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjQ2LjE3MTg3NSIgeT0iNzkiIHN0eWxlPSJmaWxsOiNBQUFBQUE7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6MTBwdDtkb21pbmFudC1iYXNlbGluZTpjZW50cmFsIj5ObyBUaHVtYm5haWw8L3RleHQ+PC9nPjwvc3ZnPg==");
-                }
-                }});
-                }
-
                 // Query 15 video items
                 $.ajax({
                 url: getVideoURL(0),
                 type: "GET",
-                async: false,
+                async: true,
                 contentType: "application/json",
                 success: function(success){
                 // success object has a list of items
@@ -1716,7 +1536,7 @@
                 $.ajax({
                 url: getAudioURL(0),
                 type: "GET",
-                async: false,
+                async: true,
                 contentType: "application/json",
                 success: function(success){
                 // success object has a list of items
@@ -1759,8 +1579,8 @@
                 var img = $('<img />', {
                 src: itemThumbnail,
                 alt: itemTitle,
-                width: 200,
-                height: 120,
+                width: 120,
+                height: 140,
                 class: "img-responsive"
                 });
 
@@ -1776,8 +1596,6 @@
                 }); // End getThumbnail Function
 
                 }); // End forEach
-                // show parent dom after completing for loop.
-
                 // enable audioVideoSection slider
                 $("#audioVideoSection").lightSlider({
                 item:4,
@@ -1792,7 +1610,6 @@
                 })(); // END IIFE
                 });  // END Onload
             </script>
-
         </footer>
     </xsl:template>
 
@@ -1800,6 +1617,10 @@
     <!--
             The meta, body, options elements; the three top-level elements in the schema
     -->
+
+
+
+
 
 
     <!--
@@ -1811,8 +1632,7 @@
             <xsl:if test="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='alert'][@qualifier='message']">
                 <div class="alert">
                     <button type="button" class="close" data-dismiss="alert">&#215;</button>
-                    <xsl:copy-of
-                            select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='alert'][@qualifier='message']/node()"/>
+                    <xsl:copy-of select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='alert'][@qualifier='message']/node()"/>
                 </div>
             </xsl:if>
 
@@ -1820,17 +1640,13 @@
             <xsl:choose>
                 <xsl:when test="starts-with($request-uri, 'page/about')">
                     <div class="hero-unit">
-                        <h1>
-                            <i18n:text>xmlui.mirage2.page-structure.heroUnit.title</i18n:text>
-                        </h1>
-                        <p>
-                            <i18n:text>xmlui.mirage2.page-structure.heroUnit.content</i18n:text>
-                        </p>
+                        <h1><i18n:text>xmlui.mirage2.page-structure.heroUnit.title</i18n:text></h1>
+                        <p><i18n:text>xmlui.mirage2.page-structure.heroUnit.content</i18n:text></p>
                     </div>
                 </xsl:when>
                 <!-- Otherwise use default handling of body -->
                 <xsl:otherwise>
-                    <xsl:apply-templates/>
+                    <xsl:apply-templates />
                 </xsl:otherwise>
             </xsl:choose>
 
@@ -1852,7 +1668,6 @@
     -->
 
     <xsl:template name="addJavascript">
-        <!-- Pustakalaya custom scripts -->
 
         <!-- Hide banner if this is not the homepage -->
         <script type="text/javascript">
@@ -1907,7 +1722,6 @@
             }
         </script>
 
-
         <script type="text/javascript"><xsl:text>
                          if(typeof window.publication === 'undefined'){
                             window.publication={};
@@ -1920,9 +1734,7 @@
         <!--TODO concat & minify!-->
 
         <script>
-            <xsl:text>if(!window.DSpace){window.DSpace={};}window.DSpace.context_path='</xsl:text><xsl:value-of
-                select="$context-path"/><xsl:text>';window.DSpace.theme_path='</xsl:text><xsl:value-of
-                select="$theme-path"/><xsl:text>';</xsl:text>
+            <xsl:text>if(!window.DSpace){window.DSpace={};}window.DSpace.context_path='</xsl:text><xsl:value-of select="$context-path"/><xsl:text>';window.DSpace.theme_path='</xsl:text><xsl:value-of select="$theme-path"/><xsl:text>';</xsl:text>
         </script>
 
         <!--inject scripts.html containing all the theme specific javascript references
@@ -1945,13 +1757,11 @@
                 <xsl:attribute name="src">
                     <xsl:value-of select="$theme-path"/>
                     <xsl:value-of select="."/>
-                </xsl:attribute>&#160;
-            </script>
+                </xsl:attribute>&#160;</script>
         </xsl:for-each>
 
         <!-- add "shared" javascript from static, path is relative to webapp root-->
-        <xsl:for-each
-                select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='javascript'][@qualifier='static']">
+        <xsl:for-each select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='javascript'][@qualifier='static']">
             <!--This is a dirty way of keeping the scriptaculous stuff from choice-support
             out of our theme without modifying the administrative and submission sitemaps.
             This is obviously not ideal, but adding those scripts in those sitemaps is far
@@ -1962,8 +1772,7 @@
                         <xsl:attribute name="src">
                             <xsl:value-of select="$theme-path"/>
                             <xsl:text>js/choice-support.js</xsl:text>
-                        </xsl:attribute>&#160;
-                    </script>
+                        </xsl:attribute>&#160;</script>
                 </xsl:when>
                 <xsl:when test="not(starts-with(text(), 'static/js/scriptaculous'))">
                     <script>
@@ -1972,8 +1781,7 @@
                                     select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='contextPath'][not(@qualifier)]"/>
                             <xsl:text>/</xsl:text>
                             <xsl:value-of select="."/>
-                        </xsl:attribute>&#160;
-                    </script>
+                        </xsl:attribute>&#160;</script>
                 </xsl:when>
             </xsl:choose>
         </xsl:for-each>
@@ -1991,12 +1799,9 @@
                   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
                   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-                  ga('create', '</xsl:text><xsl:value-of
-                    select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='google'][@qualifier='analytics']"/><xsl:text>', '</xsl:text><xsl:value-of
-                    select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='request'][@qualifier='serverName']"/><xsl:text>');
+                  ga('create', '</xsl:text><xsl:value-of select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='google'][@qualifier='analytics']"/><xsl:text>', '</xsl:text><xsl:value-of select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='request'][@qualifier='serverName']"/><xsl:text>');
                   ga('send', 'pageview');
-           </xsl:text>
-            </script>
+           </xsl:text></script>
         </xsl:if>
     </xsl:template>
 
@@ -2004,8 +1809,7 @@
     <xsl:template name="languageSelection">
         <xsl:if test="count(/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='page'][@qualifier='supportedLocale']) &gt; 1">
             <li id="ds-language-selection" class="dropdown">
-                <xsl:variable name="active-locale"
-                              select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='page'][@qualifier='currentLocale']"/>
+                <xsl:variable name="active-locale" select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='page'][@qualifier='currentLocale']"/>
                 <a id="language-dropdown-toggle" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
                     <span class="hidden-xs">
                         <xsl:value-of
@@ -2014,8 +1818,7 @@
                         <b class="caret"/>
                     </span>
                 </a>
-                <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="language-dropdown-toggle"
-                    data-no-collapse="true">
+                <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="language-dropdown-toggle" data-no-collapse="true">
                     <xsl:for-each
                             select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='page'][@qualifier='supportedLocale']">
                         <xsl:variable name="locale" select="."/>
@@ -2040,4 +1843,5 @@
             </li>
         </xsl:if>
     </xsl:template>
+
 </xsl:stylesheet>
