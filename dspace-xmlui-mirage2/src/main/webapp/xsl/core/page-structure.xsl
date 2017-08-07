@@ -181,29 +181,31 @@
                                         <div class="row">
                                             <!-- Browse by section -->
                                             <div class="col-md-4" id="book-browsing">
-                                                <ul>
-                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Literature+and+Arts" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_literature_and_arts</i18n:text></a></li>
-                                                    <li><a href="{$context-path}/browse?type=course_materials" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_course_materials</i18n:text></a><i18n:text></i18n:text></li>
-                                                    <li><a href="{$context-path}/browse?type=teaching_materials" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_teaching_materials</i18n:text></a></li>
-                                                    <li><a href="{$context-path}/browse?type=magazines_and_newspapers" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_magazines_and_newspapers</i18n:text></a></li>
-                                                    <li><a href="{$context-path}/browse?type=agriculture_and_diversity" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_agriculture_and_diversity</i18n:text></a></li>
-                                                    <li><a href="{$context-path}/browse?type=environment" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_environment</i18n:text></a></li>
-                                                    <li><a href="{$context-path}/browse?type=science_and_technology" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_science_and_technology</i18n:text></a></li>
-                                                    <li><a href="{$context-path}/browse?type=all_categories" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_all_categories</i18n:text></a></li>
-                                                    <li><a href="{$context-path}/browse?type=titles_or_authors" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_titles</i18n:text><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_authors</i18n:text></a></li>
+                                                <ul style="padding:0px;">
+                                                    <li style="width:100%;"><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Literature+and+Arts" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_literature_and_arts</i18n:text></a></li>
+                                                    <li style="width:100%;"><a href="{$context-path}/browse?type=course_materials" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_course_materials</i18n:text></a><i18n:text></i18n:text></li>
+                                                    <li style="width:100%;"><a href="{$context-path}/browse?type=teaching_materials" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_teaching_materials</i18n:text></a></li>
+                                                    <li style="width:100%;"><a href="{$context-path}/browse?type=magazines_and_newspapers" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_magazines_and_newspapers</i18n:text></a></li>
+                                                    <li style="width:100%;"><a href="{$context-path}/browse?type=agriculture_and_diversity" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_agriculture_and_diversity</i18n:text></a></li>
+                                                    <li style="width:100%;"><a href="{$context-path}/browse?type=environment" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_environment</i18n:text></a></li>
+                                                    <li style="width:100%;"><a href="{$context-path}/browse?type=science_and_technology" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_science_and_technology</i18n:text></a></li>
+                                                    <li style="width:100%;"><a href="{$context-path}/browse?type=all_categories" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_all_categories</i18n:text></a></li>
+                                                    <li style="width:100%;"><a href="{$context-path}/browse?type=titles_or_authors" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_titles</i18n:text><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_authors</i18n:text></a></li>
+                                                    <li style="width:100%;"><a href="{$context-path}/browse?type=science_and_technology" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_science_and_technology</i18n:text></a></li>
+                                                    <li style="width:100%;"><a href="{$context-path}/browse?type=all_categories" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_all_categories</i18n:text></a></li>
                                                 </ul>
                                             </div>
                                             <!-- Book gallery demo -->
                                             <div class="col-md-8" >
                                                 <!-- Featured books -->
                                                 <div>
-                                                    <h6>Featured items</h6>
+                                                    <div style="background:rgba(22, 160, 133,1.0);font-size:11px; border-radius:2px; color:#FFF; padding:3px 20px;">Featured items</div>
                                                     <ul id="featured-book-gallery"></ul>
                                                 </div>
                                                 <!-- Recently added items -->
                                                 <div>
-                                                    <h6>Recently added items</h6>
-                                                    <ul id="featured-book-gallery1"></ul>
+                                                    <div style="background:rgba(231, 76, 60,1.0); font-size:11px; border-radius:2px; color:#FFF; padding:3px 40px;">Recently added items</div>
+                                                    <ul id="recently-added-items"></ul>
                                                 </div>
                                             </div><!-- end col-md-8-->
                                         </div> <!-- end row -->
@@ -1461,12 +1463,16 @@
                 console.log(featuredItemThumbnail);
                 // create thumbnail tag
 
-                var li = $("<li></li>");
+                var li = $("<li></li>",{
+                width:140,
+
+
+                });
 
                 var h3 = $("<h3></h3>");
 
                 var p = $("<p></p>", {
-                text: featuredItemTitle
+                text: ""
                 });
 
                 var a = $("<a></a>",{
@@ -1476,8 +1482,8 @@
                 var img = $('<img />', {
                 src: featuredItemThumbnail,
                 alt: featuredItemTitle,
-                width: 120,
-                height: 145,
+                width: 160,
+                height: 140,
                 class: "img-responsive"
                 });
 
@@ -1494,6 +1500,8 @@
                 item:4,
                 prevHtml: '',
                 nextHtml: '',
+                autoWidth: false,
+                slideMargin: 20
                 });
                 } // End success function
                 })// END ajax call
@@ -1569,18 +1577,42 @@
                 async: true,
                 contentType: "application/json",
                 success: function(success){
+                // Enable slider
+                $("#recently-added-items").lightSlider({
+                item:4,
+                prevHtml: '',
+                nextHtml: '',
+                autoWidth: false
+                });
                 success.items.forEach(function(item){
                 var recentlyAddedItemTitle = item.name;
                 var recentlyAddedItemURL = window.location.href + item.handle;
                 getThumbnail(item.uuid, function(recentlyAddeditemThumbnail){
-                //Your recently item logic here
-                console.log("Recently added item");
-                console.log(recentlyAddedItemTitle);
-                console.log(recentlyAddedItemURL);
-                console.log(recentlyAddeditemThumbnail);
+                // create thumbnail tag
+                var li = $("<li></li>");
+                var h3 = $("<h3></h3>");
+                var p = $("<p></p>", {
+                text: ""
                 });
+                var a = $("<a></a>",{
+                href: recentlyAddedItemURL,
                 });
-                }});
+                var img = $('<img />', {
+                src: recentlyAddeditemThumbnail,
+                alt: "",
+                width: 160,
+                height: 140,
+                class: "img-responsive"
+                });
+
+                li.append(h3.append(a.append(img)));
+                li.append(p);
+                // create html template and append
+                $("#recently-added-items").append(li);
+
+                }); // END Function
+                });
+                }}); // End foreach
 
                 })(); // END IIEF
                 })
@@ -1678,18 +1710,17 @@
                 var h3 = $("<h3></h3>");
 
                 var p = $("<p></p>", {
-                text: itemTitle
+                text: ""
                 });
 
                 var a = $("<a></a>",{
                 href: itemURL,
                 });
 
-
                 var img = $('<img />', {
                 src: itemThumbnail,
                 alt: itemTitle,
-                width: 120,
+                width: 160,
                 height: 140,
                 class: "img-responsive"
                 });
@@ -1711,6 +1742,7 @@
                 item:4,
                 prevHtml: '',
                 nextHtml: '',
+                autoWidth: false
                 });
 
                 } // End If condition
