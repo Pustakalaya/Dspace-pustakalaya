@@ -24,11 +24,11 @@
 -->
 
 <xsl:stylesheet
-                xmlns="http://di.tamu.edu/DRI/1.0/"
-                xmlns:dri="http://di.tamu.edu/DRI/1.0/"
-                xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
-                xmlns:i18n="http://apache.org/cocoon/i18n/2.1"
-                exclude-result-prefixes="xsl dri i18n">
+        xmlns="http://di.tamu.edu/DRI/1.0/"
+        xmlns:dri="http://di.tamu.edu/DRI/1.0/"
+        xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
+        xmlns:i18n="http://apache.org/cocoon/i18n/2.1"
+        exclude-result-prefixes="xsl dri i18n">
 
     <xsl:output indent="yes"/>
 
@@ -47,7 +47,8 @@
     <xsl:template match="dri:row[@id='aspect.discovery.SimpleSearch.row.filter-controls']/dri:cell">
         <cell>
             <xsl:call-template name="copy-attributes"/>
-            <field id="aspect.discovery.SimpleSearch.field.submit_reset_filter" rend="discovery-reset-filter-button" n="submit_reset_filter" type="button">
+            <field id="aspect.discovery.SimpleSearch.field.submit_reset_filter" rend="discovery-reset-filter-button"
+                   n="submit_reset_filter" type="button">
                 <params/>
                 <value type="raw">
                     <i18n:text>xmlui.mirage2.discovery.reset</i18n:text>
@@ -99,7 +100,8 @@
         </div>
     </xsl:template>
 
-    <xsl:template match="dri:div[@rend='controls-gear-wrapper' and @n='search-controls-gear']//dri:item[contains(@rend, 'gear-head')]">
+    <xsl:template
+            match="dri:div[@rend='controls-gear-wrapper' and @n='search-controls-gear']//dri:item[contains(@rend, 'gear-head')]">
         <item>
             <xsl:call-template name="copy-attributes"/>
             <xsl:attribute name="rend">
@@ -114,27 +116,31 @@
         <xsl:apply-templates/>
     </xsl:template>
 
-    <xsl:template match="dri:table[@id='aspect.discovery.SimpleSearch.table.discovery-filters']/dri:row[@role='header']"/>
-    <xsl:template match="dri:table[@id='aspect.discovery.SimpleSearch.table.discovery-filters']/dri:row[@n='filler-row']"/>
+    <xsl:template
+            match="dri:table[@id='aspect.discovery.SimpleSearch.table.discovery-filters']/dri:row[@role='header']"/>
+    <xsl:template
+            match="dri:table[@id='aspect.discovery.SimpleSearch.table.discovery-filters']/dri:row[@n='filler-row']"/>
 
     <xsl:template match="dri:field[@id='aspect.discovery.SimpleSearch.field.scope']/dri:label"/>
 
     <!--remove the shared discovery stylesheet, this theme has its own-->
-    <xsl:template match="dri:meta/dri:pageMeta/dri:metadata[@element='stylesheet'][@qualifier='screen'][@lang='discovery']"/>
+    <xsl:template
+            match="dri:meta/dri:pageMeta/dri:metadata[@element='stylesheet'][@qualifier='screen'][@lang='discovery']"/>
 
-    <xsl:template match="dri:meta/dri:pageMeta/dri:metadata[@element='javascript'][@qualifier='static'][text()='static/js/discovery/search-controls.js']"/>
+    <xsl:template
+            match="dri:meta/dri:pageMeta/dri:metadata[@element='javascript'][@qualifier='static'][text()='static/js/discovery/search-controls.js']"/>
 
     <xsl:template match="dri:div[@id='aspect.discovery.SimpleSearch.div.search-results']/dri:head"/>
 
 
     <!--<xsl:template match="dri:hi[@rend='highlight']">-->
-        <!--<hi>-->
-            <!--<xsl:call-template name="copy-attributes"/>-->
-            <!--<xsl:attribute name="rend">                -->
-               <!--<xsl:text>highlight </xsl:text>-->
-            <!--</xsl:attribute>-->
-            <!--<xsl:apply-templates/>-->
-        <!--</hi>-->
+    <!--<hi>-->
+    <!--<xsl:call-template name="copy-attributes"/>-->
+    <!--<xsl:attribute name="rend">                -->
+    <!--<xsl:text>highlight </xsl:text>-->
+    <!--</xsl:attribute>-->
+    <!--<xsl:apply-templates/>-->
+    <!--</hi>-->
     <!--</xsl:template>-->
 
 </xsl:stylesheet>

@@ -1137,4 +1137,4 @@
         });
         return this;
     };
-}(jQuery));
+}($pustakalaya));

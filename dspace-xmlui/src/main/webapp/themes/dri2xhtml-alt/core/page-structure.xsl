@@ -106,7 +106,7 @@
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
             <meta name="Generator">
               <xsl:attribute name="content">
-                <xsl:text>DSpace</xsl:text>
+                <xsl:text>Pustakalaya</xsl:text>
                 <xsl:if test="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='dspace'][@qualifier='version']">
                   <xsl:text> </xsl:text>
                   <xsl:value-of select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='dspace'][@qualifier='version']"/>
