@@ -202,7 +202,7 @@
     </xsl:template>
 
     <xsl:template match="dri:options//dri:item[dri:xref]">
-        <a href="{dri:xref/@target}">
+        <a href="{dri:xref/@target}" id="list-group-item" style="display: none">
             <xsl:call-template name="standardAttributes">
                 <xsl:with-param name="class">list-group-item ds-option</xsl:with-param>
             </xsl:call-template>
@@ -225,7 +225,7 @@
     </xsl:template>
 
     <xsl:template match="dri:options/dri:list//dri:list/dri:head" priority="3">
-        <a class="list-group-item active">
+        <a class="list-group-item active btn" id="list-group">
             <span>
                 <xsl:call-template name="standardAttributes">
                     <xsl:with-param name="class">
@@ -235,9 +235,30 @@
                 </xsl:call-template>
                 <xsl:apply-templates/>
             </span>
+            <span class="glyphicon glyphicon-plus-sign pull-right" id="list-group-ds"></span>
         </a>
     </xsl:template>
 
     <xsl:template match="dri:list[count(child::*)=0]"/>
+    <script>
+        $(document).ready(function () {
+        $( "#list-group" ).toggle(function() {
+        if($('#list-group-item').css("display","none"))
+        $('#list-group-item').css("display", "block");
+        else
+        $('#list-group-item').css("display","none");
+        });
+        });
+
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $("#list-group").click(function () {
+                $('#list-group-item').toggle();
+            });
+        });
+
+    </script>
 
 </xsl:stylesheet>
