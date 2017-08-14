@@ -175,17 +175,17 @@
                                     <div class="container">
                                         <div class="row">
                                             <!-- Browse by section -->
-                                            <div class="col-md-4" id="book-browsing" style="margin-left:5.5%;">
+                                            <div class="col-md-4" id="book-browsing">
                                                 <ul>
-                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Literature+and+Arts" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_literature_and_arts</i18n:text></a></li>
-                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Course+Materials" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_course_materials</i18n:text></a><i18n:text></i18n:text></li>
-                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Teaching+Materials" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_teaching_materials</i18n:text></a></li>
-                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Magazines+and+Newspapers" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_magazines_and_newspapers</i18n:text></a></li>
-                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Agriculture+and+Diversity" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_agriculture_and_diversity</i18n:text></a></li>
-                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Environment" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_environment</i18n:text></a></li>
-                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Science+and+Technology" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_science_and_technology</i18n:text></a></li>
-                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=All+Categories" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_all_categories</i18n:text></a></li>
-                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Title+or+Authors" class="text-capitalize"><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_titles</i18n:text><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_authors</i18n:text></a></li>
+                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Literature+and+Arts" class="text-capitalize"><img src="{$theme-path}/images/Literature-and-Arts.png" style="height:40px; width:40px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_literature_and_arts</i18n:text></a></li>
+                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Course+Materials" class="text-capitalize"><img src="{$theme-path}/images/course_materials.png" style="height:40px; width:40px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_course_materials</i18n:text></a><i18n:text></i18n:text></li>
+                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Teaching+Materials" class="text-capitalize"><img src="{$theme-path}/images/Teaching-Materials.png" style="height:40px; width:40px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_teaching_materials</i18n:text></a></li>
+                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Magazines+and+Newspapers" class="text-capitalize"><img src="{$theme-path}/images/Magazines-and-Newspapers.png" style="height:40px; width:40px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_magazines_and_newspapers</i18n:text></a></li>
+                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Agriculture+and+Diversity" class="text-capitalize"><img src="{$theme-path}/images/Agriculture-and-Diversity.png" style="height:40px; width:40px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_agriculture_and_diversity</i18n:text></a></li>
+                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Environment" class="text-capitalize"><img src="{$theme-path}/images/Environment.png" style="height:40px; width:40px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_environment</i18n:text></a></li>
+                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Science+and+Technology" class="text-capitalize"><img src="{$theme-path}/images/" style="height:40px; width:40px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_science_and_technology</i18n:text></a></li>
+                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=All+Categories" class="text-capitalize"><img src="{$theme-path}/images/" style="height:40px; width:40px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_all_categories</i18n:text></a></li>
+                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Title+or+Authors" class="text-capitalize"><img src="{$theme-path}/images/" style="height:40px; width:40px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_titles</i18n:text><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_authors</i18n:text></a></li>
                                                 </ul>
                                             </div>
                                             <!-- Book gallery demo -->
@@ -371,9 +371,9 @@
                                         <div class="col-xs-12 col-sm-12 col-md-9 main-content">
                                             <xsl:apply-templates select="*[not(self::dri:options)]"/>
 
-                                            <div class="visible-xs visible-sm">
+                                            <!--<div class="visible-xs visible-sm">
                                                 <xsl:call-template name="buildFooter"/>
-                                            </div>
+                                            </div>-->
                                         </div>
                                         <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
                                             <xsl:apply-templates select="dri:options"/>
@@ -616,7 +616,7 @@
                     <div class="row">
                         <div class="col-md-2">
                             <a class="navbar-brand" href="/">
-                                <img src="{$theme-path}/images/ep_logo.png" style="height:40px; padding-bottom:10px;"/>
+                                <img src="{$theme-path}/images/ep_logo.png" style="height:40px; padding-bottom:10px;" class="img-responsive"/>
                             </a>
                         </div><!-- Logo -->
                         <div class="col-md-6 col-md-offset-1" id="pustakalaya-navbar"
@@ -700,7 +700,7 @@
                                             </li>
                                         </xsl:otherwise>
                                     </xsl:choose>
-                                    <li><img src="{$theme-path}/images/flag-nepal.png" style="margin-top:15px;"/></li>
+                                    <li><img src="{$theme-path}/images/flag-nepal.png" style="margin-top:15px;" class="img-responsive"/></li>
                                     <xsl:call-template name="languageSelection"/>
                                 </ul>
 
@@ -1099,20 +1099,20 @@
                     <div class="row">
                         <div class="col-md-6">
                             <p style="color:#FFF" class="text-capitalized"><i18n:text>xmlui.developed.and.maintained.by</i18n:text></p>
-                            <img class="pustakalaya-logo" src="{$theme-path}/images/eplogo.png"
+                            <img class="pustakalaya-logo img-responsive" src="{$theme-path}/images/eplogo.png"
                                  style="height=30px; width=30px;"/>
                         </div>
                         <div class="col-md-6">
                             <a class="pull-right" href="https://www.instagram.com/Epustakalaya" target="_blank">
-                                <img class="social-media-logo" src="{concat($theme-path, '/images/instagram.png')}"
+                                <img class="social-media-logo img-responsive" src="{concat($theme-path, '/images/instagram.png')}"
                                      style="margin:20px; color:#444444;"/>
                             </a>
                             <a class="pull-right" href="https://www.twitter.com/Epustakalaya" target="_blank">
-                                <img class="social-media-logo" src="{concat($theme-path, '/images/twiter.png')}"
+                                <img class="social-media-logo img-responsive" src="{concat($theme-path, '/images/twiter.png')}"
                                      style="margin:20px;"/>
                             </a>
                             <a class="pull-right" href="https://www.facebook.com/Epustakalaya" target="_blank">
-                                <img class="social-media-logo" src="{concat($theme-path, '/images/facebook.png')}"
+                                <img class="social-media-logo img-responsive" src="{concat($theme-path, '/images/facebook.png')}"
                                      style="margin:20px;"/>
                             </a>
                             <a class="pull-right" href="">
@@ -1132,7 +1132,7 @@
                             <div class="col-md-6">
                                 <!-- Creative Commons logo -->
                                 <div>
-                                    <img src="{concat($theme-path, '/images/creative-commons.png')}"/>
+                                    <img src="{concat($theme-path, '/images/creative-commons.png')}" class="img-responsive"/>
                                     <br/>
                                     <p style="color:#444444" class="text-capitalized">
                                         <i18n:text>xmlui.creative.commons</i18n:text>
@@ -1150,14 +1150,14 @@
                                        title="Go to Maitri Trust, UK website">
                                         <img style="width:75px; height:30px; margin:10px;"
                                              src="{concat($theme-path, '/images/maitri-trust.png')}"
-                                             alt="Maitri Trust, UK"/>
+                                             alt="Maitri Trust, UK" class="img-responsive"/>
                                     </a>
 
                                     <a href="http://www.nepallibrary.org/" target="_blank"
                                        title="Go to Nepal Library Foundation website">
                                         <img style="width:75px; height:30px;margin:10px;"
                                              src="{concat($theme-path, '/images/Nepal-Library-Foundation-logo.png')}"
-                                             alt="Nepal Library Foundation"/>
+                                             alt="Nepal Library Foundation" class="img-responsive"/>
                                     </a>
                                 </div>
                             </div>
@@ -1641,7 +1641,7 @@
                 <xsl:when test="starts-with($request-uri, 'page/about')">
                     <div class="hero-unit">
                         <h1><i18n:text>xmlui.mirage2.page-structure.heroUnit.title</i18n:text></h1>
-                        <p><i18n:text>xmlui.mirage2.page-structure.heroUnit.content</i18n:text></p>
+                        <p style="text-align:justify;"><i18n:text>xmlui.mirage2.page-structure.heroUnit.content</i18n:text></p>
                     </div>
                 </xsl:when>
                 <!-- Otherwise use default handling of body -->

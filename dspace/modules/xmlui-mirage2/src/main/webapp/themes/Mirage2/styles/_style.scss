@@ -120,10 +120,11 @@ ul#pustakalaya-dropdown-menu > li > a:active {
   margin-top: 5px;
   text-align: center;
   background: rgba(189, 195, 199,1.0);
-  width: 60%;
+  width: 100%;
   border-radius: 5px;
   padding: 5px;
   margin-bottom: 5px;
+  display: block;
 }
 
 #book-browsing.col-md-4 > ul > li > a {

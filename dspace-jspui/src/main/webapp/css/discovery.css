@@ -20,7 +20,7 @@ div.discovery-query label {font-weight: bold;margin:5px;}
 div.discovery-query select {margin-bottom:5px;}
 div.discovery-search-filters{border: 1px solid #CCCCCC;padding:10px;}
 div.discovery-search-filters span {display:block;margin:5px;}
-div.discovery-search-filters span.discovery-search-filters-heading {font-weight: bold};
+div.discovery-search-filters span.discovery-search-filters-heading {font-weight: bold;}
 div.discovery-search-filters select {margin:5px;}
 div.discovery-pagination-controls {margin-top: 10px; background-color: #EEEEEE; border: 1px solid #CCCCCC;padding:10px;}
 
