@@ -93,6 +93,9 @@
 
 #book-browsing.col-md-4 > ul > li > a {
   color: #333333;
+  display: block;
+  text-align: left;
+  margin-left: 15px;
 }
 
 #book-browsing.col-md-4 > ul > li > a:hover{

@@ -20,6 +20,8 @@
 
 -->
 
+
+
 <xsl:stylesheet xmlns:i18n="http://apache.org/cocoon/i18n/2.1"
                 xmlns:dri="http://di.tamu.edu/DRI/1.0/"
                 xmlns:mets="http://www.loc.gov/METS/"
@@ -176,29 +178,34 @@
                                         <div class="row">
                                             <!-- Browse by section -->
                                             <div class="col-md-4" id="book-browsing">
-                                                <ul>
-                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Literature+and+Arts" class="text-capitalize"><img src="{$theme-path}/images/Literature-and-Arts.png" style="height:40px; width:40px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_literature_and_arts</i18n:text></a></li>
-                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Course+Materials" class="text-capitalize"><img src="{$theme-path}/images/course_materials.png" style="height:40px; width:40px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_course_materials</i18n:text></a><i18n:text></i18n:text></li>
-                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Teaching+Materials" class="text-capitalize"><img src="{$theme-path}/images/Teaching-Materials.png" style="height:40px; width:40px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_teaching_materials</i18n:text></a></li>
-                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Magazines+and+Newspapers" class="text-capitalize"><img src="{$theme-path}/images/Magazines-and-Newspapers.png" style="height:40px; width:40px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_magazines_and_newspapers</i18n:text></a></li>
-                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Agriculture+and+Diversity" class="text-capitalize"><img src="{$theme-path}/images/Agriculture-and-Diversity.png" style="height:40px; width:40px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_agriculture_and_diversity</i18n:text></a></li>
-                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Environment" class="text-capitalize"><img src="{$theme-path}/images/Environment.png" style="height:40px; width:40px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_environment</i18n:text></a></li>
-                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Science+and+Technology" class="text-capitalize"><img src="{$theme-path}/images/" style="height:40px; width:40px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_science_and_technology</i18n:text></a></li>
-                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=All+Categories" class="text-capitalize"><img src="{$theme-path}/images/" style="height:40px; width:40px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_all_categories</i18n:text></a></li>
-                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Title+or+Authors" class="text-capitalize"><img src="{$theme-path}/images/" style="height:40px; width:40px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_titles</i18n:text><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_authors</i18n:text></a></li>
+                                                <ul style="padding:0px;">
+                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Literature+and+Arts" class="text-capitalize"><img src="{$theme-path}/images/Literature-and-Arts.png" style="height:35px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_literature_and_arts</i18n:text></a></li>
+                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Course+Materials" class="text-capitalize"><img src="{$theme-path}/images/course_materials.png" style="height:35px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_course_materials</i18n:text></a><i18n:text></i18n:text></li>
+                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Teaching+Materials" class="text-capitalize"><img src="{$theme-path}/images/Teaching-Materials.png" style="height:35px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_teaching_materials</i18n:text></a></li>
+                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Magazines+and+Newspapers" class="text-capitalize"><img src="{$theme-path}/images/Magazines-and-Newspapers.png" style="height:35px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_magazines_and_newspapers</i18n:text></a></li>
+                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Agriculture+and+Diversity" class="text-capitalize"><img src="{$theme-path}/images/Agriculture-and-Diversity.png" style="height:35px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_agriculture_and_diversity</i18n:text></a></li>
+                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Environment" class="text-capitalize"><img src="{$theme-path}/images/Environment.png" style="height:35px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_environment</i18n:text></a></li>
+                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Science+and+Technology" class="text-capitalize"><img src="{$theme-path}/images/Magazines-and-Newspapers.png" style="height:35px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_science_and_technology</i18n:text></a></li>
+                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=All+Categories" class="text-capitalize"><img src="{$theme-path}/images/Teaching-Materials.png" style="height:35px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_all_categories</i18n:text></a></li>
+                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Title+or+Authors" class="text-capitalize"><img src="{$theme-path}/images/Agriculture-and-Diversity.png" style="height:35px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_titles</i18n:text><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_authors</i18n:text></a></li>
                                                 </ul>
                                             </div>
                                             <!-- Book gallery demo -->
                                             <div class="col-md-8" id="book-gallery">
                                                 <!-- Book Banner -->
-                                                <div>
-                                                    <h6>Featured items</h6>
-                                                    <ul id="featured-book-gallery"></ul>
+                                                <div id="featured-items-container">
+                                                    <h6 style="background-color:#27ae60; color:#FFF; padding:5px 10px;">Featured items</h6>
+                                                    <div id="featured-book-gallery-parent">
+                                                        <h4>Loading recently added items...</h4>
+                                                    </div>
                                                 </div>
+
                                                 <!-- Recently added items -->
-                                                <div>
-                                                    <h6>Recently added items</h6>
-                                                    <ul id="featured-book-gallery1"></ul>
+                                                <div id="recently-added-items-container">
+                                                    <h6  style="background-color:#27ae60; color:#FFF; padding:5px 20px;">Recently added items</h6>
+                                                    <div id="recenty-added-items-parent">
+                                                        <h4>Loading recently added items...</h4>
+                                                    </div>
                                                 </div>
                                             </div><!--end col-md-8-->
                                         </div><!--end row-->
@@ -233,20 +240,20 @@
                                                             <!--row-->
                                                         </div>
 
-                                                        </div>
-
                                                     </div>
-                                                    <!--carousel-inner-->
-                                                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
 
-                                                    <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
                                                 </div>
-                                                <!--myCarousel-->
+                                                <!--carousel-inner-->
+                                                <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+
+                                                <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
                                             </div>
-                                            <!--well-->
+                                            <!--myCarousel-->
                                         </div>
-                                        <!--Static content-->
+                                        <!--well-->
                                     </div>
+                                    <!--Static content-->
+                                </div>
 
 
                                 <!--  Interactive audio video materials -->
@@ -255,12 +262,10 @@
                                         <h4 class="text-center text-capitalize" style="color:#060605;">Educational audio videos</h4>
                                         <div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
                                             <div class="well">
-                                                    <!--Carousel items-->
-                                                <ul id="audioVideoSection">
-
-                                                </ul>
-
-
+                                                <!--Carousel items-->
+                                                <div id="audioVideoSectionParentID">
+                                                    <h3>Loading audio and video items ... </h3>
+                                                </div>
                                             </div>
                                             <!--well-->
                                         </div>
@@ -371,9 +376,9 @@
                                         <div class="col-xs-12 col-sm-12 col-md-9 main-content">
                                             <xsl:apply-templates select="*[not(self::dri:options)]"/>
 
-                                            <!--<div class="visible-xs visible-sm">
+                                            <div class="visible-xs visible-sm">
                                                 <xsl:call-template name="buildFooter"/>
-                                            </div>-->
+                                            </div>
                                         </div>
                                         <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
                                             <xsl:apply-templates select="dri:options"/>
@@ -618,7 +623,7 @@
                     <div class="row">
                         <div class="col-md-2">
                             <a class="navbar-brand" href="/">
-                                <img src="{$theme-path}/images/ep_logo.png" style="height:40px; padding-bottom:10px;" class="img-responsive"/>
+                                <img src="{$theme-path}/images/ep_logo.png" style="height:40px; padding-bottom:10px;"/>
                             </a>
                         </div><!-- Logo -->
                         <div class="col-md-6 col-md-offset-1" id="pustakalaya-navbar"
@@ -702,7 +707,7 @@
                                             </li>
                                         </xsl:otherwise>
                                     </xsl:choose>
-                                    <li><img src="{$theme-path}/images/flag-nepal.png" style="margin-top:15px;" class="img-responsive"/></li>
+                                    <li><img src="{$theme-path}/images/flag-nepal.png" style="margin-top:15px;"/></li>
                                     <xsl:call-template name="languageSelection"/>
                                 </ul>
 
@@ -1101,20 +1106,20 @@
                     <div class="row">
                         <div class="col-md-6">
                             <p style="color:#FFF" class="text-capitalized"><i18n:text>xmlui.developed.and.maintained.by</i18n:text></p>
-                            <img class="pustakalaya-logo img-responsive" src="{$theme-path}/images/eplogo.png"
+                            <img class="pustakalaya-logo" src="{$theme-path}/images/eplogo.png"
                                  style="height=30px; width=30px;"/>
                         </div>
                         <div class="col-md-6">
                             <a class="pull-right" href="https://www.instagram.com/Epustakalaya" target="_blank">
-                                <img class="social-media-logo img-responsive" src="{concat($theme-path, '/images/instagram.png')}"
+                                <img class="social-media-logo" src="{concat($theme-path, '/images/instagram.png')}"
                                      style="margin:20px; color:#444444;"/>
                             </a>
                             <a class="pull-right" href="https://www.twitter.com/Epustakalaya" target="_blank">
-                                <img class="social-media-logo img-responsive" src="{concat($theme-path, '/images/twiter.png')}"
+                                <img class="social-media-logo" src="{concat($theme-path, '/images/twiter.png')}"
                                      style="margin:20px;"/>
                             </a>
                             <a class="pull-right" href="https://www.facebook.com/Epustakalaya" target="_blank">
-                                <img class="social-media-logo img-responsive" src="{concat($theme-path, '/images/facebook.png')}"
+                                <img class="social-media-logo" src="{concat($theme-path, '/images/facebook.png')}"
                                      style="margin:20px;"/>
                             </a>
                             <a class="pull-right" href="">
@@ -1134,7 +1139,7 @@
                             <div class="col-md-6">
                                 <!-- Creative Commons logo -->
                                 <div>
-                                    <img src="{concat($theme-path, '/images/creative-commons.png')}" class="img-responsive"/>
+                                    <img src="{concat($theme-path, '/images/creative-commons.png')}"/>
                                     <br/>
                                     <p style="color:#444444" class="text-capitalized">
                                         <i18n:text>xmlui.creative.commons</i18n:text>
@@ -1152,14 +1157,14 @@
                                        title="Go to Maitri Trust, UK website">
                                         <img style="width:75px; height:30px; margin:10px;"
                                              src="{concat($theme-path, '/images/maitri-trust.png')}"
-                                             alt="Maitri Trust, UK" class="img-responsive"/>
+                                             alt="Maitri Trust, UK"/>
                                     </a>
 
                                     <a href="http://www.nepallibrary.org/" target="_blank"
                                        title="Go to Nepal Library Foundation website">
                                         <img style="width:75px; height:30px;margin:10px;"
                                              src="{concat($theme-path, '/images/Nepal-Library-Foundation-logo.png')}"
-                                             alt="Nepal Library Foundation" class="img-responsive"/>
+                                             alt="Nepal Library Foundation"/>
                                     </a>
                                 </div>
                             </div>
@@ -1340,6 +1345,7 @@
                 $pustakalaya("document").ready(function(){
                 // Featured items URL
                 var featuredItemURL =   "/rest/filtered-items?query_field[]=local.featured&amp;query_op[]=matches&amp;query_val[]=yes&amp;collSel[]=&amp;limit=20&amp;offset=0&amp;expand=parentCollection%2Cmetadata&amp;filters=none";
+
                 // Ajax call
                 $pustakalaya.ajax({
                 url: featuredItemURL,
@@ -1347,19 +1353,21 @@
                 async: true,
                 contentType: "application/json",
                 success: function(success){
-                console.log(success.items);
-                success.items.forEach(function(item){
+                // console.log(success.items);
+                var featuredItemTemplate = $pustakalaya("<ul></ul>",{
+                id: "featured-book-gallery"
+                });
+
+                success.items.forEach(function(item, featuredItemIndex){
                 var featuredItemTitle = item.name;
                 var featuredItemURL = window.location.href + item.handle;
+                // ajax call to get thumbnail
                 getThumbnail(item.uuid, function(featuredItemThumbnail){
+                // console.log(featuredItemTitle);
+                // console.log(featuredItemURL);
+                // console.log(featuredItemThumbnail);
 
-                console.log(featuredItemTitle);
-                console.log(featuredItemURL);
-                console.log(featuredItemThumbnail);
-                // create thumbnail tag
-
-
-
+                // Create gallery items
                 var li = $pustakalaya("<li></li>");
                 var h3 = $pustakalaya("<h3></h3>");
                 var p = $pustakalaya("<p></p>", {
@@ -1381,22 +1389,121 @@
                 li.append(h3.append(a.append(img)));
                 li.append(p);
 
-                // create html template
-                $pustakalaya("#featured-book-gallery").append(li);
+                // Append all the constructed items
+                featuredItemTemplate.append(li);
 
                 }); // END getThumbnail
                 }); // End ForEach
-                // featured-book-gallery configuration
+                // Insert into template
+                $pustakalaya("#featured-book-gallery-parent").html(featuredItemTemplate);
                 $pustakalaya("#featured-book-gallery").lightSlider({
                 item:4,
                 prevHtml: '',
                 nextHtml: '',
                 });
-
                 } // End success function
                 })// END ajax call
-                });
+                }); // End document.ready
             </script>
+
+            <!--script to grab all the recently added items -->
+            <script>
+                $pustakalaya("document").ready(function(){
+
+                (function(){
+                //Function to return date in Javascript
+                function getDate(numberOfDaysToAdd){
+                date = new Date();
+                // add days to date
+                date.setDate(date.getDate() + numberOfDaysToAdd);
+                year = date.getFullYear();
+                month = date.getMonth()+1;
+                // Return only year and month format.
+                return year+ '-' + month
+                }
+
+                // recently added item URL
+                //TODO: Replace Date item with server side date value
+                var recentItemURL = window.location.origin +
+                "/rest/filtered-items?query_field[]=dc.date.accessioned&amp;query_op[]=contains&amp;" +
+                "query_val[]=2017-08&amp;collSel[]=&amp;limit=10&amp;offset=0&amp;"
+                "expand=parentCollection%2Cmetadata&amp;filters=none"
+
+                // Ajax call to get the recent items.
+                $pustakalaya.ajax({
+                url: recentItemURL,
+                type: "GET",
+                async: true,
+                contentType: "application/json",
+                success: function(success){
+
+                // Template to hold recently added items thumbnail
+                var recentlyAddedItemsTemplate = $pustakalaya("<ul></ul>",{
+                id: "recently-added-items"
+                });
+
+                success.items.forEach(function(item){
+                var recentlyAddedItemTitle = item.name;
+                var recentlyAddedItemURL = window.location.href + item.handle;
+                getThumbnail(item.uuid, function(recentlyAddeditemThumbnail){
+
+                //Your recently item logic here
+                console.log("RR","Recently added item");
+                console.log(recentlyAddedItemTitle);
+                console.log(recentlyAddedItemURL);
+                console.log(recentlyAddeditemThumbnail);
+
+
+                // create thumbnail tag
+
+                var li = $pustakalaya("<li></li>");
+
+                var h3 = $pustakalaya("<h3></h3>");
+
+                var p = $pustakalaya("<p></p>", {
+                text: ""
+                });
+
+                var a = $pustakalaya("<a></a>",{
+                href: recentlyAddedItemURL,
+                });
+
+
+                var img = $pustakalaya('<img />', {
+                src: recentlyAddeditemThumbnail,
+                alt: recentlyAddedItemTitle,
+                width: 180,
+                height: 140,
+                class: "img-responsive"
+                });
+
+                li.append(h3.append(a.append(img)));
+                li.append(p);
+
+                // create html template
+                recentlyAddedItemsTemplate.append(li);
+
+                });
+                }); // End forEach
+
+                // Insert into template
+
+                $pustakalaya("#recenty-added-items-parent").html(recentlyAddedItemsTemplate);
+                console.log("Manoj", recentlyAddedItemsTemplate);
+                $pustakalaya("#recently-added-items").lightSlider({
+                item:4,
+                prevHtml: '',
+                nextHtml: '',
+                });
+
+                }}); // End ajax
+
+                })(); // END IIEF
+                })
+            </script>
+
+
+
 
             <script>
                 // Function to get thumbnail of an item
@@ -1489,6 +1596,7 @@
                 videoAudio.push(success.items[i])
                 }
                 }});
+
                 // Query 15 audio items
                 $pustakalaya.ajax({
                 url: getAudioURL(0),
@@ -1496,28 +1604,36 @@
                 async: true,
                 contentType: "application/json",
                 success: function(success){
+
+
                 // success object has a list of items
                 for(var i=0; i&lt;success.items.length; i++){
                 videoAudio.push(success.items[i])
                 }
+
                 if(videoAudio.length != 0){
                 // suffle audio video items
                 videoAudio = shuffle(videoAudio)
+                }
+
+                // Placeholder to hold the thumbnail for audioVideo
+                var audioVideoThumbnailTemplate =  $pustakalaya("<ul></ul>",{
+                id: "audioVideoSection"
+                });
 
                 // grab all the title, URL. thumbnail
-
                 videoAudio.forEach(function(item){
                 // Title of an tiem
                 var itemTitle = item.name;
                 // URL of an item
                 var itemURL = window.location.href + item.handle;
 
+
                 // Function that get thumbnail url
                 getThumbnail(item.uuid, function(itemThumbnail){
 
 
                 // create thumbnail tag
-
                 var li = $pustakalaya("<li></li>");
 
                 var h3 = $pustakalaya("<h3></h3>");
@@ -1542,24 +1658,21 @@
                 li.append(h3.append(a.append(img)));
                 li.append(p);
 
-                // create html template
 
 
-                $pustakalaya("#audioVideoSection").append(li);
-
+                // create html template of audioVideo banner
+                audioVideoThumbnailTemplate.append(li);
 
                 }); // End getThumbnail Function
 
                 }); // End forEach
-                // enable audioVideoSection slider
+                // append the constructed audio video template in parent DOM
+                $("#audioVideoSectionParentID").html(audioVideoThumbnailTemplate);
                 $pustakalaya("#audioVideoSection").lightSlider({
                 item:4,
                 prevHtml: '',
                 nextHtml: '',
                 });
-
-                } // End If condition
-
                 }  // End success
                 }); // End ajax method
                 })(); // END IIFE
@@ -1596,7 +1709,7 @@
                 <xsl:when test="starts-with($request-uri, 'page/about')">
                     <div class="hero-unit">
                         <h1><i18n:text>xmlui.mirage2.page-structure.heroUnit.title</i18n:text></h1>
-                        <p style="text-align:justify;"><i18n:text>xmlui.mirage2.page-structure.heroUnit.content</i18n:text></p>
+                        <p><i18n:text>xmlui.mirage2.page-structure.heroUnit.content</i18n:text></p>
                     </div>
                 </xsl:when>
                 <!-- Otherwise use default handling of body -->
