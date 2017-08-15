@@ -1331,7 +1331,6 @@
                 <xsl:attribute name="src"><xsl:value-of select="../../scripts/jquery-1.10.2.min.js"/></xsl:attribute>
             </script>-->
             <script src="{concat($theme-path,'scripts/jquery-1.10.2.min.js')}">&#160;</script>
-            <script src="{concat($theme-path,'scripts/slick.min.js')}">&#160;</script>
             <script type="text/javascript">
                 var $pustakalaya = $.noConflict(true);
             </script>
@@ -1339,7 +1338,6 @@
             <script src="{concat($theme-path,'scripts/lightslider.js')}">&#160;</script>
 
             <!-- Pustakalaya custom scripts -->
-
             <!-- script to grab the featured items and append in dom-->
             <script>
                 $pustakalaya("document").ready(function(){
@@ -1677,6 +1675,34 @@
                 }); // End ajax method
                 })(); // END IIFE
                 });  // END Onload
+            </script>
+
+            <!-- script to toggle the sidebar -->
+            <script>
+                // Hide all the sidebar discover items by default
+                $pustakalaya(".second-children").hide();
+
+                $pustakalaya('.pustakalaya-sidebar-toggle').click(function(){
+                // if the second child is visible add - Button to first child
+
+                if($pustakalaya(this).children('.second-children').is(":visible")){
+
+                // Add + button to this element
+                $pustakalaya(this).children(".first-children").children('a').children('i').
+                removeClass("glyphicon-minus-sign").
+                addClass("glyphicon-plus-sign");
+
+                // Toggle the children
+                $pustakalaya(this).children('.second-children').toggle();
+                } else {
+                // First remove plus and  visible add - button to the first-children
+                $pustakalaya(this).children(".first-children").children('a').children('i').
+                removeClass("glyphicon-plus-sign").
+                addClass("glyphicon-minus-sign");
+                $pustakalaya(this).children('.second-children').toggle();
+
+                }
+                });
             </script>
         </footer>
     </xsl:template>

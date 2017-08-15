@@ -44,6 +44,9 @@
     <script src="vendor/datatables/media/js/jquery.dataTables.js">&#160;</script>
     <script src="scripts/person-lookup.js">&#160;</script>
     <script src="scripts/lightslider.js">&#160;</script>
+    <!-- Toggle sidebar script -->
+    <script src="scripts/toggleSideBar.js">&#160;</script>
+
 
     <!-- endbuild -->
 

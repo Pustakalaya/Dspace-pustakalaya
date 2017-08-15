@@ -23,7 +23,7 @@
 
 @include selection {
   color: white;
-  background: hotpink;
+  background: #3498db;
 }
 
 .publication-records-modal, .publication-records-modal ul {
@@ -246,3 +246,14 @@ div.well{
 }
 
 
+
+.first-children > a{
+  border-radius: 0px !important;
+  background: #1abc9c !important;
+  border-color: #1abc9c !important;
+  padding: 2.5%;
+}
+.second-children a{
+  border-radius: 0px !important;
+  text-transform: capitalize !important;
+}

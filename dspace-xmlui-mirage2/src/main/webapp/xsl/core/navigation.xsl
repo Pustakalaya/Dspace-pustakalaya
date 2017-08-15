@@ -175,8 +175,28 @@
     </xsl:template>
 
     <xsl:template match="dri:options//dri:list">
-        <xsl:apply-templates select="dri:head"/>
-        <xsl:apply-templates select="dri:item"/>
+
+        <div class="pustakalaya-sidebar-toggle" style="margin-bottom:10px;">
+            <!-- on clicking this toggle the second children -->
+            <div class="first-children">
+                <xsl:apply-templates select="dri:head"/>
+            </div>
+            <div class="second-children">
+                <xsl:apply-templates select="dri:item"/>
+            </div>
+
+        </div>
+
+        <!-- script to toggle the sidebar -->
+        <!--
+        $('.pustakalaya-sidebar-toggle').click(function(){
+        $(this).children('.second-children').toggle();
+
+});
+
+    -->
+
+
         <xsl:apply-templates select="dri:list"/>
     </xsl:template>
 
@@ -202,7 +222,7 @@
     </xsl:template>
 
     <xsl:template match="dri:options//dri:item[dri:xref]">
-        <a href="{dri:xref/@target}" id="list-group-item" style="display: none">
+        <a href="{dri:xref/@target}" id="list-group-item">
             <xsl:call-template name="standardAttributes">
                 <xsl:with-param name="class">list-group-item ds-option</xsl:with-param>
             </xsl:call-template>
@@ -224,6 +244,7 @@
         </xsl:call-template>
     </xsl:template>
 
+    <!-- heading of each discovers items -->
     <xsl:template match="dri:options/dri:list//dri:list/dri:head" priority="3">
         <a class="list-group-item active btn" id="list-group">
             <span>
@@ -235,30 +256,12 @@
                 </xsl:call-template>
                 <xsl:apply-templates/>
             </span>
-            <span class="glyphicon glyphicon-plus-sign pull-right" id="list-group-ds"></span>
+            <i class="glyphicon glyphicon-plus-sign pull-right"></i>
         </a>
     </xsl:template>
 
     <xsl:template match="dri:list[count(child::*)=0]"/>
-    <script>
-        $(document).ready(function () {
-        $( "#list-group" ).toggle(function() {
-        if($('#list-group-item').css("display","none"))
-        $('#list-group-item').css("display", "block");
-        else
-        $('#list-group-item').css("display","none");
-        });
-        });
 
-    </script>
 
-    <script>
-        $(document).ready(function () {
-            $("#list-group").click(function () {
-                $('#list-group-item').toggle();
-            });
-        });
-
-    </script>
 
 </xsl:stylesheet>

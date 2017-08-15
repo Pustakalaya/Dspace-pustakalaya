@@ -180,3 +180,17 @@ pustakalayaSection > div > h4 {
 
 }
 
+
+
+/* sidebar customization */
+
+.first-children > a{
+  border-radius: 0px !important;
+  background: #1abc9c !important;
+  border-color: #1abc9c !important;
+  padding: 2.5%;
+}
+.second-children a{
+  border-radius: 0px !important;
+  text-transform: capitalize !important;
+}
