@@ -99,45 +99,7 @@
                                 </div>
                             </div>
 
-                            <!--container fluid-->
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <!--carousel for sliding images in header section -->
-                                    <div id="pustakalaya-slider" class="carousel slide" data-ride="carousel">
 
-                                        <!-- Wrapper for slides -->
-                                        <div class="carousel-inner" style="margin-top:10px;">
-                                            <div class="item active">
-                                                <img src="{concat($theme-path, '/images/knowledge-in-your-pocket01.png')}" style="width:100%;"/>
-                                            </div>
-
-                                            <div class="item">
-                                                <img src="{concat($theme-path, '/images/celebrating-diversity.png')}"
-                                                     alt="OLE Nepal's android application" style="width:100%;"/>
-                                            </div>
-
-                                            <div class="item">
-                                                <img src="{concat($theme-path, '/images/for-the-community.png')}"
-                                                     alt="slider 3" style="width:100%;"/>
-                                            </div>
-                                            <div class="item">
-                                                <img src="{concat($theme-path, '/images/childrens-books-in-nepali-language.png')}"
-                                                     alt="slider 4" style="width:100%;"/>
-                                            </div>
-                                        </div><!--end wrapper slides-->
-
-                                        <!-- Left and right controls -->
-                                        <a class="left carousel-control" href="#pustakalaya-slider" data-slide="prev">
-                                            <span class="glyphicon glyphicon-chevron-left"></span>
-                                            <span class="sr-only">Previous</span>
-                                        </a>
-                                        <a class="right carousel-control" href="#pustakalaya-slider" data-slide="next">
-                                            <span class="glyphicon glyphicon-chevron-right"></span>
-                                            <span class="sr-only">Next</span>
-                                        </a>
-                                    </div><!--end carousel image slider -->
-                                </div><!--end row-->
-                            </div><!--end container fluid-->
 
                             <!-- custom banner for homepage goes here -->
                             <div id="pustakalayaBanner">
@@ -148,7 +110,7 @@
                                 <div class="container-fluid">
                                     <div class="row">
                                         <div class="col-md-4" style="background:#16a085; height:40px;">
-                                            <p class="text-center" style="color:#eeeeee; padding-top:10px;"><i18n:text>xmlui.BrowseBooks</i18n:text></p>
+                                            <p class="text-center" style="color:#eeeeee; padding-top:10px;"><i18n:text>xmlui.BrowsePustakalaya</i18n:text></p>
                                         </div>
                                         <!-- search box -->
                                         <div style="background-color:#e74c3c;height:40px;" class="col-md-4">
@@ -167,7 +129,7 @@
                                         </div>
                                         <!-- Advance search -->
                                         <div class="col-md-4" style="background:#e74c3c; height:40px;">
-                                            <p class="pull-left" style="color:#eeeeee; padding-top:10px;"><i18n:text>xmlui.advanceSearch</i18n:text></p>
+                                            <p class="pull-left" style="color:#eeeeee; padding-top:10px;"></p>
                                         </div>
                                     </div><!-- end row -->
                                 </div><!-- End browse books and search bar -->
@@ -176,6 +138,7 @@
                                 <div style="background:#FFF3E0; padding-top:10px;">
                                     <div class="container">
                                         <div class="row">
+
                                             <!-- Browse by section -->
                                             <div class="col-md-4" id="book-browsing">
                                                 <ul style="padding:0px;">
@@ -191,8 +154,8 @@
                                                 </ul>
                                             </div>
                                             <!-- Book gallery demo -->
-                                            <div class="col-md-8" id="book-gallery">
-                                                <!-- Book Banner -->
+                                            <!--<div class="col-md-8" id="book-gallery">
+                                                &lt;!&ndash; Book Banner &ndash;&gt;
                                                 <div id="featured-items-container">
                                                     <h6 style="background-color:#27ae60; color:#FFF; padding:5px 10px;">Featured items</h6>
                                                     <div id="featured-book-gallery-parent">
@@ -200,14 +163,14 @@
                                                     </div>
                                                 </div>
 
-                                                <!-- Recently added items -->
+                                                &lt;!&ndash; Recently added items &ndash;&gt;
                                                 <div id="recently-added-items-container">
                                                     <h6  style="background-color:#27ae60; color:#FFF; padding:5px 20px;">Recently added items</h6>
                                                     <div id="recenty-added-items-parent">
                                                         <h4>Loading recently added items...</h4>
                                                     </div>
                                                 </div>
-                                            </div><!--end col-md-8-->
+                                            </div>&lt;!&ndash;end col-md-8&ndash;&gt;-->
                                         </div><!--end row-->
                                     </div>
                                 </div><!-- container  end -->
@@ -297,7 +260,7 @@
                                                         </div>
 
                                                         <!--item-->
-                                                        <div class="item">
+                                                        <!--<div class="item">
                                                             <div class="row">
                                                                 <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
                                                                 </div>
@@ -309,10 +272,10 @@
                                                                 </div>
                                                             </div>
 
-                                                        </div>
+                                                        </div>-->
 
                                                         <!--item-->
-                                                        <div class="item">
+                                                        <!--<div class="item">
                                                             <div class="row">
                                                                 <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/150x150" alt="Image" class="img-responsive"/></a>
                                                                 </div>
@@ -324,7 +287,7 @@
                                                                 </div>
                                                             </div>
 
-                                                        </div>
+                                                        </div>-->
                                                         <!--item-->
                                                     </div>
                                                     <!--carousel-inner-->
@@ -565,6 +528,12 @@
                     <xsl:when test="starts-with($request-uri, 'page/about')">
                         <i18n:text>xmlui.mirage2.page-structure.aboutThisRepository</i18n:text>
                     </xsl:when>
+                    <xsl:when test="starts-with($request-uri, 'page/help')">
+                        <i18n:text>xmlui.mirage2.page-structure.help</i18n:text>
+                    </xsl:when>
+                    <xsl:when test="starts-with($request-uri, 'page/feedback')">
+                        <i18n:text>xmlui.mirage2.page-structure.feedback</i18n:text>
+                    </xsl:when>
                     <xsl:when test="not($page_title)">
                         <xsl:text>  </xsl:text>
                     </xsl:when>
@@ -626,7 +595,26 @@
                                 <img src="{$theme-path}/images/ep_logo.png" style="height:40px; padding-bottom:10px;"/>
                             </a>
                         </div><!-- Logo -->
+
+
+                        <!--TO DO-->
+
+                        <!--static Help page-->
                         <div class="col-md-6 col-md-offset-1" id="pustakalaya-navbar"
+                             style="padding-top:10px; padding-bottom:10px;">
+                            <div class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+
+                                <ul  id="pustakalaya-navbar" class="nav navbar-nav">
+                                    <li><a class="text-capitalized" style="color:#FFFF;" href="{$context-path}/page/help"><i18n:text>xmlui.mirage2.page-structure.help</i18n:text></a></li>
+                                    <li><a class="text-capitalized" style="color:#FFFF;" href="{$context-path}/page/feedback"><i18n:text>xmlui.mirage2.page-structure.feedback</i18n:text></a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+                        <!--static feedback page-->
+
+                        <!--<div class="col-md-6 col-md-offset-1" id="pustakalaya-navbar"
                              style="padding-top:10px; padding-bottom:10px;">
                             <div style="border-radius: 10px; background:#27ae60;
                             width:100%; padding-left:8%; padding-right:5%;">
@@ -658,7 +646,7 @@
                                 </div>
 
                             </div>
-                        </div>
+                        </div>-->
                         <div class="col-md-3">
                             <div class="navbar-header  hidden-xs">
                                 <ul class="nav navbar-nav">
@@ -1339,7 +1327,7 @@
 
             <!-- Pustakalaya custom scripts -->
             <!-- script to grab the featured items and append in dom-->
-            <script>
+           <!-- <script>
                 $pustakalaya("document").ready(function(){
                 // Featured items URL
                 var featuredItemURL =   "/rest/filtered-items?query_field[]=local.featured&amp;query_op[]=matches&amp;query_val[]=yes&amp;collSel[]=&amp;limit=20&amp;offset=0&amp;expand=parentCollection%2Cmetadata&amp;filters=none";
@@ -1402,10 +1390,10 @@
                 } // End success function
                 })// END ajax call
                 }); // End document.ready
-            </script>
+            </script>-->
 
             <!--script to grab all the recently added items -->
-            <script>
+            <!--<script>
                 $pustakalaya("document").ready(function(){
 
                 (function(){
@@ -1498,7 +1486,7 @@
 
                 })(); // END IIEF
                 })
-            </script>
+            </script>-->
 
 
 
@@ -1732,10 +1720,26 @@
 
             <!-- Check for the custom pages -->
             <xsl:choose>
+                <!--static about page-->
                 <xsl:when test="starts-with($request-uri, 'page/about')">
                     <div class="hero-unit">
                         <h1><i18n:text>xmlui.mirage2.page-structure.heroUnit.title</i18n:text></h1>
                         <p><i18n:text>xmlui.mirage2.page-structure.heroUnit.content</i18n:text></p>
+                    </div>
+                </xsl:when>
+
+                <!--static help page-->
+                <xsl:when test="starts-with($request-uri, 'page/help')">
+                    <div class="hero-unit">
+                        <h1><i18n:text>xmlui.mirage2.page-structure.help.title</i18n:text></h1>
+                        <p><i18n:text>xmlui.mirage2.page-structure.help.content</i18n:text></p>
+                    </div>
+                </xsl:when>
+                <!--static feedback page-->
+                <xsl:when test="starts-with($request-uri, 'page/feedback')">
+                    <div class="hero-unit">
+                        <h1><i18n:text>xmlui.mirage2.page-structure.feedback.title</i18n:text></h1>
+                        <p><i18n:text>xmlui.mirage2.page-structure.feedback.content</i18n:text></p>
                     </div>
                 </xsl:when>
                 <!-- Otherwise use default handling of body -->
@@ -1935,6 +1939,25 @@
                     </xsl:for-each>
                 </ul>
             </li>
+        </xsl:if>
+    </xsl:template>
+    <!--community list-->
+    <xsl:template name="standardAttributes">
+        <xsl:param name="class"/>
+        <xsl:param name="placeholder"/>
+        <xsl:if test="@id">
+            <xsl:attribute name="id"><xsl:value-of select="translate(@id,'.','_')"/></xsl:attribute>
+        </xsl:if>
+        <xsl:attribute name="class">
+            <xsl:value-of select="normalize-space($class)"/>
+            <xsl:if test="@rend">
+                <xsl:text> </xsl:text>
+                <xsl:value-of select="@rend"/>
+            </xsl:if>
+        </xsl:attribute>
+        <xsl:if test="string-length($placeholder)>0">
+            <xsl:attribute name="placeholder"><xsl:value-of select="$placeholder"/></xsl:attribute>
+            <xsl:attribute name="i18n:attr">placeholder</xsl:attribute>
         </xsl:if>
     </xsl:template>
 

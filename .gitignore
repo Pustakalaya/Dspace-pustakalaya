@@ -35,3 +35,7 @@ META-INF/
 
 ##Mac noise
 .DS_Store
+
+## War files
+.war
+.war.original
