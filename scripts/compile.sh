@@ -15,3 +15,5 @@ cd scripts
 # Run postbuild script
 ./postbuild.sh
 
+# Compile and  Deploy custom pustakalaya-app
+# bash ./compile_pustakalaya_app.sh

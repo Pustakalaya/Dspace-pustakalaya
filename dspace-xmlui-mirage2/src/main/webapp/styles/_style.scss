@@ -23,7 +23,7 @@
 
 @include selection {
   color: white;
-  background: hotpink;
+  background: #3498db;
 }
 
 .publication-records-modal, .publication-records-modal ul {
@@ -66,6 +66,7 @@
 }
 
 
+
 /* top navigation styling */
 .top-navigation{
   background-color:#16a085;
@@ -77,6 +78,36 @@
 
 .top-navigation > div > ul > li > a:hover{
   background-color: #1abc9c !important;
+}
+
+
+/* Navigation menu */
+#pustakalaya-navbar > li > a {
+  background: #27ae60;
+  color: #FFF;
+  padding-top:5px !important; padding-bottom:5px !important;
+}
+
+ul#pustakalaya-navbar > li > a:hover {
+  background: #16a085;
+}
+
+ul#pustakalaya-navbar > li > a:active {
+  background: #16a085;
+}
+
+ul#pustakalaya-dropdown-menu > li > a {
+  background: #27ae60;
+  color: #FFF;
+  //padding-top:5px !important; padding-bottom:5px !important;
+}
+
+ul#pustakalaya-dropdown-menu > li > a:hover {
+  background: #16a085;
+}
+
+ul#pustakalaya-dropdown-menu > li > a:active {
+  background: #16a085;
 }
 
 
@@ -104,6 +135,13 @@
 
 #book-browsing > ul >li {
   margin-top: 5px;
+  text-align: center;
+  background: rgba(189, 195, 199,1.0);
+  width: 100%;
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 5px;
+  display: block;
 }
 
 #book-browsing.col-md-4 > ul > li > a {
@@ -137,13 +175,13 @@
 
 
 /* Pustakalaya Section */
-.pustakalayaSection{
+/*.pustakalayaSection{
   height: 250px;
   background: #81C784;
-}
+}*/
 
 
-pustakalayaSection > div > h4 {
+/* pustakalayaSection > div > h4 {
   padding-top: 10px;
   color: #eeeeee;
   text-transform: capitalize;
@@ -151,6 +189,21 @@ pustakalayaSection > div > h4 {
   background-color:#16a085;
   padding: 8px;
 
+} */
+
+/*style for slider*/
+.carousel-inner > .item > img, .carousel-inner > .item > a > img {
+  display: block;
+  height: 200px;
+  min-width: 100%;
+  width: 100%;
+  max-width: 100%;
+  line-height: 1;
+}
+
+.carousel-inner>.item>img{
+  height: 250px;
+  max-width: 100%;
 }
 
 /* Interactive educational software style section */
@@ -160,14 +213,22 @@ pustakalayaSection > div > h4 {
 }
 
 
-
-
+/*styling of pustakalayaSection*/
+/*div.well{
+  background:#A5D6A7;
+  border:0px;
+  border-radius:0px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -o-border-radius: 0px;
+  border-radius: 0px;
+  border: 0px;
+}
+*/
 /* footer styling*/
 
 .footer-banner-first {
   background-color: #444444;
-  background: #006400;
-  height: 20px;
   width: auto;
   width: 100%;
 }
@@ -179,14 +240,15 @@ pustakalayaSection > div > h4 {
 
 .partner-logo {
   margin: 10px;
-  width: 30px;
-  height: 30px;
+  width: 37px;
+  height: 32px;
 }
 
 .pustakalaya-logo {
+  background: #FFFFFF;
   margin: 10px;
   width: 122px;
-  height: 44px;
+  height: 38px;
 }
 
 .pustakalaya-menu {
@@ -195,9 +257,12 @@ pustakalayaSection > div > h4 {
 
 }
 
+/*hover dropdown menu */
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
 
 
-/* sidebar customization */
 
 .first-children > a{
   border-radius: 0px !important;
