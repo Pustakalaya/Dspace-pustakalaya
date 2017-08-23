@@ -143,7 +143,34 @@
                                             <!-- Browse by section -->
                                             <div class="col-md-4" id="book-browsing">
                                                 <ul style="padding:0px;">
-                                                    <li onclick="queryCollection('hello world')"><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Literature+and+Arts" class="text-capitalize"><img src="{$theme-path}/images/Literature-and-Arts.png" style="height:35px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_literature_and_arts</i18n:text></a></li>
+
+                                                    <!-- item 1 -->
+                                                    <!-- id should be static copied from rest api -->
+                                                    <div>
+                                                        <!-- header -->
+                                                        <li id="0ba7163c-10a8-41e9-b200-e43d305a6587" onclick="queryCollection(this)">
+                                                            <a>
+                                                                <img src="{$theme-path}/images/Literature-and-Arts.png" style="height:35px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_literature_and_arts</i18n:text>
+                                                            </a>
+                                                            <!-- logo -->
+                                                            <i class="glyphicon glyphicon-plus-sign pull-right"></i>
+                                                        </li>
+
+                                                        <div class="list-group">
+                                                            <li class="list-group-item">
+                                                                <span class="badge">14</span>
+                                                                Cras justo odio
+                                                            </li>
+                                                        </div>
+
+
+
+                                                    </div>
+                                                    <!-- end item -->
+
+
+
+
 
                                                     <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Course+Materials" class="text-capitalize"><img src="{$theme-path}/images/course_materials.png" style="height:35px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_course_materials</i18n:text></a><i18n:text></i18n:text></li>
                                                     <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Teaching+Materials" class="text-capitalize"><img src="{$theme-path}/images/Teaching-Materials.png" style="height:35px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_teaching_materials</i18n:text></a></li>
@@ -2079,10 +2106,29 @@ window.publication.contextPath= '</xsl:text><xsl:value-of
 
             // Script to get the list of collections
             (function(window, $pustakalaya){
+
+            // Function to query the collection in communities.
             window.queryCollection = function($event) {
-            communityUUID = "0ba7163c-10a8-41e9-b200-e43d305a6587";
+
+
+
+            // show minus button.
+            if( $pustakalaya($event).children('i').hasClass('glyphicon-plus-sign')) {
+            // Remove plus sign and add minus sign and append the content.
+            $pustakalaya($event).children('i').removeClass("glyphicon-plus-sign").addClass("glyphicon-minus-sign");
+            } else {
+            // Remove the minus and add plus.
+            $pustakalaya($event).children('i').removeClass("glyphicon-minus-sign").addClass("glyphicon-plus-sign");
+            }
+
+            // ID of community get from the click object
+            communityUUID = $pustakalaya($event).attr("id");
+
+            // Url to query the collection from communities
             var url = 	window.location.origin + "/rest/communities/" + communityUUID + "/collections";
-            console.log($event);
+
+            // Template variable to hold the dom.
+            var template = $pustakalaya();
 
             // Ajax call to grab all the collection from this community.
             $pustakalaya.ajax({
@@ -2091,12 +2137,49 @@ window.publication.contextPath= '</xsl:text><xsl:value-of
             async: true,
             contentType: "application/json",
             success: function(data) {
-            console.log("This is data collection", data);
+            console.log(data);
+            data.forEach(function(item, index) {
+            // Construct the dom
+            console.log(item.name);
+            console.log(window.location.href  + item.handle);
+            console.log(item.numberItems);
+
+            template = $pustakalaya("<div></div>",{
+            class: "list-group",
+            });
+
+
+            var li = $pustakalaya("<li></li>", {
+            class: "list-group-item",
+            text: item.name
+            });
+
+            var span = $pustakalaya("<span></span>",{
+            text: item.numberItems,
+            class: "badge"
+            });
+
+            // append span tag to li tag.
+            li.append(span);
+
+            // Create template.
+            template.append(li);
+            }); // End foreach.
+
+
+            // Append the dom to
+            console.log($event);
+            $pustakalaya($event).parent().append(template);
+
+
             },
             error: function(error) {
             console.log("Error occured while querying collection");
             }
             }); // End ajax
+
+
+
             }; // End queryCollection
             })(window, $pustakalaya);
             }); // End document.ready function.
