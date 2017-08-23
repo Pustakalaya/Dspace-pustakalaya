@@ -65,6 +65,21 @@
 
 }
 
+
+/* top navigation styling */
+.top-navigation{
+  background-color:#16a085;
+}
+
+.top-navigation > div > ul > li > a{
+  color: #FFF !important;
+}
+
+.top-navigation > div > ul > li > a:hover{
+  background-color: #1abc9c !important;
+}
+
+
 /* search box section */
 #pustakalaya_searchBox{
   margin-top:20%; /* Don't copy this */

@@ -18,6 +18,7 @@
     Author: ben at atmire.com
     Author: Alexey Maslov
 
+
 -->
 
 
@@ -179,7 +180,8 @@
                                             <!-- Browse by section -->
                                             <div class="col-md-4" id="book-browsing">
                                                 <ul style="padding:0px;">
-                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Literature+and+Arts" class="text-capitalize"><img src="{$theme-path}/images/Literature-and-Arts.png" style="height:35px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_literature_and_arts</i18n:text></a></li>
+                                                    <li onclick="queryCollection('hello world')"><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Literature+and+Arts" class="text-capitalize"><img src="{$theme-path}/images/Literature-and-Arts.png" style="height:35px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_literature_and_arts</i18n:text></a></li>
+
                                                     <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Course+Materials" class="text-capitalize"><img src="{$theme-path}/images/course_materials.png" style="height:35px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_course_materials</i18n:text></a><i18n:text></i18n:text></li>
                                                     <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Teaching+Materials" class="text-capitalize"><img src="{$theme-path}/images/Teaching-Materials.png" style="height:35px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_teaching_materials</i18n:text></a></li>
                                                     <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Magazines+and+Newspapers" class="text-capitalize"><img src="{$theme-path}/images/Magazines-and-Newspapers.png" style="height:35px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_magazines_and_newspapers</i18n:text></a></li>
@@ -397,8 +399,11 @@
                         </xsl:otherwise>
                     </xsl:choose>
                     <!-- Javascript at the bottom for fast page loading -->
+                    <xsl:call-template name="addPustakalayaScript"/>
                     <xsl:call-template name="buildFooter"/>
                     <xsl:call-template name="addJavascript"/>
+
+
                 </body>
                 <xsl:text disable-output-escaping="yes">&lt;/html&gt;</xsl:text>
 
@@ -549,6 +554,11 @@
                 return true;
                 }
             </script>
+            <style>
+                .thumbnail-shadow{
+                box-shadow: 4px 4px 4px #888;
+                }
+            </style>
 
             <xsl:text disable-output-escaping="yes">&lt;!--[if lt IE 9]&gt;
                 &lt;script src="</xsl:text><xsl:value-of select="concat($theme-path, 'vendor/html5shiv/dist/html5shiv.js')"/><xsl:text disable-output-escaping="yes">"&gt;&#160;&lt;/script&gt;
@@ -612,9 +622,48 @@
     <!-- The header (distinct from the HTML head element) contains the title, subtitle, login box and various
         placeholders for header images -->
     <xsl:template name="buildHeader">
-
-
         <header>
+            <!-- Top navigation -->
+            <!-- Comment this to disable top navigation -->
+
+            <nav class="navbar top-navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="/">
+                            <img src="{$theme-path}/images/ep_logo.png" style="height:40px; padding-bottom:10px;"/>
+                        </a>
+                    </div>
+
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">गृह पृष्ठ</a></li>
+                        <li><a href="#">ई-पाठ</a></li>
+                        <li><a href="#">क्रियाकलाप</a></li>
+                        <li><a href="#"> भिडियो </a></li>
+                        <li><a href="#">स्कूल विकिपिडिया </a></li>
+                        <li><a href="#">लेखक सूची </a></li>
+                        <li><a href="#"> सहयोग सुझाव  </a></li>
+                        <li><a href="{$context-path}/page/about"><i18n:text>xmlui.static.page.about</i18n:text></a></li>
+                        <li><a href="#">एन्ड्रोइड एप</a></li>
+
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a onclick="window.location.href='./register'" style="cursor:pointer"><span class="glyphicon glyphicon-user"></span> Sign Up</a>
+
+                        </li>
+
+                        <li>
+                            <a href="{/dri:document/dri:meta/dri:userMeta/dri:metadata[@element='identifier' and @qualifier='loginURL']}">
+                                <span class="glyphicon glyphicon-log-in"></span> Login
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </nav>
+
+
             <!-- menu icon -->
             <div class="navbar navbar-static-top" role="navigation" style="margin-top:15px; margin-bottom:15px;">
                 <div class="container">
@@ -1381,7 +1430,7 @@
                 alt: featuredItemTitle,
                 width: 200,
                 height: 120,
-                class: "img-responsive"
+                class: "img-responsive thumbnail-shadow"
                 });
 
                 li.append(h3.append(a.append(img)));
@@ -1472,7 +1521,7 @@
                 alt: recentlyAddedItemTitle,
                 width: 180,
                 height: 140,
-                class: "img-responsive"
+                class: "img-responsive thumbnail-shadow"
                 });
 
                 li.append(h3.append(a.append(img)));
@@ -1650,7 +1699,7 @@
                 alt: itemTitle,
                 width: 200,
                 height: 120,
-                class: "img-responsive"
+                class: "img-responsive thumbnail-shadow"
                 });
 
                 li.append(h3.append(a.append(img)));
@@ -1937,5 +1986,38 @@
             </li>
         </xsl:if>
     </xsl:template>
+    <!-- Pustakalaya script template -->
+
+    <xsl:template name="addPustakalayaScript">
+        <script>
+            $pustakalaya(document).ready(function(){
+
+            // Script to get the list of collections
+            (function(window, $pustakalaya){
+            window.queryCollection = function($event) {
+            communityUUID = "0ba7163c-10a8-41e9-b200-e43d305a6587";
+            var url = 	window.location.origin + "/rest/communities/" + communityUUID + "/collections";
+            console.log($event);
+
+            // Ajax call to grab all the collection from this community.
+            $pustakalaya.ajax({
+            url: url,
+            type: "GET",
+            async: true,
+            contentType: "application/json",
+            success: function(data) {
+            console.log("This is data collection", data);
+            },
+            error: function(error) {
+            console.log("Error occured while querying collection");
+            }
+            }); // End ajax
+            }; // End queryCollection
+            })(window, $pustakalaya);
+            }); // End document.ready function.
+
+        </script>
+    </xsl:template>
+
 
 </xsl:stylesheet>

@@ -67,6 +67,8 @@
                     <required></required>
                 </field>
 
+
+
                 <!-- Editor -->
                 <field>
                     <dc-schema>dc</dc-schema>
@@ -130,6 +132,19 @@
                     <required>You must enter at least the year.</required>
                 </field>
 
+
+                <!-- school library -->
+                <field>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>ourschool</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>School Library</label>
+                    <input-type value-pairs-name="common_types">dropdown</input-type>
+                    <hint>Select the type(s) of content of the item to add in your library.
+                    </hint>
+                </field>
+
                 <!-- Publisher Name -->
                 <field>
                     <dc-schema>dc</dc-schema>
@@ -163,6 +178,18 @@
                     <repeatable>false</repeatable>
                     <label>Featured this data</label>
                     <input-type value-pairs-name="featured_items">dropdown</input-type>
+                    <hint>Select yes to add this item to dispalay in featured homepage.</hint>
+                </field>
+
+
+                <field>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>ourschool</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>School Library</label>
+                    <input-type value-pairs-name="common_types">dropdown</input-type>
+                    <hint>Select an item from select box to add in your library</hint>
                 </field>
 
                 <!-- Identification and citation -->
@@ -786,10 +813,7 @@
         <!-- Subject Category -->
         <!-- Grade category -->
         <value-pairs value-pairs-name="common_subjects" dc-term="type">
-            <pair>
-                <displayed-value>My School</displayed-value>
-                <stored-value>My School</stored-value>
-            </pair>
+
 
             <pair>
                 <displayed-value>Nepali</displayed-value>
@@ -1054,10 +1078,7 @@
                 <displayed-value>yes</displayed-value>
                 <stored-value>yes</stored-value>
             </pair>
-
-
         </value-pairs>
-
 
     </form-value-pairs>
 

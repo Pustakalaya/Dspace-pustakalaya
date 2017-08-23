@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+    <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
 
@@ -99,6 +99,7 @@
                 <ref bean="searchFilterLevel" />
                 <!-- Do not add grade facets -->
                 <!--<ref bean="searchFilterGrade" />-->
+                <ref bean="searchFilterOurSchool" />
                 <ref bean="searchFilterInteractivity" />
                 <ref bean="searchFilterType" />
                 <ref bean="searchFilterCategory" />
@@ -222,6 +223,7 @@
                 <ref bean="searchFilterLevel" />
                 <!-- Remove Grade facets -->
                 <!--<ref bean="searchFilterGrade" />-->
+                <ref bean="searchFilterOurSchool" />
                 <ref bean="searchFilterInteractivity" />
                 <ref bean="searchFilterType" />
                 <ref bean="searchFilterCategory" />
@@ -238,8 +240,8 @@
         <!--The search filters which can be used on the discovery search page (same as defaultConfiguration above)-->
         <property name="searchFilters">
             <list>
-
                 <ref bean="searchFilterLevel" />
+                <ref bean="searchFilterOurSchool" />
                 <ref bean="searchFilterGrade" />
                 <ref bean="searchFilterInteractivity" />
                 <ref bean="searchFilterType" />
@@ -444,6 +446,21 @@
         <property name="metadataFields">
             <list>
                 <value>local.interactivity</value>
+            </list>
+        </property>
+        <property name="facetLimit" value="10"/>
+        <property name="sortOrderSidebar" value="COUNT"/>
+        <property name="sortOrderFilterPage" value="COUNT"/>
+    </bean>
+
+
+    <!-- our school libray bean id -->
+    <bean id="searchFilterOurSchool" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <!-- value is the value name defined in dspace.cfg -->
+        <property name="indexFieldName" value="ourschool"/>
+        <property name="metadataFields">
+            <list>
+                <value>local.ourschool</value>
             </list>
         </property>
         <property name="facetLimit" value="10"/>
