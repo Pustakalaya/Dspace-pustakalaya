@@ -116,9 +116,9 @@ ul#pustakalaya-dropdown-menu > li > a:active {
   list-style: none;
 }
 
-#book-browsing > ul >li {
+#book-browsing > ul > div >li {
   margin-top: 5px;
-  text-align: center;
+  text-align: left;
   background: rgba(189, 195, 199,1.0);
   width: 100%;
   border-radius: 5px;
@@ -127,7 +127,7 @@ ul#pustakalaya-dropdown-menu > li > a:active {
   display: block;
 }
 
-#book-browsing.col-md-4 > ul > li > a {
+#book-browsing.col-md-4 > ul > div > li > a {
   color: #333333;
   display: block;
   text-align: left;

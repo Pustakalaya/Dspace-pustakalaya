@@ -144,42 +144,135 @@
                                             <div class="col-md-4" id="book-browsing">
                                                 <ul style="padding:0px;">
 
-                                                    <!-- item 1 -->
-                                                    <!-- id should be static copied from rest api -->
-                                                    <div>
+                                                    <!-- item 1: Literature and arts-->
+                                                    <div id="literature-and-arts">
                                                         <!-- header -->
-                                                        <li id="0ba7163c-10a8-41e9-b200-e43d305a6587" onclick="queryCollection(this)">
-                                                            <a>
-                                                                <img src="{$theme-path}/images/Literature-and-Arts.png" style="height:35px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_literature_and_arts</i18n:text>
-                                                            </a>
+                                                        <li style="text-align:left; cursor:pointer;" id="93bb1ada-fd40-4136-a652-a766c1f4754e"
+                                                            onclick="queryCollection(this)">
+
+                                                            <img src="{$theme-path}/images/Literature-and-Arts.png" style="height:35px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_literature_and_arts</i18n:text>
+
                                                             <!-- logo -->
-                                                            <i class="glyphicon glyphicon-plus-sign pull-right"></i>
+                                                            <i class="glyphicon  pull-right glyphicon-plus-sign"
+                                                               style="margin-top:10px; margin-right:10px;"
+                                                            ></i>
                                                         </li>
 
-                                                        <div class="list-group">
-                                                            <li class="list-group-item">
-                                                                <span class="badge">14</span>
-                                                                Cras justo odio
-                                                            </li>
+                                                        <div class="list-group loader" style="margin-top:-10px;">
+
                                                         </div>
-
-
-
                                                     </div>
                                                     <!-- end item -->
 
+                                                    <!-- Navigation 2 -->
+                                                    <!-- item 2: Course Materials-->
+                                                    <!-- TODO: id of course materials need to change -->
+                                                    <div id="course-materials">
+                                                        <!-- header -->
+                                                        <li style="text-align:left; cursor:pointer;" id="86d24b85-07c2-4911-921d-081fe3ed3c71" onclick="queryCollection(this)">
+                                                            <!-- herf of a href={$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Course+Materials -->
 
+                                                            <img src="{$theme-path}/images/course_materials.png" style="height:35px; margin-right:10px;"/>
+                                                            <i18n:text>xmlui.ArtifactBrowser.Navigation.browse_course_materials</i18n:text>
 
+                                                            <!-- logo -->
+                                                            <i class="glyphicon  pull-right glyphicon-plus-sign"
+                                                               style="margin-top:10px; margin-right:10px;"></i>
+                                                        </li>
 
+                                                        <div class="list-group" style="margin-top:-10px;">
 
-                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Course+Materials" class="text-capitalize"><img src="{$theme-path}/images/course_materials.png" style="height:35px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_course_materials</i18n:text></a><i18n:text></i18n:text></li>
-                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Teaching+Materials" class="text-capitalize"><img src="{$theme-path}/images/Teaching-Materials.png" style="height:35px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_teaching_materials</i18n:text></a></li>
-                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Magazines+and+Newspapers" class="text-capitalize"><img src="{$theme-path}/images/Magazines-and-Newspapers.png" style="height:35px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_magazines_and_newspapers</i18n:text></a></li>
-                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Agriculture+and+Diversity" class="text-capitalize"><img src="{$theme-path}/images/Agriculture-and-Diversity.png" style="height:35px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_agriculture_and_diversity</i18n:text></a></li>
-                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Environment" class="text-capitalize"><img src="{$theme-path}/images/Environment.png" style="height:35px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_environment</i18n:text></a></li>
-                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Science+and+Technology" class="text-capitalize"><img src="{$theme-path}/images/Magazines-and-Newspapers.png" style="height:35px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_science_and_technology</i18n:text></a></li>
-                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=All+Categories" class="text-capitalize"><img src="{$theme-path}/images/Teaching-Materials.png" style="height:35px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_all_categories</i18n:text></a></li>
-                                                    <li><a href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Title+or+Authors" class="text-capitalize"><img src="{$theme-path}/images/Agriculture-and-Diversity.png" style="height:35px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_titles</i18n:text><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_authors</i18n:text></a></li>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Item 3: Teaching Materials navigation -->
+                                                    <div id="teaching-materials">
+                                                        <!-- header -->
+                                                        <li style="text-align:left; cursor:pointer;" id="63f8ccff-eb9b-43ff-a930-beefb88e9254" onclick="queryCollection(this)">
+                                                            <!-- href of a {$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Teaching+Materials -->
+
+                                                            <img src="{$theme-path}/images/Teaching-Materials.png" style="height:35px; margin-right:10px;"/>
+                                                            <i18n:text>xmlui.ArtifactBrowser.Navigation.browse_teaching_materials</i18n:text>
+
+                                                            <!-- logo -->
+                                                            <i class="glyphicon  pull-right glyphicon-plus-sign"
+                                                               style="margin-top:10px; margin-right:10px;"></i>
+                                                        </li>
+
+                                                        <div class="list-group" style="margin-top:-10px;">
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Item 4 Magzine and News paper -->
+                                                    <div id="teaching-materials">
+                                                        <!-- header -->
+                                                        <li style="text-align:left; cursor:pointer;" id="14a456b2-8b6c-419b-9f9c-448b6538c81d" onclick="queryCollection(this)">
+                                                            <!-- href of a: {$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Magazines+and+Newspapers -->
+
+                                                            <img src="{$theme-path}/images/Magazines-and-Newspapers.png" style="height:35px; margin-right:10px;"/>
+                                                            <i18n:text>xmlui.ArtifactBrowser.Navigation.browse_magazines_and_newspapers</i18n:text>
+
+                                                            <!-- logo -->
+                                                            <i class="glyphicon  pull-right glyphicon-plus-sign"
+                                                               style="margin-top:10px; margin-right:10px;"></i>
+                                                        </li>
+
+                                                        <div class="list-group" style="margin-top:-10px;">
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Item 5 -->
+                                                    <!-- Agriculture and Diversity -->
+                                                    <div id="agriculture-and-biodiveristy">
+                                                        <!-- header -->
+                                                        <li style="text-align:left; cursor:pointer;" id="4880c29a-0c65-468e-8f35-f77b19c1c802" onclick="queryCollection(this)">
+                                                            <!-- href of a: {$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Magazines+and+Newspapers -->
+
+                                                            <img src="{$theme-path}/images/Agriculture-and-Diversity.png" style="height:35px; margin-right:10px;"/>
+                                                            <i18n:text>xmlui.ArtifactBrowser.Navigation.browse_agriculture_and_diversity</i18n:text>
+
+                                                            <!-- logo -->
+                                                            <i class="glyphicon  pull-right glyphicon-plus-sign"
+                                                               style="margin-top:10px; margin-right:10px;"></i>
+                                                        </li>
+
+                                                        <div class="list-group" style="margin-top:-10px;">
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Item 6 -->
+                                                    <!-- Environment -->
+                                                    <div id="environment">
+                                                        <!-- header -->
+                                                        <li style="text-align:left; cursor:pointer;" id="eb82dda2-b8e4-49a7-b3bb-c9e0cd5f6626" onclick="queryCollection(this)">
+                                                            <!-- href of a: href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Environment"-->
+
+                                                            <img src="{$theme-path}/images/Environment.png" style="height:35px; margin-right:10px;"/>
+                                                            <i18n:text>xmlui.ArtifactBrowser.Navigation.browse_environment</i18n:text>
+                                                            <!-- logo -->
+                                                            <i class="glyphicon  pull-right glyphicon-plus-sign"
+                                                               style="margin-top:10px; margin-right:10px;"></i>
+                                                        </li>
+
+                                                        <div class="list-group" style="margin-top:-10px;">
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Item 7-->
+                                                    <!-- Science and technology -->
+                                                    <div id="environment">
+                                                        <!-- header -->
+                                                        <li style="text-align:left; cursor:pointer;" id="aa78ac32-7e82-4be3-b897-2f5d458c840b" onclick="queryCollection(this)">
+                                                            <!-- href of a: hhref="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Science+and+Technology" -->
+                                                            <img src="{$theme-path}/images/Magazines-and-Newspapers.png" style="height:35px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_science_and_technology</i18n:text>
+                                                            <!-- logo -->
+                                                            <i class="glyphicon  pull-right glyphicon-plus-sign"
+                                                               style="margin-top:10px; margin-right:10px;"></i>
+                                                        </li>
+
+                                                        <div class="list-group" style="margin-top:-10px;">
+                                                        </div>
+                                                    </div>
                                                 </ul>
                                             </div>
 
@@ -450,7 +543,7 @@
                         </xsl:otherwise>
                     </xsl:choose>
                     <!-- Javascript at the bottom for fast page loading -->
-                    <xsl:call-template name="addPustakalayaScript"/>
+                    <xsl:call-template name="queryCollectionScript"/>
                     <xsl:call-template name="buildFooter"/>
                     <xsl:call-template name="addJavascript"/>
 
@@ -682,43 +775,44 @@
         <header>
             <!-- Top navigation -->
             <!-- Comment this to disable top navigation -->
-
-            <nav class="navbar top-navigation">
-                <div class="container">
-                    <div class="navbar-header">
-                        <a class="navbar-brand" href="/">
-                            <img src="{$theme-path}/images/ep_logo.png" style="height:40px; padding-bottom:10px;"/>
-                        </a>
-                    </div>
-
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">गृह पृष्ठ</a></li>
-                        <li><a href="#">ई-पाठ</a></li>
-                        <li><a href="#">क्रियाकलाप</a></li>
-                        <li><a href="#"> भिडियो </a></li>
-                        <li><a href="#">स्कूल विकिपिडिया </a></li>
-                        <li><a href="#">लेखक सूची </a></li>
-                        <li><a href="#"> सहयोग सुझाव  </a></li>
-                        <li><a href="{$context-path}/page/about"><i18n:text>xmlui.static.page.about</i18n:text></a></li>
-                        <li><a href="#">एन्ड्रोइड एप</a></li>
-
-                    </ul>
-
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a onclick="window.location.href='./register'" style="cursor:pointer"><span class="glyphicon glyphicon-user"></span> Sign Up</a>
-
-                        </li>
-
-                        <li>
-                            <a href="{/dri:document/dri:meta/dri:userMeta/dri:metadata[@element='identifier' and @qualifier='loginURL']}">
-                                <span class="glyphicon glyphicon-log-in"></span> Login
+            <!--  Disable navigation.
+                <nav class="navbar top-navigation">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="/">
+                                <img src="{$theme-path}/images/ep_logo.png" style="height:40px; padding-bottom:10px;"/>
                             </a>
-                        </li>
+                        </div>
 
-                    </ul>
-                </div>
-            </nav>
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="#">गृह पृष्ठ</a></li>
+                            <li><a href="#">ई-पाठ</a></li>
+                            <li><a href="#">क्रियाकलाप</a></li>
+                            <li><a href="#"> भिडियो </a></li>
+                            <li><a href="#">स्कूल विकिपिडिया </a></li>
+                            <li><a href="#">लेखक सूची </a></li>
+                            <li><a href="#"> सहयोग सुझाव  </a></li>
+                            <li><a href="{$context-path}/page/about"><i18n:text>xmlui.static.page.about</i18n:text></a></li>
+                            <li><a href="#">एन्ड्रोइड एप</a></li>
+
+                        </ul>
+
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <a onclick="window.location.href='./register'" style="cursor:pointer"><span class="glyphicon glyphicon-user"></span> Sign Up</a>
+
+                            </li>
+
+                            <li>
+                                <a href="{/dri:document/dri:meta/dri:userMeta/dri:metadata[@element='identifier' and @qualifier='loginURL']}">
+                                    <span class="glyphicon glyphicon-log-in"></span> Login
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </nav>
+            -->
 
 
             <!-- menu icon -->
@@ -2100,7 +2194,7 @@ window.publication.contextPath= '</xsl:text><xsl:value-of
 
     <!-- Pustakalaya script template -->
 
-    <xsl:template name="addPustakalayaScript">
+    <xsl:template name="queryCollectionScript">
         <script>
             $pustakalaya(document).ready(function(){
 
@@ -2110,25 +2204,35 @@ window.publication.contextPath= '</xsl:text><xsl:value-of
             // Function to query the collection in communities.
             window.queryCollection = function($event) {
 
-
-
-            // show minus button.
+            // show minus button by default.
             if( $pustakalaya($event).children('i').hasClass('glyphicon-plus-sign')) {
-            // Remove plus sign and add minus sign and append the content.
+            // Remove plus sign and add minus sign and display the content.
             $pustakalaya($event).children('i').removeClass("glyphicon-plus-sign").addClass("glyphicon-minus-sign");
+            // Display the  content.
+            $pustakalaya($event).next("div").show();
+
             } else {
-            // Remove the minus and add plus.
+            // Remove the minus and add plus and hide content
             $pustakalaya($event).children('i').removeClass("glyphicon-minus-sign").addClass("glyphicon-plus-sign");
+            $pustakalaya($event).next("div").hide();
             }
 
             // ID of community get from the click object
             communityUUID = $pustakalaya($event).attr("id");
 
             // Url to query the collection from communities
-            var url = 	window.location.origin + "/rest/communities/" + communityUUID + "/collections";
+            var url =   window.location.origin + "/rest/communities/" + communityUUID + "/collections";
 
-            // Template variable to hold the dom.
-            var template = $pustakalaya();
+            // If there is already a result. don't do ajax call.
+            if(!$pustakalaya($event).next("div").is(':empty')) {
+            return;
+            }
+
+            // Before ajax call add loading...
+            $pustakalaya($event).next("div").html($pustakalaya("<p></p>", {
+            text: "Loading...",
+            style: "text-align:center; background:#eee;"
+            }));
 
             // Ajax call to grab all the collection from this community.
             $pustakalaya.ajax({
@@ -2137,22 +2241,35 @@ window.publication.contextPath= '</xsl:text><xsl:value-of
             async: true,
             contentType: "application/json",
             success: function(data) {
-            console.log(data);
-            data.forEach(function(item, index) {
-            // Construct the dom
-            console.log(item.name);
-            console.log(window.location.href  + item.handle);
-            console.log(item.numberItems);
 
-            template = $pustakalaya("<div></div>",{
+            if(data.length == 0){
+            $pustakalaya($event).next("div").html($pustakalaya("<p></p>", {
+            text: "No collection found",
+            style: "text-align:center; background:#eee;"
+            }));
+
+            return;
+            }
+
+            // Template variable to hold the dom.
+            var template = $pustakalaya("<div></div>",{
             class: "list-group",
+
             });
 
+            data.forEach(function(item, index) {
 
             var li = $pustakalaya("<li></li>", {
             class: "list-group-item",
-            text: item.name
+            text: item.name,
+            style: "cursor:pointer;",
+            onclick: "window.location.href=" + "'" + window.location.origin + window.location.pathname  +  item.handle + "/discover" + window.location.search + "'"
+
             });
+
+            console.log("window.location.href=" + "'" + window.location.origin + window.location.pathname  +  item.handle + "/discover" + window.location.search + "'");
+
+            console.log(window.location.search);
 
             var span = $pustakalaya("<span></span>",{
             text: item.numberItems,
@@ -2166,20 +2283,14 @@ window.publication.contextPath= '</xsl:text><xsl:value-of
             template.append(li);
             }); // End foreach.
 
-
-            // Append the dom to
-            console.log($event);
-            $pustakalaya($event).parent().append(template);
-
+            // Append result to the dom to
+            $pustakalaya($event).next("div").html(template);
 
             },
             error: function(error) {
             console.log("Error occured while querying collection");
             }
             }); // End ajax
-
-
-
             }; // End queryCollection
             })(window, $pustakalaya);
             }); // End document.ready function.
