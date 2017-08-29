@@ -1498,7 +1498,7 @@
                 }
                 }
 
-                // Query 15 video items
+                // Query 5 video items
                 $pustakalaya.ajax({
                 url: getVideoURL(0),
                 type: "GET",
@@ -1511,7 +1511,7 @@
                 }
                 }});
 
-                // Query 15 audio items
+                // Query 5 audio items
                 $pustakalaya.ajax({
                 url: getAudioURL(0),
                 type: "GET",
@@ -1530,13 +1530,14 @@
                 videoAudio = shuffle(videoAudio)
                 }
 
+
                 // Placeholder to hold the thumbnail for audioVideo
                 var audioVideoThumbnailTemplate =  $pustakalaya("<ul></ul>",{
                 id: "audioVideoSection"
                 });
 
                 // grab all the title, URL. thumbnail
-                videoAudio.forEach(function(item){
+                videoAudio.forEach(function(item, index){
                 // Title of an tiem
                 var itemTitle = item.name;
                 // URL of an item
@@ -1578,13 +1579,15 @@
                 li.append(p);
 
 
-
                 // create html template of audioVideo banner
+                console.log(li);
                 audioVideoThumbnailTemplate.append(li);
+
 
                 }); // End getThumbnail Function
 
                 }); // End forEach
+
                 // append the constructed audio video template in parent DOM
                 $("#audioVideoSectionParentID").html(audioVideoThumbnailTemplate);
                 $pustakalaya("#audioVideoSection").lightSlider({
@@ -2369,7 +2372,6 @@ window.publication.contextPath= '</xsl:text><xsl:value-of
             text: item.name,
             style: "cursor:pointer;",
             onclick: "window.location.href=" + "'" + window.location.origin + window.location.pathname  +  item.handle + "/discover" + window.location.search + "'"
-
             });
 
 
@@ -2383,6 +2385,9 @@ window.publication.contextPath= '</xsl:text><xsl:value-of
 
             // Create template.
             template.append(li);
+
+            // Setting the handlerId in localStorage to retrive the name of a collection in discover page as discover page don't have it.
+            localStorage.setItem(item.handle, item.name);
             }); // End foreach.
 
             // Append result to the dom to
