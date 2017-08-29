@@ -1469,7 +1469,7 @@
                 var offsetValue = Math.floor(Math.random() * 500);
 
                 // video URL
-                function getVideoURL(offsetValue){
+                function getVideoURL(offsetValue=5){
                 var videoURL =  window.location.origin +
                 "/rest/filtered-items/?query_field[]=*&amp;query_op[]=matches&amp;query_val[]=Video&amp;collSel[]=&amp;limit=15&amp;offset=" +
                 offsetValue + "&amp;expand=parentCollection%2Cmetadata&amp;filters=none&amp;show_fields[]=dc.type";
@@ -1477,7 +1477,7 @@
                 }
 
                 // Audio URL
-                function getAudioURL(offsetValue){
+                function getAudioURL(offsetValue=5){
                 var audioURL = window.location.origin +
                 "/rest/filtered-items/?query_field[]=*&amp;query_op[]=matches&amp;query_val[]=Book&amp;collSel[]=&amp;limit=15&amp;offset="+
                 offsetValue + "&amp;expand=parentCollection%2Cmetadata&amp;filters=none&amp;show_fields[]=dc.type";
@@ -1552,8 +1552,13 @@
 
                 var h3 = $pustakalaya("<h3></h3>");
 
+                var labels = ["label-success", "label-primary", "label-info", "label-warning", "label-danger"];
+                var randomLabel = labels[Math.floor(Math.random() * labels.length)];
+
                 var p = $pustakalaya("<p></p>", {
-                text: itemTitle
+                text: itemTitle,
+                class: "label " + randomLabel,
+                style: "margin-left:25%"
                 });
 
                 var a = $pustakalaya("<a></a>",{
