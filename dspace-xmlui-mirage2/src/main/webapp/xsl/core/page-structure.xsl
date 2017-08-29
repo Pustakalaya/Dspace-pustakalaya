@@ -1,22 +1,22 @@
 <!--
 
-    The contents of this file are subject to the license and copyright
-    detailed in the LICENSE and NOTICE files at the root of the source
-    tree and available online at
+	The contents of this file are subject to the license and copyright
+	detailed in the LICENSE and NOTICE files at the root of the source
+	tree and available online at
 
-    http://www.dspace.org/license/
+	http://www.dspace.org/license/
 
 -->
 
 <!--
-    Main structure of the page, determines where
-    header, footer, body, navigation are structurally rendered.
-    Rendering of the header, footer, trail and alerts
+	Main structure of the page, determines where
+	header, footer, body, navigation are structurally rendered.
+	Rendering of the header, footer, trail and alerts
 
-    Author: art.lowel at atmire.com
-    Author: lieven.droogmans at atmire.com
-    Author: ben at atmire.com
-    Author: Alexey Maslov
+	Author: art.lowel at atmire.com
+	Author: lieven.droogmans at atmire.com
+	Author: ben at atmire.com
+	Author: Alexey Maslov
 
 
 -->
@@ -41,7 +41,20 @@
         Requested Page URI. Some functions may alter behavior of processing depending if URI matches a pattern.
         Specifically, adding a static page will need to override the DRI, to directly add content.
     -->
+    <xsl:variable name="pagemeta" select="/dri:document/dri:meta/dri:pageMeta"/>
     <xsl:variable name="request-uri" select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='request'][@qualifier='URI']"/>
+    <xsl:variable name="xslcurrentpath" select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='contextPath']" />
+
+    <!-- <xsl:variable name="current-uri">
+       <xsl:value-of select="$pagemeta/dri:metadata[@element='request'][@qualifier='scheme']"/>
+       <xsl:text>://</xsl:text>
+       <xsl:value-of select="$pagemeta/dri:metadata[@element='request'][@qualifier='serverName']"/>
+       <xsl:text>:</xsl:text>
+       <xsl:value-of select="$pagemeta/dri:metadata[@element='request'][@qualifier='serverPort']"/>
+       <xsl:value-of select="$pagemeta/dri:metadata[@element='contextPath']"/>
+       <xsl:text>/</xsl:text>
+       <xsl:value-of select="$pagemeta/dri:metadata[@element='request'][@qualifier='URI']"/>
+   </xsl:variable> -->
 
     <!--
         The starting point of any XSL processing is matching the root element. In DRI the root element is document,
@@ -66,7 +79,7 @@
             <xsl:when test="not($isModal)">
 
 
-    <xsl:text disable-output-escaping='yes'>&lt;!DOCTYPE html&gt;
+	<xsl:text disable-output-escaping='yes'>&lt;!DOCTYPE html&gt;
 </xsl:text>
                 <xsl:text disable-output-escaping="yes">&lt;!--[if lt IE 7]&gt; &lt;html class=&quot;no-js lt-ie9 lt-ie8 lt-ie7&quot; lang=&quot;en&quot;&gt; &lt;![endif]--&gt;
 &lt;!--[if IE 7]&gt;    &lt;html class=&quot;no-js lt-ie9 lt-ie8&quot; lang=&quot;en&quot;&gt; &lt;![endif]--&gt;
@@ -88,8 +101,17 @@
                                 test="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='framing'][@qualifier='popup']">
                             <xsl:apply-templates select="dri:body/*"/>
                         </xsl:when>
+
                         <xsl:otherwise>
                             <xsl:call-template name="buildHeader"/>
+                            <!-- if this is root display the banner -->
+
+
+
+
+
+
+
 
                             <!--javascript-disabled warning, will be invisible if javascript is enabled-->
                             <div id="no-js-warning-wrapper" class="hidden">
@@ -100,452 +122,53 @@
                                 </div>
                             </div>
 
+                            <!-- Debug -->
 
-
-                            <!-- custom banner for homepage goes here -->
-                            <div id="pustakalayaBanner">
-                                <!-- Banner -->
-                                <!-- End banner -->
-
-                                <!-- Browse books and search bar goes here -->
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        <div class="col-md-4" style="background:#16a085; height:40px;">
-                                            <p class="text-center" style="color:#eeeeee; padding-top:10px;"><i18n:text>xmlui.BrowsePustakalaya</i18n:text></p>
-                                        </div>
-                                        <!-- search box -->
-                                        <div style="background-color:#e74c3c;height:40px;" class="col-md-4">
-                                            <form method="post" action="./discover">
-                                                <div class="col-sm-12">
-                                                    <div class="input-group" style="padding-top:7px; padding-bottom:5px;">
-                                                        <input type="text" name="query" class="form-control" placeholder="Search for books, audio, video, title..." style="height:25px;" autocomplete="off" />
-                                                        <span class="input-group-btn" style="25px;">
-                                                            <button style="height:26px; background:#c0392b; border-color:#c0392b;" class="btn btn-default" type="submit">
-                                                                <i style="color:#FFFFFF;vertical-align:top" class="glyphicon glyphicon-search text-center"></i>
-                                                            </button>
-                                                        </span>
-                                                    </div><!-- /input-group -->
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <!-- Advance search -->
-                                        <div class="col-md-4" style="background:#e74c3c; height:40px;">
-                                            <p class="pull-left" style="color:#eeeeee; padding-top:10px;"></p>
-                                        </div>
-                                    </div><!-- end row -->
-                                </div><!-- End browse books and search bar -->
-
-                                <!-- Book browsing -->
-                                <div style="background:#FFF3E0; padding-top:10px;">
-                                    <div class="container">
-                                        <div class="row">
-
-                                            <!-- Browse by section -->
-                                            <div class="col-md-4" id="book-browsing">
-                                                <ul style="padding:0px;">
-
-                                                    <!-- item 1: Literature and arts-->
-                                                    <div id="literature-and-arts">
-                                                        <!-- header -->
-                                                        <li style="text-align:left; cursor:pointer;" id="93bb1ada-fd40-4136-a652-a766c1f4754e"
-                                                            onclick="queryCollection(this)">
-
-                                                            <img src="{$theme-path}/images/Literature-and-Arts.png" style="height:35px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_literature_and_arts</i18n:text>
-
-                                                            <!-- logo -->
-                                                            <i class="glyphicon  pull-right glyphicon-plus-sign"
-                                                               style="margin-top:10px; margin-right:10px;"
-                                                            ></i>
-                                                        </li>
-
-                                                        <div class="list-group loader" style="margin-top:-10px;">
-
-                                                        </div>
-                                                    </div>
-                                                    <!-- end item -->
-
-                                                    <!-- Navigation 2 -->
-                                                    <!-- item 2: Course Materials-->
-                                                    <!-- TODO: id of course materials need to change -->
-                                                    <div id="course-materials">
-                                                        <!-- header -->
-                                                        <li style="text-align:left; cursor:pointer;" id="86d24b85-07c2-4911-921d-081fe3ed3c71" onclick="queryCollection(this)">
-                                                            <!-- herf of a href={$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Course+Materials -->
-
-                                                            <img src="{$theme-path}/images/course_materials.png" style="height:35px; margin-right:10px;"/>
-                                                            <i18n:text>xmlui.ArtifactBrowser.Navigation.browse_course_materials</i18n:text>
-
-                                                            <!-- logo -->
-                                                            <i class="glyphicon  pull-right glyphicon-plus-sign"
-                                                               style="margin-top:10px; margin-right:10px;"></i>
-                                                        </li>
-
-                                                        <div class="list-group" style="margin-top:-10px;">
-
-                                                        </div>
-                                                    </div>
-
-                                                    <!-- Item 3: Teaching Materials navigation -->
-                                                    <div id="teaching-materials">
-                                                        <!-- header -->
-                                                        <li style="text-align:left; cursor:pointer;" id="63f8ccff-eb9b-43ff-a930-beefb88e9254" onclick="queryCollection(this)">
-                                                            <!-- href of a {$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Teaching+Materials -->
-
-                                                            <img src="{$theme-path}/images/Teaching-Materials.png" style="height:35px; margin-right:10px;"/>
-                                                            <i18n:text>xmlui.ArtifactBrowser.Navigation.browse_teaching_materials</i18n:text>
-
-                                                            <!-- logo -->
-                                                            <i class="glyphicon  pull-right glyphicon-plus-sign"
-                                                               style="margin-top:10px; margin-right:10px;"></i>
-                                                        </li>
-
-                                                        <div class="list-group" style="margin-top:-10px;">
-                                                        </div>
-                                                    </div>
-
-                                                    <!-- Item 4 Magzine and News paper -->
-                                                    <div id="teaching-materials">
-                                                        <!-- header -->
-                                                        <li style="text-align:left; cursor:pointer;" id="14a456b2-8b6c-419b-9f9c-448b6538c81d" onclick="queryCollection(this)">
-                                                            <!-- href of a: {$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Magazines+and+Newspapers -->
-
-                                                            <img src="{$theme-path}/images/Magazines-and-Newspapers.png" style="height:35px; margin-right:10px;"/>
-                                                            <i18n:text>xmlui.ArtifactBrowser.Navigation.browse_magazines_and_newspapers</i18n:text>
-
-                                                            <!-- logo -->
-                                                            <i class="glyphicon  pull-right glyphicon-plus-sign"
-                                                               style="margin-top:10px; margin-right:10px;"></i>
-                                                        </li>
-
-                                                        <div class="list-group" style="margin-top:-10px;">
-                                                        </div>
-                                                    </div>
-
-                                                    <!-- Item 5 -->
-                                                    <!-- Agriculture and Diversity -->
-                                                    <div id="agriculture-and-biodiveristy">
-                                                        <!-- header -->
-                                                        <li style="text-align:left; cursor:pointer;" id="4880c29a-0c65-468e-8f35-f77b19c1c802" onclick="queryCollection(this)">
-                                                            <!-- href of a: {$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Magazines+and+Newspapers -->
-
-                                                            <img src="{$theme-path}/images/Agriculture-and-Diversity.png" style="height:35px; margin-right:10px;"/>
-                                                            <i18n:text>xmlui.ArtifactBrowser.Navigation.browse_agriculture_and_diversity</i18n:text>
-
-                                                            <!-- logo -->
-                                                            <i class="glyphicon  pull-right glyphicon-plus-sign"
-                                                               style="margin-top:10px; margin-right:10px;"></i>
-                                                        </li>
-
-                                                        <div class="list-group" style="margin-top:-10px;">
-                                                        </div>
-                                                    </div>
-
-                                                    <!-- Item 6 -->
-                                                    <!-- Environment -->
-                                                    <div id="environment">
-                                                        <!-- header -->
-                                                        <li style="text-align:left; cursor:pointer;" id="eb82dda2-b8e4-49a7-b3bb-c9e0cd5f6626" onclick="queryCollection(this)">
-                                                            <!-- href of a: href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Environment"-->
-
-                                                            <img src="{$theme-path}/images/Environment.png" style="height:35px; margin-right:10px;"/>
-                                                            <i18n:text>xmlui.ArtifactBrowser.Navigation.browse_environment</i18n:text>
-                                                            <!-- logo -->
-                                                            <i class="glyphicon  pull-right glyphicon-plus-sign"
-                                                               style="margin-top:10px; margin-right:10px;"></i>
-                                                        </li>
-
-                                                        <div class="list-group" style="margin-top:-10px;">
-                                                        </div>
-                                                    </div>
-
-                                                    <!-- Item 7-->
-                                                    <!-- Science and technology -->
-                                                    <div id="environment">
-                                                        <!-- header -->
-                                                        <li style="text-align:left; cursor:pointer;" id="aa78ac32-7e82-4be3-b897-2f5d458c840b" onclick="queryCollection(this)">
-                                                            <!-- href of a: hhref="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Science+and+Technology" -->
-                                                            <img src="{$theme-path}/images/Magazines-and-Newspapers.png" style="height:35px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_science_and_technology</i18n:text>
-                                                            <!-- logo -->
-                                                            <i class="glyphicon  pull-right glyphicon-plus-sign"
-                                                               style="margin-top:10px; margin-right:10px;"></i>
-                                                        </li>
-
-                                                        <div class="list-group" style="margin-top:-10px;">
-                                                        </div>
-                                                    </div>
-                                                </ul>
-                                            </div>
+                            <!-- <div class="manojgautam" id="{$request-uri}">Check the id to know the value of {$xslcurrentpath}</div> -->
 
 
 
-                                            <!-- Book gallery demo -->
-                                            <div class="col-md-8" id="book-gallery">
-                                                <!--Book Banner -->
-                                                <!--  uncomment to enable featured items
-                                                 <div id="featured-items-container">
-                                                     <h6 style="background-color:#27ae60; color:#FFF; padding:5px 10px;">Featured items</h6>
-                                                     <div id="featured-book-gallery-parent">
-                                                         <h4>Loading recently added items...</h4>
-                                                     </div>
-                                                 </div>
-
-                                                 -->
-
-                                                <!-- Recently added items  -->
-
-                                                <!-- uncomment this to enable recently added items
-                                                <div id="recently-added-items-container">
-                                                    <h6  style="background-color:#27ae60; color:#FFF; padding:5px 20px;">Recently added items</h6>
-                                                    <div id="recenty-added-items-parent">
-                                                        <h4>Loading recently added items...</h4>
-                                                    </div>
-                                                </div> -->
 
 
-                                                <!-- Audio Video items -->
-                                                <div>
-                                                    <h6 style="background-color:#27ae60; color:#FFF; padding:5px 10px;" class="text-capitalize">Audio Video Items</h6>
-                                                    <div id="audioVideoSectionParentID">
-                                                        <h3>Loading audio and video items ... </h3>
-                                                    </div>
-                                                </div>
-
-
-                                                <div class="educational-software">
-                                                    <h6 style="background-color:#27ae60; color:#FFF; padding:5px 10px;" class="text-capitalize">Interactive Education softwares</h6>
-                                                    <ul id="educationMaterial">
-                                                        <li>
-                                                            <a href="#x"><img src="{$theme-path}/images/simulations.png"
-                                                                              style="width: 200px; height: 120px;"
-                                                                              alt="Image" class="img-responsive"/></a>
-                                                        </li>
-
-                                                        <li>
-                                                            <a href="http://pustakalaya.org/sabdakosh.php" target="_blank"><img src="{$theme-path}/images/npp-logo.png" alt="Image"
-                                                                                                                                style="width: 200px; height: 120px;"
-                                                                                                                                class="img-responsive"/></a>
-                                                        </li>
-
-
-                                                        <li>
-                                                            <a href="http://pustakalaya.org/elkids.php" target="_blank"><img src="{$theme-path}/images/e-learning-forkids.png"
-                                                                                                                             style="width: 200px; height: 120px;"
-                                                                                                                             alt="Image" class="img-responsive"/></a>
-                                                        </li>
-
-
-                                                        <li>
-                                                            <a href="http://pustakalaya.org/lekids.php" target="_blank"><img src="{$theme-path}/images/learn-english-for-kids.png"
-                                                                                                                             style="width: 200px; height: 120px;"
-                                                                                                                             alt="Image" class="img-responsive"/></a>
-                                                        </li>
-
-                                                        <li>
-                                                            <a href="http://pustakalaya.org/epaath/" target="_blank"><img src="{$theme-path}/images/e-paath.png"
-                                                                                                                          style="width: 200px; height: 120px;"
-                                                                                                                          alt="Image" class="img-responsive"/></a>
-                                                        </li>
-
-                                                        <li>
-                                                            <a href="http://pustakalaya.org/audio.php" target="_blank"><img src="{$theme-path}/images/audiobook.png"
-                                                                                                                            style="width: 200px; height: 120px;"
-                                                                                                                            alt="Image" class="img-responsive"/></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-
-                                            </div>  <!-- col-md-8 -->
-                                        </div><!--end row-->
-                                    </div>
-                                </div><!-- container  end -->
-                                <br/>
-                                <!--Interactive Educational software
-                                    <div class="pustakalayaSection" style="background:#A5D6A7; margin-top:-20px;">
-                                        <div class="container">
-                                            <h4 class="text-center text-capitalize"  style="color:#060605;">Interactive Education softwares</h4>
-                                            <div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
-                                                <div class="well">
-                                                    <div id="myCarousel" class="carousel slide">
-                                                        Carousel items
-                                                        <div class="carousel-inner">
-                                                            <div class="item active">
-                                                                <div class="row">
-                                                                    <div class="col-sm-2"><a href="http://pustakalaya.org/epaath/" target="_blank"><img src="{$theme-path}/images/e-paath.png" alt="Image" class="img-responsive"/></a>
-                                                                    </div>
-                                                                    <div class="col-sm-2"><a href="http://pustakalaya.org/lekids.php" target="_blank"><img src="{$theme-path}/images/learn-english-for-kids.png" alt="Image" class="img-responsive"/></a>
-                                                                    </div>
-                                                                    <div class="col-sm-2"><a href="http://pustakalaya.org/elkids.php" target="_blank"><img src="{$theme-path}/images/e-learning-forkids.png" alt="Image" class="img-responsive"/></a>
-                                                                    </div>
-                                                                    <div class="col-sm-2"><a href="http://pustakalaya.org/sabdakosh.php" target="_blank"><img src="{$theme-path}/images/npp-logo.png" alt="Image" class="img-responsive"/></a>
-                                                                    </div>
-                                                                    <div class="col-sm-2"><a href="#x"><img src="{$theme-path}/images/simulations.png" alt="Image" class="img-responsive"/></a>
-                                                                    </div>
-                                                                    <div class="col-sm-2"><a href="http://pustakalaya.org/audio.php" target="_blank"><img src="{$theme-path}/images/audiobook.png" alt="Image" class="img-responsive"/></a>
-                                                                    </div>
-                                                                </div>
-                                                                row
-                                                            </div>
-
-                                                        </div>
-
-                                                    </div>
-                                                    carousel-inner
-                                                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
-
-                                                    <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
-                                                </div>
-                                                myCarousel
-                                            </div>
-                                            well
-                                        </div>
-                                        Static content
-                                    </div>
-
-
-                                    Interactive audio video materials
-                                    <div class="pustakalayaSection" style="background:#81C784; height:350px; margin-top:-20px;">
-                                        <div class="container">
-                                            <h4 class="text-center text-capitalize" style="color:#060605;">Educational audio videos</h4>
-                                            <div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
-                                                <div class="well">
-                                                    Carousel items
-                                                    <div id="audioVideoSectionParentID">
-                                                        <h3>Loading audio and video items ... </h3>
-                                                    </div>
-                                                </div>
-                                                well
-                                            </div>
-                                            Static content
-                                        </div>
-                                    </div>
-                                                            -->
-                                <!-- Reference materials -->
-                                <div class="pustakalayaSection" style="background:#A5D6A7; margin-top:-20px;">
-                                    <div class="container">
-                                        <h4 class="text-center text-capitalize" style="color:#060605;">References Materials</h4>
-                                        <div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
-                                            <div class="well">
-                                                <div id="myCarousel" class="carousel slide">
-                                                    <!-- Carousel items -->
-                                                    <div class="carousel-inner">
-                                                        <div class="item active">
-                                                            <div class="row">
-                                                                <div class="col-sm-3"><a href="http://pustakalaya.org/sabdakosh.php" target="_blank"><img src="{$theme-path}/images/nepal-dictionary.png" alt="Image" class="img-responsive"/></a>
-                                                                </div>
-                                                                <div class="col-sm-3"><a href="http://pustakalaya.org/maps.php" target="_blank"><img src="{$theme-path}/images/openstreetmap_withtext.png" alt="Image" class="img-responsive"/></a>
-                                                                </div>
-                                                                <div class="col-sm-3"><a href="http://pustakalaya.org/sabdakosh.php" target="_blank"><img src="{$theme-path}/images/nepali-dictionary.png" alt="Image" class="img-responsive"/></a>
-                                                                </div>
-                                                                <div class="col-sm-3"><a href="http://pustakalaya.org/list.php?collection_pid=Pustakalaya:65" target="_blank"><img src="{$theme-path}/images/Wikipedia_for_Schools_2013_logo.png" alt="Image" class="img-responsive"/></a>
-                                                                </div>
-                                                            </div>
-                                                            <!-- row -->
-                                                        </div>
-
-                                                        <!--item-->
-                                                        <!--<div class="item">
-                                                            <div class="row">
-                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
-                                                                </div>
-                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
-                                                                </div>
-                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
-                                                                </div>
-                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>-->
-
-                                                        <!--item-->
-                                                        <!--<div class="item">
-                                                            <div class="row">
-                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/150x150" alt="Image" class="img-responsive"/></a>
-                                                                </div>
-                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/150x150" alt="Image" class="img-responsive"/></a>
-                                                                </div>
-                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/150x150" alt="Image" class="img-responsive"/></a>
-                                                                </div>
-                                                                <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/150x150" alt="Image" class="img-responsive"/></a>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>-->
-                                                        <!--item-->
-                                                    </div>
-                                                    <!--carousel-inner-->
-                                                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
-
-                                                    <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
-                                                </div>
-                                                <!--myCarousel-->
-                                            </div>
-                                            <!--well-->
-                                        </div>
-                                        <!--Static content-->
-                                    </div>
-                                </div>
-
-                                <!--some info-->
-                                <!--Small Info-->
-                                <div class="pustakalayaSection" style="background:#ffffff; margin-top: 30px;">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12" style="color:#666666; font-size: 12px;">
-                                                <p class="text-justify">
-                                                    <i18n:text>xmlui.aboutHomePage</i18n:text> <a style="color:#e74c3c; cursor:pointer; text-decoration:none;"><i18n:text>xmlui.more</i18n:text> &gt;&gt;</a>
-                                                </p>
-                                            </div>
-
-                                        </div><!-- end row-->
-                                        <div class="row">
-                                            <div class="col-md-6 col-md-offset-1 col-sm-12 col-xs-12" style="color:#666666; font-size: 12px;">
-                                                <p class="text-left"><i18n:text>xmlui.you.can.bring.epustakalaya.to.your.school</i18n:text>  <a href="/" style="color:#e74c3c; cursor:pointer; text-decoration:none;"><i18n:text>xmlui.more</i18n:text> &gt;&gt;</a>
-
-                                                </p>
-                                                <p class="text-left"><i18n:text>xmlui.you.can.donate.books.to.epustakalaya</i18n:text>  <a href="/" style="color:#e74c3c; cursor:pointer; text-decoration:none;"><i18n:text>xmlui.more</i18n:text> &gt;&gt;</a>
-                                                </p>
-                                            </div>
-                                            <div class="col-md-4 col-sm-12 col-xs-12">
-                                                <br/>
-                                                <a href="https://play.google.com/store/apps/details?id=com.ole.epustakalaya" target="_blank"><img src="{$theme-path}/images/android-app-logo.png" style="width:200px; height:50px; margin-left:43%;"/></a>
-                                            </div>
-                                        </div>
-                                        <!--Static content-->
-                                    </div>
-                                </div>
-                            </div>
                             <div id="main-container" class="container">
 
                                 <div class="row row-offcanvas row-offcanvas-right">
                                     <div class="horizontal-slider clearfix">
                                         <div class="col-xs-12 col-sm-12 col-md-9 main-content">
-                                            <xsl:apply-templates select="*[not(self::dri:options)]"/>
+                                            <!-- hide this in homepage -->
+                                            <xsl:if test="not($request-uri='')">
+                                                <xsl:apply-templates select="*[not(self::dri:options)]"/>
+                                            </xsl:if>
 
-                                            <div class="visible-xs visible-sm">
-                                                <xsl:call-template name="buildFooter"/>
-                                            </div>
+
+
+
+                                            <!-- Dont need to call the build footer again
+                                        <div class="visible-xs visible-sm">
+                                            <xsl:call-template name="buildFooter"/>
                                         </div>
+                                    -->
+                                        </div>
+                                        <!-- Sidebar Navigation -->
+
                                         <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
                                             <xsl:apply-templates select="dri:options"/>
                                         </div>
 
                                     </div>
                                 </div>
-
-                                <!--
-                            The footer div, dropping whatever extra information is needed on the page. It will
-                            most likely be something similar in structure to the currently given example. -->
-                                <!--<div class="hidden-xs hidden-sm">
-                                    <xsl:call-template name="buildFooter"/>
-                                </div>-->
                             </div>
+
                         </xsl:otherwise>
                     </xsl:choose>
-                    <!-- Javascript at the bottom for fast page loading -->
+
+
+
+                    <!-- queryCollectionScript need to be below pustakalayaHomePage template -->
                     <xsl:call-template name="queryCollectionScript"/>
                     <xsl:call-template name="buildFooter"/>
                     <xsl:call-template name="addJavascript"/>
+                    <xsl:call-template name="toggleDiscoverItem"/>
 
 
                 </body>
@@ -705,9 +328,9 @@
             </style>
 
             <xsl:text disable-output-escaping="yes">&lt;!--[if lt IE 9]&gt;
-        &lt;script src="</xsl:text><xsl:value-of select="concat($theme-path, 'vendor/html5shiv/dist/html5shiv.js')"/><xsl:text disable-output-escaping="yes">"&gt;&#160;&lt;/script&gt;
-        &lt;script src="</xsl:text><xsl:value-of select="concat($theme-path, 'vendor/respond/respond.min.js')"/><xsl:text disable-output-escaping="yes">"&gt;&#160;&lt;/script&gt;
-        &lt;![endif]--&gt;</xsl:text>
+		&lt;script src="</xsl:text><xsl:value-of select="concat($theme-path, 'vendor/html5shiv/dist/html5shiv.js')"/><xsl:text disable-output-escaping="yes">"&gt;&#160;&lt;/script&gt;
+		&lt;script src="</xsl:text><xsl:value-of select="concat($theme-path, 'vendor/respond/respond.min.js')"/><xsl:text disable-output-escaping="yes">"&gt;&#160;&lt;/script&gt;
+		&lt;![endif]--&gt;</xsl:text>
 
             <!-- Modernizr enables HTML5 elements & feature detects -->
             <script src="{concat($theme-path, 'vendor/modernizr/modernizr.js')}">&#160;</script>
@@ -719,6 +342,7 @@
                     <xsl:when test="starts-with($request-uri, 'page/about')">
                         <i18n:text>xmlui.mirage2.page-structure.aboutThisRepository</i18n:text>
                     </xsl:when>
+
                     <xsl:when test="starts-with($request-uri, 'page/help')">
                         <i18n:text>xmlui.mirage2.page-structure.help</i18n:text>
                     </xsl:when>
@@ -765,6 +389,13 @@
             <!-- slick js styling -->
             <link rel="stylesheet" href="{concat($theme-path, 'styles/slick.css')}"/>
             <link rel="stylesheet" href="{concat($theme-path, 'styles/slick-theme.css')}"/>
+            <!-- load pustakalaya version of jquery and lightSlider in header -->
+            <script src="{concat($theme-path,'scripts/jquery-1.10.2.min.js')}">&#160;</script>
+            <script type="text/javascript">
+                var $pustakalaya = $.noConflict(true);
+            </script>
+            <!-- this $pustakalaya will be appended in lightSlider.js -->
+            <script src="{concat($theme-path,'scripts/lightslider.js')}">&#160;</script>
         </head>
     </xsl:template>
 
@@ -821,26 +452,89 @@
 
                     <!-- Pustakalaya custom navbar -->
                     <div class="row">
-                        <div class="col-md-2">
-                            <a class="navbar-brand" href="/">
-                                <img src="{$theme-path}/images/ep_logo.png" style="height:40px; padding-bottom:10px;"/>
+                        <div class="col-md-4">
+                            <a class="navbar-brand" href="/" style="margin-top:-15px;">
+                                <img src="{$theme-path}/images/ep_logo.png" style="height:40px; width:75% !important; padding-bottom:10px;"/>
                             </a>
                         </div><!-- Logo -->
+
+                        <!-- style to style navigatio -->
+                        <style>
+                            .navbar-nav &gt; li &gt; a {padding-top:5px !important; padding-bottom:5px !important;
+
+                            }
+
+                            .navbar-nav &gt; li &gt; a:hover {padding-top:5px !important; padding-bottom:5px !important; background-color:#1abc9c;}
+
+                            .navbar-nav &gt; li &gt; a {padding-top:5px !important; color: #FFF !important; padding-bottom:5px !important;}
+                            .navbar {min-height:33px !important}
+                            &gt; li &gt; a:hover { background: red; color:#000}
+
+                            #user-dropdown-toggle &gt;	 span {
+                            color: #555;
+                            }
+
+                            .navbar-header &gt;button &gt; span {
+                            background: #FFF;
+                            }
+                        </style>
+
+                        <div class="col-md-5"  style="
+                        	background:#27ae60;
+                        	margin-left:-10px;
+                        	border-radius:3px;
+                        	color:#FFF !important">
+                            <nav class="navbar">
+
+                                <div class="navbar-header">
+                                    <button style="color:#FFF;"  type="button" class="navbar-toggle collapsed btn" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                </div>
+                                <div id="navbar"  class="navbar-collapse collapse pustakalay-navigation">
+                                    <ul class="nav navbar-nav">
+                                        <ul id="pustakalaya-navbar" class="nav navbar-nav" >
+                                            <li class="dropdown" id="pustakalaya-dropdown">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" role="button" id="pustakalaya-menu-toggle"><i18n:text>xmlui.header.menu.browsePustakalaya</i18n:text><span class="caret"></span></a>
+                                                <ul class="dropdown-menu" id="pustakalaya-dropdown-menu" style="padding-top:0px !important; padding-bottom:0px !important">
+                                                    <li><a class="text-capitalize" href="{$context-path}/browse?type=grade">Browse by title</a></li>
+                                                    <li><a class="text-capitalize" href="{$context-path}/browse?type=level">Browse by Education level</a></li>
+                                                    <li><a class="text-capitalize" href="{$context-path}/browse?type=type">Browse by Data type</a></li>
+                                                    <li><a class="text-capitalize" href="{$context-path}/browse?type=category">Browse by Subjects</a></li>
+                                                    <li><a class="text-capitalize" href="{$context-path}/browse?type=author">Browse by Authors</a></li>
+                                                    <li><a class="text-capitalize" href="{$context-path}/browse?type=dateissued">Browse by Issue Date</a></li>
+                                                </ul>
+                                            </li>
+                                            <!--
+                                            <li>
+                                                <a href="#educational-software" class="text-capitalized" style="color:#FFFF;"><i18n:text>xmlui.header.menu.educational.softwares</i18n:text></a>
+                                            </li>
+                                            <li>
+                                                <a href="#educational-software" class="text-capitalized" style="color:#FFFF;"><i18n:text>xmlui.header.menu.audio.video</i18n:text></a>
+                                            </li>
+                                           -->
+
+                                            <li><a class="text-capitalized" style="color:#FFFF;" href="{$context-path}/page/help"><i18n:text>xmlui.mirage2.page-structure.help</i18n:text></a></li>
+                                            <li><a class="text-capitalized" style="color:#FFFF;" href="{$context-path}/page/feedback"><i18n:text>xmlui.mirage2.page-structure.feedback</i18n:text></a></li>
+                                            <li><a class="text-capitalized" style="color:#FFFF;" href="{$context-path}/page/feedback"><i18n:text>xmlui.static.page.about</i18n:text></a></li>
+                                        </ul>
+                                    </ul>
+
+
+
+                                </div><!--/.nav-collapse -->
+
+                            </nav>
+                        </div>
 
 
                         <!--TO DO-->
 
                         <!--static Help page-->
-                        <div class="col-md-6 col-md-offset-1" id="pustakalaya-navbar"
-                             style="padding-top:10px; padding-bottom:10px;">
-                            <div class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
 
-                                <ul  id="pustakalaya-navbar" class="nav navbar-nav">
-                                    <li><a class="text-capitalized" style="color:#FFFF;" href="{$context-path}/page/help"><i18n:text>xmlui.mirage2.page-structure.help</i18n:text></a></li>
-                                    <li><a class="text-capitalized" style="color:#FFFF;" href="{$context-path}/page/feedback"><i18n:text>xmlui.mirage2.page-structure.feedback</i18n:text></a></li>
-                                </ul>
-                            </div>
-                        </div>
 
 
                         <!--static feedback page-->
@@ -880,9 +574,9 @@
                         </div>-->
                         <div class="col-md-3">
                             <div class="navbar-header  hidden-xs">
-                                <ul class="nav navbar-nav">
-                                    <li><a href="{$context-path}/page/about"><i18n:text>xmlui.static.page.about</i18n:text></a></li>
-                                    <li><p style="margin-top:15px;"> | </p></li>
+                                <ul class="nav navbar-nav" style="color:green; !important;">
+
+                                    <!-- <li><p style="margin-top:15px;"> | </p></li> -->
                                     <xsl:choose>
                                         <xsl:when test="/dri:document/dri:meta/dri:userMeta/@authenticated = 'yes'">
                                             <li class="dropdown">
@@ -890,10 +584,10 @@
                                                    data-toggle="dropdown">
                                                     <span class="hidden-xs">
                                                         <xsl:value-of select="/dri:document/dri:meta/dri:userMeta/
-                                            dri:metadata[@element='identifier' and @qualifier='firstName']"/>
+											dri:metadata[@element='identifier' and @qualifier='firstName']"/>
                                                         <xsl:text> </xsl:text>
                                                         <xsl:value-of select="/dri:document/dri:meta/dri:userMeta/
-                                            dri:metadata[@element='identifier' and @qualifier='lastName']"/>
+											dri:metadata[@element='identifier' and @qualifier='lastName']"/>
                                                         &#160;
                                                         <b class="caret"/>
                                                     </span>
@@ -902,13 +596,13 @@
                                                     aria-labelledby="user-dropdown-toggle" data-no-collapse="true">
                                                     <li>
                                                         <a href="{/dri:document/dri:meta/dri:userMeta/
-                                        dri:metadata[@element='identifier' and @qualifier='url']}">
+										dri:metadata[@element='identifier' and @qualifier='url']}">
                                                             <i18n:text>xmlui.EPerson.Navigation.profile</i18n:text>
                                                         </a>
                                                     </li>
                                                     <li>
                                                         <a href="{/dri:document/dri:meta/dri:userMeta/
-                                    dri:metadata[@element='identifier' and @qualifier='logoutURL']}">
+									dri:metadata[@element='identifier' and @qualifier='logoutURL']}">
                                                             <i18n:text>xmlui.dri2xhtml.structural.logout</i18n:text>
                                                         </a>
                                                     </li>
@@ -918,15 +612,15 @@
                                         <xsl:otherwise>
                                             <li>
                                                 <a href="{/dri:document/dri:meta/dri:userMeta/
-                    dri:metadata[@element='identifier' and @qualifier='loginURL']}">
-                                                    <span class="hidden-xs">
+					dri:metadata[@element='identifier' and @qualifier='loginURL']}">
+                                                    <span style="color:#555;" class="hidden-xs">
                                                         <i18n:text>xmlui.dri2xhtml.structural.login</i18n:text>
                                                     </span>
                                                 </a>
                                             </li>
                                         </xsl:otherwise>
                                     </xsl:choose>
-                                    <li><img src="{$theme-path}/images/flag-nepal.png" style="margin-top:15px;"/></li>
+                                    <!-- <li><img src="{$theme-path}/images/flag-nepal.png" style="margin-top:15px;"/></li> -->
                                     <xsl:call-template name="languageSelection"/>
                                 </ul>
 
@@ -1101,6 +795,13 @@
             </div>
 
         </header>
+
+        <!-- Show the homage in root url -->
+        <xsl:if test="$request-uri=''">
+            <xsl:call-template name="pustakalayaHomePage" />
+        </xsl:if>
+
+
 
     </xsl:template>
 
@@ -1549,12 +1250,7 @@
             <script>
                 <xsl:attribute name="src"><xsl:value-of select="../../scripts/jquery-1.10.2.min.js"/></xsl:attribute>
             </script>-->
-            <script src="{concat($theme-path,'scripts/jquery-1.10.2.min.js')}">&#160;</script>
-            <script type="text/javascript">
-                var $pustakalaya = $.noConflict(true);
-            </script>
-            <!-- this $pustakalaya will be appended in lightSlider.js -->
-            <script src="{concat($theme-path,'scripts/lightslider.js')}">&#160;</script>
+
 
             <!-- Pustakalaya custom scripts -->
             <!-- script to grab the featured items and append in dom-->
@@ -1897,33 +1593,6 @@
                 });  // END Onload
             </script>
 
-            <!-- script to toggle the sidebar -->
-            <script>
-                // Hide all the sidebar discover items by default
-                $pustakalaya(".second-children").hide();
-
-                $pustakalaya('.pustakalaya-sidebar-toggle').click(function(){
-                // if the second child is visible add - Button to first child
-
-                if($pustakalaya(this).children('.second-children').is(":visible")){
-
-                // Add + button to this element
-                $pustakalaya(this).children(".first-children").children('a').children('i').
-                removeClass("glyphicon-minus-sign").
-                addClass("glyphicon-plus-sign");
-
-                // Toggle the children
-                $pustakalaya(this).children('.second-children').toggle();
-                } else {
-                // First remove plus and  visible add - button to the first-children
-                $pustakalaya(this).children(".first-children").children('a').children('i').
-                removeClass("glyphicon-plus-sign").
-                addClass("glyphicon-minus-sign");
-                $pustakalaya(this).children('.second-children').toggle();
-
-                }
-                });
-            </script>
 
             <!-- script to enable audio video educational materials -->
         </footer>
@@ -1969,9 +1638,20 @@
                         <p><i18n:text>xmlui.mirage2.page-structure.help.content</i18n:text></p>
                     </div>
                 </xsl:when>
+
+                <xsl:when test="starts-with($request-uri, '/xmlui')">
+                    <div class="hero-unit">
+                        <h1><i18n:text>xmlui.mirage2.page-structure.help.title</i18n:text></h1>
+                        <p><i18n:text>xmlui.mirage2.page-structure.help.content</i18n:text></p>
+
+
+                    </div>
+                </xsl:when>
+
                 <!--static feedback page-->
                 <xsl:when test="starts-with($request-uri, 'page/feedback')">
                     <div class="hero-unit">
+                        <xsl:call-template name="pustakalayaHomePage" />
                         <h1><i18n:text>xmlui.mirage2.page-structure.feedback.title</i18n:text></h1>
                         <p><i18n:text>xmlui.mirage2.page-structure.feedback.content</i18n:text></p>
                     </div>
@@ -2001,26 +1681,14 @@
 
     <xsl:template name="addJavascript">
 
-        <!-- enable above slider -->
-        <script type="text/javascript">
-            $pustakalaya(document).ready(function() {
-            var educationlMaterialSlider = $pustakalaya("#educationMaterial");
-            educationlMaterialSlider.lightSlider({
-            item:4,
-            prevHtml: '',
-            nextHtml: '',
-            });
-
-
-            });
-        </script>
 
 
         <!-- Hide banner if this is not the homepage -->
-        <script type="text/javascript">
+        <!-- Don't need this No carousel at the moment -->
+        <!-- <script type="text/javascript">
             var pathname1 = "/";
             var pathname2 = "/xmlui/";
-            var banner = document.getElementById("pustakalayaBanner");
+            var banner = document.getElementById("pustakalayaBanner1");
             var currentPath = window.location.pathname;
             if(currentPath == pathname1 || currentPath == pathname2){
             banner.hidden = false;
@@ -2028,19 +1696,21 @@
             banner.hidden = true;
             }
 
-        </script>
+        </script> -->
         <!-- Hide sidebar if this is not the sidebar -->
-        <script type="text/javascript">
-            var pathname1 = "/";
-            var pathname2 = "/xmlui/";
-            var sideBar = document.getElementById("pustakalayaBanner");
-            var currentPath = window.location.pathname;
-            if(currentPath == pathname1 || currentPath == pathname2){
-            banner.hidden = false;
-            } else {
-            banner.hidden = true;
-            }
-        </script>
+        <!-- Dont need this script homepage is rendering is done from server side -->
+        <!-- Might be useful for future use -->
+        <!-- 	<script type="text/javascript">
+                var pathname1 = "/";
+                var pathname2 = "/xmlui/";
+                var sideBar = document.getElementById("pustakalayaBanner");
+                var currentPath = window.location.pathname;
+                if(currentPath == pathname1 || currentPath == pathname2){
+                banner.hidden = false;
+                } else {
+                banner.hidden = true;
+                }
+            </script> -->
 
         <!--hide the navigation menu if the homepage is detected-->
         <script type="text/javascript">
@@ -2057,6 +1727,7 @@
 
 
         <!--hide carousel sliders except home page-->
+        <!-- Slide is disable
         <script type="text/javascript">
             var pathname1="/";
             var pathname2="/xmlui/";
@@ -2068,10 +1739,11 @@
             slider.hidden = true;
             }
         </script>
+    -->
 
         <script type="text/javascript"><xsl:text>
  if(typeof window.publication === 'undefined'){
-    window.publication={};
+	window.publication={};
 };
 window.publication.contextPath= '</xsl:text><xsl:value-of
                 select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='contextPath'][not(@qualifier)]"/><xsl:text>';</xsl:text>
@@ -2142,8 +1814,8 @@ window.publication.contextPath= '</xsl:text><xsl:value-of
         <xsl:if test="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='google'][@qualifier='analytics']">
             <script><xsl:text>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
   ga('create', '</xsl:text><xsl:value-of select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='google'][@qualifier='analytics']"/><xsl:text>', '</xsl:text><xsl:value-of select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='request'][@qualifier='serverName']"/><xsl:text>');
@@ -2158,7 +1830,7 @@ window.publication.contextPath= '</xsl:text><xsl:value-of
             <li id="ds-language-selection" class="dropdown">
                 <xsl:variable name="active-locale" select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='page'][@qualifier='currentLocale']"/>
                 <a id="language-dropdown-toggle" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
-                    <span class="hidden-xs">
+                    <span class="hidden-xs" style="color:#555;">
                         <xsl:value-of
                                 select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='supportedLocale'][@qualifier=$active-locale]"/>
                         <xsl:text>&#160;</xsl:text>
@@ -2191,9 +1863,436 @@ window.publication.contextPath= '</xsl:text><xsl:value-of
         </xsl:if>
     </xsl:template>
 
-
     <!-- Pustakalaya script template -->
 
+    <xsl:template name="pustakalayaHomePage">
+        <div id="pustakalayaBannerdisable">
+
+            <!-- Browse books and search bar goes here -->
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4" style="background:#16a085; height:40px;">
+                        <p class="text-center" style="color:#eeeeee; padding-top:10px;"><i18n:text>xmlui.BrowsePustakalaya</i18n:text></p>
+                    </div>
+                    <!-- search box -->
+                    <div style="background-color:#e74c3c;height:40px;" class="col-md-4">
+                        <form method="post" action="./discover">
+                            <div class="col-sm-12">
+                                <div class="input-group" style="padding-top:7px; padding-bottom:5px;">
+                                    <input type="text" name="query" class="form-control" placeholder="Search for books, audio, video, title..." style="height:25px;" autocomplete="off" />
+                                    <span class="input-group-btn" style="25px;">
+                                        <button style="height:26px; background:#c0392b; border-color:#c0392b;" class="btn btn-default" type="submit">
+                                            <i style="color:#FFFFFF;vertical-align:top" class="glyphicon glyphicon-search text-center"></i>
+                                        </button>
+                                    </span>
+                                </div><!-- /input-group -->
+                            </div>
+                        </form>
+                    </div>
+                    <!-- Advance search -->
+                    <div class="col-md-4" style="background:#e74c3c; height:40px;">
+                        <p class="pull-left" style="color:#eeeeee; padding-top:10px;"></p>
+                    </div>
+                </div><!-- end row -->
+            </div><!-- End browse books and search bar -->
+
+            <!-- Book browsing -->
+            <div style="background:#FFF3E0; padding-top:10px;">
+                <div class="container">
+                    <div class="row">
+
+                        <!-- Browse by section -->
+                        <div class="col-md-4" id="book-browsing">
+                            <ul style="padding:0px;">
+
+                                <!-- item 1: Literature and arts-->
+                                <div id="literature-and-arts">
+                                    <!-- header -->
+                                    <li style="text-align:left; cursor:pointer;" id="93bb1ada-fd40-4136-a652-a766c1f4754e"
+                                        onclick="queryCollection(this)">
+
+                                        <img src="{$theme-path}/images/Literature-and-Arts.png" style="height:35px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_literature_and_arts</i18n:text>
+
+                                        <!-- logo -->
+                                        <i class="glyphicon  pull-right glyphicon-plus-sign"
+                                           style="margin-top:10px; margin-right:10px;"
+                                        ></i>
+                                    </li>
+
+                                    <div class="list-group loader" style="margin-top:-10px;">
+
+                                    </div>
+                                </div>
+                                <!-- end item -->
+
+                                <!-- Navigation 2 -->
+                                <!-- item 2: Course Materials-->
+                                <!-- TODO: id of course materials need to change -->
+                                <div id="course-materials">
+                                    <!-- header -->
+                                    <li style="text-align:left; cursor:pointer;" id="86d24b85-07c2-4911-921d-081fe3ed3c71" onclick="queryCollection(this)">
+                                        <!-- herf of a href={$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Course+Materials -->
+
+                                        <img src="{$theme-path}/images/course_materials.png" style="height:35px; margin-right:10px;"/>
+                                        <i18n:text>xmlui.ArtifactBrowser.Navigation.browse_course_materials</i18n:text>
+
+                                        <!-- logo -->
+                                        <i class="glyphicon  pull-right glyphicon-plus-sign"
+                                           style="margin-top:10px; margin-right:10px;"></i>
+                                    </li>
+
+                                    <div class="list-group" style="margin-top:-10px;">
+
+                                    </div>
+                                </div>
+
+                                <!-- Item 3: Teaching Materials navigation -->
+                                <div id="teaching-materials">
+                                    <!-- header -->
+                                    <li style="text-align:left; cursor:pointer;" id="63f8ccff-eb9b-43ff-a930-beefb88e9254" onclick="queryCollection(this)">
+                                        <!-- href of a {$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Teaching+Materials -->
+
+                                        <img src="{$theme-path}/images/Teaching-Materials.png" style="height:35px; margin-right:10px;"/>
+                                        <i18n:text>xmlui.ArtifactBrowser.Navigation.browse_teaching_materials</i18n:text>
+
+                                        <!-- logo -->
+                                        <i class="glyphicon  pull-right glyphicon-plus-sign"
+                                           style="margin-top:10px; margin-right:10px;"></i>
+                                    </li>
+
+                                    <div class="list-group" style="margin-top:-10px;">
+                                    </div>
+                                </div>
+
+                                <!-- Item 4 Magzine and News paper -->
+                                <div id="teaching-materials">
+                                    <!-- header -->
+                                    <li style="text-align:left; cursor:pointer;" id="14a456b2-8b6c-419b-9f9c-448b6538c81d" onclick="queryCollection(this)">
+                                        <!-- href of a: {$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Magazines+and+Newspapers -->
+
+                                        <img src="{$theme-path}/images/Magazines-and-Newspapers.png" style="height:35px; margin-right:10px;"/>
+                                        <i18n:text>xmlui.ArtifactBrowser.Navigation.browse_magazines_and_newspapers</i18n:text>
+
+                                        <!-- logo -->
+                                        <i class="glyphicon  pull-right glyphicon-plus-sign"
+                                           style="margin-top:10px; margin-right:10px;"></i>
+                                    </li>
+
+                                    <div class="list-group" style="margin-top:-10px;">
+                                    </div>
+                                </div>
+
+                                <!-- Item 5 -->
+                                <!-- Agriculture and Diversity -->
+                                <div id="agriculture-and-biodiveristy">
+                                    <!-- header -->
+                                    <li style="text-align:left; cursor:pointer;" id="4880c29a-0c65-468e-8f35-f77b19c1c802" onclick="queryCollection(this)">
+                                        <!-- href of a: {$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Magazines+and+Newspapers -->
+
+                                        <img src="{$theme-path}/images/Agriculture-and-Diversity.png" style="height:35px; margin-right:10px;"/>
+                                        <i18n:text>xmlui.ArtifactBrowser.Navigation.browse_agriculture_and_diversity</i18n:text>
+
+                                        <!-- logo -->
+                                        <i class="glyphicon  pull-right glyphicon-plus-sign"
+                                           style="margin-top:10px; margin-right:10px;"></i>
+                                    </li>
+
+                                    <div class="list-group" style="margin-top:-10px;">
+                                    </div>
+                                </div>
+
+                                <!-- Item 6 -->
+                                <!-- Environment -->
+                                <div id="environment">
+                                    <!-- header -->
+                                    <li style="text-align:left; cursor:pointer;" id="eb82dda2-b8e4-49a7-b3bb-c9e0cd5f6626" onclick="queryCollection(this)">
+                                        <!-- href of a: href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Environment"-->
+
+                                        <img src="{$theme-path}/images/Environment.png" style="height:35px; margin-right:10px;"/>
+                                        <i18n:text>xmlui.ArtifactBrowser.Navigation.browse_environment</i18n:text>
+                                        <!-- logo -->
+                                        <i class="glyphicon  pull-right glyphicon-plus-sign"
+                                           style="margin-top:10px; margin-right:10px;"></i>
+                                    </li>
+
+                                    <div class="list-group" style="margin-top:-10px;">
+                                    </div>
+                                </div>
+
+                                <!-- Item 7-->
+                                <!-- Science and technology -->
+                                <div id="environment">
+                                    <!-- header -->
+                                    <li style="text-align:left; cursor:pointer;" id="aa78ac32-7e82-4be3-b897-2f5d458c840b" onclick="queryCollection(this)">
+                                        <!-- href of a: hhref="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Science+and+Technology" -->
+                                        <img src="{$theme-path}/images/Magazines-and-Newspapers.png" style="height:35px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_science_and_technology</i18n:text>
+                                        <!-- logo -->
+                                        <i class="glyphicon  pull-right glyphicon-plus-sign"
+                                           style="margin-top:10px; margin-right:10px;"></i>
+                                    </li>
+
+                                    <div class="list-group" style="margin-top:-10px;">
+                                    </div>
+                                </div>
+                            </ul>
+                        </div>
+
+
+
+                        <!-- Book gallery demo -->
+                        <div class="col-md-8" id="book-gallery">
+                            <!--Book Banner -->
+                            <!--  uncomment to enable featured items
+                             <div id="featured-items-container">
+                                 <h6 style="background-color:#27ae60; color:#FFF; padding:5px 10px;">Featured items</h6>
+                                 <div id="featured-book-gallery-parent">
+                                     <h4>Loading recently added items...</h4>
+                                 </div>
+                             </div>
+
+                             -->
+
+                            <!-- Recently added items  -->
+
+                            <!-- uncomment this to enable recently added items
+                            <div id="recently-added-items-container">
+                                <h6  style="background-color:#27ae60; color:#FFF; padding:5px 20px;">Recently added items</h6>
+                                <div id="recenty-added-items-parent">
+                                    <h4>Loading recently added items...</h4>
+                                </div>
+                            </div> -->
+
+
+                            <!-- Audio Video items -->
+                            <div>
+                                <h6 style="background-color:#27ae60; color:#FFF; padding:5px 10px;" class="text-capitalize">Audio Video Items</h6>
+                                <div id="audioVideoSectionParentID">
+                                    <h3>Loading audio and video items ... </h3>
+                                </div>
+                            </div>
+
+
+                            <div class="educational-software">
+                                <h6 style="background-color:#27ae60; color:#FFF; padding:5px 10px;" class="text-capitalize">Interactive Education softwares</h6>
+                                <ul id="educationMaterial">
+                                    <li>
+                                        <a href="#x"><img src="{$theme-path}/images/simulations.png"
+                                                          style="width: 200px; height: 120px;"
+                                                          alt="Image" class="img-responsive"/></a>
+                                    </li>
+
+                                    <li>
+                                        <a href="http://pustakalaya.org/sabdakosh.php" target="_blank"><img src="{$theme-path}/images/npp-logo.png" alt="Image"
+                                                                                                            style="width: 200px; height: 120px;"
+                                                                                                            class="img-responsive"/></a>
+                                    </li>
+
+
+                                    <li>
+                                        <a href="http://pustakalaya.org/elkids.php" target="_blank"><img src="{$theme-path}/images/e-learning-forkids.png"
+                                                                                                         style="width: 200px; height: 120px;"
+                                                                                                         alt="Image" class="img-responsive"/></a>
+                                    </li>
+
+
+                                    <li>
+                                        <a href="http://pustakalaya.org/lekids.php" target="_blank"><img src="{$theme-path}/images/learn-english-for-kids.png"
+                                                                                                         style="width: 200px; height: 120px;"
+                                                                                                         alt="Image" class="img-responsive"/></a>
+                                    </li>
+
+                                    <li>
+                                        <a href="http://pustakalaya.org/epaath/" target="_blank"><img src="{$theme-path}/images/e-paath.png"
+                                                                                                      style="width: 200px; height: 120px;"
+                                                                                                      alt="Image" class="img-responsive"/></a>
+                                    </li>
+
+                                    <li>
+                                        <a href="http://pustakalaya.org/audio.php" target="_blank"><img src="{$theme-path}/images/audiobook.png"
+                                                                                                        style="width: 200px; height: 120px;"
+                                                                                                        alt="Image" class="img-responsive"/></a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>  <!-- col-md-8 -->
+                    </div><!--end row-->
+                </div>
+            </div><!-- container  end -->
+            <br/>
+            <!--Interactive Educational software
+                <div class="pustakalayaSection" style="background:#A5D6A7; margin-top:-20px;">
+                    <div class="container">
+                        <h4 class="text-center text-capitalize"  style="color:#060605;">Interactive Education softwares</h4>
+                        <div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
+                            <div class="well">
+                                <div id="myCarousel" class="carousel slide">
+                                    Carousel items
+                                    <div class="carousel-inner">
+                                        <div class="item active">
+                                            <div class="row">
+                                                <div class="col-sm-2"><a href="http://pustakalaya.org/epaath/" target="_blank"><img src="{$theme-path}/images/e-paath.png" alt="Image" class="img-responsive"/></a>
+                                                </div>
+                                                <div class="col-sm-2"><a href="http://pustakalaya.org/lekids.php" target="_blank"><img src="{$theme-path}/images/learn-english-for-kids.png" alt="Image" class="img-responsive"/></a>
+                                                </div>
+                                                <div class="col-sm-2"><a href="http://pustakalaya.org/elkids.php" target="_blank"><img src="{$theme-path}/images/e-learning-forkids.png" alt="Image" class="img-responsive"/></a>
+                                                </div>
+                                                <div class="col-sm-2"><a href="http://pustakalaya.org/sabdakosh.php" target="_blank"><img src="{$theme-path}/images/npp-logo.png" alt="Image" class="img-responsive"/></a>
+                                                </div>
+                                                <div class="col-sm-2"><a href="#x"><img src="{$theme-path}/images/simulations.png" alt="Image" class="img-responsive"/></a>
+                                                </div>
+                                                <div class="col-sm-2"><a href="http://pustakalaya.org/audio.php" target="_blank"><img src="{$theme-path}/images/audiobook.png" alt="Image" class="img-responsive"/></a>
+                                                </div>
+                                            </div>
+                                            row
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                carousel-inner
+                                <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+
+                                <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+                            </div>
+                            myCarousel
+                        </div>
+                        well
+                    </div>
+                    Static content
+                </div>
+
+
+                Interactive audio video materials
+                <div class="pustakalayaSection" style="background:#81C784; height:350px; margin-top:-20px;">
+                    <div class="container">
+                        <h4 class="text-center text-capitalize" style="color:#060605;">Educational audio videos</h4>
+                        <div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
+                            <div class="well">
+                                Carousel items
+                                <div id="audioVideoSectionParentID">
+                                    <h3>Loading audio and video items ... </h3>
+                                </div>
+                            </div>
+                            well
+                        </div>
+                        Static content
+                    </div>
+                </div>
+                                        -->
+            <!-- Reference materials -->
+            <div class="pustakalayaSection" style="background:#A5D6A7; margin-top:-20px;">
+                <div class="container">
+                    <h4 class="text-center text-capitalize" style="color:#060605;">References Materials</h4>
+                    <div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
+                        <div class="well">
+                            <div id="myCarousel" class="carousel slide">
+                                <!-- Carousel items -->
+                                <div class="carousel-inner">
+                                    <div class="item active">
+                                        <div class="row">
+                                            <div class="col-sm-3"><a href="http://pustakalaya.org/sabdakosh.php" target="_blank"><img src="{$theme-path}/images/nepal-dictionary.png" alt="Image" class="img-responsive"/></a>
+                                            </div>
+                                            <div class="col-sm-3"><a href="http://pustakalaya.org/maps.php" target="_blank"><img src="{$theme-path}/images/openstreetmap_withtext.png" alt="Image" class="img-responsive"/></a>
+                                            </div>
+                                            <div class="col-sm-3"><a href="http://pustakalaya.org/sabdakosh.php" target="_blank"><img src="{$theme-path}/images/nepali-dictionary.png" alt="Image" class="img-responsive"/></a>
+                                            </div>
+                                            <div class="col-sm-3"><a href="http://pustakalaya.org/list.php?collection_pid=Pustakalaya:65" target="_blank"><img src="{$theme-path}/images/Wikipedia_for_Schools_2013_logo.png" alt="Image" class="img-responsive"/></a>
+                                            </div>
+                                        </div>
+                                        <!-- row -->
+                                    </div>
+
+                                    <!--item-->
+                                    <!--<div class="item">
+                                        <div class="row">
+                                            <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
+                                            </div>
+                                            <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
+                                            </div>
+                                            <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
+                                            </div>
+                                            <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"/></a>
+                                            </div>
+                                        </div>
+
+                                    </div>-->
+
+                                    <!--item-->
+                                    <!--<div class="item">
+                                        <div class="row">
+                                            <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/150x150" alt="Image" class="img-responsive"/></a>
+                                            </div>
+                                            <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/150x150" alt="Image" class="img-responsive"/></a>
+                                            </div>
+                                            <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/150x150" alt="Image" class="img-responsive"/></a>
+                                            </div>
+                                            <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/150x150" alt="Image" class="img-responsive"/></a>
+                                            </div>
+                                        </div>
+
+                                    </div>-->
+                                    <!--item-->
+                                </div>
+                                <!--carousel-inner-->
+                                <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+
+                                <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+                            </div>
+                            <!--myCarousel-->
+                        </div>
+                        <!--well-->
+                    </div>
+                    <!--Static content-->
+                </div>
+            </div>
+
+            <!--some info-->
+            <!--Small Info-->
+            <div class="pustakalayaSection" style="background:#ffffff; margin-top: 30px;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12" style="color:#666666; font-size: 12px;">
+                            <p class="text-justify">
+                                <i18n:text>xmlui.aboutHomePage</i18n:text> <a style="color:#e74c3c; cursor:pointer; text-decoration:none;"><i18n:text>xmlui.more</i18n:text> &gt;&gt;</a>
+                            </p>
+                        </div>
+
+                    </div><!-- end row-->
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-1 col-sm-12 col-xs-12" style="color:#666666; font-size: 12px;">
+                            <p class="text-left"><i18n:text>xmlui.you.can.bring.epustakalaya.to.your.school</i18n:text>  <a href="/" style="color:#e74c3c; cursor:pointer; text-decoration:none;"><i18n:text>xmlui.more</i18n:text> &gt;&gt;</a>
+
+                            </p>
+                            <p class="text-left"><i18n:text>xmlui.you.can.donate.books.to.epustakalaya</i18n:text>  <a href="/" style="color:#e74c3c; cursor:pointer; text-decoration:none;"><i18n:text>xmlui.more</i18n:text> &gt;&gt;</a>
+                            </p>
+                        </div>
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <br/>
+                            <a href="https://play.google.com/store/apps/details?id=com.ole.epustakalaya" target="_blank"><img src="{$theme-path}/images/android-app-logo.png" style="width:200px; height:50px; margin-left:43%;"/></a>
+                        </div>
+                    </div>
+                    <!--Static content-->
+                </div>
+            </div>
+        </div>
+        <!-- This is the script that only manipulate this template -->
+        <!-- enable above slider -->
+        <script type="text/javascript">
+            $pustakalaya(document).ready(function() {
+            var educationlMaterialSlider = $pustakalaya("#educationMaterial");
+            educationlMaterialSlider.lightSlider({
+            item:4,
+            prevHtml: '',
+            nextHtml: '',
+            });
+            });
+
+        </script>
+
+    </xsl:template>
+
+    <!-- script template to query the Collection in sidebar menu -->
     <xsl:template name="queryCollectionScript">
         <script>
             $pustakalaya(document).ready(function(){
@@ -2202,6 +2301,7 @@ window.publication.contextPath= '</xsl:text><xsl:value-of
             (function(window, $pustakalaya){
 
             // Function to query the collection in communities.
+            //
             window.queryCollection = function($event) {
 
             // show minus button by default.
@@ -2267,9 +2367,6 @@ window.publication.contextPath= '</xsl:text><xsl:value-of
 
             });
 
-            console.log("window.location.href=" + "'" + window.location.origin + window.location.pathname  +  item.handle + "/discover" + window.location.search + "'");
-
-            console.log(window.location.search);
 
             var span = $pustakalaya("<span></span>",{
             text: item.numberItems,
@@ -2295,6 +2392,37 @@ window.publication.contextPath= '</xsl:text><xsl:value-of
             })(window, $pustakalaya);
             }); // End document.ready function.
 
+        </script>
+    </xsl:template>
+
+    <!-- script template to toggle discover side bar -->
+    <xsl:template name="toggleDiscoverItem">
+        <!-- script to toggle the sidebar -->
+        <script>
+            // Hide all the sidebar discover items by default
+            $pustakalaya(".second-children").hide();
+
+            $pustakalaya('.pustakalaya-sidebar-toggle').click(function(){
+            // if the second child is visible add - Button to first child
+
+            if($pustakalaya(this).children('.second-children').is(":visible")){
+
+            // Add + button to this element
+            $pustakalaya(this).children(".first-children").children('a').children('i').
+            removeClass("glyphicon-minus-sign").
+            addClass("glyphicon-plus-sign");
+
+            // Toggle the children
+            $pustakalaya(this).children('.second-children').toggle();
+            } else {
+            // First remove plus and  visible add - button to the first-children
+            $pustakalaya(this).children(".first-children").children('a').children('i').
+            removeClass("glyphicon-plus-sign").
+            addClass("glyphicon-minus-sign");
+            $pustakalaya(this).children('.second-children').toggle();
+
+            }
+            });
         </script>
     </xsl:template>
 
