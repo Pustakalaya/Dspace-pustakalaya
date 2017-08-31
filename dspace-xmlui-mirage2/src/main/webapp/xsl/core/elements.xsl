@@ -656,6 +656,7 @@
                 </xsl:with-param>
             </xsl:call-template>
             <xsl:apply-templates />
+                <span id="collectionTitle"> </span>
         </xsl:element>
     </xsl:template>
 

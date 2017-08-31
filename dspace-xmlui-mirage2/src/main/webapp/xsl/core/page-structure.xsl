@@ -88,7 +88,6 @@
 </xsl:text>
 
                 <!-- First of all, build the HTML head element -->
-
                 <xsl:call-template name="buildHead"/>
 
                 <!-- Then proceed to the body -->
@@ -104,6 +103,7 @@
 
                         <xsl:otherwise>
                             <xsl:call-template name="buildHeader"/>
+                            <xsl:call-template name="buildTrail"/>
                             <!-- if this is root display the banner -->
 
 
@@ -1659,7 +1659,7 @@
                 <!--static feedback page-->
                 <xsl:when test="starts-with($request-uri, 'page/feedback')">
                     <div class="hero-unit">
-                        <xsl:call-template name="pustakalayaHomePage" />
+                        <!-- <xsl:call-template name="pustakalayaHomePage" /> -->
                         <h1><i18n:text>xmlui.mirage2.page-structure.feedback.title</i18n:text></h1>
                         <p><i18n:text>xmlui.mirage2.page-structure.feedback.content</i18n:text></p>
                     </div>
@@ -2409,6 +2409,7 @@ window.publication.contextPath= '</xsl:text><xsl:value-of
     <xsl:template name="toggleDiscoverItem">
         <!-- script to toggle the sidebar -->
         <script>
+            $pustakalaya("#aspect_discovery_SimpleSearch_div_discovery-filters-wrapper").removeClass('hidden');
             // Hide all the sidebar discover items by default
             $pustakalaya(".second-children").hide();
 
@@ -2433,6 +2434,27 @@ window.publication.contextPath= '</xsl:text><xsl:value-of
 
             }
             });
+        </script>
+
+        <!-- script to set the collection title -->
+        <script>
+            (function() {
+            try{
+            var collectionID = window.location.pathname.split('handle')[1].split("discover")[0].slice(1, -1);
+            if(collectionID) {
+
+            $pustakalaya("#collectionTitle").text(" " + localStorage.getItem(collectionID));
+            }
+
+            } catch (e) {
+
+            }
+
+
+
+
+            })();
+
         </script>
     </xsl:template>
 
