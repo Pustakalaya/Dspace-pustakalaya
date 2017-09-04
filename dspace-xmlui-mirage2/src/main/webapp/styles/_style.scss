@@ -274,3 +274,20 @@ ul#pustakalaya-dropdown-menu > li > a:active {
   border-radius: 0px !important;
   text-transform: capitalize !important;
 }
+
+ul.pustakalayaBreadcrumb > li {
+  color: #FFFFFF !important;
+}
+
+ul.pustakalayaBreadcrumb > li+li:before {
+  color: #FFFFFF !important;
+}
+
+ul.pustakalayaBreadcrumb > li > a {
+  color: #FFFFFF !important;
+}
+
+ul.pustakalayaBreadcrumb > li > a {
+  color: #FFFFFF !important;
+  text-decoration: none;
+}

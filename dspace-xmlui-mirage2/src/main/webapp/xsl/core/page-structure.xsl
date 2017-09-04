@@ -88,7 +88,11 @@
 </xsl:text>
 
                 <!-- First of all, build the HTML head element -->
+                <!-- <xsl:call-template name="buildTrail"/> -->
+
                 <xsl:call-template name="buildHead"/>
+
+
 
                 <!-- Then proceed to the body -->
                 <body>
@@ -102,8 +106,10 @@
                         </xsl:when>
 
                         <xsl:otherwise>
+
                             <xsl:call-template name="buildHeader"/>
-                            <xsl:call-template name="buildTrail"/>
+
+
                             <!-- if this is root display the banner -->
 
 
@@ -133,8 +139,8 @@
                             <div id="main-container" class="container">
 
                                 <div class="row row-offcanvas row-offcanvas-right">
-                                    <div class="horizontal-slider clearfix">
-                                        <div class="col-xs-12 col-sm-12 col-md-9 main-content">
+                                    <div class="horizontal-slider clearfix" style="background: white">
+                                        <div class="col-xs-12 col-sm-12 col-md-9 main-content" style="background: #f6f7f5;" >
                                             <!-- hide this in homepage -->
                                             <xsl:if test="not($request-uri='')">
                                                 <xsl:apply-templates select="*[not(self::dri:options)]"/>
@@ -519,7 +525,7 @@
 
                                             <li><a class="text-capitalized" style="color:#FFFF;" href="{$context-path}/page/help"><i18n:text>xmlui.mirage2.page-structure.help</i18n:text></a></li>
                                             <li><a class="text-capitalized" style="color:#FFFF;" href="{$context-path}/page/feedback"><i18n:text>xmlui.mirage2.page-structure.feedback</i18n:text></a></li>
-                                            <li><a class="text-capitalized" style="color:#FFFF;" href="{$context-path}/page/feedback"><i18n:text>xmlui.static.page.about</i18n:text></a></li>
+                                            <li><a class="text-capitalized" style="color:#FFFF;" href="{$context-path}/page/about"><i18n:text>xmlui.static.page.about</i18n:text></a></li>
                                         </ul>
                                     </ul>
 
@@ -800,6 +806,9 @@
         <xsl:if test="$request-uri=''">
             <xsl:call-template name="pustakalayaHomePage" />
         </xsl:if>
+        <xsl:if test="not($request-uri='')">
+            <xsl:call-template name="buildTrail"/>
+        </xsl:if>
 
 
 
@@ -809,16 +818,40 @@
     <!-- The header (distinct from the HTML head element) contains the title, subtitle, login box and various
     placeholders for header images -->
     <xsl:template name="buildTrail">
-        <div class="trail-wrapper hidden-print">
+        <div class="trail-wrapper hidden-print" style="background: #1abc9c; color:#FFF;">
             <div class="container">
                 <div class="row">
+
+
+                   <!-- <style>
+
+                        /*style for this below line only*/
+
+                        ul.pustakalayaBreadcrumb &gt; li {
+                        color: #FFFFFF !important;
+                        }
+
+                        ul.pustakalayaBreadcrumb &gt; li+li:before {
+                        color: #FFFFFF !important;
+                        }
+
+                        ul.pustakalayaBreadcrumb &gt; li &gt; a {
+                        color: #FFFFFF !important;
+                        }
+
+                        ul.pustakalayaBreadcrumb &gt; li &gt; a {
+                        color: #FFFFFF !important;
+                        text-decoration: none;
+                        }
+
+                    </style>-->
                     <!--TODO-->
                     <div class="col-xs-12">
                         <xsl:choose>
                             <xsl:when test="count(/dri:document/dri:meta/dri:pageMeta/dri:trail) > 1">
                                 <div class="breadcrumb dropdown visible-xs">
                                     <a id="trail-dropdown-toggle" href="#" role="button" class="dropdown-toggle"
-                                       data-toggle="dropdown">
+                                       data-toggle="dropdown" style="color:#FFF;">
                                         <xsl:variable name="last-node"
                                                       select="/dri:document/dri:meta/dri:pageMeta/dri:trail[last()]"/>
                                         <xsl:choose>
@@ -832,17 +865,19 @@
                                         <xsl:text>&#160;</xsl:text>
                                         <b class="caret"/>
                                     </a>
-                                    <ul class="dropdown-menu" role="menu" aria-labelledby="trail-dropdown-toggle">
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="trail-dropdown-toggle"  style="color:#FFF;">
                                         <xsl:apply-templates select="/dri:document/dri:meta/dri:pageMeta/dri:trail"
                                                              mode="dropdown"/>
                                     </ul>
                                 </div>
-                                <ul class="breadcrumb hidden-xs">
+                                <ul class="breadcrumb hidden-xs pustakalayaBreadcrumb"  style="color:#FFF;">
+
+
                                     <xsl:apply-templates select="/dri:document/dri:meta/dri:pageMeta/dri:trail"/>
                                 </ul>
                             </xsl:when>
                             <xsl:otherwise>
-                                <ul class="breadcrumb">
+                                <ul class="breadcrumb" style="color:#FFF;">
                                     <xsl:apply-templates select="/dri:document/dri:meta/dri:pageMeta/dri:trail"/>
                                 </ul>
                             </xsl:otherwise>
@@ -1094,7 +1129,7 @@
                         <div class="col-md-6">
                             <!--Content contributors -->
                             <div id="our-content-contributors"
-                                 style="border-left: 3px solid #f2f2f2; position:absolute; ">
+                                 style="border-left: 1px solid #dedede; padding-left: 45px;">
                                 <h3 class="text-uppercase" style="margin-left:20px;"><i18n:text>xmlui.our.content.contributors</i18n:text></h3>
                                 <a href="http://www.savethechildren.org/countries/asia/nepal.html"
                                    target="_blank"
@@ -1733,6 +1768,18 @@
             }
         </script>
 
+        <script type="text/javascript">
+            var pathname1="/";
+            var pathname2="/xmlui/";
+            var breadcrumb= document.getElementById("trail-wrapper hidden-print");
+            var currentPath=window.location.pathname;
+            if(currentPath == pathname1 || currentPath == pathname2){
+            breadcrumb.hidden = true;
+            }else {
+            breadcrumb.hidden = false;
+            }
+        </script>
+
 
         <!--hide carousel sliders except home page-->
         <!-- Slide is disable
@@ -1916,7 +1963,7 @@ window.publication.contextPath= '</xsl:text><xsl:value-of
                                 <!-- item 1: Literature and arts-->
                                 <div id="literature-and-arts">
                                     <!-- header -->
-                                    <li style="text-align:left; cursor:pointer;" id="93bb1ada-fd40-4136-a652-a766c1f4754e"
+                                    <li style="text-align:left; cursor:pointer; font-size: 1.3em;" id="93bb1ada-fd40-4136-a652-a766c1f4754e"
                                         onclick="queryCollection(this)">
 
                                         <img src="{$theme-path}/images/Literature-and-Arts.png" style="height:35px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_literature_and_arts</i18n:text>
@@ -1938,7 +1985,7 @@ window.publication.contextPath= '</xsl:text><xsl:value-of
                                 <!-- TODO: id of course materials need to change -->
                                 <div id="course-materials">
                                     <!-- header -->
-                                    <li style="text-align:left; cursor:pointer;" id="86d24b85-07c2-4911-921d-081fe3ed3c71" onclick="queryCollection(this)">
+                                    <li style="text-align:left; cursor:pointer;font-size: 1.3em;" id="86d24b85-07c2-4911-921d-081fe3ed3c71" onclick="queryCollection(this)">
                                         <!-- herf of a href={$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Course+Materials -->
 
                                         <img src="{$theme-path}/images/course_materials.png" style="height:35px; margin-right:10px;"/>
@@ -1957,7 +2004,7 @@ window.publication.contextPath= '</xsl:text><xsl:value-of
                                 <!-- Item 3: Teaching Materials navigation -->
                                 <div id="teaching-materials">
                                     <!-- header -->
-                                    <li style="text-align:left; cursor:pointer;" id="63f8ccff-eb9b-43ff-a930-beefb88e9254" onclick="queryCollection(this)">
+                                    <li style="text-align:left; cursor:pointer;font-size: 1.3em; " id="63f8ccff-eb9b-43ff-a930-beefb88e9254" onclick="queryCollection(this)">
                                         <!-- href of a {$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Teaching+Materials -->
 
                                         <img src="{$theme-path}/images/Teaching-Materials.png" style="height:35px; margin-right:10px;"/>
@@ -1975,7 +2022,7 @@ window.publication.contextPath= '</xsl:text><xsl:value-of
                                 <!-- Item 4 Magzine and News paper -->
                                 <div id="teaching-materials">
                                     <!-- header -->
-                                    <li style="text-align:left; cursor:pointer;" id="14a456b2-8b6c-419b-9f9c-448b6538c81d" onclick="queryCollection(this)">
+                                    <li style="text-align:left; cursor:pointer;font-size: 1.3em;" id="14a456b2-8b6c-419b-9f9c-448b6538c81d" onclick="queryCollection(this)">
                                         <!-- href of a: {$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Magazines+and+Newspapers -->
 
                                         <img src="{$theme-path}/images/Magazines-and-Newspapers.png" style="height:35px; margin-right:10px;"/>
@@ -1994,7 +2041,7 @@ window.publication.contextPath= '</xsl:text><xsl:value-of
                                 <!-- Agriculture and Diversity -->
                                 <div id="agriculture-and-biodiveristy">
                                     <!-- header -->
-                                    <li style="text-align:left; cursor:pointer;" id="4880c29a-0c65-468e-8f35-f77b19c1c802" onclick="queryCollection(this)">
+                                    <li style="text-align:left; cursor:pointer;font-size: 1.3em;" id="4880c29a-0c65-468e-8f35-f77b19c1c802" onclick="queryCollection(this)">
                                         <!-- href of a: {$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Magazines+and+Newspapers -->
 
                                         <img src="{$theme-path}/images/Agriculture-and-Diversity.png" style="height:35px; margin-right:10px;"/>
@@ -2013,7 +2060,7 @@ window.publication.contextPath= '</xsl:text><xsl:value-of
                                 <!-- Environment -->
                                 <div id="environment">
                                     <!-- header -->
-                                    <li style="text-align:left; cursor:pointer;" id="eb82dda2-b8e4-49a7-b3bb-c9e0cd5f6626" onclick="queryCollection(this)">
+                                    <li style="text-align:left; cursor:pointer;font-size: 1.3em;" id="eb82dda2-b8e4-49a7-b3bb-c9e0cd5f6626" onclick="queryCollection(this)">
                                         <!-- href of a: href="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Environment"-->
 
                                         <img src="{$theme-path}/images/Environment.png" style="height:35px; margin-right:10px;"/>
@@ -2031,7 +2078,7 @@ window.publication.contextPath= '</xsl:text><xsl:value-of
                                 <!-- Science and technology -->
                                 <div id="environment">
                                     <!-- header -->
-                                    <li style="text-align:left; cursor:pointer;" id="aa78ac32-7e82-4be3-b897-2f5d458c840b" onclick="queryCollection(this)">
+                                    <li style="text-align:left; cursor:pointer;font-size: 1.3em;" id="aa78ac32-7e82-4be3-b897-2f5d458c840b" onclick="queryCollection(this)">
                                         <!-- href of a: hhref="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Science+and+Technology" -->
                                         <img src="{$theme-path}/images/Magazines-and-Newspapers.png" style="height:35px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_science_and_technology</i18n:text>
                                         <!-- logo -->
@@ -2073,7 +2120,7 @@ window.publication.contextPath= '</xsl:text><xsl:value-of
 
                             <!-- Audio Video items -->
                             <div>
-                                <h6 style="background-color:#27ae60; color:#FFF; padding:5px 10px;" class="text-capitalize">Audio Video Items</h6>
+                                <h6 style="border-bottom: 1px solid #dedede; font-size: 1.3em; padding:5px 10px;" class="text-capitalize">Audio Video Items</h6>
                                 <div id="audioVideoSectionParentID">
                                     <h3>Loading audio and video items ... </h3>
                                 </div>
@@ -2081,7 +2128,7 @@ window.publication.contextPath= '</xsl:text><xsl:value-of
 
 
                             <div class="educational-software">
-                                <h6 style="background-color:#27ae60; color:#FFF; padding:5px 10px;" class="text-capitalize">Interactive Education softwares</h6>
+                                <h6 style="border-bottom: 1px solid #dedede; color:#00000;font-size: 1.3em;  padding:5px 10px;" class="text-capitalize">Interactive Education softwares</h6>
                                 <ul id="educationMaterial">
                                     <li>
                                         <a href="#x"><img src="{$theme-path}/images/simulations.png"
@@ -2189,7 +2236,7 @@ window.publication.contextPath= '</xsl:text><xsl:value-of
                 </div>
                                         -->
             <!-- Reference materials -->
-            <div class="pustakalayaSection" style="background:#A5D6A7; margin-top:-20px;">
+            <div class="pustakalayaSection" style="background:#dedede; margin-top:-20px;">
                 <div class="container">
                     <h4 class="text-center text-capitalize" style="color:#060605;">References Materials</h4>
                     <div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
@@ -2444,6 +2491,8 @@ window.publication.contextPath= '</xsl:text><xsl:value-of
             if(collectionID) {
 
             $pustakalaya("#collectionTitle").text(" " + localStorage.getItem(collectionID));
+            if($pustakalaya("#collectionTitle").text() == " null") {  $pustakalaya("#collectionTitle").text("")}
+
             }
 
             } catch (e) {

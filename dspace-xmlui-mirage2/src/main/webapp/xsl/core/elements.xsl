@@ -19,16 +19,16 @@
 -->
 
 <xsl:stylesheet xmlns:i18n="http://apache.org/cocoon/i18n/2.1"
-	xmlns:dri="http://di.tamu.edu/DRI/1.0/"
-	xmlns:mets="http://www.loc.gov/METS/"
-	xmlns:xlink="http://www.w3.org/TR/xlink/"
-	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
-	xmlns:dim="http://www.dspace.org/xmlns/dspace/dim"
-	xmlns:xhtml="http://www.w3.org/1999/xhtml"
-	xmlns:mods="http://www.loc.gov/mods/v3"
-	xmlns:dc="http://purl.org/dc/elements/1.1/"
-	xmlns="http://www.w3.org/1999/xhtml"
-	exclude-result-prefixes="i18n dri mets xlink xsl dim xhtml mods dc">
+                xmlns:dri="http://di.tamu.edu/DRI/1.0/"
+                xmlns:mets="http://www.loc.gov/METS/"
+                xmlns:xlink="http://www.w3.org/TR/xlink/"
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
+                xmlns:dim="http://www.dspace.org/xmlns/dspace/dim"
+                xmlns:xhtml="http://www.w3.org/1999/xhtml"
+                xmlns:mods="http://www.loc.gov/mods/v3"
+                xmlns:dc="http://purl.org/dc/elements/1.1/"
+                xmlns="http://www.w3.org/1999/xhtml"
+                exclude-result-prefixes="i18n dri mets xlink xsl dim xhtml mods dc">
 
     <xsl:output indent="yes"/>
 
@@ -47,7 +47,7 @@
         <xsl:apply-templates select="@pagination">
             <xsl:with-param name="position">top</xsl:with-param>
         </xsl:apply-templates>
-        <div>
+        <div style="background:white; padding: 15px 15px 15px 15px;">
             <xsl:call-template name="standardAttributes">
                 <xsl:with-param name="class">ds-static-div</xsl:with-param>
             </xsl:call-template>
@@ -609,7 +609,7 @@
                 <xsl:text>').elements['</xsl:text>
                 <xsl:value-of select="concat('submit_',/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='page'][@qualifier='jumpTo'],'_add')"/>
                 <xsl:text>'];</xsl:text>
-            <xsl:text>
+                <xsl:text>
                       if (button != null) {
                         var n = button.parentNode;
                         for (; n != null; n = n.parentNode) {
@@ -643,7 +643,7 @@
         <xsl:param name="class"/>
         <xsl:variable name="head_count" select="count(ancestor::dri:*[dri:head])"/>
         <xsl:variable name="is_first_head_on_page" select="(//dri:head)[1] = ."/>
-            <xsl:element name="h{$head_count+1}">
+        <xsl:element name="h{$head_count+1}">
             <xsl:call-template name="standardAttributes">
                 <xsl:with-param name="class">
                     <xsl:value-of select="$class"/>
@@ -656,7 +656,7 @@
                 </xsl:with-param>
             </xsl:call-template>
             <xsl:apply-templates />
-                <span id="collectionTitle"> </span>
+            <span id="collectionTitle"> </span>
         </xsl:element>
     </xsl:template>
 
@@ -753,12 +753,12 @@
     <xsl:template match="dri:table">
         <xsl:apply-templates select="dri:head"/>
         <div class="table-responsive">
-        <table>
-            <xsl:call-template name="standardAttributes">
-                <xsl:with-param name="class">ds-table table table-striped table-hover</xsl:with-param>
-            </xsl:call-template>
-            <xsl:apply-templates select="dri:row"/>
-        </table>
+            <table>
+                <xsl:call-template name="standardAttributes">
+                    <xsl:with-param name="class">ds-table table table-striped table-hover</xsl:with-param>
+                </xsl:call-template>
+                <xsl:apply-templates select="dri:row"/>
+            </table>
         </div>
     </xsl:template>
 
