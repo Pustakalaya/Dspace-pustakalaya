@@ -823,28 +823,28 @@
                 <div class="row">
 
 
-                   <!-- <style>
+                    <!-- <style>
 
-                        /*style for this below line only*/
+                         /*style for this below line only*/
 
-                        ul.pustakalayaBreadcrumb &gt; li {
-                        color: #FFFFFF !important;
-                        }
+                         ul.pustakalayaBreadcrumb &gt; li {
+                         color: #FFFFFF !important;
+                         }
 
-                        ul.pustakalayaBreadcrumb &gt; li+li:before {
-                        color: #FFFFFF !important;
-                        }
+                         ul.pustakalayaBreadcrumb &gt; li+li:before {
+                         color: #FFFFFF !important;
+                         }
 
-                        ul.pustakalayaBreadcrumb &gt; li &gt; a {
-                        color: #FFFFFF !important;
-                        }
+                         ul.pustakalayaBreadcrumb &gt; li &gt; a {
+                         color: #FFFFFF !important;
+                         }
 
-                        ul.pustakalayaBreadcrumb &gt; li &gt; a {
-                        color: #FFFFFF !important;
-                        text-decoration: none;
-                        }
+                         ul.pustakalayaBreadcrumb &gt; li &gt; a {
+                         color: #FFFFFF !important;
+                         text-decoration: none;
+                         }
 
-                    </style>-->
+                     </style>-->
                     <!--TODO-->
                     <div class="col-xs-12">
                         <xsl:choose>
@@ -1951,10 +1951,30 @@ window.publication.contextPath= '</xsl:text><xsl:value-of
                 </div><!-- end row -->
             </div><!-- End browse books and search bar -->
 
+            <div class="container-fluid" style="background: rebeccapurple;">
+                <div class="row">
+                    <div class="col-md-3 col-md-offset-4" id="basicLevel">
+                        <ul class="nav navbar-nav justify-content-center" style="background:trasparent; margin: 5px 5px 5px 5px;">
+                            <li class="nav-item">
+                                <a class="nav-link text-capitalize" href="{$context-path}/discover?filtertype=level&amp;filter_relational_operator=equals&amp;filter=Early+Primary+Level">Primary</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-capitalize" href="{$context-path}/discover?filtertype=level&amp;filter_relational_operator=equal&amp;filter=Adult+Learners">Secondary</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-capitalize" href="{$context-path}/discover?filtertype=level&amp;filter_relational_operator=equals&amp;filter=Intermediate+Level">Intermediate</a>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
             <!-- Book browsing -->
             <div style="background:#FFF3E0; padding-top:10px;">
                 <div class="container">
                     <div class="row">
+
 
                         <!-- Browse by section -->
                         <div class="col-md-4" id="book-browsing">
@@ -2076,7 +2096,7 @@ window.publication.contextPath= '</xsl:text><xsl:value-of
 
                                 <!-- Item 7-->
                                 <!-- Science and technology -->
-                                <div id="environment">
+                                <div id="science-and-technology">
                                     <!-- header -->
                                     <li style="text-align:left; cursor:pointer;font-size: 1.3em;" id="aa78ac32-7e82-4be3-b897-2f5d458c840b" onclick="queryCollection(this)">
                                         <!-- href of a: hhref="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Science+and+Technology" -->
@@ -2084,6 +2104,26 @@ window.publication.contextPath= '</xsl:text><xsl:value-of
                                         <!-- logo -->
                                         <i class="glyphicon  pull-right glyphicon-plus-sign"
                                            style="margin-top:10px; margin-right:10px;"></i>
+
+                                    </li>
+
+                                    <div class="list-group" style="margin-top:-10px;">
+                                    </div>
+                                </div>
+
+                                <!-- Item 8-->
+                                <!-- Our school -->
+                                <div id="our-school">
+                                    <!-- header -->
+                                    <li style="text-align:left; cursor:pointer;font-size: 1.3em;">
+
+                                        <!-- href of a: hhref="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Science+and+Technology" -->
+                                        <img src="{$theme-path}/images/Magazines-and-Newspapers.png" style="height:35px; margin-right:10px;"/>
+                                        <i18n:text>xmlui.ArtifactBrowser.Navigation.browse_ourschool</i18n:text>
+                                        <!-- logo -->
+                                        <i class="glyphicon  pull-right glyphicon-plus-sign"
+                                           style="margin-top:10px; margin-right:10px;"></i>
+                                        </a>
                                     </li>
 
                                     <div class="list-group" style="margin-top:-10px;">

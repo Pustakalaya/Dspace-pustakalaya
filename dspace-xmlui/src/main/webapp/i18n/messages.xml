@@ -2523,6 +2523,14 @@
 		Kathmandu, Nepal
 		pustakalaya@olenepal.org
 	</message>
+	<message key="xmlui.ArtifactBrowser.Navigation.browse_ourschool">Our Schools</message>
+	<message key="xmlui.Discovery.AbstractSearch.sort_by.local.level_sort_asc">Level Asc</message>
+	<message key="xmlui.Discovery.AbstractSearch.sort_by.local.level_sort_desc">Level Dsc</message>
+	<message key="xmlui.Discovery.AbstractSearch.sort_by.local.interactivity_sort_asc">Interactivity Asc</message>
+	<message key="xmlui.Discovery.AbstractSearch.sort_by.local.interactivity_sort_desc">Interactivity Dsc</message>
+	<message key="xmlui.Discovery.AbstractSearch.sort_by.dc.type_sort_asc">Type Asc</message>
+	<message key="xmlui.Discovery.AbstractSearch.sort_by.dc.type_sort_desc">Type Dsc</message>
+
 
 
 </catalogue>
