@@ -257,3 +257,15 @@ div.well{
   border-radius: 0px !important;
   text-transform: capitalize !important;
 }
+
+
+#basicLevel > ul> li> a {
+  background: transparent;
+  color: #000000 !important;
+}
+
+#basicLevel> ul> li:hover {
+  color: #16a085;
+  text-decoration: none;
+  cursor: pointer;
+}

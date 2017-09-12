@@ -127,7 +127,7 @@
             <!-- <xsl:apply-templates/> -->
             <xsl:apply-templates select="dri:list[@n='discovery']"/>
             <xsl:apply-templates select="dri:list[@n='context']"/>
-            <xsl:apply-templates select="dri:list[@n='account']"/>
+            <!--<xsl:apply-templates select="dri:list[@n='account']"/>-->
             <xsl:apply-templates select="dri:list[@n='administrative']"/>
             <xsl:apply-templates select="dri:list[@n='statistics']"/>
             <xsl:apply-templates select="dri:list[@n='browse']"/>

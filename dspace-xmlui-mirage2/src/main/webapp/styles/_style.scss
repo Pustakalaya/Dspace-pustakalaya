@@ -292,12 +292,12 @@ ul.pustakalayaBreadcrumb > li > a {
   text-decoration: none;
 }
 
-div#basicLevel>ul>li>a {
+#basicLevel > ul> li> a {
   background: transparent;
-  color: black !important;
+  color: #000000 !important;
 }
 
-div#basicLevel>ul>li>a :hover {
+#basicLevel> ul> li:hover {
   color: #16a085;
   text-decoration: none;
   cursor: pointer;

@@ -1768,7 +1768,7 @@
             }
         </script>
 
-        <script type="text/javascript">
+        <!--<script type="text/javascript">
             var pathname1="/";
             var pathname2="/xmlui/";
             var breadcrumb= document.getElementById("trail-wrapper hidden-print");
@@ -1778,7 +1778,7 @@
             }else {
             breadcrumb.hidden = false;
             }
-        </script>
+        </script>-->
 
 
         <!--hide carousel sliders except home page-->
@@ -1951,7 +1951,7 @@ window.publication.contextPath= '</xsl:text><xsl:value-of
                 </div><!-- end row -->
             </div><!-- End browse books and search bar -->
 
-            <div class="container-fluid" style="background: rebeccapurple;">
+            <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-3 col-md-offset-4" id="basicLevel">
                         <ul class="nav navbar-nav justify-content-center" style="background:trasparent; margin: 5px 5px 5px 5px;">
@@ -2116,13 +2116,9 @@ window.publication.contextPath= '</xsl:text><xsl:value-of
                                 <div id="our-school">
                                     <!-- header -->
                                     <li style="text-align:left; cursor:pointer;font-size: 1.3em;">
-
-                                        <!-- href of a: hhref="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Science+and+Technology" -->
-                                        <img src="{$theme-path}/images/Magazines-and-Newspapers.png" style="height:35px; margin-right:10px;"/>
-                                        <i18n:text>xmlui.ArtifactBrowser.Navigation.browse_ourschool</i18n:text>
-                                        <!-- logo -->
-                                        <i class="glyphicon  pull-right glyphicon-plus-sign"
-                                           style="margin-top:10px; margin-right:10px;"></i>
+                                        <a class="text-capitalize" href="{$context-path}/browse?type=ourschool">
+                                            <!-- href of a: hhref="{$context-path}/discover?filtertype=category&amp;filter_relational_operator=equals&amp;filter=Science+and+Technology" -->
+                                            <img src="{$theme-path}/images/Magazines-and-Newspapers.png" style="height:35px; margin-right:10px;"/><i18n:text>xmlui.ArtifactBrowser.Navigation.browse_ourschool</i18n:text>
                                         </a>
                                     </li>
 
